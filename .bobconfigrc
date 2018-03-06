@@ -1,0 +1,11 @@
+{
+    "baseDir": "./docs/",
+    "bundleConfig": "bundles.json",
+    "codeMirrorModes": "js/mode",
+    "destCssDir": "./docs/css/",
+    "destJsDir": "./docs/js/",
+    "examplesRoot": "demo/live-examples/",
+    "jsExamplesDir": "./docs/pages/js/",
+    "mediaRoot": "demo/media",
+    "metaGlob": "demo/**/meta.json"
+}

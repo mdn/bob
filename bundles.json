@@ -1,0 +1,9 @@
+{
+  "bundles": {
+    "bob": {
+      "javascript": ["demo/js/lib/codemirror.js"],
+      "css": ["demo/css/libs/codemirror.css"],
+      "destFileName": "bob"
+    }
+  }
+}

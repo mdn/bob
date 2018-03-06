@@ -1,0 +1,41 @@
+{
+    "name": "bob",
+    "version": "0.0.1",
+    "description": "Builder of Bits aka The MDN Web Docs interactive examples, example builder",
+    "author": "Mozilla",
+    "license": "MPL-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:schalkneethling/bob.git"
+    },
+    "bugs": {
+        "url": "https://github.com/schalkneethling/bob/issues"
+    },
+    "homepage": "https://github.com/schalkneethling/bob#readme",
+    "main": "index.js",
+    "scripts": {
+        "test": "npm-run-all unit-tests build perf",
+        "start": "node index.js"
+    },
+    "keywords": [
+        "javascript",
+        "nodejs",
+        "page-generator",
+        "mdn",
+        "mozilla"
+    ],
+    "devDependencies": {
+        "all-contributors-cli": "^4.11.0",
+        "http-server": "^0.11.1",
+        "husky": "^0.14.3"
+    },
+    "dependencies": {
+        "clean-css": "^4.1.9",
+        "concat": "^1.0.3",
+        "cosmiconfig": "^4.0.0",
+        "fs-extra": "^5.0.0",
+        "glob": "^7.1.2",
+        "node-dir": "^0.1.17",
+        "uglify-es": "^3.3.9"
+    }
+}

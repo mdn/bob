@@ -1,0 +1,23 @@
+{
+    "name": "bob",
+    "description":
+        "Builder of Bits aka The MDN Web Docs interactive examples, example builder",
+    "repository": {
+        "url": "https://github.com/mdn/bob",
+        "license": "MPL2"
+    },
+    "participate": {
+        "home": "https://github.com/mdn/bob",
+        "docs": "https://github.com/mdn/bob",
+        "irc": "irc://irc.mozilla.org/#mdndev",
+        "irc-contacts": ["espressive", "jwhitlock", "rjohnson", "wbamberg"]
+    },
+    "bugs": {
+        "list": "https://github.com/mdn/bob/issues",
+        "report": "https://github.com/mdn/bob/issues/new"
+    },
+    "urls": {
+        "prod": "https://github.com/mdn/bob"
+    },
+    "keywords": ["nodejs", "javascript"]
+}
