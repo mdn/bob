@@ -4,7 +4,7 @@
         "Builder of Bits aka The MDN Web Docs interactive examples, example builder",
     "repository": {
         "url": "https://github.com/mdn/bob",
-        "license": "MPL2"
+        "license": "MIT"
     },
     "participate": {
         "home": "https://github.com/mdn/bob",
