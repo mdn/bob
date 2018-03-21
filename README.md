@@ -4,6 +4,7 @@ Builder of Bits aka The [MDN Web Docs interactive examples](https://github.com/m
 
 ## Source Folder Structure
 
+```
 -editor # All files related to the interactive examples editor
 |--> css
 |--> js
@@ -15,9 +16,11 @@ Builder of Bits aka The [MDN Web Docs interactive examples](https://github.com/m
 |--> tabbed-examples
 |--> js-examples
 |--> media # media used only by the examples
+```
 
 ## Generated Folder Structure
 
+```
 -docs
 |--> css # All editor related CSS
 |--> js # All editor related JS
@@ -27,3 +30,4 @@ Builder of Bits aka The [MDN Web Docs interactive examples](https://github.com/m
 |----> css # All CSS examples
 |----> js # All JS examples
 |----> tabbed # All examples using the tabbed UI
+```
