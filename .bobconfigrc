@@ -4,8 +4,15 @@
     "codeMirrorModes": "js/mode",
     "destCssDir": "./docs/css/",
     "destJsDir": "./docs/js/",
-    "examplesRoot": "demo/live-examples/",
+    "examplesRoot": "live-examples/",
+    "editorMediaRoot": "editor/media",
+    "editorMediaDest": "./docs/media/",
+    "examplesMediaRoot": "live-examples/media",
+    "examplesMediaDest": "./docs/media/examples/",
+    "fontsMediaRoot": "fonts",
+    "fontsMediaDest": "./docs/media/fonts/",
     "jsExamplesDir": "./docs/pages/js/",
-    "mediaRoot": "demo/media",
-    "metaGlob": "demo/**/meta.json"
+    "metaGlob": "live-examples/**/meta.json",
+    "pagesDir": "./docs/pages/",
+    "sourceJSDir": "editor/js/"
 }

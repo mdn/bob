@@ -1,9 +1,63 @@
 {
-  "bundles": {
-    "bob": {
-      "javascript": ["demo/js/lib/codemirror.js"],
-      "css": ["demo/css/libs/codemirror.css"],
-      "destFileName": "bob"
+    "bundles": {
+        "codeMirror": {
+            "javascript": [
+                "editor/js/lib/codemirror.js",
+                "editor/js/mode/javascript/javascript.js"
+            ],
+            "css": [
+                "editor/css/libs/codemirror.css",
+                "editor/css/editor-libs/codemirror-override.css"
+            ],
+            "destFileName": "codemirror-5-31-0"
+        },
+        "codeMirrorTabbed": {
+            "javascript": [
+                "editor/js/lib/codemirror.js",
+                "editor/js/mode/javascript/javascript.js",
+                "editor/js/mode/xml/xml.js",
+                "editor/js/mode/css/css.js",
+                "editor/js/mode/htmlmixed/htmlmixed.js"
+            ],
+            "css": [
+                "editor/css/libs/codemirror.css",
+                "editor/css/editor-libs/codemirror-override.css"
+            ],
+            "destFileName": "codemirror-tabbed-5-31-0"
+        },
+        "cssExampleLibs": {
+            "javascript": [
+                "editor/js/lib/prism.js",
+                "editor/js/lib/clipboard.js"
+            ],
+            "css": ["editor/css/libs/prism.css"],
+            "destFileName": "css-examples-libs-1-8-4"
+        },
+        "cssExamplesBase": {
+            "javascript": ["editor/js/editor-css-bundle.js"],
+            "css": [
+                "editor/css/editor-libs/common.css",
+                "editor/css/editor-libs/prism-override.css",
+                "editor/css/editable-css.css"
+            ],
+            "destFileName": "editor-css"
+        },
+        "editorJS": {
+            "javascript": ["editor/js/editor-js-bundle.js"],
+            "css": [
+                "editor/css/editor-libs/common.css",
+                "editor/css/editable-js.css"
+            ],
+            "destFileName": "editor-js"
+        },
+        "tabbedEditor": {
+            "javascript": ["editor/js/editor-bundle.js"],
+            "css": [
+                "editor/css/editor-libs/common.css",
+                "editor/css/editor-libs/tabby.css",
+                "editor/css/tabbed-editor.css"
+            ],
+            "destFileName": "tabbed-editor"
+        }
     }
-  }
 }
