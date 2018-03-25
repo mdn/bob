@@ -1,7 +1,8 @@
 {
     "name": "bob",
     "version": "0.0.1",
-    "description": "Builder of Bits aka The MDN Web Docs interactive examples, example builder",
+    "description":
+        "Builder of Bits aka The MDN Web Docs interactive examples, example builder",
     "author": "Mozilla",
     "license": "MIT",
     "repository": {
@@ -14,28 +15,32 @@
     "homepage": "https://github.com/schalkneethling/bob#readme",
     "main": "index.js",
     "scripts": {
-        "build-css-bundle": "browserify editor/js/editable-css.js -o editor/js/editor-css-bundle.js",
-        "build-js-bundle": "browserify editor/js/editable-js.js -o editor/js/editor-js-bundle.js",
-        "build-tabbed-js-bundle": "browserify editor/js/editor.js -o editor/js/editor-bundle.js",
+        "build-css-bundle":
+            "browserify editor/js/editable-css.js -o editor/js/editor-css-bundle.js",
+        "build-js-bundle":
+            "browserify editor/js/editable-js.js -o editor/js/editor-js-bundle.js",
+        "build-tabbed-js-bundle":
+            "browserify editor/js/editor.js -o editor/js/editor-bundle.js",
         "build-pages": "node index.js",
-        "build": "npm-run-all build-css-bundle build-js-bundle build-tabbed-js-bundle build-pages",
-        "test": "npm-run-all unit-tests build perf",
+        "build":
+            "npm-run-all build-css-bundle build-js-bundle build-tabbed-js-bundle build-pages",
         "start": "node index.js",
-        "start-server": "http-server -p 4444 ./docs -o"
+        "start-server": "http-server -p 4444 ./docs",
+        "test": "jest"
     },
-    "keywords": [
-        "javascript",
-        "nodejs",
-        "page-generator",
-        "mdn",
-        "mozilla"
-    ],
+    "jest": {
+        "preset": "jest-puppeteer"
+    },
+    "keywords": ["javascript", "nodejs", "page-generator", "mdn", "mozilla"],
     "devDependencies": {
         "all-contributors-cli": "^4.11.0",
         "browserify": "^16.1.1",
         "http-server": "^0.11.1",
         "husky": "^0.14.3",
-        "npm-run-all": "^4.1.2"
+        "jest": "^22.4.0",
+        "jest-puppeteer": "^2.2.0",
+        "npm-run-all": "^4.1.2",
+        "puppeteer": "^1.1.1"
     },
     "dependencies": {
         "clean-css": "^4.1.9",
