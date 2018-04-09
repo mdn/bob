@@ -1,55 +1,60 @@
 {
-    "name": "bob",
-    "version": "0.0.1",
-    "description": "Builder of Bits aka The MDN Web Docs interactive examples, example builder",
-    "author": "Mozilla",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:schalkneethling/bob.git"
-    },
-    "bugs": {
-        "url": "https://github.com/schalkneethling/bob/issues"
-    },
-    "homepage": "https://github.com/schalkneethling/bob#readme",
-    "main": "index.js",
-    "scripts": {
-        "build-css-bundle": "browserify editor/js/editable-css.js -o editor/js/editor-css-bundle.js",
-        "build-js-bundle": "browserify editor/js/editable-js.js -o editor/js/editor-js-bundle.js",
-        "build-tabbed-js-bundle": "browserify editor/js/editor.js -o editor/js/editor-bundle.js",
-        "build-pages": "node index.js",
-        "build": "npm-run-all build-css-bundle build-js-bundle build-tabbed-js-bundle build-pages",
-        "start": "node index.js",
-        "start-server": "http-server -p 4444 ./docs",
-        "test": "jest"
-    },
-    "jest": {
-        "preset": "jest-puppeteer"
-    },
-    "keywords": [
-        "javascript",
-        "nodejs",
-        "page-generator",
-        "mdn",
-        "mozilla"
-    ],
-    "devDependencies": {
-        "all-contributors-cli": "^4.11.0",
-        "browserify": "^16.1.1",
-        "http-server": "^0.11.1",
-        "husky": "^0.14.3",
-        "jest": "^22.4.0",
-        "jest-puppeteer": "^2.2.1",
-        "npm-run-all": "^4.1.2",
-        "puppeteer": "^1.1.1"
-    },
-    "dependencies": {
-        "clean-css": "^4.1.9",
-        "concat": "^1.0.3",
-        "cosmiconfig": "^4.0.0",
-        "fs-extra": "^5.0.0",
-        "glob": "^7.1.2",
-        "node-dir": "^0.1.17",
-        "uglify-es": "^3.3.9"
-    }
+  "name": "bob",
+  "version": "0.0.0-development",
+  "description": "Builder of Bits aka The MDN Web Docs interactive examples, example builder",
+  "author": "Mozilla",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https:git@github.com:mdn/bob.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mdn/bob/issues"
+  },
+  "homepage": "https://github.com/mdn/bob#readme",
+  "main": "index.js",
+  "scripts": {
+    "build-css-bundle": "browserify editor/js/editable-css.js -o editor/js/editor-css-bundle.js",
+    "build-js-bundle": "browserify editor/js/editable-js.js -o editor/js/editor-js-bundle.js",
+    "build-tabbed-js-bundle": "browserify editor/js/editor.js -o editor/js/editor-bundle.js",
+    "build-pages": "node index.js",
+    "build": "npm-run-all build-css-bundle build-js-bundle build-tabbed-js-bundle build-pages",
+    "start": "node index.js",
+    "start-server": "http-server -p 4444 ./docs",
+    "test": "jest",
+    "semantic-release": "semantic-release"
+  },
+  "jest": {
+    "preset": "jest-puppeteer"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "page-generator",
+    "mdn",
+    "mozilla"
+  ],
+  "devDependencies": {
+    "all-contributors-cli": "^4.11.0",
+    "browserify": "^16.1.1",
+    "http-server": "^0.11.1",
+    "husky": "^0.14.3",
+    "jest": "^22.4.0",
+    "jest-puppeteer": "^2.2.1",
+    "npm-run-all": "^4.1.2",
+    "puppeteer": "^1.1.1",
+    "semantic-release": "^15.1.5"
+  },
+  "dependencies": {
+    "clean-css": "^4.1.9",
+    "concat": "^1.0.3",
+    "cosmiconfig": "^4.0.0",
+    "fs-extra": "^5.0.0",
+    "glob": "^7.1.2",
+    "node-dir": "^0.1.17",
+    "uglify-es": "^3.3.9"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
 }
