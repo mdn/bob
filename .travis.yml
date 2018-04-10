@@ -6,7 +6,6 @@ notifications:
   email: false
 node_js:
   - '9'
-  - '8'
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
@@ -17,4 +16,4 @@ jobs:
     - stage: release
       node_js: lts/*
       script:
-        - npm run semantic-release
+          - npx semantic-release
