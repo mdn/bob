@@ -7,6 +7,9 @@ notifications:
 node_js:
   - '9'
   - '8'
+before_script:
+  - npm run build
+  - sleep 3
 after_success:
   - npm run travis-deploy-once "npm run semantic-release"
 branches:
