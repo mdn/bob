@@ -6,6 +6,8 @@ notifications:
   email: false
 node_js:
   - '9'
+before_script:
+  - npm run build
 after_success:
   - npm run travis-deploy-once "npm run semantic-release"
 branches:
