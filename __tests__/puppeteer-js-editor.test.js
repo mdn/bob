@@ -5,13 +5,12 @@ describe('JS Editor', () => {
 
     it('renders expected output after clicking Run', async () => {
         const expectedOutput = '> Array ["a", "b", "c", "d", "e", "f"]';
-        let outputContent;
 
         await page.waitForSelector('#execute');
         await page.click('#execute');
 
-        outputContent = await page.$eval('#output code', e =>
-            e.innerText.trim()
+        let outputContent = await page.$eval('#output code', elem =>
+            elem.innerText.trim()
         );
         await expect(outputContent).toBe(expectedOutput);
     });
