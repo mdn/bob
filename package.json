@@ -56,8 +56,5 @@
         "npm": "^5.8.0",
         "semantic-release-cli": "^3.6.6",
         "uglify-es": "^3.3.9"
-    },
-    "publishConfig": {
-        "access": "restricted"
     }
 }
