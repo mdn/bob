@@ -1,0 +1,6 @@
+__tests__/*
+docs/*
+fonts/*
+live-examples/*
+.prettierrc
+.travis.yml
