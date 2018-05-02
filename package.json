@@ -55,7 +55,7 @@
         "clean-css": "^4.1.9",
         "concat": "^1.0.3",
         "cosmiconfig": "^4.0.0",
-        "fs-extra": "^5.0.0",
+        "fs-extra": "^6.0.0",
         "glob": "^7.1.2",
         "node-dir": "^0.1.17",
         "npm": "^5.8.0",
