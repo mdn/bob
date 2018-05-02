@@ -58,7 +58,7 @@
         "fs-extra": "^6.0.0",
         "glob": "^7.1.2",
         "node-dir": "^0.1.17",
-        "npm": "^5.8.0",
+        "npm": "^6.0.0",
         "semantic-release-cli": "^3.6.6",
         "uglify-es": "^3.3.9"
     },
