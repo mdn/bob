@@ -38,7 +38,7 @@
     "keywords": ["javascript", "nodejs", "page-generator", "mdn", "mozilla"],
     "devDependencies": {
         "all-contributors-cli": "4.11.1",
-        "browserify": "16.2.0",
+        "browserify": "16.2.2",
         "commitizen": "2.9.6",
         "cz-conventional-changelog": "2.1.0",
         "http-server": "0.11.1",
