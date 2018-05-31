@@ -1,8 +1,7 @@
 {
     "name": "mdn-bob",
     "version": "0.0.0-semantically-released",
-    "description":
-        "Builder of Bits aka The MDN Web Docs interactive examples, example builder",
+    "description": "Builder of Bits aka The MDN Web Docs interactive examples, example builder",
     "author": "Mozilla",
     "license": "MIT",
     "repository": {
@@ -15,15 +14,11 @@
     "homepage": "https://github.com/mdn/bob#readme",
     "main": "index.js",
     "scripts": {
-        "build-css-bundle":
-            "browserify editor/js/editable-css.js -o editor/js/editor-css-bundle.js",
-        "build-js-bundle":
-            "browserify editor/js/editable-js.js -o editor/js/editor-js-bundle.js",
-        "build-tabbed-js-bundle":
-            "browserify editor/js/editor.js -o editor/js/editor-bundle.js",
+        "build-css-bundle": "browserify editor/js/editable-css.js -o editor/js/editor-css-bundle.js",
+        "build-js-bundle": "browserify editor/js/editable-js.js -o editor/js/editor-js-bundle.js",
+        "build-tabbed-js-bundle": "browserify editor/js/editor.js -o editor/js/editor-bundle.js",
         "build-pages": "node index.js",
-        "build":
-            "npm-run-all build-css-bundle build-js-bundle build-tabbed-js-bundle build-pages",
+        "build": "npm-run-all build-css-bundle build-js-bundle build-tabbed-js-bundle build-pages",
         "cz": "git-cz",
         "start": "npm-run-all build start-server",
         "start-server": "http-server -p 4444 ./docs",
@@ -34,7 +29,13 @@
     "jest": {
         "preset": "jest-puppeteer"
     },
-    "keywords": ["javascript", "nodejs", "page-generator", "mdn", "mozilla"],
+    "keywords": [
+        "javascript",
+        "nodejs",
+        "page-generator",
+        "mdn",
+        "mozilla"
+    ],
     "devDependencies": {
         "all-contributors-cli": "4.11.2",
         "browserify": "16.2.2",
