@@ -1,0 +1,33 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.12.0
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  'npm:atob:20180429':
+    - '@semantic-release/github > globby > fast-glob > micromatch > braces > snapdragon > source-map-resolve > atob':
+        reason: Need clean course of update
+        expires: '2018-07-19T17:16:36.000Z'
+  'npm:lodash:20180130':
+    - semantic-release-cli > travis-ci > lodash:
+        reason: Need clear upgrade path
+        expires: '2018-07-19T17:16:36.000Z'
+  'npm:sshpk:20180409':
+    - npm-registry-client > request > http-signature > sshpk:
+        reason: Need clean upgrade path
+        expires: '2018-07-19T17:16:36.000Z'
+    - request-promise > request > http-signature > sshpk:
+        reason: Need clean upgrade path
+        expires: '2018-07-19T17:16:36.000Z'
+    - request-promise > request-promise-core > request > http-signature > sshpk:
+        reason: Need clean upgrade path
+        expires: '2018-07-19T17:16:36.000Z'
+  'npm:stringstream:20180511':
+    - npm-registry-client > request > stringstream:
+        reason: Need clean upgrade path
+        expires: '2018-07-19T17:16:36.000Z'
+    - request-promise > request > stringstream:
+        reason: Need clean upgrade path
+        expires: '2018-07-19T17:16:36.000Z'
+    - request-promise > request-promise-core > request > stringstream:
+        reason: Nead clean upgrade path
+        expires: '2018-07-19T17:16:36.000Z'
+patch: {}
