@@ -30,4 +30,14 @@ ignore:
     - request-promise > request-promise-core > request > stringstream:
         reason: Nead clean upgrade path
         expires: '2018-07-19T17:16:36.000Z'
-patch: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:lodash:20180130':
+    - npm > cli-table2 > lodash:
+        patched: '2018-07-02T22:50:42.650Z'
+    - npm > npm-audit-report > cli-table2 > lodash:
+        patched: '2018-07-02T22:50:42.650Z'
+    - semantic-release-cli > npm > cli-table2 > lodash:
+        patched: '2018-07-02T22:50:42.650Z'
+    - semantic-release-cli > npm > npm-audit-report > cli-table2 > lodash:
+        patched: '2018-07-02T22:50:42.650Z'
