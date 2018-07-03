@@ -49,7 +49,7 @@
     "puppeteer": "1.5.0",
     "semantic-release": "15.5.0",
     "travis-deploy-once": "5.0.0",
-    "snyk": "1.86.0"
+    "snyk": "1.88.1"
   },
   "dependencies": {
     "clean-css": "4.1.11",
