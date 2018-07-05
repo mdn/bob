@@ -24,7 +24,9 @@
     "start-server": "http-server -p 4444 ./docs",
     "test": "snyk test && jest",
     "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "jest": {
     "preset": "jest-puppeteer"
@@ -60,11 +62,13 @@
     "node-dir": "0.1.17",
     "npm": "6.1.0",
     "semantic-release-cli": "^4.0.1",
-    "uglify-es": "3.3.9"
+    "uglify-es": "3.3.9",
+    "snyk": "^1.88.0"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "snyk": true
 }
