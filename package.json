@@ -54,7 +54,7 @@
     "snyk": "1.88.1"
   },
   "dependencies": {
-    "clean-css": "4.1.11",
+    "clean-css": "4.2.1",
     "concat": "1.0.3",
     "cosmiconfig": "5.0.5",
     "fs-extra": "6.0.1",
