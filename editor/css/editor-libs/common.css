@@ -13,7 +13,7 @@ body {
 header h4:before {
     display: inline-block;
     content: '';
-    background: transparent url('../media/dino.svg') 0 0 no-repeat;
+    background: transparent url('../../media/dino.svg') 0 0 no-repeat;
     margin-right: .6em;
     width: 45px;
     height: 45px;

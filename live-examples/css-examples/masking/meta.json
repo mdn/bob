@@ -1,0 +1,12 @@
+{
+    "pages": {
+        "maskClip": {
+            "baseTmpl": "./editor/tmpl/live-css-tmpl.html",
+            "cssExampleSrc": "./live-examples/css-examples/masking/mask-clip.css",
+            "exampleCode": "./live-examples/css-examples/masking/mask-clip.html",
+            "fileName": "mask-clip.html",
+            "title": "CSS Demo: mask-clip",
+            "type": "css"
+        }
+    }
+}

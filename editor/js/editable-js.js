@@ -4,6 +4,7 @@
     var featureDetector = require('./editor-libs/feature-detector.js');
     var mceConsole = require('./editor-libs/console');
     var mceEvents = require('./editor-libs/events.js');
+    var mceUtils = require('./editor-libs/mce-utils');
 
     var codeBlock = document.getElementById('static-js');
     var exampleFeature = codeBlock.dataset['feature'];
@@ -100,6 +101,26 @@
 
         reset.addEventListener('click', function() {
             window.location.reload();
+        });
+    }
+
+    /* Ensure that performance is supported before
+       gathering the performance metric */
+    if (performance !== undefined) {
+        document.addEventListener('readystatechange', function(event) {
+            if (event.target.readyState === 'complete') {
+                /* loadEventEnd happens a split second after we
+                   reached complete. So we wait an additional
+                   100ms before getting it’ value */
+                setTimeout(function() {
+                    mceEvents.trackloadEventEnd(
+                        'JS editor load time',
+                        performance.timing.loadEventEnd
+                    );
+                    // Posts mark to set on the Kuma side and used in measure
+                    mceUtils.postToKuma({ markName: 'js-ie-load-event-end' });
+                }, 300);
+            }
         });
     }
 })();
