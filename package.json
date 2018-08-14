@@ -56,7 +56,7 @@
   "dependencies": {
     "clean-css": "4.2.1",
     "concat": "1.0.3",
-    "cosmiconfig": "5.0.5",
+    "cosmiconfig": "5.0.6",
     "fs-extra": "7.0.0",
     "glob": "7.1.2",
     "node-dir": "0.1.17",
