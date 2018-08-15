@@ -60,7 +60,7 @@
         "fs-extra": "7.0.0",
         "glob": "7.1.2",
         "node-dir": "0.1.17",
-        "npm": "6.3.0",
+        "npm": "6.4.0",
         "semantic-release-cli": "^4.0.1",
         "uglify-es": "3.3.9"
     },
