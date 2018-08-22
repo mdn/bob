@@ -51,13 +51,17 @@
             "destFileName": "editor-js"
         },
         "tabbedEditor": {
-            "javascript": ["editor/js/editor-bundle.js"],
+            "javascript": [
+                "editor/js/lib/webcomponents/webcomponents-bundle.js",
+                "editor/js/editor-bundle.js"
+            ],
             "css": [
                 "editor/css/editor-libs/common.css",
+                "editor/css/editor-libs/shadow-fonts.css",
                 "editor/css/editor-libs/tabby.css",
                 "editor/css/tabbed-editor.css"
             ],
-            "destFileName": "tabbed-editor"
+            "destFileName": "editor-tabbed"
         }
     }
 }

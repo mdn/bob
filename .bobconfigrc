@@ -9,7 +9,7 @@
     "editorMediaDest": "./docs/media/",
     "examplesMediaRoot": "live-examples/media",
     "examplesMediaDest": "./docs/media/examples/",
-    "fontsMediaRoot": "fonts",
+    "fontsMediaRoot": "live-examples/fonts",
     "fontsMediaDest": "./docs/media/fonts/",
     "jsExamplesDir": "./docs/pages/js/",
     "metaGlob": "live-examples/**/meta.json",
