@@ -12,6 +12,9 @@
         "url": "https://github.com/mdn/bob/issues"
     },
     "homepage": "https://github.com/mdn/bob#readme",
+    "bin": {
+        "mdn-bob": "./lib/mdn-bob.js"
+    },
     "main": "./lib/mdn-bob.js",
     "bundlesize": [
         {
