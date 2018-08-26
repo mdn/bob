@@ -1,6 +1,15 @@
 __tests__/*
 docs/*
-fonts/*
 live-examples/*
+node_modules
+.DS_Store
+.gitignore
 .prettierrc
+.snyk
+.stylelintignore
+.stylelintrc
 .travis.yml
+contribute.json
+jest-puppeteer.config.js
+package-lock.json
+renovate.json

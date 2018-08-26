@@ -1,18 +1,14 @@
 {
     "baseDir": "./docs/",
     "bundleConfig": "bundles.json",
-    "codeMirrorModes": "js/mode",
     "destCssDir": "./docs/css/",
     "destJsDir": "./docs/js/",
-    "examplesRoot": "live-examples/",
+    "examplesFontsRoot": "live-examples/fonts",
+    "examplesMediaRoot": "live-examples/media",
     "editorMediaRoot": "editor/media",
     "editorMediaDest": "./docs/media/",
-    "examplesMediaRoot": "live-examples/media",
     "examplesMediaDest": "./docs/media/examples/",
-    "fontsMediaRoot": "live-examples/fonts",
     "fontsMediaDest": "./docs/media/fonts/",
-    "jsExamplesDir": "./docs/pages/js/",
     "metaGlob": "live-examples/**/meta.json",
-    "pagesDir": "./docs/pages/",
-    "sourceJSDir": "editor/js/"
+    "pagesDir": "./docs/pages/"
 }
