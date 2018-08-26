@@ -13,10 +13,10 @@ Builder of Bits aka The [MDN Web Docs interactive examples](https://github.com/m
 |--> js
 |--> media # media used only by the editor
 |--> tmpl
--fonts # fonts used by the editor and examples
 -live-examples # All example related files and media
 |--> css-examples
-|--> tabbed-examples
+|--> fonts # fonts used by the editor and examples
+|--> html-examples
 |--> js-examples
 |--> media # media used only by the examples
 ```
