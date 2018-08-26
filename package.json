@@ -12,7 +12,7 @@
         "url": "https://github.com/mdn/bob/issues"
     },
     "homepage": "https://github.com/mdn/bob#readme",
-    "main": "index.js",
+    "main": "./lib/mdn-bob.js",
     "bundlesize": [
         {
             "path": "./docs/css/codemirror-*.css",
@@ -59,7 +59,7 @@
         "build-css-bundle": "browserify editor/js/editable-css.js -o editor/js/editor-css-bundle.js",
         "build-js-bundle": "browserify editor/js/editable-js.js -o editor/js/editor-js-bundle.js",
         "build-tabbed-js-bundle": "browserify editor/js/editor.js -o editor/js/editor-bundle.js",
-        "build-pages": "node index.js",
+        "build-pages": "node ./lib/mdn-bob.js",
         "build": "npm-run-all build-css-bundle build-js-bundle build-tabbed-js-bundle build-pages",
         "cz": "git-cz",
         "start": "npm-run-all build start-server",
