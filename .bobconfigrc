@@ -1,14 +1,14 @@
 {
     "baseDir": "./docs/",
-    "bundleConfig": "bundles.json",
+    "bundleConfig": "../bundles.json",
     "destCssDir": "./docs/css/",
     "destJsDir": "./docs/js/",
-    "examplesFontsRoot": "live-examples/fonts",
-    "examplesMediaRoot": "live-examples/media",
-    "editorMediaRoot": "editor/media",
+    "examplesFontsRoot": "./live-examples/fonts",
+    "examplesMediaRoot": "./live-examples/media",
+    "editorMediaRoot": "../editor/media",
     "editorMediaDest": "./docs/media/",
     "examplesMediaDest": "./docs/media/examples/",
     "fontsMediaDest": "./docs/media/fonts/",
-    "metaGlob": "live-examples/**/meta.json",
+    "metaGlob": "./live-examples/**/meta.json",
     "pagesDir": "./docs/pages/"
 }
