@@ -1,7 +1,6 @@
 {
     "pages": {
         "address": {
-            "baseTmpl": "./editor/tmpl/live-tabbed-tmpl.html",
             "exampleCode": "live-examples/html-examples/content-sectioning/address.html",
             "cssExampleSrc": "live-examples/html-examples/content-sectioning/css/address.css",
             "fileName": "address.html",
@@ -10,7 +9,6 @@
             "height": "tabbed-standard"
         },
         "article": {
-            "baseTmpl": "./editor/tmpl/live-tabbed-tmpl.html",
             "exampleCode": "live-examples/html-examples/content-sectioning/article.html",
             "cssExampleSrc": "live-examples/html-examples/content-sectioning/css/article.css",
             "fileName": "article.html",
@@ -19,7 +17,6 @@
             "height": "tabbed-standard"
         },
         "header": {
-            "baseTmpl": "./editor/tmpl/live-tabbed-tmpl.html",
             "exampleCode": "live-examples/html-examples/content-sectioning/header.html",
             "cssExampleSrc": "live-examples/html-examples/content-sectioning/css/header.css",
             "fileName": "header.html",
