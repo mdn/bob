@@ -33,8 +33,8 @@
             "css": ["../editor/css/libs/prism.css"],
             "destFileName": "css-examples-libs-1-8-4"
         },
-        "cssExamplesBase": {
-            "javascript": ["../editor/js/editor-css-bundle.js"],
+        "cssEditor": {
+            "javascript": ["../editor/js/editable-css-bundle.js"],
             "css": [
                 "../editor/css/editor-libs/common.css",
                 "../editor/css/editor-libs/prism-override.css",
@@ -42,8 +42,8 @@
             ],
             "destFileName": "editor-css"
         },
-        "editorJS": {
-            "javascript": ["../editor/js/editor-js-bundle.js"],
+        "jsEditor": {
+            "javascript": ["../editor/js/editable-js-bundle.js"],
             "css": [
                 "../editor/css/editor-libs/common.css",
                 "../editor/css/editable-js.css"
