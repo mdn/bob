@@ -14,14 +14,17 @@
         <h4>%title%</h4>
         <button id="reset" class="reset" type="button">Reset</button>
       </header>
-      <div id="editor-container" class="editor-container %editor-height%">
+      <div id="editor-container" class="editor-container %editor-height%" %active-tabs%>
           <section id="tab-container" class="tabs">
               <div id="tablist" role="tablist">
-                  <button role="tab" aria-selected="true" aria-controls="html-panel" id="html">
+                  <button role="tab" aria-selected="true" aria-controls="html-panel" id="html" class="hidden">
                       HTML
                   </button>
-                  <button role="tab" aria-selected="false" aria-controls="css-panel" id="css" tabindex="-1">
+                  <button role="tab" aria-selected="false" aria-controls="css-panel" id="css" class="hidden" tabindex="-1">
                       CSS
+                  </button>
+                  <button role="tab" aria-selected="false" aria-controls="js-panel" id="js" class="hidden" tabindex="-1">
+                      JavaScript
                   </button>
               </div>
               <section id="html-panel" tabindex="0" role="tabpanel" aria-labelledby="html">
@@ -30,14 +33,16 @@
               <section id="css-panel" tabindex="0" role="tabpanel" aria-labelledby="css" class="hidden">
 <div id="css-editor"><pre><code>%example-css-src%</pre></code></div>
               </section>
+              <section id="js-panel" tabindex="0" role="tabpanel" aria-labelledby="js" class="hidden">
+<div id="js-editor"><pre><code>%example-js-src%</pre></code></div>
+              </section>
           </section>
           <h4 class="output-label">Output</h4>
           <div id="output" class="shadow-container">
               <shadow-output></shadow-output>
           </div>
+          <div id="console" class="console hidden" aria-hidden="true"><code></code></div>
       </div>
-
-    %example-js-src%
 
     <script src="../../js/codemirror-tabbed-5-31-0.js"></script>
     <script src="../../js/editor-tabbed.js"></script>

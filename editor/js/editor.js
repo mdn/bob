@@ -8,10 +8,13 @@
     var tabby = require('./editor-libs/tabby');
 
     var cssEditor = document.getElementById('css-editor');
+    var editorContainer = document.getElementById('editor-container');
     var header = document.querySelector('.output-header');
     var htmlEditor = document.getElementById('html-editor');
+    var jsEditor = document.getElementById('js-editor');
     var staticCSSCode = cssEditor.querySelector('pre');
     var staticHTMLCode = htmlEditor.querySelector('pre');
+    var staticJSCode = jsEditor.querySelector('pre');
     var timer;
 
     /**
@@ -25,13 +28,17 @@
      * }
      */
     function getOutput() {
-        var htmlContent = tabby.editors.html.editor.getValue();
-        var cssContent = tabby.editors.css.editor.getValue();
-
-        return {
-            cssContent,
-            htmlContent
+        var editorContents = {
+            htmlContent: tabby.editors.html.editor.getValue(),
+            cssContent: tabby.editors.css.editor.getValue()
         };
+
+        // not all editor instances have a JS panel
+        if (typeof tabby.editors.js.editor !== undefined) {
+            editorContents.jsContent = tabby.editors.js.editor.getValue();
+        }
+
+        return editorContents;
     }
 
     /**
@@ -40,8 +47,6 @@
      * @param {Object} outputContainer - the output container inside the shadow dom
      */
     function setOutputHeight(outputContainer) {
-        var editorContainer = document.getElementById('editor-container');
-
         // styling for the polyfilled shadow is different
         if (typeof ShadyDOM !== 'undefined' && ShadyDOM.inUse) {
             outputContainer.style.height = '92%';
@@ -80,7 +85,10 @@
         shadow.appendChild(document.importNode(content, true));
         setOutputHeight(shadow.querySelector('div'));
         mceUtils.openLinksInNewTab(shadow.querySelectorAll('a[href^="http"]'));
-        mceUtils.scrollToAnchors(shadow, shadow.querySelectorAll('a[href^="#"]'));
+        mceUtils.scrollToAnchors(
+            shadow,
+            shadow.querySelectorAll('a[href^="#"]')
+        );
     }
 
     /**
@@ -116,11 +124,20 @@
     staticHTMLCode.classList.add('hidden');
     // hide the static CSS example
     staticCSSCode.classList.add('hidden');
+    // hide the static JS example
+    staticJSCode.classList.add('hidden');
     // show the header
     header.classList.remove('hidden');
 
-    // initialise the editors
-    tabby.initEditor(['html', 'css']);
+    /* Initialise the editors. If there is a `dataset` property
+       of type `tabs` on the `editorContainer`, pass its value
+       to `initEditor` */
+    if (editorContainer.dataset && editorContainer.dataset.tabs) {
+        tabby.initEditor(editorContainer.dataset.tabs.split(','));
+    } else {
+        tabby.initEditor(['html', 'css']);
+    }
+
     tabby.registerEventListeners();
 
     // register the custom output element
@@ -146,7 +163,9 @@
                         performance.timing.loadEventEnd
                     );
                     // Posts mark to set on the Kuma side and used in measure
-                    mceUtils.postToKuma({ markName: 'tabbed-ie-load-event-end' });
+                    mceUtils.postToKuma({
+                        markName: 'tabbed-ie-load-event-end'
+                    });
                 }, 100);
             }
         });
