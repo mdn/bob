@@ -53,6 +53,12 @@ module.exports = {
         tmpl.content.appendChild(styleElem);
         tmpl.content.appendChild(html);
 
+        if (contents.jsContent) {
+            var jsElem = document.createElement('script');
+            jsElem.textContent = contents.jsContent;
+            tmpl.content.appendChild(jsElem);
+        }
+
         if (typeof ShadyDOM !== 'undefined') {
             ShadyCSS.prepareTemplate(tmpl, 'shadow-output');
         }

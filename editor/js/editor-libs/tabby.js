@@ -1,7 +1,9 @@
 var cssEditor = document.getElementById('css-editor');
 var htmlEditor = document.getElementById('html-editor');
+var jsEditor = document.getElementById('js-editor');
 var staticHTMLCode = htmlEditor.querySelector('pre');
 var staticCSSCode = cssEditor.querySelector('pre');
+var staticJSCode = jsEditor.querySelector('pre');
 var tabContainer = document.getElementById('tab-container');
 var tabs = tabContainer.querySelectorAll('button[role="tab"]');
 var tabList = document.getElementById('tablist');
@@ -93,6 +95,15 @@ module.exports = {
                 mode: 'css',
                 value: staticCSSCode.querySelector('code').textContent
             }
+        },
+        js: {
+            editor: undefined,
+            code: jsEditor,
+            config: {
+                lineNumbers: true,
+                mode: 'javascript',
+                value: staticJSCode.querySelector('code').textContent
+            }
         }
     },
     /**
@@ -101,6 +112,8 @@ module.exports = {
      */
     initEditor: function(editorTypes) {
         for (var editor of editorTypes) {
+            // enable relevant tabs
+            document.getElementById(editor).classList.remove('hidden');
             // eslint-disable-next-line new-cap
             this.editors[editor].editor = CodeMirror(
                 this.editors[editor].code,
@@ -137,22 +150,22 @@ module.exports = {
         tabList.addEventListener('keyup', function(event) {
             event.stopPropagation();
             switch (event.key) {
-            case 'ArrowRight':
-            case 'ArrowDown':
-                setNextActiveTab('forward');
-                break;
-            case 'ArrowLeft':
-            case 'ArrowUp':
-                setNextActiveTab('reverse');
-                break;
-            case 'Home':
-                setActiveTab(tabs[0]);
-                break;
-            case 'End':
-                setActiveTab(tabs[tabs.length - 1]);
-                break;
-            case 'default':
-                return;
+                case 'ArrowRight':
+                case 'ArrowDown':
+                    setNextActiveTab('forward');
+                    break;
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    setNextActiveTab('reverse');
+                    break;
+                case 'Home':
+                    setActiveTab(tabs[0]);
+                    break;
+                case 'End':
+                    setActiveTab(tabs[tabs.length - 1]);
+                    break;
+                case 'default':
+                    return;
             }
         });
     }
