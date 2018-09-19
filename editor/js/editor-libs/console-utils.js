@@ -87,6 +87,10 @@ module.exports = {
             return objectName + ' { ' + formattedChild + ' }';
         }
 
+        if (objectName === 'HTMLElement') {
+            return input.tagName;
+        }
+
         return input;
     },
     /**
@@ -128,7 +132,7 @@ module.exports = {
      */
     writeOutput: function(content) {
         'use strict';
-        var output = document.querySelector('#output code');
+        var output = document.querySelector('#console code');
         var outputContent = output.textContent;
         var newLogItem = '> ' + content + '\n';
         output.textContent = outputContent + newLogItem;
