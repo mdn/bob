@@ -66,7 +66,8 @@
     width: 60%;
 }
 
-.output-label {
+.output-label,
+.console-label {
     position: absolute;
     background-color: #333;
     color: #83d0f2;
@@ -110,4 +111,41 @@
 .output-header button:focus {
     background-color: #333;
     color: #fff;
+}
+
+.console-container {
+    position: relative;
+    top: -29px;
+    z-index: -1;
+}
+
+.console-label {
+    top: 21px;
+    right: 15px;
+    padding: 5px 5px 5px 16px;
+    width: 150px;
+    height: auto;
+}
+
+.console {
+    position: relative;
+    display: inline-block;
+    background-color: #fff;
+    margin: 0;
+    padding: .8em;
+    border: 1px solid #3f87a6;
+    border-left-width: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2) inset;
+    width: 99%;
+    height: 120px;
+    font-family: courier;
+}
+
+.console code {
+    width: 100%;
+    height: 100px;
+    white-space: pre;
+    vertical-align: middle;
+    word-break: break-word;
+    overflow-y: auto;
 }
