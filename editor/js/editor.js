@@ -1,6 +1,7 @@
 (function() {
     'use strict';
 
+    var mceConsole = require('./editor-libs/console');
     var mceEvents = require('./editor-libs/events.js');
     var mceUtils = require('./editor-libs/mce-utils');
     var shadowOutput = require('./editor-libs/shadow-output');
@@ -34,7 +35,7 @@
         };
 
         // not all editor instances have a JS panel
-        if (typeof tabby.editors.js.editor !== undefined) {
+        if (tabby.editors.js.editor) {
             editorContents.jsContent = tabby.editors.js.editor.getValue();
         }
 
@@ -120,6 +121,10 @@
         autoUpdate();
     });
 
+    jsEditor.addEventListener('keyup', function() {
+        autoUpdate();
+    });
+
     // hide the static example when JS enabled
     staticHTMLCode.classList.add('hidden');
     // hide the static CSS example
@@ -133,10 +138,15 @@
        of type `tabs` on the `editorContainer`, pass its value
        to `initEditor` */
     if (editorContainer.dataset && editorContainer.dataset.tabs) {
-        tabby.initEditor(editorContainer.dataset.tabs.split(','));
+        tabby.initEditor(
+            editorContainer.dataset.tabs.split(','),
+            document.getElementById('js')
+        );
     } else {
-        tabby.initEditor(['html', 'css']);
+        tabby.initEditor(['html', 'css'], document.getElementById('html'));
     }
+
+    mceConsole();
 
     tabby.registerEventListeners();
 

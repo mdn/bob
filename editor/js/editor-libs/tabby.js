@@ -41,6 +41,22 @@ function setActiveTab(nextActiveTab, activeTab) {
 }
 
 /**
+ * Set the default tab, and shows the relevant panel
+ * @param {Object} tab - The tab to set as default
+ */
+function setDefaultTab(tab) {
+    var panel = document.getElementById(tab.id + '-panel');
+
+    tab.setAttribute('aria-selected', true);
+    tab.removeAttribute('tabindex');
+
+    panel.classList.remove('hidden');
+    panel.setAttribute('aria-hidden', false);
+
+    tab.focus();
+}
+
+/**
  * Handles moving focus and activating the next tab in either direction,
  * based on arrow key events
  * @param {String} direction - The direction in which to move tab focus
@@ -109,8 +125,13 @@ module.exports = {
     /**
      * Initialise the specified editor if not already initialised
      * @param {Array} editorTypes - The editors to initialise
+     * @param {Object} defaultTab - The deafult active tab
      */
-    initEditor: function(editorTypes) {
+    initEditor: function(editorTypes, defaultTab) {
+        if (defaultTab) {
+            setDefaultTab(defaultTab);
+        }
+
         for (var editor of editorTypes) {
             // enable relevant tabs
             document.getElementById(editor).classList.remove('hidden');
@@ -142,6 +163,7 @@ module.exports = {
 
                 // now show the selected tabpanel
                 selectedPanel.classList.remove('hidden');
+                selectedPanel.setAttribute('aria-hidden', false);
                 // refresh the CodeMirror UI for this view
                 module.exports.editors[eventTarget.id].editor.refresh();
             }

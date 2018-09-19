@@ -7,6 +7,13 @@ module.exports = {
         return '.output{background-color:#fff;border:15px solid #eee;box-shadow:inset 5px 5px 10px rgba(0, 0, 0, .3), inset -5px -5px 10px rgba(0, 0, 0, .2);font-size:0.9rem;line-height:1.5;margin:24px 1em 0 0;overflow:scroll;padding:30px}';
     },
     /**
+     * Return the base script to inject into the shadowDOM
+     * @returns base JavaScript util which return the `shadowRoot`
+     */
+    getBaseJS: function() {
+        return "function getShadowRoot() { return document.querySelector('shadow-output').shadowRoot; }";
+    },
+    /**
      * Get the template element and return its content
      * @returns The .content of the template element
      */
@@ -54,8 +61,13 @@ module.exports = {
         tmpl.content.appendChild(html);
 
         if (contents.jsContent) {
+            var jsUtilElem = document.createElement('script');
             var jsElem = document.createElement('script');
+
+            jsUtilElem.textContent = this.getBaseJS();
             jsElem.textContent = contents.jsContent;
+
+            tmpl.content.appendChild(jsUtilElem);
             tmpl.content.appendChild(jsElem);
         }
 
