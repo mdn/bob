@@ -1,7 +1,7 @@
 (function() {
     function getHeader() {
-        let shadowRoot = getShadowRoot();
-        return shadowRoot.querySelector('header');
+        let documentRoot = getShadowRoot();
+        return documentRoot.querySelector('header');
     }
 
     let header = getHeader();
