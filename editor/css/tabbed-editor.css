@@ -115,12 +115,10 @@
 
 .console-container {
     position: relative;
-    top: -29px;
-    z-index: -1;
 }
 
 .console-label {
-    top: 21px;
+    top: 0;
     right: 15px;
     padding: 5px 5px 5px 16px;
     width: 150px;
@@ -138,14 +136,13 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2) inset;
     width: 99%;
     height: 120px;
-    font-family: courier;
 }
 
 .console code {
+    display: block;
     width: 100%;
     height: 100px;
     white-space: pre;
-    vertical-align: middle;
     word-break: break-word;
     overflow-y: auto;
 }
