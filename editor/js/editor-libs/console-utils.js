@@ -87,10 +87,6 @@ module.exports = {
             return objectName + ' { ' + formattedChild + ' }';
         }
 
-        if (objectName === 'HTMLElement') {
-            return input.tagName;
-        }
-
         return input;
     },
     /**
