@@ -5,6 +5,6 @@
     }
 
     let header = getHeader();
-    console.log('header', getHeader());
+    console.log('header', header.textContent.trim());
     header.style.backgroundColor = '#b2ebf2';
 })();
