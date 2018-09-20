@@ -10,7 +10,7 @@
     var exampleFeature = codeBlock.dataset['feature'];
     var execute = document.getElementById('execute');
     var liveContainer = '';
-    var output = document.querySelector('#output code');
+    var output = document.querySelector('#console code');
     var reset = document.getElementById('reset');
 
     var codeMirror;
