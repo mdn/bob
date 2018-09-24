@@ -9,6 +9,7 @@
     var tabby = require('./editor-libs/tabby');
 
     var cssEditor = document.getElementById('css-editor');
+    var clearConsole = document.getElementById('clear');
     var editorContainer = document.getElementById('editor-container');
     var header = document.querySelector('.output-header');
     var htmlEditor = document.getElementById('html-editor');
@@ -124,6 +125,11 @@
     jsEditor.addEventListener('keyup', function() {
         autoUpdate();
     });
+
+    clearConsole.addEventListener('click', function() {
+        var webapiConsole = document.querySelector('#console code');
+        webapiConsole.textContent = '';
+    })
 
     // hide the static example when JS enabled
     staticHTMLCode.classList.add('hidden');
