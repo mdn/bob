@@ -95,7 +95,7 @@
         "prettier-stylelint": "0.4.2",
         "puppeteer": "1.8.0",
         "semantic-release": "15.9.16",
-        "snyk": "1.96.0",
+        "snyk": "1.97.1",
         "travis-deploy-once": "5.0.8"
     },
     "dependencies": {
