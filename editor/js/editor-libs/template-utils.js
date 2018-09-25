@@ -65,7 +65,11 @@ module.exports = {
             var jsElem = document.createElement('script');
 
             jsUtilElem.textContent = this.getBaseJS();
-            jsElem.textContent = contents.jsContent;
+            /* wrap the example JS in an IIFE to avoid collisions with variables,
+               functions etc. in the larger page scope */
+            jsElem.textContent = `(function() { 'use strict'; ${
+                contents.jsContent
+            } })();`;
 
             tmpl.content.appendChild(jsUtilElem);
             tmpl.content.appendChild(jsElem);

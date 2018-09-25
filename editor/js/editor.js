@@ -129,7 +129,7 @@
     clearConsole.addEventListener('click', function() {
         var webapiConsole = document.querySelector('#console code');
         webapiConsole.textContent = '';
-    })
+    });
 
     // hide the static example when JS enabled
     staticHTMLCode.classList.add('hidden');
