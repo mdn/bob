@@ -11,5 +11,7 @@
     "examplesMediaDest": "./docs/media/examples/",
     "fontsMediaDest": "./docs/media/fonts/",
     "metaGlob": "./live-examples/**/meta.json",
-    "pagesDir": "./docs/pages/"
+    "pagesDir": "./docs/pages/",
+    "pagesPath": "pages",
+    "mdnMockFilename": "index.html"
 }
