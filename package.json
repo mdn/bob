@@ -96,7 +96,7 @@
         "puppeteer": "1.11.0",
         "semantic-release": "15.13.2",
         "snyk": "1.114.0",
-        "travis-deploy-once": "5.0.9"
+        "travis-deploy-once": "5.0.11"
     },
     "dependencies": {
         "browserify": "16.2.3",
