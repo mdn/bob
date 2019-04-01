@@ -81,7 +81,7 @@
         "mozilla"
     ],
     "devDependencies": {
-        "all-contributors-cli": "6.1.2",
+        "all-contributors-cli": "6.2.0",
         "bundlesize": "0.17.1",
         "commitizen": "3.0.7",
         "cz-conventional-changelog": "2.1.0",
