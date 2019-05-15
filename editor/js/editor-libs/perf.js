@@ -31,6 +31,20 @@ function setupConfig() {
  */
 function postToKuma(perf) {
     window.parent.postMessage(perf, window.ieConfig.origin);
+
+    // We're experimenting with a new UX for MDN on beta.developer.mozilla.org
+    // and really want to get these perf metrics for interactive examples
+    // when they are displayed on the new beta domain. But the origin is
+    // built into the rendered HTML that is shared by the beta and non-beta
+    // sites, so the postMessage call above will fail silently if we're
+    // embedded within a page on the beta site. As a hacky workaround
+    // we post the message again, with a 'beta.' prefix added to the origin.
+    //
+    // TODO(djf): remove this second postMessage() when the beta
+    // site becomes the main site
+    var originParts = window.ieConfig.origin.split('://');
+    var betaOrigin = originParts[0] + '://beta.' + originParts[1];
+    window.parent.postMessage(perf, betaOrigin);
 }
 
 setupConfig();
