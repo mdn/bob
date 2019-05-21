@@ -94,7 +94,7 @@
         "prettier-eslint": "8.8.2",
         "prettier-stylelint": "0.4.2",
         "puppeteer": "1.16.0",
-        "semantic-release": "15.13.3",
+        "semantic-release": "15.13.12",
         "snyk": "1.145.0",
         "travis-deploy-once": "5.0.11"
     },
