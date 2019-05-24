@@ -93,18 +93,13 @@ function addPostMessageListener() {
     window.addEventListener(
         'message',
         function(event) {
-            var expectedOrigin =
-                window.ieConfig && window.ieConfig.origin
-                    ? window.ieConfig.origin
-                    : 'https://developer.mozilla.org';
-            var isExpectedOrigin = event.origin === expectedOrigin;
-
-            /* there may be other post messages so, ensure that the origin is as
-            expected and, that `event.data` contains an `smallViewport` property */
-            if (
-                isExpectedOrigin &&
-                typeof event.data.smallViewport !== undefined
-            ) {
+            // Ignore any events that don't define the smallViewport property.
+            // Note that we are not checking the origin property to verify
+            // the source of the message. This is because we can't know if
+            // we're on developer.mozilla.org or wiki.developer.mozilla.org.
+            // Since we're just setting a CSS style based on the message
+            // there is no security risk.
+            if (event.data.smallViewport !== undefined) {
                 var editorWrapper = document.querySelector('.editor-wrapper');
 
                 if (event.data.smallViewport) {
