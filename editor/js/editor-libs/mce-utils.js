@@ -66,12 +66,11 @@ module.exports = {
      * @param {Object} perf - The performance object sent to Kuma
      */
     postToKuma: function(perf) {
-        window.parent.postMessage(
-            perf,
-            window.ieConfig && window.ieConfig.origin
-                ? window.ieConfig.origin
-                : 'https://developer.mozilla.org'
-        );
+        // We use '*' as the origin so that we can post messages to
+        // developer.mozilla.org or wiki.developer.mozilla.org or the
+        // staging site. There is no confidential data being sent so
+        // this is not a security risk.
+        window.parent.postMessage(perf, '*');
     },
     /**
      * Interrupts the default click event on relative links inside
