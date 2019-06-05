@@ -41,7 +41,7 @@ module.exports = {
     formatObject: function(input) {
         'use strict';
         var bufferDataViewRegExp = /^(ArrayBuffer|SharedArrayBuffer|DataView)$/;
-        var complexArrayRegExp = /^(Int8Array|Int16Array|Int32Array|Uint8Array|Uint16Array|Uint32Array|Uint8ClampedArray|Float32Array|Float64Array)$/;
+        var complexArrayRegExp = /^(Int8Array|Int16Array|Int32Array|Uint8Array|Uint16Array|Uint32Array|Uint8ClampedArray|Float32Array|Float64Array|BigInt64Array|BigUint64Array)$/;
         var objectName = input.constructor.name;
 
         if (objectName === 'String') {
@@ -112,6 +112,8 @@ module.exports = {
                 return '-0';
             }
             return String(input);
+        } else if (typeof input === 'bigint') {
+            return String(input) + 'n';
         } else if (typeof input === 'string') {
             // string literal
             return '"' + input + '"';
