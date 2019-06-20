@@ -94,7 +94,7 @@
         "prettier-eslint": "9.0.0",
         "puppeteer": "1.17.0",
         "semantic-release": "15.13.16",
-        "snyk": "1.179.0",
+        "snyk": "1.179.1",
         "travis-deploy-once": "5.0.11"
     },
     "dependencies": {
