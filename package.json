@@ -1,118 +1,118 @@
 {
-    "name": "mdn-bob",
-    "version": "0.0.0-semantically-released",
-    "description": "Builder of Bits aka The MDN Web Docs interactive examples, example builder",
-    "author": "Mozilla",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mdn/bob.git"
+  "name": "mdn-bob",
+  "version": "0.0.0-semantically-released",
+  "description": "Builder of Bits aka The MDN Web Docs interactive examples, example builder",
+  "author": "Mozilla",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mdn/bob.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mdn/bob/issues"
+  },
+  "homepage": "https://github.com/mdn/bob#readme",
+  "bin": {
+    "mdn-bob": "./lib/mdn-bob.js"
+  },
+  "main": "./lib/mdn-bob.js",
+  "bundlesize": [
+    {
+      "path": "./docs/css/codemirror-*.css",
+      "maxSize": "3 kB"
     },
-    "bugs": {
-        "url": "https://github.com/mdn/bob/issues"
+    {
+      "path": "./docs/css/css-examples-libs-*.css",
+      "maxSize": "4 kB"
     },
-    "homepage": "https://github.com/mdn/bob#readme",
-    "bin": {
-        "mdn-bob": "./lib/mdn-bob.js"
+    {
+      "path": "./docs/css/editor-css.css",
+      "maxSize": "4 kB"
     },
-    "main": "./lib/mdn-bob.js",
-    "bundlesize": [
-        {
-            "path": "./docs/css/codemirror-*.css",
-            "maxSize": "3 kB"
-        },
-        {
-            "path": "./docs/css/css-examples-libs-*.css",
-            "maxSize": "4 kB"
-        },
-        {
-            "path": "./docs/css/editor-css.css",
-            "maxSize": "4 kB"
-        },
-        {
-            "path": "./docs/css/editor-js.css",
-            "maxSize": "1 kB"
-        },
-        {
-            "path": "./docs/css/editor-tabbed.css",
-            "maxSize": "33 kB"
-        },
-        {
-            "path": "./docs/js/codemirror-*.js",
-            "maxSize": "75 kB"
-        },
-        {
-            "path": "./docs/js/css-examples-libs-*.js",
-            "maxSize": "8 kB"
-        },
-        {
-            "path": "./docs/js/editor-css.js",
-            "maxSize": "4 kB"
-        },
-        {
-            "path": "./docs/js/editor-js.js",
-            "maxSize": "4 kB"
-        },
-        {
-            "path": "./docs/js/editor-tabbed.js",
-            "maxSize": "33 kB"
-        }
-    ],
-    "scripts": {
-        "build": "node ./lib/mdn-bob.js",
-        "cz": "git-cz",
-        "start": "npm-run-all build start-server",
-        "start-server": "http-server -p 4444 ./docs",
-        "test": "snyk test && jest",
-        "semantic-release": "semantic-release",
-        "travis-deploy-once": "travis-deploy-once",
-        "snyk-protect": "snyk protect",
-        "perf": "bundlesize",
-        "prepare": "npm run snyk-protect"
+    {
+      "path": "./docs/css/editor-js.css",
+      "maxSize": "1 kB"
     },
-    "jest": {
-        "preset": "jest-puppeteer"
+    {
+      "path": "./docs/css/editor-tabbed.css",
+      "maxSize": "33 kB"
     },
-    "keywords": [
-        "javascript",
-        "nodejs",
-        "page-generator",
-        "mdn",
-        "mozilla"
-    ],
-    "devDependencies": {
-        "all-contributors-cli": "6.7.0",
-        "bundlesize": "0.18.0",
-        "commitizen": "3.1.1",
-        "cz-conventional-changelog": "2.1.0",
-        "http-server": "0.11.1",
-        "husky": "3.0.0",
-        "jest": "24.8.0",
-        "jest-puppeteer": "4.2.0",
-        "marked": "0.6.3",
-        "npm-run-all": "4.1.5",
-        "prettier-eslint": "9.0.0",
-        "puppeteer": "1.18.1",
-        "semantic-release": "15.13.18",
-        "snyk": "1.185.5",
-        "travis-deploy-once": "5.0.11"
+    {
+      "path": "./docs/js/codemirror-*.js",
+      "maxSize": "75 kB"
     },
-    "dependencies": {
-        "browserify": "16.2.3",
-        "clean-css": "4.2.1",
-        "concat": "1.0.3",
-        "cosmiconfig": "5.2.1",
-        "fs-extra": "8.1.0",
-        "glob": "7.1.4",
-        "node-dir": "0.1.17",
-        "npm": "^6.6.0",
-        "semantic-release-cli": "5.1.1",
-        "uglify-es": "3.3.9"
+    {
+      "path": "./docs/js/css-examples-libs-*.js",
+      "maxSize": "8 kB"
     },
-    "config": {
-        "commitizen": {
-            "path": "./node_modules/cz-conventional-changelog"
-        }
+    {
+      "path": "./docs/js/editor-css.js",
+      "maxSize": "4 kB"
     },
-    "snyk": true
+    {
+      "path": "./docs/js/editor-js.js",
+      "maxSize": "4 kB"
+    },
+    {
+      "path": "./docs/js/editor-tabbed.js",
+      "maxSize": "33 kB"
+    }
+  ],
+  "scripts": {
+    "build": "node ./lib/mdn-bob.js",
+    "cz": "git-cz",
+    "start": "npm-run-all build start-server",
+    "start-server": "http-server -p 4444 ./docs",
+    "test": "snyk test && jest",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once",
+    "snyk-protect": "snyk protect",
+    "perf": "bundlesize",
+    "prepare": "npm run snyk-protect"
+  },
+  "jest": {
+    "preset": "jest-puppeteer"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "page-generator",
+    "mdn",
+    "mozilla"
+  ],
+  "devDependencies": {
+    "all-contributors-cli": "6.7.0",
+    "bundlesize": "0.18.0",
+    "commitizen": "3.1.1",
+    "cz-conventional-changelog": "2.1.0",
+    "http-server": "0.11.1",
+    "husky": "3.0.0",
+    "jest": "24.8.0",
+    "jest-puppeteer": "4.2.0",
+    "marked": "0.6.3",
+    "npm-run-all": "4.1.5",
+    "prettier-eslint": "9.0.0",
+    "puppeteer": "1.18.1",
+    "semantic-release": "15.13.18",
+    "travis-deploy-once": "5.0.11"
+  },
+  "dependencies": {
+    "browserify": "16.2.3",
+    "clean-css": "4.2.1",
+    "concat": "1.0.3",
+    "cosmiconfig": "5.2.1",
+    "fs-extra": "8.1.0",
+    "glob": "7.1.4",
+    "node-dir": "0.1.17",
+    "npm": "^6.6.0",
+    "semantic-release-cli": "5.1.1",
+    "uglify-es": "3.3.9",
+    "snyk": "^1.189.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "snyk": true
 }
