@@ -84,7 +84,7 @@
         "all-contributors-cli": "6.8.1",
         "bundlesize": "0.18.0",
         "commitizen": "4.0.3",
-        "cz-conventional-changelog": "3.0.1",
+        "cz-conventional-changelog": "3.0.2",
         "http-server": "0.11.1",
         "husky": "3.0.1",
         "jest": "24.8.0",
