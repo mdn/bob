@@ -63,12 +63,10 @@
         "cz": "git-cz",
         "start": "npm-run-all build start-server",
         "start-server": "http-server -p 4444 ./docs",
-        "test": "snyk test && jest",
+        "test": "jest",
         "semantic-release": "semantic-release",
         "travis-deploy-once": "travis-deploy-once",
-        "snyk-protect": "snyk protect",
-        "perf": "bundlesize",
-        "prepare": "npm run snyk-protect"
+        "perf": "bundlesize"
     },
     "jest": {
         "preset": "jest-puppeteer"
@@ -88,13 +86,11 @@
         "http-server": "0.11.1",
         "husky": "3.0.1",
         "jest": "24.8.0",
-        "jest-puppeteer": "4.3.0",
-        "marked": "0.7.0",
+        "jest-puppeteer": "4.2.0",
         "npm-run-all": "4.1.5",
-        "prettier-eslint": "9.0.0",
-        "puppeteer": "1.19.0",
-        "semantic-release": "15.13.18",
-        "snyk": "1.199.0",
+        "prettier-eslint": "8.8.2",
+        "puppeteer": "1.17.0",
+        "semantic-release": "15.13.12",
         "travis-deploy-once": "5.0.11"
     },
     "dependencies": {
@@ -113,6 +109,5 @@
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
         }
-    },
-    "snyk": true
+    }
 }
