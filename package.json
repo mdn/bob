@@ -102,7 +102,7 @@
         "glob": "7.1.4",
         "node-dir": "0.1.17",
         "npm": "^6.6.0",
-        "semantic-release-cli": "5.1.1",
+        "semantic-release-cli": "5.1.2",
         "uglify-es": "3.3.9"
     },
     "config": {
