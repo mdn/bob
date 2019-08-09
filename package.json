@@ -94,7 +94,7 @@
         "travis-deploy-once": "5.0.11"
     },
     "dependencies": {
-        "browserify": "16.4.0",
+        "browserify": "16.5.0",
         "clean-css": "4.2.1",
         "concat": "1.0.3",
         "cosmiconfig": "5.2.1",
