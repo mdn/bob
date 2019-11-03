@@ -49,6 +49,11 @@ module.exports = {
             return `String { "${input.valueOf()}" }`;
         }
 
+        if (input === JSON) {
+            // console.log(JSON) is outputed as "JSON {}" in browser console
+            return `JSON {}`;
+        }
+
         if (objectName.match(bufferDataViewRegExp)) {
             return objectName + ' {}';
         }

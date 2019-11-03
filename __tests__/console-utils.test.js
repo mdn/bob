@@ -74,6 +74,11 @@ describe('console utils', () => {
     });
 
     describe('formatObject', () => {
+        test('the JSON object', () => {
+            expect(consoleUtils.formatObject(JSON)).toBe(
+                'JSON {}'
+            );
+        });
         test('Int8Array', () => {
             expect(consoleUtils.formatObject(new Int8Array(4))).toBe(
                 'Int8Array [0, 0, 0, 0]'
