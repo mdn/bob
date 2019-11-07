@@ -99,7 +99,7 @@
         "concat": "1.0.3",
         "cosmiconfig": "5.2.1",
         "fs-extra": "8.1.0",
-        "glob": "7.1.5",
+        "glob": "7.1.6",
         "node-dir": "0.1.17",
         "npm": "^6.6.0",
         "semantic-release-cli": "5.2.3",
