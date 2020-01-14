@@ -9,7 +9,7 @@
                 "../editor/css/libs/codemirror.css",
                 "../editor/css/editor-libs/codemirror-override.css"
             ],
-            "destFileName": "codemirror-5-31-0"
+            "destFileName": "codemirror-5-50-2"
         },
         "codeMirrorTabbed": {
             "javascript": [
@@ -23,7 +23,7 @@
                 "../editor/css/libs/codemirror.css",
                 "../editor/css/editor-libs/codemirror-override.css"
             ],
-            "destFileName": "codemirror-tabbed-5-31-0"
+            "destFileName": "codemirror-tabbed-5-50-2"
         },
         "cssExampleLibs": {
             "javascript": [
