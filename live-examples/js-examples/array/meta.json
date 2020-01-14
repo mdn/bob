@@ -11,6 +11,12 @@
             "fileName": "array-copywithin.html",
             "title": "JavaScript Demo: Array.copyWithin()",
             "type": "js"
+        },
+        "arrayFill": {
+            "exampleCode": "live-examples/js-examples/array/array-fill.js",
+            "fileName": "array-fill.html",
+            "title": "JavaScript Demo: Array.fill()",
+            "type": "js"
         }
     }
 }
