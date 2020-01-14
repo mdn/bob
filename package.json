@@ -107,6 +107,10 @@
         "semantic-release-cli": "5.2.3",
         "uglify-es": "3.3.9"
     },
+    "resolutions": {
+        "lodash": ">=4.17.5",
+        "underscore.string": ">=3.3.5"
+    },
     "config": {
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
