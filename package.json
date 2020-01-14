@@ -15,6 +15,9 @@
     "bin": {
         "mdn-bob": "./lib/mdn-bob.js"
     },
+    "engines": {
+        "node": ">=12.0.0"
+    },
     "main": "./lib/mdn-bob.js",
     "bundlesize": [
         {
