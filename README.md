@@ -34,3 +34,10 @@ Builder of Bits aka The [MDN Web Docs interactive examples](https://github.com/m
 |----> js # All JS examples
 |----> tabbed # All examples using the tabbed UI
 ```
+
+## Using Commitizen CLI
+
+This project uses Commitizen to ensure all pull requests follow the same format, and to ensure predictable releases with semantic-release.
+
+To use this flow, add files as you normally would with `git add .`, and when you are ready to commit, simply type `git commit` and follow the prompts.
+You can [read more on the Conventional Changelog format](https://github.com/conventional-changelog/conventional-changelog) on its repository.
