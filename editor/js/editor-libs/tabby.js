@@ -100,7 +100,8 @@ module.exports = {
                 lineNumbers: true,
                 lineWrapping: true,
                 mode: 'htmlmixed',
-                value: staticHTMLCode.querySelector('code').textContent
+                value: staticHTMLCode.querySelector('code').textContent,
+                autoRefresh: true
             }
         },
         css: {
@@ -109,7 +110,8 @@ module.exports = {
             config: {
                 lineNumbers: true,
                 mode: 'css',
-                value: staticCSSCode.querySelector('code').textContent
+                value: staticCSSCode.querySelector('code').textContent,
+                autoRefresh: true
             }
         },
         js: {
@@ -118,7 +120,8 @@ module.exports = {
             config: {
                 lineNumbers: true,
                 mode: 'javascript',
-                value: staticJSCode.querySelector('code').textContent
+                value: staticJSCode.querySelector('code').textContent,
+                autoRefresh: true
             }
         }
     },
@@ -131,7 +134,6 @@ module.exports = {
         if (defaultTab) {
             setDefaultTab(defaultTab);
         }
-
         for (var editor of editorTypes) {
             // enable relevant tabs
             document.getElementById(editor).classList.remove('hidden');
