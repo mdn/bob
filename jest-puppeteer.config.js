@@ -1,6 +1,6 @@
 module.exports = {
     server: {
-        command: 'npm run start-server',
+        command: 'yarn run start-server',
         port: 4444
     }
 };
