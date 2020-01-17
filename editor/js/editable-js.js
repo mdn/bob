@@ -39,7 +39,8 @@
             mode: 'javascript',
             undoDepth: 5,
             tabindex: 0,
-            value: codeBlock.textContent
+            value: codeBlock.textContent,
+            autoRefresh: true
         });
     }
 

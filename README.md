@@ -34,3 +34,18 @@ Builder of Bits aka The [MDN Web Docs interactive examples](https://github.com/m
 |----> js # All JS examples
 |----> tabbed # All examples using the tabbed UI
 ```
+
+## Using Commitizen CLI
+
+This project uses Commitizen to ensure all pull requests follow the same format, and to ensure predictable releases with semantic-release.
+
+To use this flow, add files as you normally would with `git add .`, and when you are ready to commit, simply type `git commit` and follow the prompts.
+You can [read more on the Conventional Changelog format](https://github.com/conventional-changelog/conventional-changelog) on its repository.
+
+## Testing Bob locally inside Interactive Examples
+
+Bob is used to build the interactive-example pages and is installed as a dependency inside the [interactive-examples repo](https://github.com/mdn/interactive-examples/). When working on changes to Bob, there is often a need to test the changes by running Bob inside the interactive-examples repo locally. To do this, use the following command:
+
+```
+npx install-local ~/path/to/repo/bob && node node_modules/.bin/mdn-bob
+```
