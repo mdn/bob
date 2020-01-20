@@ -33,7 +33,7 @@
                 "../editor/js/lib/clipboard.js"
             ],
             "css": ["../editor/css/libs/prism.css"],
-            "destFileName": "css-examples-libs-1-8-4"
+            "destFileName": "css-examples-libs"
         },
         "cssEditor": {
             "javascript": ["../editor/js/editable-css-bundle.js"],
