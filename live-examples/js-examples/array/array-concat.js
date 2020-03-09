@@ -1,5 +1,4 @@
-<pre>
-<code id="static-js">var array1 = ['a', 'b', 'c'];
+var array1 = ['a', 'b', 'c'];
 var array2 = ['d', 'e', 'f'];
 
 console.log("First Log Output: ", array1.concat(array2));
@@ -8,5 +7,3 @@ console.log("First Log Output: ", array1.concat(array2));
 // `...` operator helps to do the same concat, only the syntax is different.
 var array3 = [...array1,'D', 'E', 'F', 'G'];
 console.log("Second Log Outpur: ",array3);
-</code>
-</pre>

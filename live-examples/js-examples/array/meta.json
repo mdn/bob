@@ -1,13 +1,13 @@
 {
     "pages": {
         "arrayConcat": {
-            "exampleCode": "live-examples/js-examples/array/array-concat.html",
+            "exampleCode": "live-examples/js-examples/array/array-concat.js",
             "fileName": "array-concat.html",
             "title": "JavaScript Demo: Array.concat()",
             "type": "js"
         },
         "arrayCopyWithin": {
-            "exampleCode": "live-examples/js-examples/array/array-copywithin.html",
+            "exampleCode": "live-examples/js-examples/array/array-copywithin.js",
             "fileName": "array-copywithin.html",
             "title": "JavaScript Demo: Array.copyWithin()",
             "type": "js"
