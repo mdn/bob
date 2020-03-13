@@ -1,7 +1,7 @@
 {
     "pages": {
         "arrayConcat": {
-            "exampleCode": "live-examples/js-examples/array/array-concat.js",
+            "exampleCode": "live-examples/js-examples/array/array-concat.html",
             "fileName": "array-concat.html",
             "title": "JavaScript Demo: Array.concat()",
             "type": "js"
