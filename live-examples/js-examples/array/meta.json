@@ -6,12 +6,6 @@
             "title": "JavaScript Demo: Array.concat()",
             "type": "js"
         },
-        "arrayCopyWithin": {
-            "exampleCode": "live-examples/js-examples/array/array-copywithin.html",
-            "fileName": "array-copywithin.html",
-            "title": "JavaScript Demo: Array.copyWithin()",
-            "type": "js"
-        },
         "arrayFill": {
             "exampleCode": "live-examples/js-examples/array/array-fill.js",
             "fileName": "array-fill.html",
