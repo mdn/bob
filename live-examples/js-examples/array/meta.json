@@ -6,10 +6,10 @@
             "title": "JavaScript Demo: Array.concat()",
             "type": "js"
         },
-        "arrayCopyWithin": {
-            "exampleCode": "live-examples/js-examples/array/array-copywithin.js",
-            "fileName": "array-copywithin.html",
-            "title": "JavaScript Demo: Array.copyWithin()",
+        "arrayFill": {
+            "exampleCode": "live-examples/js-examples/array/array-fill.js",
+            "fileName": "array-fill.html",
+            "title": "JavaScript Demo: Array.fill()",
             "type": "js"
         }
     }
