@@ -1,16 +1,14 @@
 language: node_js
-cache:
-  directories:
-    - ~/.npm
+node_js:
+  - '12'
+cache: yarn
 notifications:
   email: false
-node_js:
-  - '9'
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
 before_script:
-  - npm run build
+  - yarn run build
 jobs:
   include:
     - stage: release
