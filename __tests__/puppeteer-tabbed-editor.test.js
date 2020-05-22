@@ -13,7 +13,7 @@ describe('Tabbed Editor', () => {
                 'overflow:scroll;padding:30px}</style>' +
                 '<style>' +
                 'address { font-variant-caps: small-caps;}a { font-variant: normal;}' +
-                '</style><div class=\"output\" style=\"height: 67%;\">' +
+                '</style><div class=\"output\" style=\"height: 62%;\">' +
                 '<address> James Rockford<br> 2354 Pacific Coast Highway<br> ' +
                 'California<br> USA<br> +311-555-2368<br> Email: ' +
                 '<a href=\"mailto:j.rockford@example.com\">j.rockford@example.com</a><br>' +
@@ -70,10 +70,10 @@ describe('Tabbed Editor', () => {
     });
 
     describe('test dynamic output container height', () => {
-        test('set the approriate height for shorter examples', async () => {
+        test('set the appropriate height for shorter examples', async () => {
             const expectedStyleValue = 'height: 62%;';
 
-            await page.goto('http://127.0.0.1:4444/pages/tabbed/abbr.html');
+            await page.goto('http://127.0.0.1:4444/pages/tabbed/address.html');
             await page.waitForSelector('#output');
 
             let styleValue = await page.$eval('shadow-output', elem =>
@@ -82,10 +82,10 @@ describe('Tabbed Editor', () => {
             await expect(styleValue).toBe(expectedStyleValue);
         });
 
-        test('set the approriate height for standard examples', async () => {
+        test('set the appropriate height for standard examples', async () => {
             const expectedStyleValue = 'height: 67%;';
 
-            await page.goto('http://127.0.0.1:4444/pages/tabbed/datalist.html');
+            await page.goto('http://127.0.0.1:4444/pages/tabbed/header.html');
             await page.waitForSelector('#output');
 
             let styleValue = await page.$eval('shadow-output', elem =>
@@ -94,10 +94,10 @@ describe('Tabbed Editor', () => {
             await expect(styleValue).toBe(expectedStyleValue);
         });
 
-        test('set the approriate height for taller examples', async () => {
+        test('set the appropriate height for taller examples', async () => {
             const expectedStyleValue = 'height: 76%;';
 
-            await page.goto('http://127.0.0.1:4444/pages/tabbed/table.html');
+            await page.goto('http://127.0.0.1:4444/pages/tabbed/article.html');
             await page.waitForSelector('#output');
 
             let styleValue = await page.$eval('shadow-output', elem =>
