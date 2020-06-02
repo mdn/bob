@@ -4,12 +4,16 @@ describe('JS Editor', () => {
     });
 
     it('renders expected output after clicking Run', async () => {
-        const expectedOutput = '> Array ["a", "b", "c", "d", "e", "f"]';
+        
+        const expectedOutput = [
+            '> "First Log Output: " Array ["a", "b", "c", "d", "e", "f"]',
+            '> "Second Log Output: " Array ["a", "b", "c", "D", "E", "F", "G"]',
+        ].join(`\n`);
 
         await page.waitForSelector('#execute');
         await page.click('#execute');
 
-        let outputContent = await page.$eval('#output code', elem =>
+        let outputContent = await page.$eval('.output code', elem =>
             elem.innerText.trim()
         );
         await expect(outputContent).toBe(expectedOutput);

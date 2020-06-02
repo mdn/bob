@@ -6,7 +6,7 @@
             "fileName": "address.html",
             "title": "HTML Demo: <address>",
             "type": "tabbed",
-            "height": "tabbed-standard"
+            "height": "tabbed-shorter"
         },
         "article": {
             "exampleCode": "live-examples/html-examples/content-sectioning/article.html",
@@ -14,7 +14,7 @@
             "fileName": "article.html",
             "title": "HTML Demo: <article>",
             "type": "tabbed",
-            "height": "tabbed-standard"
+            "height": "tabbed-taller"
         },
         "header": {
             "exampleCode": "live-examples/html-examples/content-sectioning/header.html",
