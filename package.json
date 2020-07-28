@@ -63,12 +63,9 @@
     ],
     "scripts": {
         "build": "node ./lib/mdn-bob.js",
-        "cz": "git-cz",
         "start": "npm-run-all build start-server",
         "start-server": "http-server -p 4444 ./docs",
         "test": "jest",
-        "semantic-release": "semantic-release",
-        "travis-deploy-once": "travis-deploy-once",
         "perf": "bundlesize"
     },
     "jest": {
@@ -82,19 +79,13 @@
         "mozilla"
     ],
     "devDependencies": {
-        "all-contributors-cli": "6.16.1",
         "bundlesize": "0.18.0",
-        "commitizen": "4.1.2",
-        "cz-conventional-changelog": "3.2.0",
         "http-server": "0.12.3",
-        "husky": "4.2.5",
         "jest": "26.1.0",
         "jest-puppeteer": "4.4.0",
         "npm-run-all": "4.1.5",
         "prettier-eslint": "9.0.1",
-        "puppeteer": "2.1.1",
-        "semantic-release": "17.1.1",
-        "travis-deploy-once": "5.0.11"
+        "puppeteer": "2.1.1"
     },
     "dependencies": {
         "browserify": "16.5.1",
@@ -104,21 +95,10 @@
         "fs-extra": "9.0.0",
         "glob": "7.1.6",
         "node-dir": "0.1.17",
-        "semantic-release-cli": "5.3.1",
         "uglify-es": "3.3.9"
     },
     "resolutions": {
         "lodash": ">=4.17.5",
         "underscore.string": ">=3.3.5"
-    },
-    "config": {
-        "commitizen": {
-            "path": "./node_modules/cz-conventional-changelog"
-        }
-    },
-    "husky": {
-        "hooks": {
-            "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-        }
     }
 }

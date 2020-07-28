@@ -1,0 +1,21 @@
+name: test-bob
+on: [pull_request]
+
+jobs:
+    test:
+        name: test-bob
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: '12'
+            - name: Install dependencies
+              run: |
+                  yarn install
+            - name: Build bob
+              run: |
+                  yarn build
+            - name: Run tests
+              run: |
+                  yarn test
