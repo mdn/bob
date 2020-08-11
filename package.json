@@ -88,7 +88,7 @@
         "puppeteer": "2.1.1"
     },
     "dependencies": {
-        "browserify": "16.5.1",
+        "browserify": "16.5.2",
         "clean-css": "4.2.3",
         "codemirror": "5.56.0",
         "cosmiconfig": "5.2.1",
