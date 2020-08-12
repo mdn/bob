@@ -39,8 +39,7 @@
             mode: 'javascript',
             undoDepth: 5,
             tabindex: 0,
-            value: codeBlock.textContent,
-            autoRefresh: true
+            value: codeBlock.textContent
         });
     }
 
@@ -112,7 +111,7 @@
             if (event.target.readyState === 'complete') {
                 /* loadEventEnd happens a split second after we
                    reached complete. So we wait an additional
-                   100ms before getting it’ value */
+                   100ms before getting it’s value */
                 setTimeout(function() {
                     mceEvents.trackloadEventEnd(
                         'JS editor load time',
@@ -120,7 +119,8 @@
                     );
                     // Posts mark to set on the Kuma side and used in measure
                     mceUtils.postToKuma({ markName: 'js-ie-load-event-end' });
-                }, 300);
+                    codeMirror.refresh();
+                }, 500);
             }
         });
     }

@@ -3,7 +3,6 @@
         "codeMirror": {
             "javascript": [
                 "/node_modules/codemirror/lib/codemirror.js",
-                "/node_modules/codemirror/addon/display/autorefresh.js",
                 "/node_modules/codemirror/mode/javascript/javascript.js"
             ],
             "css": [
