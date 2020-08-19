@@ -8,7 +8,7 @@
     "examplesMediaRoot": "./live-examples/media",
     "editorMediaRoot": "../editor/media",
     "editorMediaDest": "./docs/media/",
-    "examplesMediaDest": "./docs/media/examples/",
+    "examplesMediaDest": "./docs/media/",
     "fontsMediaDest": "./docs/media/fonts/",
     "metaGlob": "./live-examples/**/meta.json",
     "pagesDir": "./docs/pages/"
