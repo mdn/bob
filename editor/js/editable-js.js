@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     var featureDetector = require('./editor-libs/feature-detector.js');
@@ -39,7 +39,7 @@
             mode: 'javascript',
             undoDepth: 5,
             tabindex: 0,
-            value: codeBlock.textContent
+            value: codeBlock.textContent,
         });
     }
 
@@ -81,7 +81,7 @@
             output.textContent = 'Error: ' + event.message;
         }
 
-        output.addEventListener('animationend', function() {
+        output.addEventListener('animationend', function () {
             output.classList.remove('fade-in');
         });
     }
@@ -94,12 +94,12 @@
 
         initInteractiveEditor();
 
-        execute.addEventListener('click', function() {
+        execute.addEventListener('click', function () {
             output.textContent = '';
             applyCode();
         });
 
-        reset.addEventListener('click', function() {
+        reset.addEventListener('click', function () {
             window.location.reload();
         });
     }
@@ -107,12 +107,12 @@
     /* Ensure that performance is supported before
        gathering the performance metric */
     if (performance !== undefined) {
-        document.addEventListener('readystatechange', function(event) {
+        document.addEventListener('readystatechange', function (event) {
             if (event.target.readyState === 'complete') {
                 /* loadEventEnd happens a split second after we
                    reached complete. So we wait an additional
                    100ms before getting it’s value */
-                setTimeout(function() {
+                setTimeout(function () {
                     mceEvents.trackloadEventEnd(
                         'JS editor load time',
                         performance.timing.loadEventEnd
@@ -120,7 +120,7 @@
                     // Posts mark to set on the Kuma side and used in measure
                     mceUtils.postToKuma({ markName: 'js-ie-load-event-end' });
                     codeMirror.refresh();
-                }, 500);
+                }, 200);
             }
         });
     }
