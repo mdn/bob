@@ -77,7 +77,7 @@
                 var styleElements = shadow.querySelectorAll('style');
 
                 for (var styleElement in styleElements) {
-                    if (styleElements.hasOwnProperty(styleElement)) {
+                    if (styleElements.hasOwnProperty(styleElement) && styleElements[styleElement]) {
                         shadow.removeChild(styleElements[styleElement]);
                     }
                 }
