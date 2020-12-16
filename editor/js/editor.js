@@ -73,7 +73,8 @@
             if (typeof ShadyDOM !== 'undefined' && ShadyDOM.inUse) {
                 shadow.innerHTML = '';
             } else {
-                shadow.removeChild(shadow.querySelector('div'));
+                var output = shadow.querySelector('.output');
+                output && shadow.removeChild(output);
                 var styleElements = shadow.querySelectorAll('style');
 
                 for (var styleElement in styleElements) {
