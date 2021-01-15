@@ -79,7 +79,7 @@
         "mozilla"
     ],
     "devDependencies": {
-        "bundlesize": "0.18.0",
+        "bundlesize": "0.18.1",
         "http-server": "0.12.3",
         "jest": "26.6.3",
         "jest-puppeteer": "4.4.0",
