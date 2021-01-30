@@ -97,6 +97,7 @@ module.exports = {
     /**
      * Formats output to indicate its type:
      * - quotes around strings
+     * - single quotes around strings containing double quotes
      * - square brackets around arrays
      * (also copes with arrays of arrays)
      * does NOT detect Int32Array etc
@@ -121,7 +122,11 @@ module.exports = {
             return String(input) + 'n';
         } else if (typeof input === 'string') {
             // string literal
-            return '"' + input + '"';
+            if (input.includes('"')) {
+                return "'" + input + "'";
+            } else {
+                return '"' + input + '"';   
+            }
         } else if (Array.isArray(input)) {
             // check the contents of the array
             return 'Array [' + this.formatArray(input) + ']';
