@@ -82,7 +82,7 @@
         "bundlesize": "0.18.1",
         "http-server": "0.12.3",
         "jest": "26.6.3",
-        "jest-puppeteer": "4.4.0",
+        "jest-puppeteer": "5.0.3",
         "npm-run-all": "4.1.5",
         "prettier-eslint": "12.0.0",
         "puppeteer": "2.1.1"
