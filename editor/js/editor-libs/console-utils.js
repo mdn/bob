@@ -45,24 +45,6 @@ module.exports = {
 
         var objectName = input.constructor ? input.constructor.name : input;
 
-        // Special object created with `OrdinaryObjectCreate(null)` returned by, for
-        // example, named capture groups in https://mzl.la/2RERfQL
-        // @see https://github.com/mdn/bob/issues/574#issuecomment-858213621
-        if (!objectName.constructor || !objectName.prototype) {
-            var formattedChild = '';
-            var start = true;
-            for (var key in input) {
-                if (start) {
-                    start = false;
-                } else {
-                    formattedChild = formattedChild + ', ';
-                }
-                formattedChild =
-                    formattedChild + key + ': ' + this.formatOutput(input[key]);
-            }
-            return 'Object { ' + formattedChild + ' }';
-        }
-
         if (objectName === 'String') {
             // String object
             return `String { "${input.valueOf()}" }`;
@@ -109,6 +91,24 @@ module.exports = {
                 }
             }
             return objectName + ' { ' + formattedChild + ' }';
+        }
+
+        // Special object created with `OrdinaryObjectCreate(null)` returned by, for
+        // example, named capture groups in https://mzl.la/2RERfQL
+        // @see https://github.com/mdn/bob/issues/574#issuecomment-858213621
+        if (!objectName.constructor || !objectName.prototype) {
+            var formattedChild = '';
+            var start = true;
+            for (var key in input) {
+                if (start) {
+                    start = false;
+                } else {
+                    formattedChild = formattedChild + ', ';
+                }
+                formattedChild =
+                    formattedChild + key + ': ' + this.formatOutput(input[key]);
+            }
+            return 'Object { ' + formattedChild + ' }';
         }
 
         return input;
