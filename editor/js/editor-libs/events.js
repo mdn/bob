@@ -24,6 +24,14 @@ function addCSSEditorEventListeners(exampleChoiceList) {
 
     exampleChoiceList.addEventListener('click', function(event) {
         var target = event.target;
+        var isClickedBetween = target.getAttribute('id') === 'example-choice-list';
+
+        // if original target is in between or outside of `example-choice` 
+        // elements, ie the parent <section id='example-choice-list'> element
+        // then bail
+        if (isClickedBetween) {
+            return;
+        }
 
         // if the original target is not an `example-choice` element
         if (!target.classList.contains('example-choice')) {
