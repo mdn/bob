@@ -35,7 +35,7 @@ function addCSSEditorEventListeners(exampleChoiceList) {
         }
 
         Array.from(exampleChoices).forEach((choice) => {
-            choice.addEventListener("click", handleChoiceEvent);
+            choice.addEventListener('click', handleChoiceEvent);
         });
     });
 }
@@ -156,7 +156,7 @@ function handleChoiceEvent() {
             label: 'Interaction Events',
         });
     }
-    
+
     module.exports.onChoose(this);
 }
 
