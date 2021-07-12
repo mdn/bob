@@ -25,6 +25,7 @@ function addCSSEditorEventListeners(exampleChoiceList) {
     exampleChoiceList.addEventListener('click', function(event) {
         var target = event.target;
         var isClickedBetween = target.getAttribute('id') === 'example-choice-list';
+        var exampleChoices = exampleChoiceList.querySelectorAll('.example-choice');
 
         // if original target is in between or outside of `example-choice` 
         // elements, ie the parent <section id='example-choice-list'> element
@@ -33,22 +34,9 @@ function addCSSEditorEventListeners(exampleChoiceList) {
             return;
         }
 
-        // if the original target is not an `example-choice` element
-        if (!target.classList.contains('example-choice')) {
-            // find this element's `example-choice` parent
-            target = mceUtils.findParentChoiceElem(target);
-        }
-
-        if (target.classList.contains('copy')) {
-            mceAnalytics.trackEvent({
-                category: 'Interactive Example - CSS',
-                action: 'Copy to clipboard clicked',
-                label: 'Interaction Events'
-            });
-        }
-
-        // and pass it on to `onChoose`
-        module.exports.onChoose(target);
+        Array.from(exampleChoices).forEach((choice) => {
+            choice.addEventListener("click", handleChoiceEvent);
+        });
     });
 }
 
@@ -158,6 +146,18 @@ function handlePasteEvents(event) {
     parentCodeElem.innerText = startValue + '\n' + clipboardText;
 
     Prism.highlightElement(parentCodeElem);
+}
+
+function handleChoiceEvent() {
+    if (this.classList.contains('copy')) {
+        mceAnalytics.trackEvent({
+            category: 'Interactive Example - CSS',
+            action: 'Copy to clipboard clicked',
+            label: 'Interaction Events',
+        });
+    }
+    
+    module.exports.onChoose(this);
 }
 
 module.exports = {
