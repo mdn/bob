@@ -1,7 +1,6 @@
 var clippy = require('./clippy');
 var cssEditorUtils = require('./css-editor-utils');
 var mceAnalytics = require('./analytics');
-var mceUtils = require('./mce-utils');
 
 /**
  * Adds listeners for events from the CSS live examples
@@ -22,25 +21,9 @@ function addCSSEditorEventListeners(exampleChoiceList) {
         );
     });
 
-    exampleChoiceList.addEventListener('click', function(event) {
-        var target = event.target;
-
-        // if the original target is not an `example-choice` element
-        if (!target.classList.contains('example-choice')) {
-            // find this element's `example-choice` parent
-            target = mceUtils.findParentChoiceElem(target);
-        }
-
-        if (target.classList.contains('copy')) {
-            mceAnalytics.trackEvent({
-                category: 'Interactive Example - CSS',
-                action: 'Copy to clipboard clicked',
-                label: 'Interaction Events'
-            });
-        }
-
-        // and pass it on to `onChoose`
-        module.exports.onChoose(target);
+    var exampleChoices = exampleChoiceList.querySelectorAll('.example-choice');
+    Array.from(exampleChoices).forEach((choice) => {
+        choice.addEventListener('click', handleChoiceEvent);
     });
 }
 
@@ -150,6 +133,18 @@ function handlePasteEvents(event) {
     parentCodeElem.innerText = startValue + '\n' + clipboardText;
 
     Prism.highlightElement(parentCodeElem);
+}
+
+function handleChoiceEvent() {
+    if (this.classList.contains('copy')) {
+        mceAnalytics.trackEvent({
+            category: 'Interactive Example - CSS',
+            action: 'Copy to clipboard clicked',
+            label: 'Interaction Events',
+        });
+    }
+
+    module.exports.onChoose(this);
 }
 
 module.exports = {
