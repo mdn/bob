@@ -1,7 +1,6 @@
 var clippy = require('./clippy');
 var cssEditorUtils = require('./css-editor-utils');
 var mceAnalytics = require('./analytics');
-var mceUtils = require('./mce-utils');
 
 /**
  * Adds listeners for events from the CSS live examples
