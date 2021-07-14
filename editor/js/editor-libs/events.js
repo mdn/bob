@@ -22,21 +22,9 @@ function addCSSEditorEventListeners(exampleChoiceList) {
         );
     });
 
-    exampleChoiceList.addEventListener('click', function(event) {
-        var target = event.target;
-        var isClickedBetween = target.getAttribute('id') === 'example-choice-list';
-        var exampleChoices = exampleChoiceList.querySelectorAll('.example-choice');
-
-        // if original target is in between or outside of `example-choice` 
-        // elements, ie the parent <section id='example-choice-list'> element
-        // then bail
-        if (isClickedBetween) {
-            return;
-        }
-
-        Array.from(exampleChoices).forEach((choice) => {
-            choice.addEventListener('click', handleChoiceEvent);
-        });
+    var exampleChoices = exampleChoiceList.querySelectorAll('.example-choice');
+    Array.from(exampleChoices).forEach((choice) => {
+        choice.addEventListener('click', handleChoiceEvent);
     });
 }
 
