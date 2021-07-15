@@ -34,7 +34,8 @@
 
         mceEvents.register();
         handleResetEvents();
-
+        handleChoiceHover();
+        
         clippy.addClippy();
     }
 
@@ -75,6 +76,26 @@
             }
         }
         return -1;
+    }
+
+    /**
+     * Attach mouse events to example choices 
+     * for allowing clippy button to display on hover 
+     * and otherwise return to intial hidden state
+     */
+    function handleChoiceHover() {
+        for (var i = 0, l = exampleChoices.length; i < l; i++) {
+            var choice = exampleChoices[i];
+            var copyBtn = choice.querySelector('.copy');
+            copyBtn.setAttribute('aria-label', 'Copy to clipboard');
+           
+            choice.addEventListener('mouseover', () => {
+                copyBtn.setAttribute('aria-hidden', false);
+            });
+            choice.addEventListener('mouseout', () => {
+                copyBtn.setAttribute('aria-hidden', true);
+            });
+        }
     }
 
     /* only show the live code view if JS is enabled and the property is supported.
