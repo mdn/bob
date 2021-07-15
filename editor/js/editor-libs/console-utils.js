@@ -8,7 +8,7 @@ module.exports = {
      * @param {any} input - The output to log.
      * @returns Formatted output as a string.
      */
-    formatArray: function(input) {
+    formatArray: function (input) {
         'use strict';
         var output = '';
         for (var i = 0, l = input.length; i < l; i++) {
@@ -38,11 +38,12 @@ module.exports = {
      * @param {any} input - The output to log.
      * @returns Formatted output as a string.
      */
-    formatObject: function(input) {
-        'use strict';
+    formatObject: function (input) {
+        ('use strict');
         var bufferDataViewRegExp = /^(ArrayBuffer|SharedArrayBuffer|DataView)$/;
         var complexArrayRegExp = /^(Int8Array|Int16Array|Int32Array|Uint8Array|Uint16Array|Uint32Array|Uint8ClampedArray|Float32Array|Float64Array|BigInt64Array|BigUint64Array)$/;
-        var objectName = input.constructor.name;
+
+        var objectName = input.constructor ? input.constructor.name : input;
 
         if (objectName === 'String') {
             // String object
@@ -54,11 +55,11 @@ module.exports = {
             return `JSON {}`;
         }
 
-        if (objectName.match(bufferDataViewRegExp)) {
+        if (objectName.match && objectName.match(bufferDataViewRegExp)) {
             return objectName + ' {}';
         }
 
-        if (objectName.match(complexArrayRegExp)) {
+        if (objectName.match && objectName.match(complexArrayRegExp)) {
             var arrayLength = input.length;
 
             if (arrayLength > 0) {
@@ -92,6 +93,24 @@ module.exports = {
             return objectName + ' { ' + formattedChild + ' }';
         }
 
+        // Special object created with `OrdinaryObjectCreate(null)` returned by, for
+        // example, named capture groups in https://mzl.la/2RERfQL
+        // @see https://github.com/mdn/bob/issues/574#issuecomment-858213621
+        if (!objectName.constructor || !objectName.prototype) {
+            var formattedChild = '';
+            var start = true;
+            for (var key in input) {
+                if (start) {
+                    start = false;
+                } else {
+                    formattedChild = formattedChild + ', ';
+                }
+                formattedChild =
+                    formattedChild + key + ': ' + this.formatOutput(input[key]);
+            }
+            return 'Object { ' + formattedChild + ' }';
+        }
+
         return input;
     },
     /**
@@ -104,7 +123,7 @@ module.exports = {
      * @param {any} input - The output to log.
      * @returns Formatted output as a string.
      */
-    formatOutput: function(input) {
+    formatOutput: function (input) {
         'use strict';
         if (
             input === undefined ||
@@ -125,7 +144,7 @@ module.exports = {
             if (input.includes('"')) {
                 return "'" + input + "'";
             } else {
-                return '"' + input + '"';   
+                return '"' + input + '"';
             }
         } else if (Array.isArray(input)) {
             // check the contents of the array
@@ -138,11 +157,11 @@ module.exports = {
      * Writes the provided content to the editor’s output area
      * @param {String} content - The content to write to output
      */
-    writeOutput: function(content) {
+    writeOutput: function (content) {
         'use strict';
         var output = document.querySelector('#console code');
         var outputContent = output.textContent;
         var newLogItem = '> ' + content + '\n';
         output.textContent = outputContent + newLogItem;
-    }
+    },
 };
