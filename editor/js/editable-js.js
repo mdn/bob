@@ -33,7 +33,6 @@
         var editorContainer = document.getElementById('editor');
         // eslint-disable-next-line new-cap
         codeMirror = CodeMirror(editorContainer, {
-            autofocus: true,
             inputStyle: 'contenteditable',
             lineNumbers: true,
             mode: 'javascript',
