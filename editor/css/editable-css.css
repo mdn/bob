@@ -90,6 +90,10 @@
     border-left-color: #666;
 }
 
+.example-choice:hover .copy {
+    display: block;
+}
+
 .live .example-choice:before {
     content: '';
     position: absolute;
@@ -169,6 +173,7 @@
     height: 30px;
     vertical-align: middle;
     cursor: pointer;
+    display: none;
 }
 
 .transition-all {
