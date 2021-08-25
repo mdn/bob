@@ -91,7 +91,7 @@
         "browserify": "17.0.0",
         "clean-css": "5.1.5",
         "codemirror": "5.62.3",
-        "cosmiconfig": "7.0.0",
+        "cosmiconfig": "7.0.1",
         "fs-extra": "10.0.0",
         "glob": "7.1.7",
         "node-dir": "0.1.17",
