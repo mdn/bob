@@ -95,7 +95,8 @@
         "fs-extra": "10.0.0",
         "glob": "7.1.7",
         "node-dir": "0.1.17",
-        "uglify-es": "3.3.9"
+        "uglify-es": "3.3.9",
+        "wabt": "^1.0.23"
     },
     "resolutions": {
         "lodash": ">=4.17.5",
