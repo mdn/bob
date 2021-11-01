@@ -1,0 +1,15 @@
+name: Move opened pull requests to Ready for Review
+
+on:
+    pull_request:
+        types: [opened]
+
+jobs:
+    automate-project-columns:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: alex-page/github-project-automation-plus@v0.8.1
+              with:
+                  project: MDN Web Docs
+                  column: Ready for Review
+                  repo-token: ${{ secrets.GH_TOKEN }}
