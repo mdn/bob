@@ -1,15 +1,15 @@
 name: publish-bob
 on:
-    push:
-        branches: [master]
+  push:
+    branches: [main]
 jobs:
-    all:
-        name: publish-bob
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - name: publish
-              uses: mikeal/merge-release@master
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+  all:
+    name: publish-bob
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: publish
+        uses: mikeal/merge-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
