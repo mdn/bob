@@ -1,69 +1,48 @@
-var clippy = require('./clippy');
-var cssEditorUtils = require('./css-editor-utils');
-var mceAnalytics = require('./analytics');
+var clippy = require("./clippy");
+var cssEditorUtils = require("./css-editor-utils");
 
 /**
  * Adds listeners for events from the CSS live examples
  * @param {Object} exampleChoiceList - The object to which events are added
  */
 function addCSSEditorEventListeners(exampleChoiceList) {
-    'use strict';
-    exampleChoiceList.addEventListener('cut', copyTextOnly);
-    exampleChoiceList.addEventListener('copy', copyTextOnly);
-    exampleChoiceList.addEventListener('paste', handlePasteEvents);
+  "use strict";
+  exampleChoiceList.addEventListener("cut", copyTextOnly);
+  exampleChoiceList.addEventListener("copy", copyTextOnly);
+  exampleChoiceList.addEventListener("paste", handlePasteEvents);
 
-    exampleChoiceList.addEventListener('keyup', function(event) {
-        var exampleChoiceParent = event.target.parentElement;
+  exampleChoiceList.addEventListener("keyup", function (event) {
+    var exampleChoiceParent = event.target.parentElement;
 
-        cssEditorUtils.applyCode(
-            exampleChoiceParent.textContent,
-            exampleChoiceParent
-        );
-    });
+    cssEditorUtils.applyCode(
+      exampleChoiceParent.textContent,
+      exampleChoiceParent
+    );
+  });
 
-    var exampleChoices = exampleChoiceList.querySelectorAll('.example-choice');
-    Array.from(exampleChoices).forEach((choice) => {
-        choice.addEventListener('click', handleChoiceEvent);
-    });
-}
-
-/**
- * Adds listeners for events from the JS live examples
- * @param {Object} liveEditor - The object to which events are added
- */
-function addJSEditorEventListeners(liveEditor) {
-    'use strict';
-
-    liveEditor.addEventListener('click', function(event) {
-        if (event.target.id === 'execute') {
-            mceAnalytics.trackRunClicks();
-        }
-    });
+  var exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
+  Array.from(exampleChoices).forEach((choice) => {
+    choice.addEventListener("click", handleChoiceEvent);
+  });
 }
 
 /**
  * Adds listener for JavaScript errors, and logs them to GA
  */
 function addJSErrorListener() {
-    'use strict';
-    /**
-     * Catches JavaScript errors from the editor that bubble up to the
-     * window and passes them on to GA
-     */
-    window.onerror = function(msg, url, lineNo, columnNo, error) {
-        var errorDetails = [
-            'URL: ' + url,
-            'Line: ' + lineNo,
-            'Column: ' + columnNo,
-            'Error object: ' + JSON.stringify(error)
-        ].join(' - ');
-
-        mceAnalytics.trackEvent({
-            category: 'Interactive Example - JavaScript Errors',
-            action: errorDetails,
-            label: msg
-        });
-    };
+  "use strict";
+  /**
+   * Catches JavaScript errors from the editor that bubble up to the
+   * window and passes them on to GA
+   */
+  window.onerror = function (msg, url, lineNo, columnNo, error) {
+    var errorDetails = [
+      "URL: " + url,
+      "Line: " + lineNo,
+      "Column: " + columnNo,
+      "Error object: " + JSON.stringify(error),
+    ].join(" - ");
+  };
 }
 
 /**
@@ -71,29 +50,32 @@ function addJSErrorListener() {
  * Currently only used by the CSS editor.
  */
 function addPostMessageListener() {
-    'use strict';
-    // listens for post message from Kuma
-    window.addEventListener(
-        'message',
-        function(event) {
-            // Ignore any events that don't define the smallViewport property.
-            // Note that we are not checking the origin property to verify
-            // the source of the message. This is because we can't know if
-            // we're on developer.mozilla.org or wiki.developer.mozilla.org.
-            // Since we're just setting a CSS style based on the message
-            // there is no security risk.
-            if (event.data.smallViewport !== undefined) {
-                var editorWrapper = document.querySelector('.editor-wrapper');
+  "use strict";
 
-                if (event.data.smallViewport) {
-                    editorWrapper.classList.add('small-desktop-and-below');
-                } else {
-                    editorWrapper.classList.remove('small-desktop-and-below');
-                }
-            }
-        },
-        false
-    );
+  window.addEventListener(
+    "message",
+    function (event) {
+      // Note that we are not checking the origin property to verify
+      // the source of the message. This is because we can't know if
+      // we're on developer.mozilla.org or wiki.developer.mozilla.org.
+      // Since we're just setting a CSS style based on the message
+      // there is no security risk.
+      if (event.data.smallViewport !== undefined) {
+        var editorWrapper = document.querySelector(".editor-wrapper");
+
+        if (event.data.smallViewport) {
+          editorWrapper.classList.add("small-desktop-and-below");
+        } else {
+          editorWrapper.classList.remove("small-desktop-and-below");
+        }
+      }
+
+      if (event.data.theme !== undefined) {
+        document.querySelector("body").classList.add(event.data.theme);
+      }
+    },
+    false
+  );
 }
 
 /**
@@ -103,15 +85,15 @@ function addPostMessageListener() {
  * @param {Object} event - The copy event
  */
 function copyTextOnly(event) {
-    'use strict';
-    var selection = window.getSelection();
-    var range = selection.getRangeAt(0);
+  "use strict";
+  var selection = window.getSelection();
+  var range = selection.getRangeAt(0);
 
-    event.preventDefault();
-    event.stopPropagation();
+  event.preventDefault();
+  event.stopPropagation();
 
-    event.clipboardData.setData('text/plain', range.toString());
-    event.clipboardData.setData('text/html', range.toString());
+  event.clipboardData.setData("text/plain", range.toString());
+  event.clipboardData.setData("text/html", range.toString());
 }
 
 /**
@@ -121,89 +103,60 @@ function copyTextOnly(event) {
  * @param {Object} event - The paste event object
  */
 function handlePasteEvents(event) {
-    'use strict';
-    var clipboardText = event.clipboardData.getData('text/plain');
-    var parentPre = event.target.offsetParent;
-    var parentCodeElem = parentPre.querySelector('code');
-    var startValue = parentCodeElem.textContent;
+  "use strict";
+  var clipboardText = event.clipboardData.getData("text/plain");
+  var parentPre = event.target.offsetParent;
+  var parentCodeElem = parentPre.querySelector("code");
+  var startValue = parentCodeElem.textContent;
 
-    event.preventDefault();
-    event.stopPropagation();
+  event.preventDefault();
+  event.stopPropagation();
 
-    parentCodeElem.innerText = startValue + '\n' + clipboardText;
+  parentCodeElem.innerText = startValue + "\n" + clipboardText;
 
-    Prism.highlightElement(parentCodeElem);
+  Prism.highlightElement(parentCodeElem);
 }
 
 function handleChoiceEvent() {
-    if (this.classList.contains('copy')) {
-        mceAnalytics.trackEvent({
-            category: 'Interactive Example - CSS',
-            action: 'Copy to clipboard clicked',
-            label: 'Interaction Events',
-        });
-    }
-
-    module.exports.onChoose(this);
+  module.exports.onChoose(this);
 }
 
 module.exports = {
-    /**
-     * Called when a new `example-choice` has been selected.
-     * @param {Object} choice - The selected `example-choice` element
-     */
-    onChoose: function(choice) {
-        var selected = document.querySelector('.selected');
+  /**
+   * Called when a new `example-choice` has been selected.
+   * @param {Object} choice - The selected `example-choice` element
+   */
+  onChoose: function (choice) {
+    var selected = document.querySelector(".selected");
 
-        // highlght the code we are leaving
-        if (selected && !choice.classList.contains('selected')) {
-            var highlighted = Prism.highlight(
-                selected.firstChild.textContent,
-                Prism.languages.css
-            );
-            selected.firstChild.innerHTML = highlighted;
+    // highlght the code we are leaving
+    if (selected && !choice.classList.contains("selected")) {
+      var highlighted = Prism.highlight(
+        selected.firstChild.textContent,
+        Prism.languages.css
+      );
+      selected.firstChild.innerHTML = highlighted;
 
-            mceAnalytics.trackCSSExampleSelection();
-
-            cssEditorUtils.resetDefault();
-        }
-
-        cssEditorUtils.choose(choice);
-        clippy.toggleClippy(choice);
-    },
-    /**
-     * Called by the main JS file after all other initialization
-     * has been completed.
-     */
-    register: function() {
-        'use strict';
-        var exampleChoiceList = document.getElementById('example-choice-list');
-        var liveEditor = document.getElementById('editor');
-
-        addJSErrorListener();
-
-        // only bind events if the `exampleChoiceList` container exist
-        if (exampleChoiceList) {
-            addPostMessageListener();
-            addCSSEditorEventListeners(exampleChoiceList);
-        }
-
-        if (liveEditor) {
-            addJSEditorEventListeners(liveEditor);
-        }
-    },
-    /**
-     * Calls trackEvent and sends the loadEventEnd time for
-     * the iframe to the parent page via postMessage
-     * @param {String} action - The action that took place
-     * @param {Number} loadTime - The loadEventEnd time in milliseconds
-     */
-    trackloadEventEnd: function(action, loadTime) {
-        mceAnalytics.trackEvent({
-            category: 'Interactive Examples',
-            action: action,
-            label: 'Performance Events',
-            value: loadTime
-        });
+      cssEditorUtils.resetDefault();
     }
+
+    cssEditorUtils.choose(choice);
+    clippy.toggleClippy(choice);
+  },
+  /**
+   * Called by the main JS file after all other initialization
+   * has been completed.
+   */
+  register: function () {
+    "use strict";
+    var exampleChoiceList = document.getElementById("example-choice-list");
+
+    addJSErrorListener();
+    addPostMessageListener();
+
+    // only bind events if the `exampleChoiceList` container exist
+    if (exampleChoiceList) {
+      addCSSEditorEventListeners(exampleChoiceList);
+    }
+  },
 };
