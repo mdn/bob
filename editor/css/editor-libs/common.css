@@ -1,3 +1,32 @@
+:root {
+  --font-fallback: BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+      "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
+  --font-body: Inter, var(--font-fallback);
+  --type-body-l: 400 1rem/2 var(--font-body); /* 16px/19px */
+  --font-heading: Montserrat, var(--font-fallback);
+  --type-label-s: 600 0.625rem/1.2 var(--font-heading); /* 10px/12px */
+
+  --elem-radius: 0.25rem;
+  --button-height: 2rem;
+  --button-radius: var(--elem-radius);
+
+  /* Alter these when/if it's time to make a dark theme for these samples */
+  --border-primary: #e0e0e6ff;
+  --text-primary: #15141aff;
+  --button-secondary-hover: #e0e0e6ff;
+  --background-secondary: #F5F9FA;
+  --accent-primary: #008787ff;
+  --focus-01: 0px 0px 0px 3px rgba(0, 144, 237, 0.4);
+
+  --code-tag: #e22850;
+  --code-punctuation: #7f145b;
+  --code-attribute-name: #e27f2e;
+  --code-attribute-value: #008787;
+  --code-comment: #5b5b66;
+  --code-default: #15141a;
+  --code-selector: #054096;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -10,21 +39,37 @@ body {
     font: 16px/1.5 sans-serif;
 }
 
-header h4:before {
-    display: inline-block;
-    content: '';
-    background: transparent url('../../media/dino.svg') 0 0 no-repeat;
-    margin-right: .6em;
-    width: 45px;
-    height: 45px;
-    vertical-align: middle;
+.output-header {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-primary);
 }
 
-header h4 {
-    display: inline-block;
+.output-heading {
     margin: 0;
-    font-size: .9rem;
-    font-weight: bold;
+    font: var(--type-body-l);
+}
+
+.reset {
+    background-color: transparent;
+    color: var(--text-primary);
+    font: var(--type-label-s);
+    margin: 0;
+    padding: .7em .9em;
+    height: var(--button-height);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: none;
+    max-width: 100px;
+    cursor: pointer;
+    border-radius: var(--button-radius);
+}
+
+.reset:hover {
+    background-color: var(--button-secondary-hover);
 }
 
 .user-message {
