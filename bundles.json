@@ -51,7 +51,7 @@
             "css": [
                 "../editor/css/editor-libs/ui-fonts.css",
                 "../editor/css/editor-libs/common.css",
-                "../editor/css/editable-js.css"
+                "../editor/css/editable-js-and-wat.css"
             ],
             "destFileName": "editor-js"
         },
@@ -60,7 +60,7 @@
             "css": [
                 "../editor/css/editor-libs/ui-fonts.css",
                 "../editor/css/editor-libs/common.css",
-                "../editor/css/editable-wat.css",
+                "../editor/css/editable-js-and-wat.css",
                 "../editor/css/editor-libs/tabby.css"
             ],
             "destFileName": "editor-wat"

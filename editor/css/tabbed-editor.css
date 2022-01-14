@@ -65,10 +65,8 @@
 }
 
 .icon-clear {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    vertical-align: bottom;
+  width: 12px;
+  height: 12px;
 }
 
 .clear {

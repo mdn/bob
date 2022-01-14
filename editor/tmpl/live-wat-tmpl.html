@@ -13,10 +13,12 @@
         %example-code%
     </section>
 
-    <header><h4>%title%</h4></header>
+    <header class="output-header">
+        <h4 class="output-heading">%title%</h4>
+    </header>
 
     <section id="tab-container" class="tabs">
-      <div id="tablist" role="tablist">
+      <div class="tab-list" id="tablist" role="tablist">
         <button role="tab" aria-selected="false" aria-controls="js-panel" id="js" tabindex="-1">
           JavaScript
         </button>
@@ -27,10 +29,10 @@
 
       <section id="live" class="live hidden">
 
-        <section id="js-panel" tabindex="0" role="tabpanel" aria-labelledby="js" class="hidden" aria-hidden="true">
+        <section class="editor hidden" id="js-panel" tabindex="0" role="tabpanel" aria-labelledby="js" aria-hidden="true">
           <div id="js-editor"></div>
         </section>
-        <section id="wat-panel" tabindex="0" role="tabpanel" aria-labelledby="wat">
+        <section class="editor" id="wat-panel" tabindex="0" role="tabpanel" aria-labelledby="wat">
           <div id="wat-editor"></div>
         </section>
 
