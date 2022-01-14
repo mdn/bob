@@ -2,7 +2,7 @@
   --font-fallback: BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
       "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
   --font-body: Inter, var(--font-fallback);
-  --type-body-l: 400 1rem/2 var(--font-body); /* 16px/19px */
+  --type-body-l: 400 1rem/1.1876 var(--font-body); /* 16px/19px */
   --font-heading: Montserrat, var(--font-fallback);
   --type-label-s: 600 0.625rem/1.2 var(--font-heading); /* 10px/12px */
 
@@ -10,14 +10,18 @@
   --button-height: 2rem;
   --button-radius: var(--elem-radius);
 
-  /* Alter these when/if it's time to make a dark theme for these samples */
+  /* Everything below here needs to be duplicated in .dark below for themeing */
+  --background-primary: #fff;
+  --background-secondary: #F5F9FA;
+  --background-tertiary: #fbfbfeff;
   --border-primary: #e0e0e6ff;
   --text-primary: #15141aff;
   --button-secondary-hover: #e0e0e6ff;
-  --background-secondary: #F5F9FA;
-  --accent-primary: #008787ff;
-  --focus-01: 0px 0px 0px 3px rgba(0, 144, 237, 0.4);
+  --icon-primary: #5b5b66ff;
 
+  --accent-primary: #008787ff;
+  --field-focus-border: #0090edff;
+  --focus-01: 0px 0px 0px 3px rgba(0, 144, 237, 0.4);
   --code-tag: #e22850;
   --code-punctuation: #7f145b;
   --code-attribute-name: #e27f2e;
@@ -27,16 +31,36 @@
   --code-selector: #054096;
 }
 
+
+.dark {
+  --background-primary: #15141aff;
+  --background-secondary: #23222bff;
+  --background-tertiary: #2b2a33ff;
+  --border-primary: #52525eff;
+  --text-primary: #fbfbfeff;
+  --button-secondary-hover: #52525eff;
+  --accent-primary: #2ac3a2ff;
+  --icon-primary: #fbfbfeff;
+  --code-tag: #ff4f5e;
+  --code-punctuation: #8f8f9d;
+  --code-attribute-name: #ffa436;
+  --code-attribute-value: #3fe1b0;
+  --code-comment: #8f8f9d;
+  --code-default: #fbfbfe;
+  --code-selector: #0bb0f1;
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    color: #333;
+    color: var(--text-primary);
+    background-color: var(--background-primary);
     margin: 0;
     padding: 0;
     height: 100%;
-    font: 16px/1.5 sans-serif;
+    font: var(--type-body-l);
 }
 
 .output-header {
@@ -44,6 +68,7 @@ body {
   padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
   border-bottom: 1px solid var(--border-primary);
 }

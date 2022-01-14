@@ -7,7 +7,7 @@
   flex-direction: column;
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 600px) {
   .editor-wrapper {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -23,7 +23,7 @@
     border-bottom: 1px solid var(--border-primary);
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 600px) {
   .example-choice-list.live,
   .example-choice-list.large.live {
     padding: 1rem 2rem 1rem 1rem;
@@ -47,7 +47,7 @@
     height: 300px;
     overflow: hidden;
     position: relative;
-    background-color: #fff;
+    background-color: var(--background-primary);
     overflow: hidden;
     padding: 1em;
 }
@@ -100,12 +100,12 @@
     opacity: 0;
     transition: all .2s ease-out;
     transform: translateY(-50%);
-    border-left: 4px solid var(--accent-primary);
+    border-left: 4px solid var(--field-focus-border);
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 600px) {
   .example-choice.selected:before {
       opacity: 1;
       right: -1rem;
@@ -113,7 +113,7 @@
 }
 
 .example-choice.selected {
-    border-color: var(--accent-primary);
+    border-color: var(--field-focus-border);
     box-shadow: var(--focus-01);
     transition: height .5s;
     cursor: text;
@@ -142,8 +142,7 @@
     position: absolute;
     top: 2px;
     right: 2px;
-    background: #eee url('../media/clippy.svg') 50% 50% no-repeat;
-    background-size: 15px;
+    background: var(--background-tertiary)  50% 50% no-repeat;
     border-radius: var(--elem-radius);
     padding: 6px 12px;
     border: 1px solid var(--border-primary);
@@ -152,6 +151,23 @@
     vertical-align: middle;
     cursor: pointer;
     display: none;
+}
+
+.copy:after {
+  mask-image: url('../media/clippy.svg');
+  mask-size: contain;
+  mask-position: center;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 6px;
+  left: 6px;
+  background-color: var(--icon-primary);
+  content: "";
+}
+
+.copy:hover {
+  background-color: var(--button-secondary-hover);
 }
 
 .transition-all {
