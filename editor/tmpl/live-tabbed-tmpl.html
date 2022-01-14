@@ -17,7 +17,7 @@
     </header>
     <div id="editor-container" class="editor-container %editor-height%" %active-tabs%>
         <section id="tab-container" class="tabs">
-            <div id="tablist" role="tablist">
+            <div class="tab-list" id="tablist" role="tablist">
                 <button role="tab" aria-selected="false" aria-controls="html-panel"
                     id="html" class="hidden">
                     HTML
@@ -50,9 +50,9 @@
                 </div>
             </section>
         </section>
-        <h4 class="output-label">Output</h4>
         <div id="output" class="shadow-container">
-            <shadow-output></shadow-output>
+          <h4 class="output-label">Output</h4>
+          <shadow-output></shadow-output>
         </div>
     </div>
 
