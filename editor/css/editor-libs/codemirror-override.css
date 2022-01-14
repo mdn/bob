@@ -1,27 +1,35 @@
 .CodeMirror-linenumber {
-    color: #333;
+    color: var(--text-secondary);
 }
 
+.cm-s-default {
+  color: var(--code-punctuation);
+}
 .cm-s-default .cm-comment {
-    color: #6b7884;
+    color: var(--code-comment);
 }
 
 .cm-s-default .cm-keyword {
-    color: #1954b8;
+    color: var(--code-tag);
 }
 
 .cm-s-default .cm-def {
-    color: #333;
+  color: var(--code-attribute-name);
 }
 
 .cm-s-default .cm-string {
-    color: #080;
+    color: var(--code-attribute-value);
 }
 
 .cm-s-default .cm-string2 {
-    color: #c95200;
+    color: var(--code-selector);
 }
 
 .cm-s-default .cm-property {
-    color: #ac222c;
+    color: var(--code-attribute-name);
+}
+
+.cm-s-default .cm-operator,
+.cm-s-default .cm-variable {
+  color: var(--code-default);
 }

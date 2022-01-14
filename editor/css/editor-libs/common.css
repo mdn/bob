@@ -2,9 +2,12 @@
   --font-fallback: BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
       "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
   --font-body: Inter, var(--font-fallback);
+  --font-code: Consolas, "Courier New", monospace;
   --type-body-l: 400 1rem/1.1876 var(--font-body); /* 16px/19px */
+  --type-emphasis-m: 600 0.8125rem/1.23 var(--font-body); /* 13px/16px */
   --font-heading: Montserrat, var(--font-fallback);
   --type-label-s: 600 0.625rem/1.2 var(--font-heading); /* 10px/12px */
+  --type-code-regular: 400 0.875rem/1.5 var(--font-code); /* 14px/21px */
 
   --elem-radius: 0.25rem;
   --button-height: 2rem;
@@ -16,13 +19,16 @@
   --background-tertiary: #fbfbfeff;
   --border-primary: #e0e0e6ff;
   --text-primary: #15141aff;
-  --button-secondary-hover: #e0e0e6ff;
+  --text-secondary: #5b5b66ff;
   --icon-primary: #5b5b66ff;
-
   --accent-primary: #008787ff;
   --field-focus-border: #0090edff;
   --focus-01: 0px 0px 0px 3px rgba(0, 144, 237, 0.4);
   --code-tag: #e22850;
+  --button-primary-default: #15141aff;
+  --button-primary-hover: #3a3944ff;
+  --button-secondary-default: #fbfbfeff;
+  --button-secondary-hover: #e0e0e6ff;
   --code-punctuation: #7f145b;
   --code-attribute-name: #e27f2e;
   --code-attribute-value: #008787;
@@ -38,9 +44,13 @@
   --background-tertiary: #2b2a33ff;
   --border-primary: #52525eff;
   --text-primary: #fbfbfeff;
+  --text-secondary: #cfcfd8ff;
+  --button-secondary-default: #2b2a33ff;
   --button-secondary-hover: #52525eff;
   --accent-primary: #2ac3a2ff;
   --icon-primary: #fbfbfeff;
+  --button-primary-default: #008787ff;
+  --button-primary-hover: #2ac3a2ff;
   --code-tag: #ff4f5e;
   --code-punctuation: #8f8f9d;
   --code-attribute-name: #ffa436;
@@ -71,6 +81,10 @@ body {
   align-items: center;
   gap: 1rem;
   border-bottom: 1px solid var(--border-primary);
+}
+
+.output-header.no-border {
+  border-bottom: 0 none;
 }
 
 .output-heading {

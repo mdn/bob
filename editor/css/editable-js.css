@@ -11,14 +11,14 @@
 .output {
     position: relative;
     display: inline-block;
-    background-color: #fff;
+    background-color: var(--background-secondary);
     margin: 0;
     padding: .8em;
-    border: 1px solid #eaf2f4;
-    box-shadow: 2px 2px 5px -2px rgba(0, 0, 0, .1);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--elem-radius);
     width: 91%;
     height: 120px;
-    font-family: courier;
+    font: var(--type-code-regular);
 }
 
 .output code {
@@ -38,13 +38,13 @@
 
 .button {
     display: block;
-    background-color: #fff;
-    color: #333;
+    background-color: var(--button-secondary-default);
+    color: var(--text-primary);
     padding: .5em;
-    border: 2px solid #333;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--elem-radius);
     width: 100px;
-    font-size: 14px;
-    line-height: 1;
+    font: var(--type-emphasis-m);
     cursor: pointer;
 }
 
@@ -53,8 +53,7 @@
 }
 
 .button:hover {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--button-secondary-hover);
 }
 
 .js .editor {
@@ -62,9 +61,14 @@
 }
 
 .CodeMirror {
-    border: 1px solid #3f87a6;
-    border-left: 5px solid #3f87a6;
+    border: 1px solid var(--border-primary);
     height: 280px;
+    background: var(--background-primary);
+}
+
+.CodeMirror-gutters {
+  background: var(--background-secondary);
+  border-right: 1px solid var(--border-primary);
 }
 
 .js .editor.taller,
