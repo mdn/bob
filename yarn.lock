@@ -5955,9 +5955,9 @@ w3c-xmlserializer@^2.0.0:
     xml-name-validator "^3.0.0"
 
 wabt@^1.0.23:
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/wabt/-/wabt-1.0.25.tgz#25d2393e206325fd4faf6f55e4f8779a413e47e9"
-  integrity sha512-xaSiKAbzZliA54zsJUs3leQzgQdTWU8t4sYsmlNuAuEMzP7QQvt4RAO38RRlC6DYmsDVfqFF0ribC0N1Vlcrog==
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/wabt/-/wabt-1.0.26.tgz#20ddb3fd56943bd091fc8be13de4716397b2bdd5"
+  integrity sha512-TBwmB8mOZ77B2LkpRPcrEwvh2NC/iFuhqPnztymPUyXNYrlGOaWo6sHwCOsLmAkhZijfaUjTh+Qewt+1lq3uTQ==
 
 wait-on@^6.0.0:
   version "6.0.0"
