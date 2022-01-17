@@ -7,10 +7,10 @@ describe('Tabbed Editor', () => {
         it('loads the expected HTML into the output element', async () => {
             const expectedOutput =
                 '<style>' +
-                '.output{background-color:#fff;border:15px solid #eee;' +
-                'box-shadow:inset 5px 5px 10px rgba(0, 0, 0, .3), inset -5px -5px 10px rgba(0, 0, 0, .2);' +
-                'font-size:0.9rem;line-height:1.5;margin:24px 1em 0 0;' +
-                'overflow:scroll;padding:30px}</style>' +
+                '.output{background-color:#fff;color:#15141aff;' +
+                'font-size:0.9rem;line-height:1.5;overflow:scroll;' +
+                'padding:1rem;}' +
+                '</style>'+
                 '<style>' +
                 'address { font-variant-caps: small-caps;}a { font-variant: normal;}' +
                 '</style><div class=\"output\" style=\"height: 62%;\">' +

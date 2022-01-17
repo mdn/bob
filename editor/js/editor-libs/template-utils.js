@@ -4,7 +4,7 @@ module.exports = {
      * @returns base style rules for the output class
      */
     getOutputBaseStyle: function() {
-        return '.output{background-color:var(--background-primary);color:var(--text-primary);font-size:0.9rem;line-height:1.5;overflow:scroll;padding:1rem}';
+        return '.output{background-color:#fff;color:#15141aff;font-size:0.9rem;line-height:1.5;overflow:scroll;padding:1rem;}';
     },
     /**
      * Return the base script to inject into the shadowDOM
