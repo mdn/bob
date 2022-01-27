@@ -60,6 +60,31 @@
   --code-selector: #0bb0f1;
 }
 
+/* This is duplicated from the .dark class above. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-primary: #15141aff;
+    --background-secondary: #23222bff;
+    --background-tertiary: #2b2a33ff;
+    --border-primary: #52525eff;
+    --text-primary: #fbfbfeff;
+    --text-secondary: #cfcfd8ff;
+    --button-secondary-default: #2b2a33ff;
+    --button-secondary-hover: #52525eff;
+    --accent-primary: #2ac3a2ff;
+    --icon-primary: #fbfbfeff;
+    --button-primary-default: #008787ff;
+    --button-primary-hover: #2ac3a2ff;
+    --code-tag: #ff4f5e;
+    --code-punctuation: #8f8f9d;
+    --code-attribute-name: #ffa436;
+    --code-attribute-value: #3fe1b0;
+    --code-comment: #8f8f9d;
+    --code-default: #fbfbfe;
+    --code-selector: #0bb0f1;
+  }
+}
+
 * {
     box-sizing: border-box;
 }
