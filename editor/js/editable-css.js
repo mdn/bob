@@ -22,6 +22,16 @@
 
     for (var i = 0, l = exampleChoices.length; i < l; i++) {
       var exampleChoice = exampleChoices[i];
+      var choiceButton = document.createElement('button');
+      var choiceButtonText = document.createElement('span');
+
+      choiceButton.setAttribute("type", "button");
+      choiceButton.classList.add("example-choice-button")
+      choiceButtonText.classList.add("visually-hidden");
+      choiceButtonText.textContent = "Choose example " + ( i + 1);
+
+      choiceButton.append(choiceButtonText);
+      exampleChoice.append(choiceButton);
 
       originalChoices.push(exampleChoice.querySelector("code").textContent);
 
