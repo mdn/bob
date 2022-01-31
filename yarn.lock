@@ -1556,10 +1556,10 @@ cjs-module-lexer@^1.0.0:
   resolved "https://registry.npmjs.org/cjs-module-lexer/-/cjs-module-lexer-1.2.1.tgz"
   integrity sha512-jVamGdJPDeuQilKhvVn1h3knuMOZzr8QDnpk+M9aMlCaMkTDd6fBWPhiDqFvFZ07pL0liqabAiuy8SY4jGHeaw==
 
-clean-css@5.2.3:
-  version "5.2.3"
-  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-5.2.3.tgz#efca57c1f90303a5438939fecbc3786b1fe5e31a"
-  integrity sha512-qjywD7LvpZJ5+E16lf00GnMVUX5TEVBcKW1/vtGPgAerHwRwE4JP4p1Y40zbLnup2ZfWsd30P2bHdoAKH93XxA==
+clean-css@5.2.4:
+  version "5.2.4"
+  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-5.2.4.tgz#982b058f8581adb2ae062520808fb2429bd487a4"
+  integrity sha512-nKseG8wCzEuji/4yrgM/5cthL9oTDc5UOQyFMvW/Q53oP6gLH690o1NbuTh6Y18nujr7BxlsFuS7gXLnLzKJGg==
   dependencies:
     source-map "~0.6.0"
 
