@@ -154,6 +154,9 @@
 }
 
 .copy:after {
+  -webkit-mask-image: url('../media/clippy.svg');
+  -webkit-mask-size: contain;
+  -webkit-mask-position: center;
   mask-image: url('../media/clippy.svg');
   mask-size: contain;
   mask-position: center;

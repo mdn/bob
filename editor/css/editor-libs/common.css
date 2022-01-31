@@ -152,10 +152,10 @@ body {
     position: absolute;
     top: 30px;
     left: 50%;
-    background-color: #333;
-    color: #fff;
-    padding: .5em;
-    border-radius: 4px;
+    background-color: var(--text-secondary);
+    color: var(--background-primary);
+    padding: .5rem;
+    border-radius: var(--elem-radius);
     font-size: 14px;
     opacity: 1;
     transition: opacity .5s;
