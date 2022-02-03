@@ -70,8 +70,18 @@ function addPostMessageListener() {
         }
       }
 
+      // if a theme should be applied, remove all theme classes from the body,
+      // then add the correct one. This is a little more verbose than it needs
+      // to be to allow for future themes to be added without a change here.
       if (event.data.theme !== undefined) {
-        document.querySelector("body").classList.add(event.data.theme);
+        var body = document.querySelector("body");
+        for (let i = body.classList.length - 1; i >= 0; i--) {
+          const className = body.classList[i];
+          if (className.startsWith('theme-')) {
+            body.classList.remove(className);
+          }
+        }
+        body.classList.add('theme-' + event.data.theme);
       }
     },
     false

@@ -12,7 +12,11 @@
   --elem-radius: 0.25rem;
   --button-height: 2rem;
   --button-radius: var(--elem-radius);
+}
 
+
+:root,
+.theme-light {
   /* Everything below here needs to be duplicated in .dark below for themeing */
   --background-primary: #fff;
   --background-secondary: #F5F9FA;
@@ -37,8 +41,15 @@
   --code-selector: #054096;
 }
 
+/* prefers light theme, or default */
+.category-html { --accent-primary: #e22850;}
+.category-css { --accent-primary: #0060df;}
+.category-js { --accent-primary: #c45a27;}
+.category-http { --accent-primary: #005e5e;}
+.category-apis { --accent-primary: #592acb;}
 
-.dark {
+
+.theme-dark {
   --background-primary: #15141aff;
   --background-secondary: #23222bff;
   --background-tertiary: #2b2a33ff;
@@ -83,19 +94,37 @@
     --code-default: #fbfbfe;
     --code-selector: #0bb0f1;
   }
+
+  .category-html { --accent-primary: #ff4f5e;}
+  .category-css { --accent-primary: #0df;}
+  .category-js { --accent-primary: #ffd567;}
+  .category-http { --accent-primary: #54ffbd;}
+  .category-apis { --accent-primary: #c688ff;}
 }
 
+.theme-light.category-html { --accent-primary: #e22850;}
+.theme-light.category-css { --accent-primary: #0060df;}
+.theme-light.category-js { --accent-primary: #c45a27;}
+.theme-light.category-http { --accent-primary: #005e5e;}
+.theme-light.category-apis { --accent-primary: #592acb;}
+
+.theme-dark.category-html { --accent-primary: #ff4f5e;}
+.theme-dark.category-css { --accent-primary: #0df;}
+.theme-dark.category-js { --accent-primary: #ffd567;}
+.theme-dark.category-http { --accent-primary: #54ffbd;}
+.theme-dark.category-apis { --accent-primary: #c688ff;}
+
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    color: var(--text-primary);
-    background-color: var(--background-primary);
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font: var(--type-body-l);
+  color: var(--text-primary);
+  background-color: var(--background-primary);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font: var(--type-body-l);
 }
 
 .output-header {
