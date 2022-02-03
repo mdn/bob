@@ -45,6 +45,8 @@ function addJSErrorListener() {
   };
 }
 
+
+
 /**
  * Adds postMessage listener for communication from the parent page.
  * Currently only used by the CSS editor.
@@ -86,6 +88,12 @@ function addPostMessageListener() {
     },
     false
   );
+}
+
+function sendOwnHeight() {
+  if (parent){
+    parent.postMessage({url: window.location.href, height: document.body.scrollHeight}, '*');
+  }
 }
 
 /**
@@ -163,6 +171,13 @@ module.exports = {
 
     addJSErrorListener();
     addPostMessageListener();
+
+
+    if (document.readyState != 'loading'){
+      sendOwnHeight();
+    } else {
+      document.addEventListener('DOMContentLoaded', sendOwnHeight);
+    }
 
     // only bind events if the `exampleChoiceList` container exist
     if (exampleChoiceList) {
