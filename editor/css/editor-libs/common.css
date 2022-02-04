@@ -141,6 +141,11 @@ body {
   border-bottom: 0 none;
 }
 
+.output-header.full-border {
+  border: 1px solid var(--border-primary);
+  border-width: 1px 1px 0 1px;
+}
+
 .output-heading {
     margin: 0;
     font: var(--type-body-l);

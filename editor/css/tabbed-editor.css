@@ -23,6 +23,7 @@
 .tabbed-standard .CodeMirror,
 .tabbed-shorter .CodeMirror {
   border-right: 0 none;
+  border-left: 0 none;
   border-bottom: 1px solid var(--border-primary);
 }
 
