@@ -84,11 +84,19 @@ function addPostMessageListener() {
           }
         }
         body.classList.add('theme-' + event.data.theme);
+        localStorage.setItem('theme', event.data.theme)
       }
     },
     false
   );
 }
+
+document.addEventListener("onreadystatechange", function(){
+  const theme = localStorage.getItem('theme')
+  if (theme !== null){
+     document.querySelector("body").classList.add("theme-"+theme);
+  }
+});
 
 function sendOwnHeight() {
   if (parent){
