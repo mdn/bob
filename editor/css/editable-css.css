@@ -7,7 +7,7 @@
   flex-direction: column;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 590px) {
   .editor-wrapper {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -23,7 +23,7 @@
     border-bottom: 1px solid var(--border-primary);
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 590px) {
   .example-choice-list.live,
   .example-choice-list.large.live {
     padding: 1rem 2rem 1rem 1rem;
@@ -105,7 +105,7 @@
     border-bottom: 4px solid transparent;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 590px) {
   .example-choice.selected:before {
       opacity: 1;
       right: -1rem;

@@ -9,8 +9,6 @@
     height: 252px;
 }
 
-
-
 .tabbed-standard .CodeMirror {
     height: 322px;
 }
@@ -123,7 +121,7 @@
     overflow-y: auto;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 590px) {
   .editor-container {
     flex-direction: row;
   }
