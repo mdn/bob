@@ -26,6 +26,7 @@
 }
 
 .cm-s-default .cm-string,
+.cm-s-default .cm-number,
 .cm-s-default .cm-atom {
     color: var(--code-token-attribute-value);
 }
