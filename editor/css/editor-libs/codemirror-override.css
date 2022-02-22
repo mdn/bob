@@ -5,35 +5,35 @@
 .cm-s-default,
 .cm-s-default .cm-operator,
 .cm-s-default .cm-variable {
-  color: var(--code-default);
+  color: var(--code-token-default);
 }
 
 .cm-s-default .cm-tag.cm-bracket  {
-  color: var(--code-punctuation);
+  color: var(--code-token-punctuation);
 }
 .cm-s-default .cm-comment {
-    color: var(--code-comment);
+    color: var(--code-token-comment);
 }
 
 .cm-s-default .cm-keyword,
 .cm-s-default .cm-tag {
-    color: var(--code-tag);
+    color: var(--code-token-tag);
 }
 
 .cm-s-default .cm-def,
 .cm-s-default .cm-attribute {
-  color: var(--code-attribute-name);
+  color: var(--code-token-attribute-name);
 }
 
 .cm-s-default .cm-string,
 .cm-s-default .cm-atom {
-    color: var(--code-attribute-value);
+    color: var(--code-token-attribute-value);
 }
 
 .cm-s-default .cm-string2 {
-    color: var(--code-selector);
+    color: var(--code-token-selector);
 }
 
 .cm-s-default .cm-property {
-    color: var(--code-attribute-name);
+    color: var(--code-token-attribute-name);
 }
