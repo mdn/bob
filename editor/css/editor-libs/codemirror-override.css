@@ -3,6 +3,7 @@
 }
 
 .cm-s-default,
+.cm-s-default .cm-def,
 .cm-s-default .cm-operator,
 .cm-s-default .cm-variable {
   color: var(--code-token-default);
@@ -20,7 +21,6 @@
     color: var(--code-token-tag);
 }
 
-.cm-s-default .cm-def,
 .cm-s-default .cm-attribute {
   color: var(--code-token-attribute-name);
 }
@@ -31,7 +31,7 @@
     color: var(--code-token-attribute-value);
 }
 
-.cm-s-default .cm-string2 {
+.cm-s-default .cm-string-2 {
     color: var(--code-token-selector);
 }
 
