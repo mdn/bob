@@ -1,5 +1,5 @@
 .example-choice-list {
-    padding: 0;
+  padding: 0;
 }
 
 .editor-wrapper {
@@ -17,10 +17,10 @@
 
 .example-choice-list.live,
 .example-choice-list.large.live {
-    padding: 1rem;
-    text-align: right;
-    overflow: auto;
-    border-bottom: 1px solid var(--border-primary);
+  padding: 1rem;
+  text-align: right;
+  overflow: auto;
+  border-bottom: 1px solid var(--border-primary);
 }
 
 @media screen and (min-width: 590px) {
@@ -33,131 +33,151 @@
 }
 
 .example-choice-list.live {
-    height: 324px;
-    max-height: 324px;
+  height: 324px;
+  max-height: 324px;
 }
 
 .example-choice-list,
 .example-choice-list.large {
-    float: none;
-    width: auto;
+  float: none;
+  width: auto;
 }
 
 .output {
-    height: 300px;
-    overflow: hidden;
-    position: relative;
-    background-color: var(--background-primary);
-    overflow: hidden;
-    padding: 1em;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--background-primary);
+  overflow: hidden;
+  padding: 1em;
 }
 
 .output section {
-    height: 100%;
-    text-align: center;
+  height: 100%;
+  text-align: center;
 }
 
 .live .example-choice {
-    position: relative;
-    z-index: 1;
-    display: block;
-    padding: 0 1rem;
-    margin: .2em 0;
-    width: 100%;
-    border: 1px solid var(--border-primary);
-    border-radius: var(--elem-radius);
-    cursor: pointer;
-    transition: background-color .2s ease-out, border .2s ease-out;
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding: 0 1rem;
+  margin: 0.2em 0;
+  width: 100%;
+  border: 1px solid var(--border-primary);
+  border-radius: var(--elem-radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease-out, border 0.2s ease-out;
 }
 
 .live .example-choice {
-    background-color: var(--background-secondary);
+  background-color: var(--background-secondary);
 }
 
 .live .example-choice code {
-    padding: 10px 0;
+  padding: 10px 0;
 }
 
 .example-choice-list .example-choice:first-child {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .example-choice:hover {
-    border-color: #666;
-    border-left-color: #666;
+  border-color: #666;
+  border-left-color: #666;
 }
 
 .example-choice:hover .copy {
-    display: block;
+  display: block;
 }
 
+.live .example-choice:before,
+.live .example-choice .example-choice-button {
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  opacity: 0;
+  transition: all 0.2s ease-out;
+  transform: translateY(-50%);
+  border-left: 4px solid var(--field-focus-border);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
 .live .example-choice:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -10px;
-    z-index: 1;
-    opacity: 0;
-    transition: all .2s ease-out;
-    transform: translateY(-50%);
-    border-left: 4px solid var(--field-focus-border);
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
+  content: "";
+  opacity: 0;
+  transition: all 0.2s ease-out;
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  z-index: 1;
+}
+.live .example-choice .example-choice-button {
+  background-color: transparent;
+  border-left-color: #666;
+  outline-offset: 2px;
+  border-right: 0;
+  padding: 0;
+  right: -1.5em;
+}
+.live .example-choice .example-choice-button:focus {
+  opacity: 1;
 }
 
 @media screen and (min-width: 590px) {
   .example-choice.selected:before {
-      opacity: 1;
-      right: -1rem;
+    opacity: 1;
+    right: -1rem;
   }
 }
 
 .example-choice.selected {
-    border-color: var(--field-focus-border);
-    box-shadow: var(--focus-01);
-    transition: height .5s;
-    cursor: text;
+  border-color: var(--field-focus-border);
+  box-shadow: var(--focus-01);
+  transition: height 0.5s;
+  cursor: text;
 }
 
 .example-choice.invalid:before {
-    right: -1.8em;
-    background: transparent url('../media/warning.svg') 0 0 no-repeat;
-    background-size: 20px;
-    border: none;
-    width: 20px;
-    height: 20px;
+  right: -1.8em;
+  background: transparent url("../media/warning.svg") 0 0 no-repeat;
+  background-size: 20px;
+  border: none;
+  width: 20px;
+  height: 20px;
 }
 
 .example-choice.invalid {
-    border-color: #ffb800;
-    border-left-color: #ffb800;
+  border-color: #ffb800;
+  border-left-color: #ffb800;
 }
 
 .example-choice > code {
-    display: inline-block;
-    width: 90%;
+  display: inline-block;
+  width: 90%;
 }
 
 .copy {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    background: var(--background-tertiary)  50% 50% no-repeat;
-    border-radius: var(--elem-radius);
-    padding: 6px 12px;
-    border: 1px solid var(--border-primary);
-    width: 30px;
-    height: 30px;
-    vertical-align: middle;
-    cursor: pointer;
-    display: none;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: var(--background-tertiary) 50% 50% no-repeat;
+  border-radius: var(--elem-radius);
+  padding: 6px 12px;
+  border: 1px solid var(--border-primary);
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  cursor: pointer;
+  display: none;
 }
 
 .copy:after {
-  -webkit-mask-image: url('../media/clippy.svg');
+  -webkit-mask-image: url("../media/clippy.svg");
   -webkit-mask-size: contain;
   -webkit-mask-position: center;
-  mask-image: url('../media/clippy.svg');
+  mask-image: url("../media/clippy.svg");
   mask-size: contain;
   mask-position: center;
   position: absolute;
@@ -174,15 +194,15 @@
 }
 
 .transition-all {
-    transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 [contenteditable]:focus {
-    outline: 0 solid transparent;
+  outline: 0 solid transparent;
 }
 
 .example-choice.selected:focus {
-    outline: 0 solid transparent;
+  outline: 0 solid transparent;
 }
 
 /* styling for small desktop viewports and below */
@@ -190,77 +210,77 @@
 .small-desktop-and-below .example-choice-list.live,
 .small-desktop-and-below .example-choice-list.large.live,
 .small-desktop-and-below .output {
-    float: none;
-    padding: 0;
-    width: 100%;
-    height: auto;
+  float: none;
+  padding: 0;
+  width: 100%;
+  height: auto;
 }
 
 .small-desktop-and-below .example-choice-list.live {
-    max-height: 225px;
-    overflow: auto;
+  max-height: 225px;
+  overflow: auto;
 }
 
 .small-desktop-and-below .output,
 .small-desktop-and-below .output.large {
-    position: relative;
-    height: 225px;
+  position: relative;
+  height: 225px;
 }
 
 .small-desktop-and-below .example-choice-list {
-    padding-right: .7em;
-    margin-bottom: 1em;
+  padding-right: 0.7em;
+  margin-bottom: 1em;
 }
 
 .small-desktop-and-below .example-choice:before {
-    content: none;
+  content: none;
 }
 
 .small-desktop-and-below .live .example-choice {
-    min-height: 40px;
+  min-height: 40px;
 }
 
 .small-desktop-and-below .copy {
-    display: none;
+  display: none;
 }
 
 @supports (display: flex) {
-    .example-choice-list.live {
-        display: flex;
-        flex-direction: column;
-    }
+  .example-choice-list.live {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .live .example-choice {
-        display: flex;
-        align-items: center;
-        flex-grow: 1;
-    }
+  .live .example-choice {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
 
-    .live .example-choice pre {
-        flex-grow: 1;
-    }
+  .live .example-choice pre {
+    flex-grow: 1;
+  }
 
-    .output section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+  .output section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .output section.flex-column {
-        flex-direction: column;
-        align-items: initial;
-    }
+  .output section.flex-column {
+    flex-direction: column;
+    align-items: initial;
+  }
 
-    /* some examples does not work with a flex display on the container */
-    .output section.display-block {
-        display: block;
-    }
+  /* some examples does not work with a flex display on the container */
+  .output section.display-block {
+    display: block;
+  }
 
-    .output section img {
-        flex-grow: 0;
-    }
+  .output section img {
+    flex-grow: 0;
+  }
 
-    .output section.hidden {
-        display: none;
-    }
+  .output section.hidden {
+    display: none;
+  }
 }
