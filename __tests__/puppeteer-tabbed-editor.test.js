@@ -13,7 +13,7 @@ describe("Tabbed Editor", () => {
         "</style>" +
         "<style>" +
         "address { font-variant-caps: small-caps;}a { font-variant: normal;}" +
-        '</style><div class="output" style="height: 62%;">' +
+        '</style><div class="output">' +
         "<address> James Rockford<br> 2354 Pacific Coast Highway<br> " +
         "California<br> USA<br> +311-555-2368<br> Email: " +
         '<a href="mailto:j.rockford@example.com">j.rockford@example.com</a><br>' +
