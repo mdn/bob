@@ -44,24 +44,6 @@
   }
 
   /**
-   * Sets the height of the output container inside the shadow dom
-   * based on the class present on the editor container
-   * @param {Object} outputContainer - the output container inside the shadow dom
-   */
-  function setOutputHeight(outputContainer) {
-    // styling for the polyfilled shadow is different
-    if (typeof ShadyDOM !== "undefined" && ShadyDOM.inUse) {
-      outputContainer.style.height = "92%";
-    } else if (editorContainer.classList.contains("tabbed-shorter")) {
-      outputContainer.style.height = "62%";
-    } else if (editorContainer.classList.contains("tabbed-standard")) {
-      outputContainer.style.height = "67%";
-    } else if (editorContainer.classList.contains("tabbed-taller")) {
-      outputContainer.style.height = "76%";
-    }
-  }
-
-  /**
    * Set or update the CSS and HTML in the output pane.
    * @param {Object} content - The content of the template element.
    */
@@ -89,7 +71,6 @@
     }
 
     shadow.appendChild(document.importNode(content, true));
-    setOutputHeight(shadow.querySelector("div"));
     mceUtils.openLinksInNewTab(shadow.querySelectorAll('a[href^="http"]'));
     mceUtils.scrollToAnchors(shadow, shadow.querySelectorAll('a[href^="#"]'));
   }

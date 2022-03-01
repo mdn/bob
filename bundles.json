@@ -39,6 +39,7 @@
         "cssEditor": {
             "javascript": ["../editor/js/editable-css-bundle.js"],
             "css": [
+                "../editor/css/editor-libs/ui-fonts.css",
                 "../editor/css/editor-libs/common.css",
                 "../editor/css/editor-libs/prism-override.css",
                 "../editor/css/editable-css.css"
@@ -48,16 +49,18 @@
         "jsEditor": {
             "javascript": ["../editor/js/editable-js-bundle.js"],
             "css": [
+                "../editor/css/editor-libs/ui-fonts.css",
                 "../editor/css/editor-libs/common.css",
-                "../editor/css/editable-js.css"
+                "../editor/css/editable-js-and-wat.css"
             ],
             "destFileName": "editor-js"
         },
         "watEditor": {
             "javascript": ["../editor/js/editable-wat-bundle.js"],
             "css": [
+                "../editor/css/editor-libs/ui-fonts.css",
                 "../editor/css/editor-libs/common.css",
-                "../editor/css/editable-wat.css",
+                "../editor/css/editable-js-and-wat.css",
                 "../editor/css/editor-libs/tabby.css"
             ],
             "destFileName": "editor-wat"
@@ -68,6 +71,7 @@
                 "../editor/js/editor-bundle.js"
             ],
             "css": [
+                "../editor/css/editor-libs/ui-fonts.css",
                 "../editor/css/editor-libs/common.css",
                 "../editor/css/editor-libs/shadow-fonts.css",
                 "../editor/css/editor-libs/tabby.css",

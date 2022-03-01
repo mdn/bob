@@ -1,27 +1,40 @@
 .CodeMirror-linenumber {
-    color: #333;
+    color: var(--text-secondary);
 }
 
+.cm-s-default,
+.cm-s-default .cm-def,
+.cm-s-default .cm-operator,
+.cm-s-default .cm-variable {
+  color: var(--code-token-default);
+}
+
+.cm-s-default .cm-tag.cm-bracket  {
+  color: var(--code-token-punctuation);
+}
 .cm-s-default .cm-comment {
-    color: #6b7884;
+    color: var(--code-token-comment);
 }
 
-.cm-s-default .cm-keyword {
-    color: #1954b8;
+.cm-s-default .cm-keyword,
+.cm-s-default .cm-tag {
+    color: var(--code-token-tag);
 }
 
-.cm-s-default .cm-def {
-    color: #333;
+.cm-s-default .cm-attribute {
+  color: var(--code-token-attribute-name);
 }
 
-.cm-s-default .cm-string {
-    color: #080;
+.cm-s-default .cm-string,
+.cm-s-default .cm-number,
+.cm-s-default .cm-atom {
+    color: var(--code-token-attribute-value);
 }
 
-.cm-s-default .cm-string2 {
-    color: #c95200;
+.cm-s-default .cm-string-2 {
+    color: var(--code-token-selector);
 }
 
 .cm-s-default .cm-property {
-    color: #ac222c;
+    color: var(--code-token-attribute-name);
 }

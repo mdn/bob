@@ -1,0 +1,108 @@
+.editor,
+.output {
+    font-size: 14px;
+}
+
+.editor {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.output {
+    position: relative;
+    display: inline-block;
+    background-color: var(--background-secondary);
+    margin: 0;
+    padding: .8em;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--elem-radius);
+    width: 100%;
+    height: 120px;
+    font: var(--type-code-regular);
+}
+
+.output code {
+    width: 100%;
+    height: 100px;
+    white-space: pre;
+    vertical-align: middle;
+    word-break: break-word;
+    overflow-y: auto;
+}
+
+.buttons-container {
+    display: inline-block;
+    width: 100px;
+    vertical-align: top;
+}
+
+
+.button {
+    display: block;
+    background-color: var(--button-secondary-default);
+    color: var(--text-primary);
+    padding: .5em;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--elem-radius);
+    width: 100px;
+    font: var(--type-emphasis-m);
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: var(--button-secondary-hover);
+}
+
+.js .editor {
+    min-height: 280px;
+}
+
+.CodeMirror {
+    height: 280px;
+}
+
+.js .editor.taller,
+.js .editor.taller .CodeMirror {
+    height: 490px;
+}
+
+.js .editor.shorter,
+.js .editor.shorter .CodeMirror {
+    height: 200px;
+    min-height: 200px;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    align-self: flex-start;
+    width: 100%;
+    padding-bottom: 0.5rem;
+}
+
+.output-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.output {
+    display: flex;
+    flex: 10 150px;
+    align-items: center;
+}
+
+@media screen and (min-width: 590px) {
+  .output-container {
+    flex-direction: row;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    width: auto;
+    padding-right: 0.5rem;
+  }
+
+
+}

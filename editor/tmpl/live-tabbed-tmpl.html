@@ -12,12 +12,12 @@
 
 <body>
     <header class="output-header hidden">
-        <h4>%title%</h4>
+        <h4 class="output-heading">%title%</h4>
         <button id="reset" class="reset" type="button">Reset</button>
     </header>
     <div id="editor-container" class="editor-container %editor-height%" %active-tabs%>
         <section id="tab-container" class="tabs">
-            <div id="tablist" role="tablist">
+            <div class="tab-list" id="tablist" role="tablist">
                 <button role="tab" aria-selected="false" aria-controls="html-panel"
                     id="html" class="hidden">
                     HTML
@@ -50,9 +50,9 @@
                 </div>
             </section>
         </section>
-        <h4 class="output-label">Output</h4>
         <div id="output" class="shadow-container">
-            <shadow-output></shadow-output>
+          <h4 class="output-label">Output</h4>
+          <shadow-output></shadow-output>
         </div>
     </div>
 
@@ -61,7 +61,7 @@
         <button type="button" id="clear" class="clear">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 877.714 1024"
                 class="icon-clear">
-                <path class="path0" stroke="inherit"
+                <path class="path0" fill="currentColor"
                     d="M749.714 510.286c0-62.286-18.286-120-49.714-168.571L269.143 772.001c49.143 32 107.429 50.857 169.714 50.857 171.429 0 310.857-140 310.857-312.571zM178.857 681.143l431.429-430.857c-49.143-33.143-108-52-171.429-52-171.429 0-310.857 140-310.857 312 0 63.429 18.857 121.714 50.857 170.857zm698.857-170.857c0 243.429-196.571 440.571-438.857 440.571S0 753.714 0 510.286c0-242.857 196.571-440 438.857-440s438.857 197.143 438.857 440z" />
             </svg>
             clear console</button>

@@ -45,6 +45,8 @@ function addJSErrorListener() {
   };
 }
 
+
+
 /**
  * Adds postMessage listener for communication from the parent page.
  * Currently only used by the CSS editor.
@@ -70,12 +72,36 @@ function addPostMessageListener() {
         }
       }
 
+      // if a theme should be applied, remove all theme classes from the body,
+      // then add the correct one. This is a little more verbose than it needs
+      // to be to allow for future themes to be added without a change here.
       if (event.data.theme !== undefined) {
-        document.querySelector("body").classList.add(event.data.theme);
+        var body = document.querySelector("body");
+        for (let i = body.classList.length - 1; i >= 0; i--) {
+          const className = body.classList[i];
+          if (className.startsWith('theme-')) {
+            body.classList.remove(className);
+          }
+        }
+        body.classList.add('theme-' + event.data.theme);
+        localStorage.setItem('theme', event.data.theme)
       }
     },
     false
   );
+}
+
+document.addEventListener("onreadystatechange", function(){
+  const theme = localStorage.getItem('theme')
+  if (theme !== null){
+     document.querySelector("body").classList.add("theme-"+theme);
+  }
+});
+
+function sendOwnHeight() {
+  if (parent){
+    parent.postMessage({url: window.location.href, height: document.body.scrollHeight}, '*');
+  }
 }
 
 /**
@@ -153,6 +179,13 @@ module.exports = {
 
     addJSErrorListener();
     addPostMessageListener();
+
+
+    if (document.readyState != 'loading'){
+      sendOwnHeight();
+    } else {
+      document.addEventListener('DOMContentLoaded', sendOwnHeight);
+    }
 
     // only bind events if the `exampleChoiceList` container exist
     if (exampleChoiceList) {

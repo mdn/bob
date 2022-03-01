@@ -1,60 +1,45 @@
 .editor-container {
-    display: inline-block;
-    vertical-align: top;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
 }
 
-.CodeMirror {
-    border: 3px solid #3f87a6;
-    border-right: none;
-    border-left: 5px solid #3f87a6;
-}
-
 /* sizing utility classes */
-.tabbed-shorter {
-    height: 300px;
-}
-
 .tabbed-shorter .CodeMirror {
-    height: 240px;
-}
-
-.tabbed-standard {
-    height: 370px;
+    height: 252px;
 }
 
 .tabbed-standard .CodeMirror {
-    height: 300px;
-}
-
-.tabbed-taller {
-    height: 580px;
+    height: 322px;
 }
 
 .tabbed-taller .CodeMirror {
-    height: 500px;
+    height: 532px;
 }
 
+.tabbed-taller .CodeMirror,
+.tabbed-standard .CodeMirror,
+.tabbed-shorter .CodeMirror {
+  border-right: 0 none;
+  border-left: 0 none;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+
 .shadow-container {
-    width: 40%;
+  position: relative;
 }
 
 /* For non shadow-dom supporting browsers */
 .output.style-scope {
-    background-color: #fff;
-    border: 15px solid #eee;
-    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, .3),
-        inset -5px -5px 10px rgba(0, 0, 0, .2);
+    background-color: var(--background-primary);
+    border-left: 1px solid var(--border-primary);
     font-size: .9rem;
     height: 342px;
     line-height: 1.5;
-    margin: 24px 1em 0 0;
+    margin: 0;
     overflow: scroll;
-    padding: 30px;
-}
-
-.editor-container {
-    display: flex;
+    padding: 1rem;
 }
 
 .tabs {
@@ -62,99 +47,69 @@
     flex: none;
 }
 
-.tabs {
-    width: 60%;
-}
-
 .output-label,
 .console-label {
     position: absolute;
-    background-color: #333;
-    color: #83d0f2;
-    top: 92px;
-    right: 29px;
+    background-color: var(--background-secondary);
+    color: var(--text-secondary);
+    border-radius: 0 0 0 var(--elem-radius);
+    top: 0;
+    right: 0;
     margin: 0;
-    padding: 3px 10px;
-    width: 70px;
-    height: 25px;
+    padding: 0.5rem 1.6rem;
     font-size: .9rem;
-    letter-spacing: .035rem;
     z-index: 2;
-}
-
-.output-header {
-    margin: 0;
-    padding: 0 0 .5em 0;
-}
-
-.output-header button {
-    float: right;
-    background-color: #53caff;
-    color: #333;
-    margin: 0 0 .5em;
-    padding: .7em .9em;
-    border: none;
-    width: 100px;
-    max-width: 150px;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 1;
-    cursor: pointer;
-    outline: 0;
-}
-
-.output-header button.reset {
-    background-color: rgba(83, 202, 255, .6);
-}
-
-.output-header button:hover,
-.output-header button:focus {
-    background-color: #333;
-    color: #fff;
+    font: var(--type-label-s);
+    text-transform: uppercase;
 }
 
 .icon-clear {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    vertical-align: bottom;
+  width: 12px;
+  height: 12px;
 }
 
 .clear {
-    background-color: rgba(83, 202, 255, .6);
-    color: #333;
-    border: 0;
-    padding: 5px 5px 8px;
-    width: 150px;
-    height: auto;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  background-color: var(--button-secondary-default);
+  color: var(--text-primary);
+  padding: .5em;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--border-primary);
+  border-radius: var(--elem-radius);
+  font: var(--type-emphasis-m);
+  cursor: pointer;
+}
+
+.clear:hover {
+  background-color: var(--button-secondary-hover);
 }
 
 .console-container {
     position: relative;
+    border-top: 1px solid var(--border-primary);
+    padding-top: 0.5rem;
 }
 
 .console-label {
-    position: initial;
-    display: inline-block;
-    padding: 5px 5px 5px 16px;
-    width: 150px;
-    height: auto;
+    position: absolute;
+    top: 3rem;
+    right: 1px;
+    border-radius: var(--elem-radius);
 }
 
 .console {
     position: relative;
-    display: inline-block;
-    background-color: #fff;
-    margin: 0;
-    padding: .8em;
-    border: 1px solid #3f87a6;
-    border-left-width: 5px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2) inset;
-    width: 99%;
     height: 200px;
+    background-color: var(--background-secondary);
+    margin: 0;
+    padding: 2rem 0.5rem 0.5rem 0.5rem;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--elem-radius);
+    width: 100%;
+    height: 200px;
+    font: var(--type-code-regular);
 }
 
 .console code {
@@ -164,4 +119,43 @@
     white-space: pre;
     word-break: break-word;
     overflow-y: auto;
+}
+
+@media screen and (min-width: 590px) {
+  .editor-container {
+    flex-direction: row;
+  }
+
+  .console {
+    padding-top: 0.5rem;
+  }
+
+
+  .tabs {
+      width: 60%;
+  }
+
+  .tabbed-shorter {
+      height: 300px;
+  }
+
+  .tabbed-standard {
+      height: 370px;
+  }
+  .tabbed-taller {
+      height: 580px;
+  }
+
+  .shadow-container {
+    width: 40%;
+    height: 100%;
+    border-left: 1px solid var(--border-primary);
+  }
+
+  .tabbed-taller .CodeMirror,
+  .tabbed-standard .CodeMirror,
+  .tabbed-shorter .CodeMirror {
+    border-bottom: 0 none;
+  }
+
 }

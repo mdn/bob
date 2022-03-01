@@ -1,107 +1,365 @@
+:root {
+  --font-fallback: BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
+  --font-body: Inter, var(--font-fallback);
+  --font-code: Consolas, "Courier New", monospace;
+  --type-body-l: 400 1rem/1.1876 var(--font-body); /* 16px/19px */
+  --type-emphasis-m: 600 0.8125rem/1.23 var(--font-body); /* 13px/16px */
+  --font-heading: var(--font-body);
+  --type-label-s: 600 0.625rem/1.2 var(--font-heading); /* 10px/12px */
+  --type-code-regular: 400 0.875rem/1.5 var(--font-code); /* 14px/21px */
+
+  --elem-radius: 0.25rem;
+  --button-height: 2rem;
+  --button-radius: var(--elem-radius);
+}
+
+:root,
+.theme-light {
+  /* Everything below here needs to be duplicated in .dark below for themeing */
+  --text-primary: #15141a;
+  --text-secondary: #5b5b66;
+  --text-inactive: #5b5b66a6;
+  --text-link: #1870f0;
+  --background-primary: #ffffff;
+  --background-secondary: #f9f9fb;
+  --background-tertiary: #fbfbfe;
+  --background-mark-yellow: rgba(232, 140, 102, 0.4);
+  --background-mark-green: rgba(107, 184, 106, 0.4);
+  --border-primary: #cfcfd8;
+  --border-secondary: #e0e0e6;
+  --button-primary-default: #15141a;
+  --button-primary-hover: #3a3944;
+  --button-primary-active: #5b5b66;
+  --button-primary-inactive: #15141a;
+  --button-secondary-default: #fbfbfe;
+  --button-secondary-hover: #e0e0e6;
+  --button-secondary-active: #e0e0e6;
+  --button-secondary-inactive: #f9f9fb;
+  --button-secondary-border-focus: #1870f0;
+  --button-secondary-border-red: #f16b8c;
+  --button-secondary-border-red-focus: #faced9;
+  --icon-primary: #5b5b66;
+  --icon-secondary: #afafba;
+  --icon-information: #1870f0;
+  --icon-warning: #d84000;
+  --icon-critical: #ba0633;
+  --icon-success: #066d05;
+  --accent-primary: #1870f0;
+  --accent-primary-engage: rgba(24, 112, 240, 0.1);
+  --accent-secondary: #1870f0;
+  --accent-tertiary: rgba(24, 112, 240, 0.1);
+  --shadow-01: 0px 1px 2px rgba(43, 42, 51, 0.05);
+  --shadow-02: 0px 1px 6px rgba(43, 42, 51, 0.1);
+  --focus-01: 0px 0px 0px 3px rgba(0, 144, 237, 0.4);
+  --field-focus-border: #1870f0;
+  --code-token-tag: #135ac0;
+  --code-token-punctuation: #5b5b66;
+  --code-token-attribute-name: #ba0633;
+  --code-token-attribute-value: #066d05;
+  --code-token-comment: #5b5b66;
+  --code-token-default: #15141a;
+  --code-token-selector: #8033c6;
+  --code-background-inline: #f0f0f4;
+  --code-background-block: rgba(240, 240, 244, 0.5);
+}
+
+/* prefers light theme, or default */
+.category-html {
+  --accent-primary: #e80840;
+}
+.category-css {
+  --accent-primary: #1870f0;
+}
+.category-js {
+  --accent-primary: #d84000;
+}
+.category-http {
+  --accent-primary: #088806;
+}
+.category-apis {
+  --accent-primary: #a040f8;
+}
+
+.theme-dark {
+  --text-primary: #fbfbfe;
+  --text-secondary: #cfcfd8;
+  --text-inactive: #cfcfd8a6;
+  --text-link: #74a9f6;
+  --background-primary: #15141a;
+  --background-secondary: #23222b;
+  --background-tertiary: #2b2a33;
+  --background-mark-yellow: rgba(232, 140, 102, 0.4);
+  --border-primary: #52525e;
+  --border-secondary: #3a3944;
+  --button-primary-default: #fbfbfe;
+  --button-primary-hover: #cfcfd8;
+  --button-primary-active: #9f9fad;
+  --button-primary-inactive: #fbfbfe;
+  --button-secondary-default: #2b2a33;
+  --button-secondary-hover: #52525e;
+  --button-secondary-active: #5b5b66;
+  --button-secondary-inactive: #2b2a33;
+  --icon-primary: #fbfbfe;
+  --icon-secondary: #afafba;
+  --icon-information: #468df3;
+  --icon-warning: #e06633;
+  --icon-critical: #ed3966;
+  --icon-success: #39a038;
+  --accent-primary: #468df3;
+  --accent-primary-engage: rgba(70, 141, 243, 0.1);
+  --accent-secondary: #468df3;
+  --shadow-01: 0px 1px 2px rgba(251, 251, 254, 0.2);
+  --shadow-02: 0px 1px 6px rgba(251, 251, 254, 0.2);
+  --focus-01: 0px 0px 0px 3px rgba(251, 251, 254, 0.5);
+  --field-focus-border: #fbfbfe;
+  --code-token-tag: #74a9f6;
+  --code-token-punctuation: #8f8f9d;
+  --code-token-attribute-name: #ed3966;
+  --code-token-attribute-value: #39a038;
+  --code-token-comment: #8f8f9d;
+  --code-token-default: #fbfbfe;
+  --code-token-selector: #b366f9;
+  --code-background-inline: #3a3944;
+  --code-background-block: rgba(58, 57, 68, 0.5);
+}
+
+/* This is duplicated from the .dark class above. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #fbfbfe;
+    --text-secondary: #cfcfd8;
+    --text-inactive: #cfcfd8a6;
+    --text-link: #74a9f6;
+    --background-primary: #15141a;
+    --background-secondary: #23222b;
+    --background-tertiary: #2b2a33;
+    --background-mark-yellow: rgba(232, 140, 102, 0.4);
+    --border-primary: #52525e;
+    --border-secondary: #3a3944;
+    --button-primary-default: #fbfbfe;
+    --button-primary-hover: #cfcfd8;
+    --button-primary-active: #9f9fad;
+    --button-primary-inactive: #fbfbfe;
+    --button-secondary-default: #2b2a33;
+    --button-secondary-hover: #52525e;
+    --button-secondary-active: #5b5b66;
+    --button-secondary-inactive: #2b2a33;
+    --icon-primary: #fbfbfe;
+    --icon-secondary: #afafba;
+    --icon-information: #468df3;
+    --icon-warning: #e06633;
+    --icon-critical: #ed3966;
+    --icon-success: #39a038;
+    --accent-primary: #468df3;
+    --accent-primary-engage: rgba(70, 141, 243, 0.1);
+    --accent-secondary: #468df3;
+    --shadow-01: 0px 1px 2px rgba(251, 251, 254, 0.2);
+    --shadow-02: 0px 1px 6px rgba(251, 251, 254, 0.2);
+    --focus-01: 0px 0px 0px 3px rgba(251, 251, 254, 0.5);
+    --field-focus-border: #fbfbfe;
+    --code-token-tag: #74a9f6;
+    --code-token-punctuation: #8f8f9d;
+    --code-token-attribute-name: #ed3966;
+    --code-token-attribute-value: #39a038;
+    --code-token-comment: #8f8f9d;
+    --code-token-default: #fbfbfe;
+    --code-token-selector: #b366f9;
+    --code-background-inline: #3a3944;
+    --code-background-block: rgba(58, 57, 68, 0.5);
+  }
+
+  .category-html {
+    --accent-primary: #ed3966;
+  }
+  .category-css {
+    --accent-primary: #468df3;
+  }
+  .category-js {
+    --accent-primary: #e06633;
+  }
+  .category-http {
+    --accent-primary: #39a038;
+  }
+  .category-apis {
+    --accent-primary: #b366f9;
+  }
+}
+
+.theme-light.category-html {
+  --accent-primary: #e80840;
+}
+.theme-light.category-css {
+  --accent-primary: #1870f0;
+}
+.theme-light.category-js {
+  --accent-primary: #d84000;
+}
+.theme-light.category-http {
+  --accent-primary: #088806;
+}
+.theme-light.category-apis {
+  --accent-primary: #a040f8;
+}
+
+.theme-dark.category-html {
+  --accent-primary: #ed3966;
+}
+.theme-dark.category-css {
+  --accent-primary: #468df3;
+}
+.theme-dark.category-js {
+  --accent-primary: #e06633;
+}
+.theme-dark.category-http {
+  --accent-primary: #39a038;
+}
+.theme-dark.category-apis {
+  --accent-primary: #b366f9;
+}
+
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    color: #333;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font: 16px/1.5 sans-serif;
+  color: var(--text-primary);
+  background-color: var(--background-primary);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font: var(--type-body-l);
 }
 
-header h4:before {
-    display: inline-block;
-    content: '';
-    background: transparent url('../../media/dino.svg') 0 0 no-repeat;
-    margin-right: .6em;
-    width: 45px;
-    height: 45px;
-    vertical-align: middle;
+.output-header {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-primary);
 }
 
-header h4 {
-    display: inline-block;
-    margin: 0;
-    font-size: .9rem;
-    font-weight: bold;
+.output-header.no-border {
+  border-bottom: 0 none;
+}
+
+.output-header.full-border {
+  border: 1px solid var(--border-primary);
+  border-width: 1px 1px 0 1px;
+}
+
+.output-heading {
+  margin: 0;
+  font: var(--type-body-l);
+}
+
+.reset {
+  background-color: transparent;
+  color: var(--text-primary);
+  font: var(--type-label-s);
+  margin: 0;
+  padding: 0.7em 0.9em;
+  height: var(--button-height);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border: none;
+  max-width: 100px;
+  cursor: pointer;
+  border-radius: var(--button-radius);
+}
+
+.reset:hover {
+  background-color: var(--button-secondary-hover);
+}
+
+.CodeMirror {
+  border: 1px solid var(--border-primary);
+  height: 280px;
+  background: var(--background-primary);
+}
+
+.CodeMirror-gutters {
+  background: var(--background-secondary);
+  border-right: 1px solid var(--border-primary);
 }
 
 .user-message {
-    display: none;
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    background-color: #333;
-    color: #fff;
-    padding: .5em;
-    border-radius: 4px;
-    font-size: 14px;
-    opacity: 1;
-    transition: opacity .5s;
-    z-index: 4;
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  background-color: var(--text-secondary);
+  color: var(--background-primary);
+  padding: 0.5rem;
+  border-radius: var(--elem-radius);
+  font-size: 14px;
+  opacity: 1;
+  transition: opacity 0.5s;
+  z-index: 4;
 }
 
 .fade-in {
-    animation: fadein .5s;
+  animation: fadein 0.5s;
 }
 
 .fade-out {
-    animation: fadeout .5s;
+  animation: fadeout 0.5s;
 }
 
 .hide {
-    opacity: 0;
+  opacity: 0;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .show {
-    display: block;
+  display: block;
 }
 
 /* Hide visually, but not to screen readers */
 .visually-hidden {
-    position: absolute !important; /* stylelint-disable-line */
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    padding: 0;
-    border: 0;
+  position: absolute !important; /* stylelint-disable-line */
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  padding: 0;
+  border: 0;
 }
 
 /* mobile ends */
 @media screen and (min-width: 47.9375em) {
-    header h4 {
-        font-size: 1.1rem;
-    }
+  header h4 {
+    font-size: 1.1rem;
+  }
 }
 
 /* tablet ends */
 @media screen and (min-width: 63.9375em) {
-    header h4 {
-        font-size: 1.4rem;
-    }
+  header h4 {
+    font-size: 1.4rem;
+  }
 }
 
 @keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeout {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
