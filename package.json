@@ -1,6 +1,6 @@
 {
     "name": "mdn-bob",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "description": "Builder of Bits aka The MDN Web Docs interactive examples, example builder",
     "author": "Mozilla",
     "license": "MIT",
