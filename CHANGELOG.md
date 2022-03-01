@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.1.1](https://github.com/mdn/bob/compare/v2.1.0...v2.1.1) (2022-03-01)
+
+
+### Bug Fixes
+
+* release - Merge redesign changes into main ([#711](https://github.com/mdn/bob/issues/711)) ([28c31ec](https://github.com/mdn/bob/commit/28c31ec392efe83a030115515154c51095bac56f))
+
 ## [2.1.0](https://github.com/mdn/bob/compare/v2.0.1...v2.1.0) (2022-01-28)
 
 
