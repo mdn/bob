@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.1.5](https://github.com/mdn/bob/compare/v2.1.4...v2.1.5) (2022-03-04)
+
+
+### Bug Fixes
+
+* editor style cursor for light and dark modes ([#726](https://github.com/mdn/bob/issues/726)) ([3af8794](https://github.com/mdn/bob/commit/3af879435cabba189108f4d83f9f2a45a1994a0e))
+
 ### [2.1.4](https://github.com/mdn/bob/compare/v2.1.3...v2.1.4) (2022-03-04)
 
 
