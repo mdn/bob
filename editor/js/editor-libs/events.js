@@ -55,7 +55,7 @@ function addPostMessageListener() {
   );
 }
 
-document.addEventListener("readystatechange", function () {
+document.addEventListener("DOMContentLoaded", function () {
   const theme = localStorage.getItem("theme");
   if (theme !== null) {
     document.querySelector("body").classList.add("theme-" + theme);
