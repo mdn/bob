@@ -285,6 +285,11 @@ body {
   border-right: 1px solid var(--border-primary);
 }
 
+.CodeMirror-cursor {
+  border-left: 1px solid white;
+  border-right: 1px solid black;
+}
+
 .user-message {
   display: none;
   position: absolute;
