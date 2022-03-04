@@ -220,7 +220,7 @@
     await wabtInitialized;
     var encoder = new TextEncoder();
     let watBuffer = encoder.encode(wat);
-    let module = wabt.parseWat("", watBuffer)
+    let module = wabt.parseWat("", watBuffer);
     module.resolveNames();
     module.validate();
     const binary = module.toBinary({ log: true, write_debug_names: true });
@@ -238,17 +238,20 @@
   async function updateOutput(wat, js) {
     output.classList.add("fade-in");
 
-    let watBlob = await compileWat(wat);
-
-    let watUrl = URL.createObjectURL(watBlob);
-
-    const exampleCode = js.replaceAll("{%wasm-url%}", watUrl);
-
     try {
-      // Create a new Function from the code, and immediately execute it.
-      new Function(exampleCode)();
-    } catch (event) {
-      output.textContent = "Error: " + event.message;
+      let watBlob = await compileWat(wat);
+
+      let watUrl = URL.createObjectURL(watBlob);
+
+      const exampleCode = js.replaceAll("{%wasm-url%}", watUrl);
+
+      // Create an new async function from the code, and immediately execute it.
+      // using an async function since WebAssembly.instantiate is async and
+      // we need to await in order to capture errors
+      let AsyncFunction = Object.getPrototypeOf(async function(){}).constructor;
+      await new AsyncFunction(exampleCode)();
+    } catch (error) {
+      console.error(error);
     }
 
     output.addEventListener("animationend", function () {
