@@ -27,27 +27,6 @@ function addCSSEditorEventListeners(exampleChoiceList) {
 }
 
 /**
- * Adds listener for JavaScript errors, and logs them to GA
- */
-function addJSErrorListener() {
-  "use strict";
-  /**
-   * Catches JavaScript errors from the editor that bubble up to the
-   * window and passes them on to GA
-   */
-  window.onerror = function (msg, url, lineNo, columnNo, error) {
-    var errorDetails = [
-      "URL: " + url,
-      "Line: " + lineNo,
-      "Column: " + columnNo,
-      "Error object: " + JSON.stringify(error),
-    ].join(" - ");
-  };
-}
-
-
-
-/**
  * Adds postMessage listener for communication from the parent page.
  * Currently only used by the CSS editor.
  */
@@ -57,21 +36,6 @@ function addPostMessageListener() {
   window.addEventListener(
     "message",
     function (event) {
-      // Note that we are not checking the origin property to verify
-      // the source of the message. This is because we can't know if
-      // we're on developer.mozilla.org or wiki.developer.mozilla.org.
-      // Since we're just setting a CSS style based on the message
-      // there is no security risk.
-      if (event.data.smallViewport !== undefined) {
-        var editorWrapper = document.querySelector(".editor-wrapper");
-
-        if (event.data.smallViewport) {
-          editorWrapper.classList.add("small-desktop-and-below");
-        } else {
-          editorWrapper.classList.remove("small-desktop-and-below");
-        }
-      }
-
       // if a theme should be applied, remove all theme classes from the body,
       // then add the correct one. This is a little more verbose than it needs
       // to be to allow for future themes to be added without a change here.
@@ -79,28 +43,31 @@ function addPostMessageListener() {
         var body = document.querySelector("body");
         for (let i = body.classList.length - 1; i >= 0; i--) {
           const className = body.classList[i];
-          if (className.startsWith('theme-')) {
+          if (className.startsWith("theme-")) {
             body.classList.remove(className);
           }
         }
-        body.classList.add('theme-' + event.data.theme);
-        localStorage.setItem('theme', event.data.theme)
+        body.classList.add("theme-" + event.data.theme);
+        localStorage.setItem("theme", event.data.theme);
       }
     },
     false
   );
 }
 
-document.addEventListener("onreadystatechange", function(){
-  const theme = localStorage.getItem('theme')
-  if (theme !== null){
-     document.querySelector("body").classList.add("theme-"+theme);
+document.addEventListener("readystatechange", function () {
+  const theme = localStorage.getItem("theme");
+  if (theme !== null) {
+    document.querySelector("body").classList.add("theme-" + theme);
   }
 });
 
 function sendOwnHeight() {
-  if (parent){
-    parent.postMessage({url: window.location.href, height: document.body.scrollHeight}, '*');
+  if (parent) {
+    parent.postMessage(
+      { url: window.location.href, height: document.body.scrollHeight },
+      "*"
+    );
   }
 }
 
@@ -177,14 +144,12 @@ module.exports = {
     "use strict";
     var exampleChoiceList = document.getElementById("example-choice-list");
 
-    addJSErrorListener();
     addPostMessageListener();
 
-
-    if (document.readyState != 'loading'){
+    if (document.readyState != "loading") {
       sendOwnHeight();
     } else {
-      document.addEventListener('DOMContentLoaded', sendOwnHeight);
+      document.addEventListener("DOMContentLoaded", sendOwnHeight);
     }
 
     // only bind events if the `exampleChoiceList` container exist
