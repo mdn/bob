@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.1.4](https://github.com/mdn/bob/compare/v2.1.3...v2.1.4) (2022-03-04)
+
+
+### Bug Fixes
+
+* editor use domcontentloaded ([#723](https://github.com/mdn/bob/issues/723)) ([d73801c](https://github.com/mdn/bob/commit/d73801c5820d2d15200802f4c986850b79f30523))
+
 ### [2.1.3](https://github.com/mdn/bob/compare/v2.1.2...v2.1.3) (2022-03-01)
 
 
