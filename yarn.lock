@@ -5982,9 +5982,9 @@ w3c-xmlserializer@^2.0.0:
     xml-name-validator "^3.0.0"
 
 wabt@^1.0.23:
-  version "1.0.27"
-  resolved "https://registry.yarnpkg.com/wabt/-/wabt-1.0.27.tgz#1ceaf3249d6cd00681f3bec42fdfc86dadcb05a9"
-  integrity sha512-epKSgf60WIwTItioDQFsjixtpTXUxPOlUIXiKA7b/VYQS1OynXftATYULmtBClAbBYdXkfmCIW9JDOIbuk2NrA==
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/wabt/-/wabt-1.0.28.tgz#da7c8ce137a855837ac07ce18652639b30b808ad"
+  integrity sha512-icNMMmryZ8EKqB4POXnQW1xmq8xq21Ne9az26mcuRKn8WlPSNbRvA1t5fHt/6n8QVwv/oJ58zjBsqZn9Te1EaQ==
 
 wait-on@^6.0.0:
   version "6.0.0"
