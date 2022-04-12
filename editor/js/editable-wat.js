@@ -193,8 +193,10 @@
     /* If the `data-height` attribute is defined on the `codeBlock`, set
        the value of this attribute as a class on the editor element. */
     if (watCodeBlock.dataset["height"]) {
-      var editor = document.getElementById("wat-editor");
-      editor.classList.add(watCodeBlock.dataset["height"]);
+      var watEditor = document.getElementById("wat-panel");
+      watEditor.classList.add(watCodeBlock.dataset["height"]);
+      var jsEditor = document.getElementById("js-panel");
+      jsEditor.classList.add(watCodeBlock.dataset["height"]);
     }
 
     staticContainer = document.getElementById("static");
@@ -262,8 +264,8 @@
   /* only execute JS in supported browsers. As `document.all`
   is a non standard object available only in IE10 and older,
   this will stop JS from executing in those versions. */
-  if (!document.all && featureDetector.isDefined(exampleFeature)) {
-    document.documentElement.classList.add("js");
+  if ('WebAssembly' in window && featureDetector.isDefined(exampleFeature)) {
+    document.documentElement.classList.add("wat");
 
     initInteractiveEditor();
 

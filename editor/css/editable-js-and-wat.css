@@ -72,6 +72,28 @@
     min-height: 200px;
 }
 
+.wat .editor {
+    margin-bottom: 5px;
+}
+
+.wat .editor.taller,
+.wat .editor.taller .CodeMirror {
+    height: 420px;
+    min-height: 420px;
+}
+
+.wat .editor.standard,
+.wat .editor.standard .CodeMirror {
+    height: 210px;
+    min-height: 210px;
+}
+
+.wat .editor.shorter,
+.wat .editor.shorter .CodeMirror {
+    height: 140px;
+    min-height: 140px;
+}
+
 .buttons-container {
     display: flex;
     gap: 0.5rem;
