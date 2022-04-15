@@ -1,5 +1,13 @@
 # Changelog
 
+### [2.1.6](https://github.com/mdn/bob/compare/v2.1.5...v2.1.6) (2022-04-15)
+
+
+### Bug Fixes
+
+* **editor/console:** detect object constructor/prototype properly ([#745](https://github.com/mdn/bob/issues/745)) ([39f75ae](https://github.com/mdn/bob/commit/39f75ae317212eef87f65509a2ecb746e0e8904f))
+* **editor:** add missing font ([#752](https://github.com/mdn/bob/issues/752)) ([0928e77](https://github.com/mdn/bob/commit/0928e7750781f1770f47e40223783353fcbadb98))
+
 ### [2.1.5](https://github.com/mdn/bob/compare/v2.1.4...v2.1.5) (2022-03-04)
 
 
