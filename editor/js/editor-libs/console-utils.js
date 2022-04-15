@@ -96,7 +96,7 @@ module.exports = {
         // Special object created with `OrdinaryObjectCreate(null)` returned by, for
         // example, named capture groups in https://mzl.la/2RERfQL
         // @see https://github.com/mdn/bob/issues/574#issuecomment-858213621
-        if (!objectName.constructor || !objectName.prototype) {
+        if (!input.constructor && !input.prototype) {
             var formattedChild = '';
             var start = true;
             for (var key in input) {
