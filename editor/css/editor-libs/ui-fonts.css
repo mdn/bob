@@ -1,8 +1,8 @@
 @font-face {
   font-family: "Inter";
-  src: url("/media/fonts/Inter.var.woff2")
+  src: url("../../media/fonts/Inter.var.woff2")
       format("woff2 supports variations"),
-    url("/media/fonts/Inter.var.woff2") format("woff2-variations");
+    url("../../media/fonts/Inter.var.woff2") format("woff2-variations");
   font-weight: 1 999;
   font-stretch: 75% 100%;
   font-style: oblique 0deg 20deg;
