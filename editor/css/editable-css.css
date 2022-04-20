@@ -15,6 +15,10 @@
   }
 }
 
+.editor-wrapper.hidden {
+  display: none;
+}
+
 .example-choice-list.live,
 .example-choice-list.large.live {
   padding: 1rem;
