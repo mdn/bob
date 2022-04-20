@@ -26,6 +26,7 @@
   --background-tertiary: #fbfbfe;
   --background-mark-yellow: rgba(232, 140, 102, 0.4);
   --background-mark-green: rgba(107, 184, 106, 0.4);
+  --background-warning: rgba(216, 64, 0, 0.1);
   --border-primary: #cfcfd8;
   --border-secondary: #e0e0e6;
   --button-primary-default: #15141a;
@@ -90,6 +91,7 @@
   --background-secondary: #23222b;
   --background-tertiary: #2b2a33;
   --background-mark-yellow: rgba(232, 140, 102, 0.4);
+  --background-warning: rgba(216, 64, 0, 0.1);
   --border-primary: #52525e;
   --border-secondary: #3a3944;
   --button-primary-default: #fbfbfe;
@@ -135,6 +137,7 @@
     --background-secondary: #23222b;
     --background-tertiary: #2b2a33;
     --background-mark-yellow: rgba(232, 140, 102, 0.4);
+    --background-warning: rgba(216, 64, 0, 0.1);
     --border-primary: #52525e;
     --border-secondary: #3a3944;
     --button-primary-default: #fbfbfe;
@@ -303,6 +306,17 @@ body {
   opacity: 1;
   transition: opacity 0.5s;
   z-index: 4;
+}
+
+.warning {
+  position: relative;
+  padding: 1rem 1rem 1rem 3rem;
+  margin: 1rem;
+  background-color: var(--background-warning);
+  border-radius: var(--elem-radius);
+  border: 1px solid var(--border-secondary);
+  border-left: 4px solid var(--icon-warning);
+  color: var(--text-secondary);
 }
 
 .fade-in {

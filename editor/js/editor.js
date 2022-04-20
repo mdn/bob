@@ -119,8 +119,8 @@
   staticCSSCode.classList.add("hidden");
   // hide the static JS example
   staticJSCode.classList.add("hidden");
-  // show the header
-  header.classList.remove("hidden");
+  // show the content
+  editorContainer.classList.remove("hidden");
 
   /* Initialise the editors. If there is a `dataset` property
        of type `tabs` on the `editorContainer`, pass its value

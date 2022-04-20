@@ -13,11 +13,19 @@
 
 <body>
   <section class="css-editor-container">
-    <header class="output-header hidden">
+    <header class="output-header">
       <h4 class="output-heading">%title%</h4>
       <button id="reset" class="reset" type="button">Reset</button>
     </header>
-    <div class="editor-wrapper">
+    <noscript>
+      <div id="warning-no-script" class="warning">
+        Interactive examples cannot be shown because JavaScript is disabled.
+      </div>
+    </noscript>
+    <div id="warning-no-support" class="warning hidden">
+      This feature is not supported by current browser. Check Browser compatibility for more details.
+    </div>
+    <div id="editor-wrapper" class="editor-wrapper hidden">
       %example-code%
     </div>
   </section>
