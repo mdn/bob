@@ -122,17 +122,31 @@
   // show the header
   header.classList.remove("hidden");
 
-  /* Initialise the editors. If there is a `dataset` property
-       of type `tabs` on the `editorContainer`, pass its value
-       to `initEditor` */
-  if (editorContainer.dataset && editorContainer.dataset.tabs) {
-    tabby.initEditor(
-      editorContainer.dataset.tabs.split(","),
-      document.getElementById("js")
-    );
-  } else {
-    tabby.initEditor(["html", "css"], document.getElementById("html"));
+  /**
+   * @returns {string[]} - IDs of editors that should be visible in the example.
+   */
+  function getTabs(editorContainer) {
+    if(editorContainer.dataset && editorContainer.dataset.tabs)
+      return editorContainer.dataset.tabs.split(",");
+    else
+      return ["html", "css"];
   }
+
+  /**
+   * @returns {string} - ID of editor that should be active be default.
+   */
+  function getDefaultTab(editorContainer, tabs) {
+    if(editorContainer.dataset && editorContainer.dataset.defaultTab)
+      return editorContainer.dataset.defaultTab;
+    else if(tabs.includes("js"))
+      return "js";
+    else
+      return "html";
+  }
+
+  let tabs = getTabs(editorContainer);
+  let defaultTab = getDefaultTab(editorContainer, tabs);
+  tabby.initEditor(tabs, document.getElementById(defaultTab));
 
   mceConsole();
 
