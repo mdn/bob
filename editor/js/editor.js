@@ -126,10 +126,11 @@
    * @returns {string[]} - IDs of editors that should be visible in the example.
    */
   function getTabs(editorContainer) {
-    if(editorContainer.dataset && editorContainer.dataset.tabs)
+    if (editorContainer.dataset && editorContainer.dataset.tabs) {
       return editorContainer.dataset.tabs.split(",");
-    else
+    } else {
       return ["html", "css"];
+     }
   }
 
   /**
