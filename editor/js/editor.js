@@ -137,12 +137,13 @@
    * @returns {string} - ID of editor that should be active be default.
    */
   function getDefaultTab(editorContainer, tabs) {
-    if(editorContainer.dataset && editorContainer.dataset.defaultTab)
+    if (editorContainer.dataset && editorContainer.dataset.defaultTab) {
       return editorContainer.dataset.defaultTab;
-    else if(tabs.includes("js"))
+    } else if (tabs.includes("js")) {
       return "js";
-    else
+    } else {
       return "html";
+    }
   }
 
   let tabs = getTabs(editorContainer);
