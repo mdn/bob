@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/mdn/bob/compare/v2.1.7...v2.2.0) (2022-04-27)
+
+
+### Features
+
+* **editor:** allow setting defaultTab in tabbed examples ([#758](https://github.com/mdn/bob/issues/758)) ([7bc449d](https://github.com/mdn/bob/commit/7bc449d533d44e97c5e42e0fc68c695bbfa84df9))
+
 ### [2.1.7](https://github.com/mdn/bob/compare/v2.1.6...v2.1.7) (2022-04-20)
 
 
