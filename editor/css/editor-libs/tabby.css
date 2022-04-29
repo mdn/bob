@@ -1,7 +1,6 @@
 .tab-list {
   display: flex;
   gap: 0.5rem;
-  padding-top: 1rem;
   background: var(--background-secondary);
 }
 
@@ -11,6 +10,7 @@ button[role='tab'] {
     padding: .5em 30px;
     border: 0 none;
     border-bottom: 3px solid transparent;
+    border-top: 3px solid transparent;
     font: var(--type-emphasis-m);
     cursor: pointer;
 }
