@@ -4,10 +4,6 @@
     overflow: hidden;
 }
 
-.editor-container.hidden {
-  display: none;
-}
-
 /* sizing utility classes */
 .tabbed-shorter .CodeMirror {
     height: 252px;
