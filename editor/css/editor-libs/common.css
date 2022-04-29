@@ -504,6 +504,17 @@ body {
   z-index: 4;
 }
 
+.warning {
+  position: relative;
+  padding: 1rem 1rem 1rem 3rem;
+  margin: 1rem;
+  background-color: var(--background-warning);
+  border-radius: var(--elem-radius);
+  border: 1px solid var(--border-secondary);
+  border-left: 4px solid var(--icon-warning);
+  color: var(--text-secondary);
+}
+
 .fade-in {
   animation: fadein 0.5s;
 }
@@ -517,7 +528,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .show {

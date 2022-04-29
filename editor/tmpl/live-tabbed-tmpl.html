@@ -11,11 +11,16 @@
 </head>
 
 <body>
-    <header class="output-header hidden">
+    <header class="output-header">
         <h4 class="output-heading">%title%</h4>
         <button id="reset" class="reset" type="button">Reset</button>
     </header>
-    <div id="editor-container" class="editor-container %editor-height%" %active-tabs% %default-tab%>
+    <noscript>
+        <div id="warning-no-script" class="warning">
+            Interactive example cannot be shown because JavaScript is disabled.
+        </div>
+    </noscript>
+    <div id="editor-container" class="editor-container %editor-height% hidden" %active-tabs% %default-tab%>
         <section id="tab-container" class="tabs">
             <div class="tab-list" id="tablist" role="tablist">
                 <button role="tab" aria-selected="false" aria-controls="html-panel"

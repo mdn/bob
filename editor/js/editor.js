@@ -119,8 +119,8 @@
   staticCSSCode.classList.add("hidden");
   // hide the static JS example
   staticJSCode.classList.add("hidden");
-  // show the header
-  header.classList.remove("hidden");
+  // show the content
+  editorContainer.classList.remove("hidden");
 
   /**
    * @returns {string[]} - IDs of editors that should be visible in the example.

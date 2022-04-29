@@ -7,16 +7,17 @@
 
   var exampleChoiceList = document.getElementById("example-choice-list");
   var exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
-  var header = document.querySelector("header");
+  var editorWrapper = document.getElementById("editor-wrapper");
   var initialChoice = 0;
   var originalChoices = [];
   var output = document.getElementById("output");
+  var warningNoSupport = document.getElementById("warning-no-support");
 
   /**
    * Enables and initializes the live code editor
    */
   function enableLiveEditor() {
-    header.classList.remove("hidden");
+    editorWrapper.classList.remove("hidden");
     exampleChoiceList.classList.add("live");
     output.classList.remove("hidden");
 
@@ -117,5 +118,8 @@
     enableLiveEditor();
     mceEvents.onChoose(exampleChoices[initialChoice]);
     clippy.toggleClippy(exampleChoices[initialChoice]);
+  }
+  else {
+    warningNoSupport.classList.remove("hidden");
   }
 })();
