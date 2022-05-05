@@ -5705,9 +5705,9 @@ vue-eslint-parser@^8.0.1:
     semver "^7.3.5"
 
 wabt@^1.0.23:
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/wabt/-/wabt-1.0.28.tgz#da7c8ce137a855837ac07ce18652639b30b808ad"
-  integrity sha512-icNMMmryZ8EKqB4POXnQW1xmq8xq21Ne9az26mcuRKn8WlPSNbRvA1t5fHt/6n8QVwv/oJ58zjBsqZn9Te1EaQ==
+  version "1.0.29"
+  resolved "https://registry.yarnpkg.com/wabt/-/wabt-1.0.29.tgz#e04b013a9151e2d2293f0cf965727208a3e87f99"
+  integrity sha512-taUwem3bYn5ZrDYSNqJ2lIAXA3t0Xon7rLjRa8PZ21h8vp0IP5SKyozcWFhv8PPC07KJkGWpDuSCnzSdJ01YsA==
 
 wait-on@^6.0.0:
   version "6.0.0"
