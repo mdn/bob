@@ -90,24 +90,22 @@ function copyTextOnly(event) {
 }
 
 /**
- * Handles paste events for the CSS editor. Concatenates the new text
- * from the clipboard with the existing, and syntax highlights the
- * result.
+ * Applying syntax highlights after paste event for CSS editor.
  * @param {Object} event - The paste event object
  */
 function handlePasteEvents(event) {
   "use strict";
-  var clipboardText = event.clipboardData.getData("text/plain");
-  var parentPre = event.target.offsetParent;
-  var parentCodeElem = parentPre.querySelector("code");
-  var startValue = parentCodeElem.textContent;
+  var codeElement = event.target;
+  // It's likely that caret will be placed inside nested element that belongs to Prism
+  // We require element that contains whole example: <code class="language-css"></code>
+  while (!codeElement.classList.contains("language-css")) {
+    codeElement = codeElement.offsetParent;
+  }
 
-  event.preventDefault();
-  event.stopPropagation();
-
-  parentCodeElem.innerText = startValue + "\n" + clipboardText;
-
-  Prism.highlightElement(parentCodeElem);
+  // Adding syntax colors, after pasting process was completed natively
+  setTimeout(() => {
+    Prism.highlightElement(codeElement);
+  }, 0);
 }
 
 function handleChoiceEvent() {
