@@ -55,9 +55,9 @@
                 </div>
             </section>
         </section>
-        <div id="output" class="shadow-container">
+        <div id="output" class="output-container">
           <h4 class="output-label">Output</h4>
-          <shadow-output></shadow-output>
+          <iframe id="output-iframe"></iframe>
         </div>
     </div>
 
@@ -73,6 +73,28 @@
         <div id="console" class="console"><code></code></div>
     </section>
 
+    <template id="output-head">
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../../css/editor-tabbed.css%cache-buster%" rel="stylesheet" />
+        <style>%css-content%</style>
+    </template>
+    <template id="output-body">
+        <div id="html-output" class="output">%html-content%</div>
+
+        <script>
+            function executeExample() {
+                'use script';
+                try {
+                    %js-content%
+                } catch(e) {
+                    console.error(e);
+                }
+            }
+        </script>
+    </template>
     <script src="../../js/codemirror-tabbed-5-50-2.js%cache-buster%"></script>
     <script src="../../js/editor-tabbed.js%cache-buster%"></script>
 </body>

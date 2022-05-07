@@ -1,6 +1,8 @@
 // Thanks in part to https://stackoverflow.com/questions/11403107/capturing-javascript-console-log
-module.exports = function() {
+module.exports = function(targetWindow) {
     'use strict';
+    /* Getting reference to console, either from current window or from the iframe window */
+    var console = targetWindow ? targetWindow.console : window.console;
 
     var consoleUtils = require('./console-utils');
     var originalConsoleLogger = console.log; // eslint-disable-line no-console

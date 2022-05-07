@@ -49,8 +49,8 @@ module.exports = {
   },
   /**
    * Interrupts the default click event on external links inside
-   * the shadow dom and opens them in a new tab instead
-   * @param {Array} externalLinks - all external links inside the shadow dom
+   * the iframe and opens them in a new tab instead
+   * @param {Array} externalLinks - all external links inside the iframe
    */
   openLinksInNewTab: function (externalLinks) {
     externalLinks.forEach(function (externalLink) {
@@ -62,15 +62,15 @@ module.exports = {
   },
   /**
    * Interrupts the default click event on relative links inside
-   * the shadow dom and scrolls to the targeted anchor
-   * @param {Object} shadow - the shadow dom root
-   * @param {Array} relativeLinks - all relative links inside the shadow dom
+   * the iframe and scrolls to the targeted anchor
+   * @param {Object} rootElement - root or body element, that contains referenced links
+   * @param {Array} relativeLinks - all relative links inside the iframe
    */
-  scrollToAnchors: function (shadow, relativeLinks) {
+  scrollToAnchors: function (rootElement, relativeLinks) {
     relativeLinks.forEach(function (relativeLink) {
       relativeLink.addEventListener("click", function (event) {
         event.preventDefault();
-        shadow.querySelector(relativeLink.hash).scrollIntoView();
+        rootElement.querySelector(relativeLink.hash).scrollIntoView();
       });
     });
   },
