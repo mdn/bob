@@ -2,21 +2,55 @@ import wcb from "@webcomponents/webcomponentsjs";
 import mceConsole from "./editor-libs/console.js";
 import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
-import shadowOutput from "./editor-libs/shadow-output.js";
-import * as templateUtils from "./editor-libs/template-utils.js";
 import * as tabby from "./editor-libs/tabby.js";
 
 (function () {
   var cssEditor = document.getElementById("css-editor");
   var clearConsole = document.getElementById("clear");
   var editorContainer = document.getElementById("editor-container");
+  var tabContainer = document.getElementById("tab-container");
+  var iframeContainer = document.getElementById("output");
   var header = document.querySelector(".output-header");
   var htmlEditor = document.getElementById("html-editor");
   var jsEditor = document.getElementById("js-editor");
   var staticCSSCode = cssEditor.querySelector("pre");
   var staticHTMLCode = htmlEditor.querySelector("pre");
   var staticJSCode = jsEditor.querySelector("pre");
+  var outputIFrame = document.getElementById("output-iframe");
+  var outputTemplate = getOutputTemplate();
+  var appliedHeightAdjustment = false;
   var timer;
+
+  /**
+   * @returns {string} - Interactive example output template, formed by joining together contents of #output-head and #output-body, found in live-tabbed-tmpl.html
+   */
+  function getOutputTemplate() {
+    /* Document is split into two templates, just because <template> parser omits <html>, <head> and <body> tags.*/
+    var templateOutputHead = document.getElementById("output-head");
+    var templateOutputBody = document.getElementById("output-body");
+
+    return `
+<!DOCTYPE html>
+<html id="output-root">
+<head>${templateOutputHead.innerHTML}</head>
+<body>${templateOutputBody.innerHTML}</body>
+</html>
+`;
+  }
+
+  /**
+   * Applies CSS, HTML & JavaScript content found in the editor, to the output template
+   * @param outputTemplate - HTML page containing %css-content%, %html-content% and %js-content% texts, that will be replaced with actual values
+   * @param outputData - Object holding CSS, HTML & JavaScript code, that is supposed to be applied on the template
+   * @returns {string} - raw html string
+   */
+  function applyEditorContentToTemplate(outputTemplate, outputData) {
+    var content = outputTemplate;
+    content = content.replace("%css-content%", outputData.cssContent);
+    content = content.replace("%html-content%", outputData.htmlContent);
+    content = content.replace("%js-content%", outputData.jsContent);
+    return content;
+  }
 
   /**
    * Called by the tabbed editor to combine code from all tabs in an Object
@@ -47,35 +81,72 @@ import * as tabby from "./editor-libs/tabby.js";
   }
 
   /**
-   * Set or update the CSS and HTML in the output pane.
-   * @param {Object} content - The content of the template element.
+   * Fetches HTML, CSS & JavaScript code from tabbed editor, applies them to output template and updates iframe with new content
    */
-  function render(content) {
-    let shadow = document.querySelector("shadow-output").shadowRoot;
-    let shadowChildren = shadow.children;
+  function refreshOutput() {
+    var editorData = getOutput();
+    var content = applyEditorContentToTemplate(outputTemplate, editorData);
 
-    if (shadowChildren.length) {
-      if (typeof ShadyDOM !== "undefined" && ShadyDOM.inUse) {
-        shadow.innerHTML = "";
-      } else {
-        var output = shadow.querySelector(".output");
-        output && shadow.removeChild(output);
-        var styleElements = shadow.querySelectorAll("style");
+    outputIFrame.srcdoc = content;
+    /* Some time after this operation, browser will invoke load event*/
+  }
 
-        for (var styleElement in styleElements) {
-          if (
-            styleElements.hasOwnProperty(styleElement) &&
-            styleElements[styleElement]
-          ) {
-            shadow.removeChild(styleElements[styleElement]);
-          }
-        }
+  /**
+   * Performs operations on iframe content, that was just loaded and shown to the user
+   * It prepares links, handles URL fragments, adjusts frame height, hooks console logs and then evaluates JS editor code
+   */
+  function onOutputLoaded() {
+    var contentWindow = outputIFrame.contentWindow;
+    var contentBody = contentWindow.document.body;
+
+    mceUtils.openLinksInNewTab(contentBody.querySelectorAll('a[href^="http"]'));
+    mceUtils.scrollToAnchors(contentBody, contentBody.querySelectorAll('a[href^="#"]'));
+
+    adjustFrameHeight();
+
+    /* Listeners are removed, every time content is refreshed */
+    contentWindow.addEventListener('resize', function () {
+      adjustFrameHeight();
+    });
+    /* Hooking console logs */
+    mceConsole(outputIFrame.contentWindow);
+
+    executeJSEditorCode();
+  }
+
+  /**
+   * Executing content of JavaScript editor, passed to global function "executeExample" declared in live-tabbed-tmpl.html
+   * This process is purposefully delayed, so console logs hooks are attached first
+   */
+  function executeJSEditorCode() {
+    outputIFrame.contentWindow.executeExample();
+  }
+
+  /**
+   * When screen width is small and output iframe is located below tab container, this function adjusts iframe height to height of its content
+   * When viewport width changes and iframe gets relocated to near tab container, height value set here is removed
+   */
+  function adjustFrameHeight() {
+    var iframeBelowTabContainer = iframeContainer.offsetTop >= tabContainer.offsetTop + tabContainer.offsetHeight;
+    if(iframeBelowTabContainer) {
+      /* When iframe is below tab container(which happens on small screens), we want it to take as low amount of space as possible */
+      let iframeContent = outputIFrame.contentWindow.document.getElementById("html-output");
+      let iframeContentHeight = iframeContent.clientHeight;
+      let iframeHeight = outputIFrame.clientHeight;
+
+      /* Setting height of iframe to be the same as height of its content */
+      if (iframeContentHeight !== iframeHeight) {
+        outputIFrame.style.height = iframeContentHeight + 'px';
+        appliedHeightAdjustment = true;
+      }
+    } else {
+      /* In case iframe was previously below tab container and its height was set to a fixed value,
+      we need to clear that value, so iframe fills the whole container now */
+      if(appliedHeightAdjustment) {
+        outputIFrame.style.height = "";
+        appliedHeightAdjustment = false;
       }
     }
-
-    shadow.appendChild(document.importNode(content, true));
-    mceUtils.openLinksInNewTab(shadow.querySelectorAll('a[href^="http"]'));
-    mceUtils.scrollToAnchors(shadow, shadow.querySelectorAll('a[href^="#"]'));
   }
 
   /**
@@ -88,10 +159,13 @@ import * as tabby from "./editor-libs/tabby.js";
     clearTimeout(timer);
 
     timer = setTimeout(function () {
-      templateUtils.createTemplate(getOutput());
-      render(templateUtils.getTemplateOutput());
+      refreshOutput();
     }, 500);
   }
+
+  outputIFrame.addEventListener("load", function () {
+    onOutputLoaded();
+  });
 
   header.addEventListener("click", function (event) {
     if (event.target.classList.contains("reset")) {
@@ -158,12 +232,7 @@ import * as tabby from "./editor-libs/tabby.js";
   tabby.registerEventListeners();
   mceEvents.register();
 
-  // register the custom output element
-  customElements.define("shadow-output", shadowOutput);
-
-  templateUtils.createTemplate(getOutput());
-
   document.addEventListener("WebComponentsReady", function () {
-    render(templateUtils.getTemplateOutput());
+    refreshOutput();
   });
 })();

@@ -25,20 +25,8 @@
   border-bottom: 1px solid var(--border-primary);
 }
 
-.shadow-container {
+.output-container {
   position: relative;
-}
-
-/* For non shadow-dom supporting browsers */
-.output.style-scope {
-  background-color: var(--background-primary);
-  border-left: 1px solid var(--border-primary);
-  font-size: 0.9rem;
-  height: 342px;
-  line-height: 1.5;
-  margin: 0;
-  overflow: scroll;
-  padding: 1rem;
 }
 
 .tabs {
@@ -144,7 +132,7 @@
     height: 580px;
   }
 
-  .shadow-container {
+  .output-container {
     width: 40%;
     height: 100%;
     border-left: 1px solid var(--border-primary);
@@ -155,4 +143,25 @@
   .tabbed-shorter .CodeMirror {
     border-bottom: 0 none;
   }
+}
+
+#output-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Those rules apply to content inside iframe, where example is shown */
+#output-root body {
+    background-color: #fff;
+}
+
+#html-output {
+    color: #15141aff;
+    font-size: 0.9rem;
+    overflow: auto;
+    line-height: 1.5;
+    padding: 1rem;
+    height: min-content; /* This value ensures correct calculation of clientHeight in /pages/tabbed/img */
+    width: fit-content; /* This value moves horizontal scroll bar to the bottom of iframe */
 }
