@@ -5705,7 +5705,7 @@ vue-eslint-parser@^8.0.1:
     lodash "^4.17.21"
     semver "^7.3.5"
 
-wabt@^1.0.23:
+wabt@^1.0.29:
   version "1.0.29"
   resolved "https://registry.yarnpkg.com/wabt/-/wabt-1.0.29.tgz#e04b013a9151e2d2293f0cf965727208a3e87f99"
   integrity sha512-taUwem3bYn5ZrDYSNqJ2lIAXA3t0Xon7rLjRa8PZ21h8vp0IP5SKyozcWFhv8PPC07KJkGWpDuSCnzSdJ01YsA==
