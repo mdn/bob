@@ -7,7 +7,7 @@ Builder of Bits aka The [MDN Web Docs interactive examples](https://github.com/m
 If you want to contribute to BoB, please follow these steps:
 
 - [Create a fork](https://docs.github.com/en/get-started/quickstart/contributing-to-projects#forking-a-repository)
-- [Open and issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue) if one does not [already exist](https://github.com/mdn/bob/issues)
+- [Open an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue) if one does not [already exist](https://github.com/mdn/bob/issues)
 - Create a [feature branch](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) based on the issue you are working on
 - [Add and commit](https://docs.github.com/en/get-started/quickstart/contributing-to-projects#making-and-pushing-changes) your changes
 - [Open a pull request](https://docs.github.com/en/get-started/quickstart/contributing-to-projects#making-a-pull-request)
