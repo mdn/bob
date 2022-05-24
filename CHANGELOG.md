@@ -1,5 +1,14 @@
 # Changelog
 
+### [2.2.1](https://github.com/mdn/bob/compare/v2.2.0...v2.2.1) (2022-05-24)
+
+
+### Bug Fixes
+
+* **editor:** handle paste events properly ([#776](https://github.com/mdn/bob/issues/776)) ([5beccb7](https://github.com/mdn/bob/commit/5beccb7f45fe86280ef520cedb8cb3a4e55e97c3))
+* **editor:** replace margin-top on tab-list by border-top on tab ([#773](https://github.com/mdn/bob/issues/773)) ([d34d8a0](https://github.com/mdn/bob/commit/d34d8a06810d15f510cf275822b8b20cb5a9c05d))
+* **editor:** warn if JavaScript disabled or unsupported feature ([#759](https://github.com/mdn/bob/issues/759)) ([08fe714](https://github.com/mdn/bob/commit/08fe714908ad23dc3557d7778c03ff5c07c51692))
+
 ## [2.2.0](https://github.com/mdn/bob/compare/v2.1.7...v2.2.0) (2022-04-27)
 
 
