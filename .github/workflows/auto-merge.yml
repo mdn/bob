@@ -4,5 +4,7 @@ on: [pull_request_target]
 jobs:
   auto-merge:
     uses: mdn/workflows/.github/workflows/auto-merge.yml@main
+    with:
+      target-repo: "mdn/bob"
     secrets:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
