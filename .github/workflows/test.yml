@@ -12,10 +12,10 @@ jobs:
                   node-version: '12'
             - name: Install dependencies
               run: |
-                  yarn install
+                  npm install
             - name: Build bob
               run: |
-                  yarn build
+                  npm run build
             - name: Run tests
               run: |
-                  yarn test
+                  npm run test
