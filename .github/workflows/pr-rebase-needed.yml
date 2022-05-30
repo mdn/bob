@@ -7,7 +7,7 @@ on:
 
 jobs:
   pr-needs-rebase:
-    uses: mdn/workflows/.github/workflows/pr-needs-rebase.yml@main
+    uses: mdn/workflows/.github/workflows/pr-rebase-needed.yml@main
     with:
       target-repo: "mdn/bob"
     secrets:
