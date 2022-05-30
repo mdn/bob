@@ -55,7 +55,7 @@ As mentioned above, this repository contains a couple of representative examples
 To test your changes, run:
 
 ```
-yarn start
+npm start
 ```
 
 You should see output similar to the following:
