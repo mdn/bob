@@ -1,0 +1,14 @@
+name: pr-rebase-needed
+
+on:
+  push:
+  pull_request_target:
+    types: [synchronize]
+
+jobs:
+  pr-needs-rebase:
+    uses: mdn/workflows/.github/workflows/pr-needs-rebase.yml@main
+    with:
+      target-repo: "mdn/bob"
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
