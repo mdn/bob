@@ -94,7 +94,7 @@
     "dependencies": {
         "browserify": "17.0.0",
         "clean-css": "5.3.0",
-        "codemirror": "5.65.4",
+        "codemirror": "5.65.5",
         "cosmiconfig": "7.0.1",
         "fs-extra": "10.1.0",
         "glob": "8.0.3",
