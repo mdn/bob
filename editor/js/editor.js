@@ -30,16 +30,19 @@
    * }
    */
   function getOutput() {
-    var editorContents = {
-      htmlContent: tabby.editors.html.editor.getValue(),
-      cssContent: tabby.editors.css.editor.getValue(),
-    };
+    var editorContents = {};
 
-    // not all editor instances have a JS panel
-    if (tabby.editors.js.editor) {
-      editorContents.jsContent = tabby.editors.js.editor.getValue();
+    setContent("htmlContent", "html");
+    setContent("cssContent", "css");
+    setContent("jsContent", "js");
+
+    function setContent(propertyName, editorName) {
+      if (tabby.editors[editorName].editor) {
+        editorContents[propertyName] = tabby.editors[editorName].editor.getValue();
+      } else {
+        editorContents[propertyName] = "";
+      }
     }
-
     return editorContents;
   }
 
