@@ -9,11 +9,11 @@ describe("Tabbed Editor", () => {
         "<style>" +
         ".output{background-color:#fff;color:#15141aff;" +
         "font-size:0.9rem;line-height:1.5;overflow:scroll;" +
-        "padding:1rem;height:100%;}" +
+        "padding:1rem;height:100%;}.output-top-margin{margin-bottom:13px;}" +
         "</style>" +
         "<style>" +
         "address { font-variant-caps: small-caps;}a { font-variant: normal;}" +
-        '</style><div class="output">' +
+        '</style><div class="output"><div class="output-top-margin"></div>' +
         "<address> James Rockford<br> 2354 Pacific Coast Highway<br> " +
         "California<br> USA<br> +311-555-2368<br> Email: " +
         '<a href="mailto:j.rockford@example.com">j.rockford@example.com</a><br>' +
