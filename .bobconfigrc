@@ -9,5 +9,6 @@
     "examplesMediaDest": "./docs/media/",
     "fontsMediaDest": "./docs/media/fonts/",
     "metaGlob": "./live-examples/**/meta.json",
-    "pagesDir": "./docs/pages/"
+    "pagesDir": "./docs/pages/",
+    "heightData": "./docs/height-data.json"
 }
