@@ -222,7 +222,7 @@
     await wabtInitialized;
     var encoder = new TextEncoder();
     let watBuffer = encoder.encode(wat);
-    let module = wabt.parseWat("", watBuffer, { exceptions: true });
+    let module = wabt.parseWat("", watBuffer, { exceptions: true, reference_types: true });
     module.resolveNames();
     module.validate();
     const binary = module.toBinary({ log: true, write_debug_names: true });
