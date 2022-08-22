@@ -11,4 +11,4 @@ jobs:
     with:
       target-repo: "mdn/bob"
     secrets:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
