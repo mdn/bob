@@ -130,7 +130,7 @@
       return editorContainer.dataset.tabs.split(",");
     } else {
       return ["html", "css"];
-     }
+    }
   }
 
   /**

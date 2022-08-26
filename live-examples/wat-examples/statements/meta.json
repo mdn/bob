@@ -1,11 +1,11 @@
 {
-    "pages": {
-        "loop": {
-            "watExampleCode": "live-examples/wat-examples/statements/loop.wat",
-            "jsExampleCode": "live-examples/wat-examples/statements/loop.js",
-            "fileName": "loop.html",
-            "title": "Wat Demo: loop",
-            "type": "wat"
-        }
+  "pages": {
+    "loop": {
+      "watExampleCode": "live-examples/wat-examples/statements/loop.wat",
+      "jsExampleCode": "live-examples/wat-examples/statements/loop.js",
+      "fileName": "loop.html",
+      "title": "Wat Demo: loop",
+      "type": "wat"
     }
+  }
 }

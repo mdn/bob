@@ -1,19 +1,19 @@
 {
-    "pages": {
-        "animation": {
-            "cssExampleSrc": "live-examples/css-examples/animation/animation.css",
-            "exampleCode": "live-examples/css-examples/animation/animation.html",
-            "fileName": "animation.html",
-            "title": "CSS Demo: animation",
-            "type": "css"
-        },
-        "animationDelay": {
-            "cssExampleSrc": "live-examples/css-examples/animation/animation-delay.css",
-            "jsExampleSrc": "live-examples/css-examples/animation/animation-state.js",
-            "exampleCode": "live-examples/css-examples/animation/animation-delay.html",
-            "fileName": "animation-delay.html",
-            "title": "CSS Demo: animation-delay",
-            "type": "css"
-        }
+  "pages": {
+    "animation": {
+      "cssExampleSrc": "live-examples/css-examples/animation/animation.css",
+      "exampleCode": "live-examples/css-examples/animation/animation.html",
+      "fileName": "animation.html",
+      "title": "CSS Demo: animation",
+      "type": "css"
+    },
+    "animationDelay": {
+      "cssExampleSrc": "live-examples/css-examples/animation/animation-delay.css",
+      "jsExampleSrc": "live-examples/css-examples/animation/animation-state.js",
+      "exampleCode": "live-examples/css-examples/animation/animation-delay.html",
+      "fileName": "animation-delay.html",
+      "title": "CSS Demo: animation-delay",
+      "type": "css"
     }
+  }
 }

@@ -1,5 +1,5 @@
 .CodeMirror-linenumber {
-    color: var(--text-secondary);
+  color: var(--text-secondary);
 }
 
 .cm-s-default,
@@ -9,16 +9,16 @@
   color: var(--code-token-default);
 }
 
-.cm-s-default .cm-tag.cm-bracket  {
+.cm-s-default .cm-tag.cm-bracket {
   color: var(--code-token-punctuation);
 }
 .cm-s-default .cm-comment {
-    color: var(--code-token-comment);
+  color: var(--code-token-comment);
 }
 
 .cm-s-default .cm-keyword,
 .cm-s-default .cm-tag {
-    color: var(--code-token-tag);
+  color: var(--code-token-tag);
 }
 
 .cm-s-default .cm-attribute {
@@ -28,13 +28,13 @@
 .cm-s-default .cm-string,
 .cm-s-default .cm-number,
 .cm-s-default .cm-atom {
-    color: var(--code-token-attribute-value);
+  color: var(--code-token-attribute-value);
 }
 
 .cm-s-default .cm-string-2 {
-    color: var(--code-token-selector);
+  color: var(--code-token-selector);
 }
 
 .cm-s-default .cm-property {
-    color: var(--code-token-attribute-name);
+  color: var(--code-token-attribute-name);
 }

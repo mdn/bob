@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>%title%</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="../../css/codemirror-5-50-2.css%cache-buster%"
+      rel="stylesheet"
+    />
+    <link href="../../css/editor-js.css%cache-buster%" rel="stylesheet" />
+    %example-css-src%
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>%title%</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="../../css/codemirror-5-50-2.css%cache-buster%" rel="stylesheet" />
-  <link href="../../css/editor-js.css%cache-buster%" rel="stylesheet" />
-  %example-css-src%
-</head>
+  <body>
+    <section id="static">%example-code%</section>
 
-<body>
-  <section id="static">
-    %example-code%
-  </section>
+    <section id="live" class="live hidden">
+      <header class="output-header full-border">
+        <h4 class="output-heading">%title%</h4>
+      </header>
+      <div id="editor" class="editor"></div>
 
-  <section id="live" class="live hidden">
-    <header class="output-header full-border">
-      <h4 class="output-heading">%title%</h4>
-    </header>
-    <div id="editor" class="editor"></div>
-
-    <div class="output-container">
-      <div class="buttons-container">
-        <button id="execute" class="button run" type="button">Run &rsaquo;</button>
-        <button id="reset" type="button" class="button">Reset</button>
+      <div class="output-container">
+        <div class="buttons-container">
+          <button id="execute" class="button run" type="button">
+            Run &rsaquo;
+          </button>
+          <button id="reset" type="button" class="button">Reset</button>
+        </div>
+        <div id="console" class="output"><code></code></div>
       </div>
-      <div id="console" class="output"><code></code></div>
-    </div>
-  </section>
+    </section>
 
-  %example-js-src%
+    %example-js-src%
 
-  <script src="../../js/codemirror-5-50-2.js%cache-buster%"></script>
-  <script src="../../js/editor-js.js%cache-buster%"></script>
-</body>
-
+    <script src="../../js/codemirror-5-50-2.js%cache-buster%"></script>
+    <script src="../../js/editor-js.js%cache-buster%"></script>
+  </body>
 </html>

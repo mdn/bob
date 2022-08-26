@@ -1,11 +1,11 @@
 {
-    "pages": {
-        "maskClip": {
-            "cssExampleSrc": "./live-examples/css-examples/masking/mask-clip.css",
-            "exampleCode": "./live-examples/css-examples/masking/mask-clip.html",
-            "fileName": "mask-clip.html",
-            "title": "CSS Demo: mask-clip",
-            "type": "css"
-        }
+  "pages": {
+    "maskClip": {
+      "cssExampleSrc": "./live-examples/css-examples/masking/mask-clip.css",
+      "exampleCode": "./live-examples/css-examples/masking/mask-clip.html",
+      "fileName": "mask-clip.html",
+      "title": "CSS Demo: mask-clip",
+      "type": "css"
     }
+  }
 }

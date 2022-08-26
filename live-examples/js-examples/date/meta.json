@@ -1,10 +1,10 @@
 {
-    "pages": {
-        "dateGetDate": {
-            "exampleCode": "./live-examples/js-examples/date/date-getdate.js",
-            "fileName": "date-getdate.html",
-            "title": "JavaScript Demo: Date.getDate()",
-            "type": "js"
-        }
+  "pages": {
+    "dateGetDate": {
+      "exampleCode": "./live-examples/js-examples/date/date-getdate.js",
+      "fileName": "date-getdate.html",
+      "title": "JavaScript Demo: Date.getDate()",
+      "type": "js"
     }
+  }
 }

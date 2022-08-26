@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>%title%</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="../../css/css-examples-libs.css%cache-buster%"
+    />
+    <link rel="stylesheet" href="../../css/editor-css.css%cache-buster%" />
+    %example-css-src%
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>%title%</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../css/css-examples-libs.css%cache-buster%" />
-  <link rel="stylesheet" href="../../css/editor-css.css%cache-buster%" />
-  %example-css-src%
-</head>
-
-<body>
-  <section class="css-editor-container">
-    <header class="output-header">
-      <h4 class="output-heading">%title%</h4>
-      <button id="reset" class="reset" type="button">Reset</button>
-    </header>
-    <noscript>
-      <div id="warning-no-script" class="warning">
-        Interactive examples cannot be shown because JavaScript is disabled.
+  <body>
+    <section class="css-editor-container">
+      <header class="output-header">
+        <h4 class="output-heading">%title%</h4>
+        <button id="reset" class="reset" type="button">Reset</button>
+      </header>
+      <noscript>
+        <div id="warning-no-script" class="warning">
+          Interactive examples cannot be shown because JavaScript is disabled.
+        </div>
+      </noscript>
+      <div id="warning-no-support" class="warning hidden">
+        This feature is not supported by your current browser. Check Browser
+        compatibility for more details.
       </div>
-    </noscript>
-    <div id="warning-no-support" class="warning hidden">
-      This feature is not supported by your current browser. Check Browser compatibility for more details.
-    </div>
-    <div id="editor-wrapper" class="editor-wrapper hidden">
-      %example-code%
-    </div>
-  </section>
-  <div id="user-message" class="user-message" aria-hidden="true">Copied!</div>
-  <script src="../../js/css-examples-libs.js%cache-buster%"></script>
-  <script src="../../js/editor-css.js%cache-buster%"></script>
-  %example-js-src%
-</body>
-
+      <div id="editor-wrapper" class="editor-wrapper hidden">
+        %example-code%
+      </div>
+    </section>
+    <div id="user-message" class="user-message" aria-hidden="true">Copied!</div>
+    <script src="../../js/css-examples-libs.js%cache-buster%"></script>
+    <script src="../../js/editor-css.js%cache-buster%"></script>
+    %example-js-src%
+  </body>
 </html>

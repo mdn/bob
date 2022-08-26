@@ -1,10 +1,10 @@
 {
-    "pages": {
-        "classesExtends": {
-            "exampleCode": "./live-examples/js-examples/classes/classes-extends.js",
-            "fileName": "classes-extends.html",
-            "title": "JavaScript Demo: Classes Extends",
-            "type": "js"
-        }
+  "pages": {
+    "classesExtends": {
+      "exampleCode": "./live-examples/js-examples/classes/classes-extends.js",
+      "fileName": "classes-extends.html",
+      "title": "JavaScript Demo: Classes Extends",
+      "type": "js"
     }
+  }
 }
