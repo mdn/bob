@@ -1,80 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  <head>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>%title%</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../css/codemirror-tabbed-5-50-2.css%cache-buster%" rel="stylesheet" />
     <link href="../../css/editor-tabbed.css%cache-buster%" rel="stylesheet" />
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="output-header">
-        <h4 class="output-heading">%title%</h4>
-        <button id="reset" class="reset" type="button">Reset</button>
+      <h4 class="output-heading">%title%</h4>
+      <button id="reset" class="reset" type="button">Reset</button>
     </header>
     <noscript>
-        <div id="warning-no-script" class="warning">
-            Interactive example cannot be shown because JavaScript is disabled.
-        </div>
+      <div id="warning-no-script" class="warning">
+        Interactive example cannot be shown because JavaScript is disabled.
+      </div>
     </noscript>
-    <div id="editor-container" class="editor-container %editor-height% hidden" %active-tabs% %default-tab%>
-        <section id="tab-container" class="tabs">
-            <div class="tab-list" id="tablist" role="tablist">
-                <button role="tab" aria-selected="false" aria-controls="html-panel"
-                    id="html" class="hidden">
-                    HTML
-                </button>
-                <button role="tab" aria-selected="false" aria-controls="css-panel"
-                    id="css" class="hidden" tabindex="-1">
-                    CSS
-                </button>
-                <button role="tab" aria-selected="false" aria-controls="js-panel" id="js"
-                    class="hidden" tabindex="-1">
-                    JavaScript
-                </button>
-            </div>
-            <section id="html-panel" tabindex="0" role="tabpanel" aria-labelledby="html"
-                class="hidden" aria-hidden="true">
-                <div id="html-editor">
-                    <pre><code>%example-code%</pre></code>
-                </div>
-            </section>
-            <section id="css-panel" tabindex="0" role="tabpanel" aria-labelledby="css"
-                class="hidden" aria-hidden="true">
-                <div id="css-editor">
-                    <pre><code>%example-css-src%</pre></code>
-                </div>
-            </section>
-            <section id="js-panel" tabindex="0" role="tabpanel" aria-labelledby="js"
-                class="hidden" aria-hidden="true">
-                <div id="js-editor">
-                    <pre><code>%example-js-src%</pre></code>
-                </div>
-            </section>
-        </section>
-        <div id="output" class="shadow-container">
-          <h4 class="output-label">Output</h4>
-          <shadow-output></shadow-output>
+    <div
+      id="editor-container"
+      class="editor-container %editor-height% hidden"
+      %active-tabs%
+      %default-tab%
+    >
+      <section id="tab-container" class="tabs">
+        <div class="tab-list" id="tablist" role="tablist">
+          <button
+            role="tab"
+            aria-selected="false"
+            aria-controls="html-panel"
+            id="html"
+            class="hidden"
+          >
+            HTML
+          </button>
+          <button
+            role="tab"
+            aria-selected="false"
+            aria-controls="css-panel"
+            id="css"
+            class="hidden"
+            tabindex="-1"
+          >
+            CSS
+          </button>
+          <button
+            role="tab"
+            aria-selected="false"
+            aria-controls="js-panel"
+            id="js"
+            class="hidden"
+            tabindex="-1"
+          >
+            JavaScript
+          </button>
         </div>
+        <section
+          id="html-panel"
+          tabindex="0"
+          role="tabpanel"
+          aria-labelledby="html"
+          class="hidden"
+          aria-hidden="true"
+        >
+          <div id="html-editor">
+            <pre><code>%example-code%</code></pre>
+          </div>
+        </section>
+        <section
+          id="css-panel"
+          tabindex="0"
+          role="tabpanel"
+          aria-labelledby="css"
+          class="hidden"
+          aria-hidden="true"
+        >
+          <div id="css-editor">
+            <pre><code>%example-css-src%</code></pre>
+          </div>
+        </section>
+        <section
+          id="js-panel"
+          tabindex="0"
+          role="tabpanel"
+          aria-labelledby="js"
+          class="hidden"
+          aria-hidden="true"
+        >
+          <div id="js-editor">
+            <pre><code>%example-js-src%</code></pre>
+          </div>
+        </section>
+      </section>
+      <div id="output" class="shadow-container">
+        <h4 class="output-label">Output</h4>
+        <shadow-output></shadow-output>
+      </div>
     </div>
 
-    <section class="console-container %console-state%" aria-hidden="%console-aria-state%">
-        <h4 class="console-label">Console Output</h4>
-        <button type="button" id="clear" class="clear">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 877.714 1024"
-                class="icon-clear">
-                <path class="path0" fill="currentColor"
-                    d="M749.714 510.286c0-62.286-18.286-120-49.714-168.571L269.143 772.001c49.143 32 107.429 50.857 169.714 50.857 171.429 0 310.857-140 310.857-312.571zM178.857 681.143l431.429-430.857c-49.143-33.143-108-52-171.429-52-171.429 0-310.857 140-310.857 312 0 63.429 18.857 121.714 50.857 170.857zm698.857-170.857c0 243.429-196.571 440.571-438.857 440.571S0 753.714 0 510.286c0-242.857 196.571-440 438.857-440s438.857 197.143 438.857 440z" />
-            </svg>
-            clear console</button>
-        <div id="console" class="console"><code></code></div>
+    <section
+      class="console-container %console-state%"
+      aria-hidden="%console-aria-state%"
+    >
+      <h4 class="console-label">Console Output</h4>
+      <button type="button" id="clear" class="clear">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 877.714 1024"
+          class="icon-clear"
+        >
+          <path
+            class="path0"
+            fill="currentColor"
+            d="M749.714 510.286c0-62.286-18.286-120-49.714-168.571L269.143 772.001c49.143 32 107.429 50.857 169.714 50.857 171.429 0 310.857-140 310.857-312.571zM178.857 681.143l431.429-430.857c-49.143-33.143-108-52-171.429-52-171.429 0-310.857 140-310.857 312 0 63.429 18.857 121.714 50.857 170.857zm698.857-170.857c0 243.429-196.571 440.571-438.857 440.571S0 753.714 0 510.286c0-242.857 196.571-440 438.857-440s438.857 197.143 438.857 440z"
+          />
+        </svg>
+        clear console
+      </button>
+      <div id="console" class="console"><code></code></div>
     </section>
 
     <script src="../../js/codemirror-tabbed-5-50-2.js%cache-buster%"></script>
     <script src="../../js/editor-tabbed.js%cache-buster%"></script>
-</body>
-
+  </body>
 </html>
