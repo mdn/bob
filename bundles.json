@@ -37,7 +37,6 @@
       "destFileName": "css-examples-libs"
     },
     "cssEditor": {
-      "javascript": ["../editor/js/editable-css-bundle.js"],
       "css": [
         "../editor/css/editor-libs/ui-fonts.css",
         "../editor/css/editor-libs/common.css",
@@ -47,7 +46,6 @@
       "destFileName": "editor-css"
     },
     "jsEditor": {
-      "javascript": ["../editor/js/editable-js-bundle.js"],
       "css": [
         "../editor/css/editor-libs/ui-fonts.css",
         "../editor/css/editor-libs/common.css",
@@ -56,7 +54,6 @@
       "destFileName": "editor-js"
     },
     "watEditor": {
-      "javascript": ["../editor/js/editable-wat-bundle.js"],
       "css": [
         "../editor/css/editor-libs/ui-fonts.css",
         "../editor/css/editor-libs/common.css",
