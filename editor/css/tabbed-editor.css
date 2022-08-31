@@ -1,20 +1,20 @@
 .editor-container {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* sizing utility classes */
 .tabbed-shorter .CodeMirror {
-    height: 252px;
+  height: 252px;
 }
 
 .tabbed-standard .CodeMirror {
-    height: 322px;
+  height: 322px;
 }
 
 .tabbed-taller .CodeMirror {
-    height: 532px;
+  height: 532px;
 }
 
 .tabbed-taller .CodeMirror,
@@ -25,42 +25,41 @@
   border-bottom: 1px solid var(--border-primary);
 }
 
-
 .shadow-container {
   position: relative;
 }
 
 /* For non shadow-dom supporting browsers */
 .output.style-scope {
-    background-color: var(--background-primary);
-    border-left: 1px solid var(--border-primary);
-    font-size: .9rem;
-    height: 342px;
-    line-height: 1.5;
-    margin: 0;
-    overflow: scroll;
-    padding: 1rem;
+  background-color: var(--background-primary);
+  border-left: 1px solid var(--border-primary);
+  font-size: 0.9rem;
+  height: 342px;
+  line-height: 1.5;
+  margin: 0;
+  overflow: scroll;
+  padding: 1rem;
 }
 
 .tabs {
-    font-size: .9rem;
-    flex: none;
+  font-size: 0.9rem;
+  flex: none;
 }
 
 .output-label,
 .console-label {
-    position: absolute;
-    background-color: var(--background-secondary);
-    color: var(--text-secondary);
-    border-radius: 0 0 0 var(--elem-radius);
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0.5rem 1.6rem;
-    font-size: .9rem;
-    z-index: 2;
-    font: var(--type-label-s);
-    text-transform: uppercase;
+  position: absolute;
+  background-color: var(--background-secondary);
+  color: var(--text-secondary);
+  border-radius: 0 0 0 var(--elem-radius);
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0.5rem 1.6rem;
+  font-size: 0.9rem;
+  z-index: 2;
+  font: var(--type-label-s);
+  text-transform: uppercase;
 }
 
 .icon-clear {
@@ -74,7 +73,7 @@
   align-items: center;
   background-color: var(--button-secondary-default);
   color: var(--text-primary);
-  padding: .5em;
+  padding: 0.5em;
   margin-bottom: 0.5rem;
   border: 1px solid var(--border-primary);
   border-radius: var(--elem-radius);
@@ -87,38 +86,38 @@
 }
 
 .console-container {
-    position: relative;
-    border-top: 1px solid var(--border-primary);
-    padding-top: 0.5rem;
+  position: relative;
+  border-top: 1px solid var(--border-primary);
+  padding-top: 0.5rem;
 }
 
 .console-label {
-    position: absolute;
-    top: 3rem;
-    right: 1px;
-    border-radius: var(--elem-radius);
+  position: absolute;
+  top: 3rem;
+  right: 1px;
+  border-radius: var(--elem-radius);
 }
 
 .console {
-    position: relative;
-    height: 200px;
-    background-color: var(--background-secondary);
-    margin: 0;
-    padding: 2rem 0.5rem 0.5rem 0.5rem;
-    border: 1px solid var(--border-primary);
-    border-radius: var(--elem-radius);
-    width: 100%;
-    height: 200px;
-    font: var(--type-code-regular);
+  position: relative;
+  height: 200px;
+  background-color: var(--background-secondary);
+  margin: 0;
+  padding: 2rem 0.5rem 0.5rem 0.5rem;
+  border: 1px solid var(--border-primary);
+  border-radius: var(--elem-radius);
+  width: 100%;
+  height: 200px;
+  font: var(--type-code-regular);
 }
 
 .console code {
-    display: block;
-    width: 100%;
-    height: 100px;
-    white-space: pre;
-    word-break: break-word;
-    overflow-y: auto;
+  display: block;
+  width: 100%;
+  height: 100px;
+  white-space: pre;
+  word-break: break-word;
+  overflow-y: auto;
 }
 
 @media screen and (min-width: 590px) {
@@ -130,20 +129,19 @@
     padding-top: 0.5rem;
   }
 
-
   .tabs {
-      width: 60%;
+    width: 60%;
   }
 
   .tabbed-shorter {
-      height: 300px;
+    height: 300px;
   }
 
   .tabbed-standard {
-      height: 370px;
+    height: 370px;
   }
   .tabbed-taller {
-      height: 580px;
+    height: 580px;
   }
 
   .shadow-container {
@@ -157,5 +155,4 @@
   .tabbed-shorter .CodeMirror {
     border-bottom: 0 none;
   }
-
 }
