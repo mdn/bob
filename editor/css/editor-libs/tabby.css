@@ -13,14 +13,17 @@ button[role="tab"] {
   border-top: 3px solid transparent;
   font: var(--type-emphasis-m);
   cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
 }
 
 button[role="tab"]:hover,
 button[role="tab"]:focus {
+  background-color: var(--background-tertiary);
   color: var(--text-primary);
 }
 
 button[aria-selected="true"] {
   color: var(--accent-primary);
   border-bottom-color: var(--accent-primary);
+  background-color: var(--background-tertiary);
 }
