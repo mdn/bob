@@ -62,14 +62,15 @@
     }
   ],
   "scripts": {
-    "build": "node ./lib/mdn-bob.js",
+    "build": "node ./lib/mdn-bob.js && webpack",
     "start": "npm-run-all build start-server",
     "start-server": "http-server -p 4444 ./docs",
     "format": "prettier --ignore-unknown --check \"*\"",
     "format:fix": "prettier --ignore-unknown --write \"*\"",
     "fix": "npm run format:fix",
     "test": "npm run format && jest",
-    "perf": "bundlesize"
+    "perf": "bundlesize",
+    "webpack": "webpack"
   },
   "jest": {
     "preset": "jest-puppeteer"
@@ -92,9 +93,11 @@
     "jest-puppeteer": "6.1.1",
     "lint-staged": "^13.0.3",
     "npm-run-all": "4.1.5",
+    "path-browserify": "^1.0.1",
     "prettier": "^2.4.1",
     "prettier-eslint": "15.0.1",
-    "puppeteer": "17.1.1"
+    "puppeteer": "17.1.1",
+    "webpack-cli": "^4.10.0"
   },
   "dependencies": {
     "browserify": "17.0.0",
@@ -105,7 +108,8 @@
     "glob": "8.0.3",
     "node-dir": "0.1.17",
     "uglify-es": "3.3.9",
-    "wabt": "^1.0.29"
+    "wabt": "^1.0.29",
+    "webpack": "5.74.0"
   },
   "resolutions": {
     "lodash": ">=4.17.5",
