@@ -65,7 +65,10 @@
     "build": "node ./lib/mdn-bob.js && webpack",
     "start": "npm-run-all build start-server",
     "start-server": "http-server -p 4444 ./docs",
-    "test": "jest",
+    "format": "prettier --ignore-unknown --check \"*\"",
+    "format:fix": "prettier --ignore-unknown --write \"*\"",
+    "fix": "npm run format:fix",
+    "test": "npm run format && jest",
     "perf": "bundlesize",
     "webpack": "webpack"
   },
@@ -85,13 +88,15 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
     "http-server": "14.1.1",
+    "husky": "^8.0.1",
     "jest": "28.1.3",
     "jest-puppeteer": "6.1.1",
+    "lint-staged": "^13.0.3",
     "npm-run-all": "4.1.5",
     "path-browserify": "^1.0.1",
     "prettier": "^2.4.1",
     "prettier-eslint": "15.0.1",
-    "puppeteer": "17.0.0",
+    "puppeteer": "17.1.1",
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
