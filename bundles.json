@@ -56,7 +56,7 @@
     },
     "tabbedEditor": {
       "javascript": [
-        "../editor/js/lib/webcomponents/webcomponents-bundle.js",
+        "../editor/js/lib/webcomponents-bundle.js",
         "../editor/js/editor-bundle.js"
       ],
       "css": [
