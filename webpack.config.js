@@ -17,6 +17,19 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "docs/js"),
   },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
   resolve: {
     fallback: {
       fs: false,
