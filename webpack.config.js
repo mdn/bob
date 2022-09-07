@@ -1,7 +1,13 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   mode: "production",
+  plugins: [
+    new webpack.BannerPlugin(
+      "mdn-bob (Builder of Bits) - © Mozilla Corporation, MIT license"
+    ),
+  ],
   entry: {
     "editor-css": "./editor/js/editable-css.js",
     "editor-js": "./editor/js/editable-js.js",
