@@ -6,6 +6,7 @@ module.exports = {
     "editor-css": "./editor/js/editable-css.js",
     "editor-js": "./editor/js/editable-js.js",
     "editor-wat": "./editor/js/editable-wat.js",
+    "css-examples-libs": "./editor/js/css-examples-libs.js",
   },
   output: {
     path: path.resolve(__dirname, "docs/js"),

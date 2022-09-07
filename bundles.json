@@ -28,14 +28,6 @@
       ],
       "destFileName": "codemirror-tabbed-5-50-2"
     },
-    "cssExampleLibs": {
-      "javascript": [
-        "../editor/js/lib/prism.js",
-        "../editor/js/lib/clipboard.js"
-      ],
-      "css": ["../editor/css/libs/prism.css"],
-      "destFileName": "css-examples-libs"
-    },
     "cssEditor": {
       "css": [
         "../editor/css/editor-libs/ui-fonts.css",
