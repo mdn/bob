@@ -28,14 +28,6 @@
       ],
       "destFileName": "codemirror-tabbed-5-50-2"
     },
-    "cssExampleLibs": {
-      "javascript": [
-        "../editor/js/lib/prism.js",
-        "../editor/js/lib/clipboard.js"
-      ],
-      "css": ["../editor/css/libs/prism.css"],
-      "destFileName": "css-examples-libs"
-    },
     "cssEditor": {
       "css": [
         "../editor/css/editor-libs/ui-fonts.css",
@@ -64,7 +56,7 @@
     },
     "tabbedEditor": {
       "javascript": [
-        "../editor/js/lib/webcomponents/webcomponents-bundle.js",
+        "../editor/js/lib/webcomponents-bundle.js",
         "../editor/js/editor-bundle.js"
       ],
       "css": [
