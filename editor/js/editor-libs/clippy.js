@@ -1,4 +1,5 @@
 var mceUtils = require("./mce-utils");
+var Clipboard = require("clipboard");
 
 /**
  * Positions the copy to clipboard success message based on the
