@@ -94,6 +94,7 @@
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
+    "esmify": "^2.1.1",
     "http-server": "14.1.1",
     "husky": "^8.0.1",
     "jest": "28.1.3",
