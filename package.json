@@ -103,7 +103,7 @@
     "prettier": "^2.4.1",
     "prettier-eslint": "15.0.1",
     "prismjs": "1.27.0",
-    "puppeteer": "17.1.1",
+    "puppeteer": "17.1.2",
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
