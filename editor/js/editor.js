@@ -1,13 +1,11 @@
+import mceConsole from "./editor-libs/console.js";
+import * as mceEvents from "./editor-libs/events.js";
+import * as mceUtils from "./editor-libs/mce-utils.js";
+import shadowOutput from "./editor-libs/shadow-output.js";
+import templateUtils from "./editor-libs/template-utils.js";
+import tabby from "./editor-libs/tabby.js";
+
 (function () {
-  "use strict";
-
-  var mceConsole = require("./editor-libs/console");
-  var mceEvents = require("./editor-libs/events.js");
-  var mceUtils = require("./editor-libs/mce-utils");
-  var shadowOutput = require("./editor-libs/shadow-output");
-  var templateUtils = require("./editor-libs/template-utils");
-  var tabby = require("./editor-libs/tabby");
-
   var cssEditor = document.getElementById("css-editor");
   var clearConsole = document.getElementById("clear");
   var editorContainer = document.getElementById("editor-container");
@@ -38,7 +36,8 @@
 
     function setContent(propertyName, editorName) {
       if (tabby.editors[editorName].editor) {
-        editorContents[propertyName] = tabby.editors[editorName].editor.getValue();
+        editorContents[propertyName] =
+          tabby.editors[editorName].editor.getValue();
       } else {
         editorContents[propertyName] = "";
       }

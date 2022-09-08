@@ -1,4 +1,4 @@
-module.exports = {
+const exported = {
   /**
    * Return the base style rules for the output class
    * @returns base style rules for the output class
@@ -6,6 +6,7 @@ module.exports = {
   getOutputBaseStyle: function () {
     return ".output{background-color:#fff;color:#15141aff;font-size:0.9rem;line-height:1.5;overflow:scroll;padding:1rem;height:100%;}";
   },
+
   /**
    * Return the base script to inject into the shadowDOM
    * @returns base JavaScript util which return the `shadowRoot`
@@ -13,6 +14,7 @@ module.exports = {
   getBaseJS: function () {
     return "function getShadowRoot() { return document.querySelector('shadow-output').shadowRoot; }";
   },
+
   /**
    * Get the template element and return its content
    * @returns The .content of the template element
@@ -20,6 +22,7 @@ module.exports = {
   getTemplateOutput: function () {
     return document.getElementById("code_tmpl").content;
   },
+
   /**
    * Create a template element and populate it with the content of
    * the editor panes. If native shadowDOM is not supported, it uses
@@ -76,5 +79,14 @@ module.exports = {
     if (typeof ShadyDOM !== "undefined") {
       ShadyCSS.prepareTemplate(tmpl, "shadow-output");
     }
-  },
+  }
 };
+
+export default exported;
+
+export const {
+  getOutputBaseStyle,
+  getBaseJS,
+  getTemplateOutput,
+  createTemplate
+} = exported;

@@ -91,7 +91,7 @@ function setNextActiveTab(direction) {
   }
 }
 
-module.exports = {
+const exported = {
   editors: {
     html: {
       editor: undefined,
@@ -125,6 +125,7 @@ module.exports = {
       },
     },
   },
+
   /**
    * Initialise the specified editor if not already initialised
    * @param {Array} editorTypes - The editors to initialise
@@ -144,6 +145,7 @@ module.exports = {
       );
     }
   },
+
   /**
    * Registers the required click and keyboard event listeners
    */
@@ -190,5 +192,13 @@ module.exports = {
           return;
       }
     });
-  },
+  }
 };
+
+export default exported;
+
+export const {
+  editors,
+  initEditor,
+  registerEventListeners
+} = exported;

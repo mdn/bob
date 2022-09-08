@@ -1,11 +1,10 @@
+import * as featureDetector from "./editor-libs/feature-detector.js";
+import mceConsole from "./editor-libs/console.js";
+import * as mceEvents from "./editor-libs/events.js";
+import * as mceUtils from "./editor-libs/mce-utils.js";
+import wabtConstructor from "wabt";
+
 (function () {
-  "use strict";
-
-  var featureDetector = require("./editor-libs/feature-detector.js");
-  var mceConsole = require("./editor-libs/console");
-  var mceEvents = require("./editor-libs/events.js");
-  var mceUtils = require("./editor-libs/mce-utils");
-
   var watCodeBlock = document.getElementById("static-wat");
   var jsCodeBlock = document.getElementById("static-js");
   var exampleFeature = watCodeBlock.dataset["feature"];
@@ -13,7 +12,7 @@
   var liveContainer = "";
   var output = document.querySelector("#console code");
   var reset = document.getElementById("reset");
-  var wabtInitialized = require("wabt")();
+  var wabtInitialized = wabtConstructor();
 
   var tabContainer = document.getElementById("tab-container");
   var tabs = tabContainer.querySelectorAll("button[role='tab']");
