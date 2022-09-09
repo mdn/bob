@@ -16,7 +16,7 @@
     "mdn-bob": "./lib/mdn-bob.js"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": "^16.0.0 || >=18.0.0"
   },
   "main": "./lib/mdn-bob.js",
   "bundlesize": [
