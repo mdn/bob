@@ -14,10 +14,10 @@ export function formatArray(input) {
       output += '"' + input[i] + '"';
     } else if (Array.isArray(input[i])) {
       output += "Array [";
-      output += this.formatArray(input[i]);
+      output += formatArray(input[i]);
       output += "]";
     } else {
-      output += this.formatOutput(input[i]);
+      output += formatOutput(input[i]);
     }
 
     if (i < input.length - 1) {
@@ -63,7 +63,7 @@ export function formatObject(input) {
     var arrayLength = input.length;
 
     if (arrayLength > 0) {
-      return objectName + " [" + this.formatArray(input) + "]";
+      return objectName + " [" + formatArray(input) + "]";
     } else {
       return objectName + " []";
     }
@@ -83,8 +83,7 @@ export function formatObject(input) {
         } else {
           formattedChild = formattedChild + ", ";
         }
-        formattedChild =
-          formattedChild + key + ": " + this.formatOutput(input[key]);
+        formattedChild = formattedChild + key + ": " + formatOutput(input[key]);
       }
     }
     return objectName + " { " + formattedChild + " }";
@@ -102,8 +101,7 @@ export function formatObject(input) {
       } else {
         formattedChild = formattedChild + ", ";
       }
-      formattedChild =
-        formattedChild + key + ": " + this.formatOutput(input[key]);
+      formattedChild = formattedChild + key + ": " + formatOutput(input[key]);
     }
     return "Object { " + formattedChild + " }";
   }
@@ -141,9 +139,9 @@ export function formatOutput(input) {
     }
   } else if (Array.isArray(input)) {
     // check the contents of the array
-    return "Array [" + this.formatArray(input) + "]";
+    return "Array [" + formatArray(input) + "]";
   } else {
-    return this.formatObject(input);
+    return formatObject(input);
   }
 }
 

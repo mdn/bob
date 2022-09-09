@@ -2,8 +2,8 @@ import mceConsole from "./editor-libs/console.js";
 import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
 import shadowOutput from "./editor-libs/shadow-output.js";
-import templateUtils from "./editor-libs/template-utils.js";
-import tabby from "./editor-libs/tabby.js";
+import * as templateUtils from "./editor-libs/template-utils.js";
+import * as tabby from "./editor-libs/tabby.js";
 
 (function () {
   var cssEditor = document.getElementById("css-editor");
