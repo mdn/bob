@@ -1,4 +1,4 @@
-const consoleUtils = require("../editor/js/editor-libs/console-utils");
+import * as consoleUtils from "../editor/js/editor-libs/console-utils";
 
 describe("console utils", () => {
   describe("formatOutput", () => {

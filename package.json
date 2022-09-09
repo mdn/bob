@@ -69,7 +69,8 @@
     "format": "prettier --ignore-unknown --check \"*\"",
     "format:fix": "prettier --ignore-unknown --write \"*\"",
     "fix": "npm run format:fix",
-    "test": "npm run format && jest",
+    "test": "npm run format && npm run jest",
+    "jest": "JEST_PUPPETEER_CONFIG=jest-puppeteer.config.cjs NODE_OPTIONS=--experimental-vm-modules jest",
     "perf": "bundlesize",
     "webpack": "webpack"
   },
