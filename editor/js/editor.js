@@ -1,3 +1,5 @@
+var wcb = require("@webcomponents/webcomponentsjs");
+
 (function () {
   "use strict";
 
@@ -38,7 +40,8 @@
 
     function setContent(propertyName, editorName) {
       if (tabby.editors[editorName].editor) {
-        editorContents[propertyName] = tabby.editors[editorName].editor.getValue();
+        editorContents[propertyName] =
+          tabby.editors[editorName].editor.getValue();
       } else {
         editorContents[propertyName] = "";
       }

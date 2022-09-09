@@ -55,10 +55,6 @@
       "destFileName": "editor-wat"
     },
     "tabbedEditor": {
-      "javascript": [
-        "/node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
-        "../editor/js/editor-bundle.js"
-      ],
       "css": [
         "../editor/css/editor-libs/ui-fonts.css",
         "../editor/css/editor-libs/common.css",
