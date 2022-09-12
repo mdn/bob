@@ -13,4 +13,4 @@ class ShadowOutput extends HTMLElement {
   }
 }
 
-module.exports = ShadowOutput;
+export default ShadowOutput;

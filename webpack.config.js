@@ -1,7 +1,10 @@
-const path = require("path");
-const webpack = require("webpack");
+import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
+import webpack from "webpack";
 
-module.exports = {
+const require = createRequire(import.meta.url);
+
+export default {
   mode: "production",
   plugins: [
     new webpack.BannerPlugin(
@@ -16,7 +19,7 @@ module.exports = {
     "css-examples-libs": "./editor/js/css-examples-libs.js",
   },
   output: {
-    path: path.resolve(__dirname, "docs/js"),
+    path: fileURLToPath(new URL("docs/js", import.meta.url)),
   },
   module: {
     rules: [

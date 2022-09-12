@@ -1,4 +1,4 @@
-const processor = require("../lib/processor");
+import * as processor from "../lib/processor";
 
 describe("processor", () => {
   describe("preprocessHTML", () => {
