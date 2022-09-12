@@ -1,13 +1,12 @@
-// Thanks in part to https://stackoverflow.com/questions/11403107/capturing-javascript-console-log
-module.exports = function () {
-  "use strict";
+import { writeOutput, formatOutput } from "./console-utils.js";
 
-  var consoleUtils = require("./console-utils");
+// Thanks in part to https://stackoverflow.com/questions/11403107/capturing-javascript-console-log
+export default function () {
   var originalConsoleLogger = console.log; // eslint-disable-line no-console
   var originalConsoleError = console.error;
 
   console.error = function (loggedItem) {
-    consoleUtils.writeOutput(loggedItem);
+    writeOutput(loggedItem);
     // do not swallow console.error
     originalConsoleError.apply(console, arguments);
   };
@@ -16,12 +15,12 @@ module.exports = function () {
   console.log = function () {
     var formattedList = [];
     for (var i = 0, l = arguments.length; i < l; i++) {
-      var formatted = consoleUtils.formatOutput(arguments[i]);
+      var formatted = formatOutput(arguments[i]);
       formattedList.push(formatted);
     }
     var output = formattedList.join(" ");
-    consoleUtils.writeOutput(output);
+    writeOutput(output);
     // do not swallow console.log
     originalConsoleLogger.apply(console, arguments);
   };
-};
+}

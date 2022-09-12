@@ -1,10 +1,8 @@
+import * as clippy from "./editor-libs/clippy.js";
+import * as mceEvents from "./editor-libs/events.js";
+import * as mceUtils from "./editor-libs/mce-utils.js";
+
 (function () {
-  "use strict";
-
-  var clippy = require("./editor-libs/clippy");
-  var mceEvents = require("./editor-libs/events");
-  var mceUtils = require("./editor-libs/mce-utils");
-
   var exampleChoiceList = document.getElementById("example-choice-list");
   var exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
   var editorWrapper = document.getElementById("editor-wrapper");
