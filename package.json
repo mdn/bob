@@ -87,6 +87,7 @@
   "devDependencies": {
     "@babel/core": "^7.19.0",
     "@babel/preset-env": "^7.19.0",
+    "@webcomponents/webcomponentsjs": "^2.6.0",
     "babel-loader": "^8.2.5",
     "babel-plugin-prismjs": "github:queengooborg/babel-plugin-prismjs#patch-1-build",
     "bundlesize": "0.18.1",
