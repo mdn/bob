@@ -37,21 +37,43 @@ code[class*="language-"] {
   color: #333;
 }
 
-/* overrides for increased a11y */
+.token {
+  color: var(--code-token-default);
+}
+
+.token.punctuation {
+  color: var(--code-token-punctuation);
+}
+
 .token.comment,
 .token.block-comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #58636d;
+  color: var(--code-token-comment);
 }
 
-.token.selector,
-.token.attr-name,
+.token.keyword,
+.token.tag .token.builtin {
+  color: var(--code-token-tag);
+}
+
+.token.attribute,
+.token.attr-name {
+  color: var(--code-token-attribute-name);
+}
+
 .token.string,
 .token.char,
-.token.function,
-.token.builtin,
-.token.inserted {
-  color: #2545a7;
+.token.number,
+.token.atom {
+  color: var(--code-token-attribute-value);
+}
+
+.token.selector {
+  color: var(--code-token-selector);
+}
+
+.token.property {
+  color: var(--code-token-attribute-name);
 }
