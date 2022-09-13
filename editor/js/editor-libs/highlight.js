@@ -1,8 +1,5 @@
 import Prism from "prismjs";
 
-// Don't automatically run Prism on all codeblocks
-Prism.manual = true;
-
 /**
  * Highlights codeblocks of specified code (or target's content) and applies it to the target element
  */
