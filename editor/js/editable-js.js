@@ -3,6 +3,10 @@ import mceConsole from "./editor-libs/console.js";
 import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
 
+import "../css/editor-libs/ui-fonts.css";
+import "../css/editor-libs/common.css";
+import "../css/editable-js-and-wat.css";
+
 (function () {
   var codeBlock = document.getElementById("static-js");
   var exampleFeature = codeBlock.dataset["feature"];

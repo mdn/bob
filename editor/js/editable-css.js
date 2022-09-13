@@ -2,6 +2,11 @@ import * as clippy from "./editor-libs/clippy.js";
 import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
 
+import "../css/editor-libs/ui-fonts.css";
+import "../css/editor-libs/common.css";
+import "../css/editor-libs/prism-override.css";
+import "../css/editable-css.css";
+
 (function () {
   var exampleChoiceList = document.getElementById("example-choice-list");
   var exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");

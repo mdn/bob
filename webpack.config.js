@@ -1,6 +1,8 @@
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
+import path from "node:path";
 import webpack from "webpack";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 const require = createRequire(import.meta.url);
 
@@ -10,6 +12,9 @@ export default {
     new webpack.BannerPlugin(
       "mdn-bob (Builder of Bits) - © Mozilla Corporation, MIT license"
     ),
+    new MiniCssExtractPlugin({
+      filename: "css/[name].css",
+    }),
   ],
   entry: {
     "editor-css": "./editor/js/editable-css.js",
@@ -18,7 +23,8 @@ export default {
     "css-examples-libs": "./editor/js/css-examples-libs.js",
   },
   output: {
-    path: fileURLToPath(new URL("docs/js", import.meta.url)),
+    path: fileURLToPath(new URL("docs", import.meta.url)),
+    filename: "js/[name].js",
   },
   module: {
     rules: [
@@ -29,7 +35,25 @@ export default {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: (resourcePath, context) => {
+                // publicPath is the relative path of the resource to the context
+                // e.g. for ./css/admin/main.css the publicPath will be ../../
+                // while for ./css/main.css the publicPath will be ../
+                return path.relative(path.dirname(resourcePath), context) + "/";
+              },
+            },
+          },
+          {
+            loader: "css-loader",
+            options: {
+              url: false,
+            },
+          },
+        ],
       },
     ],
   },
