@@ -24,6 +24,7 @@ import * as mceUtils from "./editor-libs/mce-utils.js";
       var exampleChoice = exampleChoices[i];
       var choiceButton = document.createElement("button");
       var choiceButtonText = document.createElement("span");
+      var choiceCode = exampleChoice.querySelector("code");
 
       choiceButton.setAttribute("type", "button");
       choiceButton.classList.add("example-choice-button");
@@ -33,11 +34,16 @@ import * as mceUtils from "./editor-libs/mce-utils.js";
       choiceButton.append(choiceButtonText);
       exampleChoice.append(choiceButton);
 
-      originalChoices.push(exampleChoice.querySelector("code").textContent);
+      originalChoices.push(choiceCode.textContent);
 
       if (exampleChoice.getAttribute("initial-choice")) {
         initialChoice = indexOf(exampleChoices, exampleChoice);
       }
+
+      // Re-highlight after editing code
+      choiceCode.addEventListener("focusout", function (e) {
+        highlightCode(e.target, "css");
+      });
     }
 
     mceEvents.register();
