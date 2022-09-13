@@ -15,18 +15,12 @@ export default {
     "editor-css": "./editor/js/editable-css.js",
     "editor-js": "./editor/js/editable-js.js",
     "editor-wat": "./editor/js/editable-wat.js",
-    "css-examples-libs": "./editor/js/css-examples-libs.js",
   },
   output: {
     path: fileURLToPath(new URL("docs/js", import.meta.url)),
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        loader: "babel-loader",
-        exclude: /node_modules/,
-      },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],

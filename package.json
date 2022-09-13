@@ -26,10 +26,6 @@
       "maxSize": "3 kB"
     },
     {
-      "path": "./docs/css/css-examples-libs-*.css",
-      "maxSize": "4 kB"
-    },
-    {
       "path": "./docs/css/editor-css.css",
       "maxSize": "4 kB"
     },
@@ -44,10 +40,6 @@
     {
       "path": "./docs/js/codemirror-*.js",
       "maxSize": "75 kB"
-    },
-    {
-      "path": "./docs/js/css-examples-libs-*.js",
-      "maxSize": "8 kB"
     },
     {
       "path": "./docs/js/editor-css.js",
@@ -85,10 +77,6 @@
     "mozilla"
   ],
   "devDependencies": {
-    "@babel/core": "^7.19.0",
-    "@babel/preset-env": "^7.19.0",
-    "babel-loader": "^8.2.5",
-    "babel-plugin-prismjs": "github:queengooborg/babel-plugin-prismjs#patch-1-build",
     "bundlesize": "0.18.1",
     "clipboard": "^2.0.11",
     "css-loader": "^6.7.1",
@@ -105,7 +93,6 @@
     "path-browserify": "^1.0.1",
     "prettier": "^2.4.1",
     "prettier-eslint": "15.0.1",
-    "prismjs": "1.29.0",
     "puppeteer": "17.1.3",
     "style-loader": "^3.3.1",
     "webpack-cli": "^4.10.0"

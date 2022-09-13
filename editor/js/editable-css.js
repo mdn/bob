@@ -1,6 +1,7 @@
 import * as clippy from "./editor-libs/clippy.js";
 import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
+import { applyCodeMirror } from "./editor-libs/css-editor-utils.js";
 
 (function () {
   var exampleChoiceList = document.getElementById("example-choice-list");
@@ -23,6 +24,15 @@ import * as mceUtils from "./editor-libs/mce-utils.js";
       var exampleChoice = exampleChoices[i];
       var choiceButton = document.createElement("button");
       var choiceButtonText = document.createElement("span");
+      var choiceCode = exampleChoice.querySelector("code");
+
+      originalChoices.push(choiceCode.textContent);
+
+      applyCodeMirror(
+        exampleChoice.querySelector("pre"),
+        "css",
+        choiceCode.textContent
+      );
 
       choiceButton.setAttribute("type", "button");
       choiceButton.classList.add("example-choice-button");
@@ -32,11 +42,11 @@ import * as mceUtils from "./editor-libs/mce-utils.js";
       choiceButton.append(choiceButtonText);
       exampleChoice.append(choiceButton);
 
-      originalChoices.push(exampleChoice.querySelector("code").textContent);
-
       if (exampleChoice.getAttribute("initial-choice")) {
         initialChoice = indexOf(exampleChoices, exampleChoice);
       }
+
+      choiceCode.remove();
     }
 
     mceEvents.register();
@@ -54,16 +64,15 @@ import * as mceUtils from "./editor-libs/mce-utils.js";
     var resetButton = document.getElementById("reset");
 
     resetButton.addEventListener("click", function () {
-      for (var i = 0, l = exampleChoices.length; i < l; i++) {
-        var highlighted = Prism.highlight(
-          originalChoices[i],
-          Prism.languages.css
-        );
-        // IE11 does not support multiple selectors in `remove`
-        exampleChoices[i].classList.remove("invalid");
-        exampleChoices[i].classList.remove("selected");
-        exampleChoices[i].querySelector("code").innerHTML = highlighted;
-      }
+      exampleChoices.forEach(function (e, i) {
+        var preEl = e.querySelector("pre");
+        // Remove original codemirror
+        for (const e of preEl.children) {
+          e.remove();
+        }
+        e.classList.remove("invalid", "selected");
+        applyCodeMirror(preEl, "css", originalChoices[i]);
+      });
 
       // if there is an initial choice set, set it as selected
       if (initialChoice) {

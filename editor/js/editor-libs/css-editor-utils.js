@@ -31,13 +31,8 @@ export function applyCode(code, choice, targetElement) {
  * @param {Object} choice - The selected `example-choice` element
  */
 export function choose(choice) {
-  var codeBlock = choice.querySelector("code");
-
   choice.classList.add("selected");
-
-  codeBlock.setAttribute("contentEditable", true);
-  codeBlock.setAttribute("spellcheck", false);
-
+  var codeBlock = choice.querySelector(".CodeMirror-code");
   applyCode(codeBlock.textContent, choice);
 }
 
@@ -74,4 +69,18 @@ export function resetUIState() {
   for (var i = 0, l = exampleChoices.length; i < l; i++) {
     exampleChoices[i].classList.remove("selected");
   }
+}
+
+export function applyCodeMirror(target, language, code) {
+  var codeMirror = CodeMirror(target, {
+    inputStyle: "contenteditable",
+    lineNumbers: false,
+    mode: language,
+    undoDepth: 5,
+    tabindex: 0,
+    viewportMargin: Infinity,
+    value: code,
+  });
+
+  codeMirror.setSize("100%", "auto");
 }
