@@ -29,10 +29,6 @@
       "destFileName": "codemirror-tabbed-5-50-2"
     },
     "tabbedEditor": {
-      "javascript": [
-        "../editor/js/lib/webcomponents-bundle.js",
-        "../editor/js/editor-bundle.js"
-      ],
       "css": [
         "../editor/css/editor-libs/ui-fonts.css",
         "../editor/css/editor-libs/common.css",

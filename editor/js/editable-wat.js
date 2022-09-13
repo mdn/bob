@@ -62,7 +62,7 @@ import "../css/editor-libs/tabby.css";
         selectedPanel.classList.remove("hidden");
         selectedPanel.setAttribute("aria-hidden", false);
         // refresh the CodeMirror UI for this view
-        // module.exports.editors[eventTarget.id].editor.refresh();
+        // editors[eventTarget.id].editor.refresh();
 
         watCodeMirror.refresh();
         jsCodeMirror.refresh();
