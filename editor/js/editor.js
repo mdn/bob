@@ -6,6 +6,12 @@ import shadowOutput from "./editor-libs/shadow-output.js";
 import * as templateUtils from "./editor-libs/template-utils.js";
 import * as tabby from "./editor-libs/tabby.js";
 
+import "../css/editor-libs/ui-fonts.css";
+import "../css/editor-libs/common.css";
+import "../css/editor-libs/shadow-fonts.css";
+import "../css/editor-libs/tabby.css";
+import "../css/tabbed-editor.css";
+
 (function () {
   var cssEditor = document.getElementById("css-editor");
   var clearConsole = document.getElementById("clear");

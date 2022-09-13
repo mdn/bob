@@ -3,7 +3,6 @@
     "bundleConfig": "../bundles.json",
     "destCssDir": "./docs/css/",
     "destJsDir": "./docs/js/",
-    "editorBundles": "../editor/js/editor.js",
     "examplesFontsRoot": "./live-examples/fonts",
     "examplesMediaRoot": "./live-examples/media",
     "editorMediaRoot": "../editor/media",

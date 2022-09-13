@@ -27,16 +27,6 @@
         "../editor/css/editor-libs/codemirror-override.css"
       ],
       "destFileName": "codemirror-tabbed-5-50-2"
-    },
-    "tabbedEditor": {
-      "css": [
-        "../editor/css/editor-libs/ui-fonts.css",
-        "../editor/css/editor-libs/common.css",
-        "../editor/css/editor-libs/shadow-fonts.css",
-        "../editor/css/editor-libs/tabby.css",
-        "../editor/css/tabbed-editor.css"
-      ],
-      "destFileName": "editor-tabbed"
     }
   }
 }
