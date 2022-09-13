@@ -77,6 +77,7 @@
     "mozilla"
   ],
   "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.6.0",
     "bundlesize": "0.18.1",
     "clipboard": "^2.0.11",
     "css-loader": "^6.7.1",

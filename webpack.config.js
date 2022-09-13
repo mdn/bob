@@ -12,6 +12,7 @@ export default {
     ),
   ],
   entry: {
+    "editor-tabbed": "./editor/js/editor.js",
     "editor-css": "./editor/js/editable-css.js",
     "editor-js": "./editor/js/editable-js.js",
     "editor-wat": "./editor/js/editable-wat.js",
