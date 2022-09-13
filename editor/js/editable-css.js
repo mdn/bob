@@ -1,5 +1,6 @@
 import * as clippy from "./editor-libs/clippy.js";
 import * as mceEvents from "./editor-libs/events.js";
+import highlightCode from "./editor-libs/highlight.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
 
 (function () {
@@ -55,14 +56,12 @@ import * as mceUtils from "./editor-libs/mce-utils.js";
 
     resetButton.addEventListener("click", function () {
       for (var i = 0, l = exampleChoices.length; i < l; i++) {
-        var highlighted = Prism.highlight(
-          originalChoices[i],
-          Prism.languages.css
+        highlightCode(
+          exampleChoices[i].querySelector("code"),
+          "css",
+          originalChoices[i]
         );
-        // IE11 does not support multiple selectors in `remove`
-        exampleChoices[i].classList.remove("invalid");
-        exampleChoices[i].classList.remove("selected");
-        exampleChoices[i].querySelector("code").innerHTML = highlighted;
+        exampleChoices[i].classList.remove("invalid", "selected");
       }
 
       // if there is an initial choice set, set it as selected
