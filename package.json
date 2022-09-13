@@ -26,10 +26,6 @@
       "maxSize": "3 kB"
     },
     {
-      "path": "./docs/css/css-examples-libs-*.css",
-      "maxSize": "4 kB"
-    },
-    {
       "path": "./docs/css/editor-css.css",
       "maxSize": "4 kB"
     },
@@ -44,10 +40,6 @@
     {
       "path": "./docs/js/codemirror-*.js",
       "maxSize": "75 kB"
-    },
-    {
-      "path": "./docs/js/css-examples-libs-*.js",
-      "maxSize": "8 kB"
     },
     {
       "path": "./docs/js/editor-css.js",
