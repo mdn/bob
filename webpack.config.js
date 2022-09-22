@@ -3,6 +3,7 @@ import { createRequire } from "node:module";
 import path from "node:path";
 import webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
 const require = createRequire(import.meta.url);
 
@@ -65,6 +66,10 @@ export default {
     },
   },
   optimization: {
+    minimizer: [
+      `...`,
+      new CssMinimizerPlugin(),
+    ],
     splitChunks: {
       chunks: "async",
     },
