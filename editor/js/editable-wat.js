@@ -4,6 +4,11 @@ import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
 import wabtConstructor from "wabt";
 
+import "../css/editor-libs/ui-fonts.css";
+import "../css/editor-libs/common.css";
+import "../css/editable-js-and-wat.css";
+import "../css/editor-libs/tabby.css";
+
 (function () {
   var watCodeBlock = document.getElementById("static-wat");
   var jsCodeBlock = document.getElementById("static-js");

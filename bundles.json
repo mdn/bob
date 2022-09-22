@@ -27,42 +27,6 @@
         "../editor/css/editor-libs/codemirror-override.css"
       ],
       "destFileName": "codemirror-tabbed-5-50-2"
-    },
-    "cssEditor": {
-      "css": [
-        "../editor/css/editor-libs/ui-fonts.css",
-        "../editor/css/editor-libs/common.css",
-        "../editor/css/editor-libs/prism-override.css",
-        "../editor/css/editable-css.css"
-      ],
-      "destFileName": "editor-css"
-    },
-    "jsEditor": {
-      "css": [
-        "../editor/css/editor-libs/ui-fonts.css",
-        "../editor/css/editor-libs/common.css",
-        "../editor/css/editable-js-and-wat.css"
-      ],
-      "destFileName": "editor-js"
-    },
-    "watEditor": {
-      "css": [
-        "../editor/css/editor-libs/ui-fonts.css",
-        "../editor/css/editor-libs/common.css",
-        "../editor/css/editable-js-and-wat.css",
-        "../editor/css/editor-libs/tabby.css"
-      ],
-      "destFileName": "editor-wat"
-    },
-    "tabbedEditor": {
-      "css": [
-        "../editor/css/editor-libs/ui-fonts.css",
-        "../editor/css/editor-libs/common.css",
-        "../editor/css/editor-libs/shadow-fonts.css",
-        "../editor/css/editor-libs/tabby.css",
-        "../editor/css/tabbed-editor.css"
-      ],
-      "destFileName": "editor-tabbed"
     }
   }
 }
