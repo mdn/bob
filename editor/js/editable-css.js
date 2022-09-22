@@ -3,6 +3,11 @@ import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
 import { applyCodeMirror } from "./editor-libs/css-editor-utils.js";
 
+import "../css/editor-libs/ui-fonts.css";
+import "../css/editor-libs/common.css";
+import "../css/editor-libs/codemirror-override.css";
+import "../css/editable-css.css";
+
 (function () {
   var exampleChoiceList = document.getElementById("example-choice-list");
   var exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
