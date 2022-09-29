@@ -1,83 +1,32 @@
 {
-    "bundles": {
-        "codeMirror": {
-            "javascript": [
-                "/node_modules/codemirror/lib/codemirror.js",
-                "/node_modules/codemirror/mode/javascript/javascript.js",
-                "/node_modules/codemirror/addon/mode/simple.js",
-                "/node_modules/codemirror/mode/wast/wast.js"
-            ],
-            "css": [
-                "/node_modules/codemirror/lib/codemirror.css",
-                "../editor/css/editor-libs/codemirror-override.css"
-            ],
-            "destFileName": "codemirror-5-50-2"
-        },
-        "codeMirrorTabbed": {
-            "javascript": [
-                "/node_modules/codemirror/lib/codemirror.js",
-                "/node_modules/codemirror/addon/display/autorefresh.js",
-                "/node_modules/codemirror/mode/javascript/javascript.js",
-                "/node_modules/codemirror/mode/xml/xml.js",
-                "/node_modules/codemirror/mode/css/css.js",
-                "/node_modules/codemirror/mode/htmlmixed/htmlmixed.js"
-            ],
-            "css": [
-                "/node_modules/codemirror/lib/codemirror.css",
-                "../editor/css/editor-libs/codemirror-override.css"
-            ],
-            "destFileName": "codemirror-tabbed-5-50-2"
-        },
-        "cssExampleLibs": {
-            "javascript": [
-                "../editor/js/lib/prism.js",
-                "../editor/js/lib/clipboard.js"
-            ],
-            "css": ["../editor/css/libs/prism.css"],
-            "destFileName": "css-examples-libs"
-        },
-        "cssEditor": {
-            "javascript": ["../editor/js/editable-css-bundle.js"],
-            "css": [
-                "../editor/css/editor-libs/ui-fonts.css",
-                "../editor/css/editor-libs/common.css",
-                "../editor/css/editor-libs/prism-override.css",
-                "../editor/css/editable-css.css"
-            ],
-            "destFileName": "editor-css"
-        },
-        "jsEditor": {
-            "javascript": ["../editor/js/editable-js-bundle.js"],
-            "css": [
-                "../editor/css/editor-libs/ui-fonts.css",
-                "../editor/css/editor-libs/common.css",
-                "../editor/css/editable-js-and-wat.css"
-            ],
-            "destFileName": "editor-js"
-        },
-        "watEditor": {
-            "javascript": ["../editor/js/editable-wat-bundle.js"],
-            "css": [
-                "../editor/css/editor-libs/ui-fonts.css",
-                "../editor/css/editor-libs/common.css",
-                "../editor/css/editable-js-and-wat.css",
-                "../editor/css/editor-libs/tabby.css"
-            ],
-            "destFileName": "editor-wat"
-        },
-        "tabbedEditor": {
-            "javascript": [
-                "../editor/js/lib/webcomponents/webcomponents-bundle.js",
-                "../editor/js/editor-bundle.js"
-            ],
-            "css": [
-                "../editor/css/editor-libs/ui-fonts.css",
-                "../editor/css/editor-libs/common.css",
-                "../editor/css/editor-libs/shadow-fonts.css",
-                "../editor/css/editor-libs/tabby.css",
-                "../editor/css/tabbed-editor.css"
-            ],
-            "destFileName": "editor-tabbed"
-        }
+  "bundles": {
+    "codeMirror": {
+      "javascript": [
+        "/node_modules/codemirror/lib/codemirror.js",
+        "/node_modules/codemirror/mode/javascript/javascript.js",
+        "/node_modules/codemirror/addon/mode/simple.js",
+        "/node_modules/codemirror/mode/wast/wast.js"
+      ],
+      "css": [
+        "/node_modules/codemirror/lib/codemirror.css",
+        "../editor/css/editor-libs/codemirror-override.css"
+      ],
+      "destFileName": "codemirror-5-50-2"
+    },
+    "codeMirrorTabbed": {
+      "javascript": [
+        "/node_modules/codemirror/lib/codemirror.js",
+        "/node_modules/codemirror/addon/display/autorefresh.js",
+        "/node_modules/codemirror/mode/javascript/javascript.js",
+        "/node_modules/codemirror/mode/xml/xml.js",
+        "/node_modules/codemirror/mode/css/css.js",
+        "/node_modules/codemirror/mode/htmlmixed/htmlmixed.js"
+      ],
+      "css": [
+        "/node_modules/codemirror/lib/codemirror.css",
+        "../editor/css/editor-libs/codemirror-override.css"
+      ],
+      "destFileName": "codemirror-tabbed-5-50-2"
     }
+  }
 }

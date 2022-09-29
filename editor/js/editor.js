@@ -1,13 +1,18 @@
+import wcb from "@webcomponents/webcomponentsjs";
+import mceConsole from "./editor-libs/console.js";
+import * as mceEvents from "./editor-libs/events.js";
+import * as mceUtils from "./editor-libs/mce-utils.js";
+import shadowOutput from "./editor-libs/shadow-output.js";
+import * as templateUtils from "./editor-libs/template-utils.js";
+import * as tabby from "./editor-libs/tabby.js";
+
+import "../css/editor-libs/ui-fonts.css";
+import "../css/editor-libs/common.css";
+import "../css/editor-libs/shadow-fonts.css";
+import "../css/editor-libs/tabby.css";
+import "../css/tabbed-editor.css";
+
 (function () {
-  "use strict";
-
-  var mceConsole = require("./editor-libs/console");
-  var mceEvents = require("./editor-libs/events.js");
-  var mceUtils = require("./editor-libs/mce-utils");
-  var shadowOutput = require("./editor-libs/shadow-output");
-  var templateUtils = require("./editor-libs/template-utils");
-  var tabby = require("./editor-libs/tabby");
-
   var cssEditor = document.getElementById("css-editor");
   var clearConsole = document.getElementById("clear");
   var editorContainer = document.getElementById("editor-container");
@@ -30,16 +35,20 @@
    * }
    */
   function getOutput() {
-    var editorContents = {
-      htmlContent: tabby.editors.html.editor.getValue(),
-      cssContent: tabby.editors.css.editor.getValue(),
-    };
+    var editorContents = {};
 
-    // not all editor instances have a JS panel
-    if (tabby.editors.js.editor) {
-      editorContents.jsContent = tabby.editors.js.editor.getValue();
+    setContent("htmlContent", "html");
+    setContent("cssContent", "css");
+    setContent("jsContent", "js");
+
+    function setContent(propertyName, editorName) {
+      if (tabby.editors[editorName].editor) {
+        editorContents[propertyName] =
+          tabby.editors[editorName].editor.getValue();
+      } else {
+        editorContents[propertyName] = "";
+      }
     }
-
     return editorContents;
   }
 
@@ -130,7 +139,7 @@
       return editorContainer.dataset.tabs.split(",");
     } else {
       return ["html", "css"];
-     }
+    }
   }
 
   /**

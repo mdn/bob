@@ -1,11 +1,15 @@
+import * as featureDetector from "./editor-libs/feature-detector.js";
+import mceConsole from "./editor-libs/console.js";
+import * as mceEvents from "./editor-libs/events.js";
+import * as mceUtils from "./editor-libs/mce-utils.js";
+import wabtConstructor from "wabt";
+
+import "../css/editor-libs/ui-fonts.css";
+import "../css/editor-libs/common.css";
+import "../css/editable-js-and-wat.css";
+import "../css/editor-libs/tabby.css";
+
 (function () {
-  "use strict";
-
-  var featureDetector = require("./editor-libs/feature-detector.js");
-  var mceConsole = require("./editor-libs/console");
-  var mceEvents = require("./editor-libs/events.js");
-  var mceUtils = require("./editor-libs/mce-utils");
-
   var watCodeBlock = document.getElementById("static-wat");
   var jsCodeBlock = document.getElementById("static-js");
   var exampleFeature = watCodeBlock.dataset["feature"];
@@ -13,7 +17,7 @@
   var liveContainer = "";
   var output = document.querySelector("#console code");
   var reset = document.getElementById("reset");
-  var wabtInitialized = require("wabt")();
+  var wabtInitialized = wabtConstructor();
 
   var tabContainer = document.getElementById("tab-container");
   var tabs = tabContainer.querySelectorAll("button[role='tab']");
@@ -23,7 +27,7 @@
   var jsCodeMirror;
   var staticContainer;
   var wabt;
-  wabtInitialized.then(res => {
+  wabtInitialized.then((res) => {
     wabt = res;
   });
 
@@ -41,14 +45,12 @@
   }
 
   function registerEventListeners() {
-    tabList.addEventListener("click", function(event) {
+    tabList.addEventListener("click", function (event) {
       var eventTarget = event.target;
       var role = eventTarget.getAttribute("role");
 
       if (role === "tab") {
-        var activeTab = tabList.querySelector(
-          "button[aria-selected='true']"
-        );
+        var activeTab = tabList.querySelector("button[aria-selected='true']");
         var selectedPanel = document.getElementById(
           eventTarget.getAttribute("aria-controls")
         );
@@ -60,14 +62,14 @@
         selectedPanel.classList.remove("hidden");
         selectedPanel.setAttribute("aria-hidden", false);
         // refresh the CodeMirror UI for this view
-        // module.exports.editors[eventTarget.id].editor.refresh();
+        // editors[eventTarget.id].editor.refresh();
 
         watCodeMirror.refresh();
         jsCodeMirror.refresh();
       }
     });
 
-    tabList.addEventListener("keyup", function(event) {
+    tabList.addEventListener("keyup", function (event) {
       event.stopPropagation();
       switch (event.key) {
         case "ArrowRight":
@@ -210,7 +212,7 @@
 
     initCodeMirror();
 
-    registerEventListeners()
+    registerEventListeners();
   }
 
   /**
@@ -222,12 +224,15 @@
     await wabtInitialized;
     var encoder = new TextEncoder();
     let watBuffer = encoder.encode(wat);
-    let module = wabt.parseWat("", watBuffer, { exceptions: true });
+    let module = wabt.parseWat("", watBuffer, {
+      exceptions: true,
+      reference_types: true,
+    });
     module.resolveNames();
     module.validate();
     const binary = module.toBinary({ log: true, write_debug_names: true });
 
-    const blob = new Blob([binary.buffer.buffer], {type : "application/wasm"});
+    const blob = new Blob([binary.buffer.buffer], { type: "application/wasm" });
     return blob;
   }
 
@@ -250,7 +255,9 @@
       // Create an new async function from the code, and immediately execute it.
       // using an async function since WebAssembly.instantiate is async and
       // we need to await in order to capture errors
-      let AsyncFunction = Object.getPrototypeOf(async function(){}).constructor;
+      let AsyncFunction = Object.getPrototypeOf(
+        async function () {}
+      ).constructor;
       await new AsyncFunction(exampleCode)();
     } catch (error) {
       console.error(error);
@@ -264,7 +271,7 @@
   /* only execute JS in supported browsers. As `document.all`
   is a non standard object available only in IE10 and older,
   this will stop JS from executing in those versions. */
-  if ('WebAssembly' in window && featureDetector.isDefined(exampleFeature)) {
+  if ("WebAssembly" in window && featureDetector.isDefined(exampleFeature)) {
     document.documentElement.classList.add("wat");
 
     initInteractiveEditor();

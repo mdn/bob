@@ -1,10 +1,13 @@
+import * as clippy from "./editor-libs/clippy.js";
+import * as mceEvents from "./editor-libs/events.js";
+import * as mceUtils from "./editor-libs/mce-utils.js";
+
+import "../css/editor-libs/ui-fonts.css";
+import "../css/editor-libs/common.css";
+import "../css/editor-libs/prism-override.css";
+import "../css/editable-css.css";
+
 (function () {
-  "use strict";
-
-  var clippy = require("./editor-libs/clippy");
-  var mceEvents = require("./editor-libs/events");
-  var mceUtils = require("./editor-libs/mce-utils");
-
   var exampleChoiceList = document.getElementById("example-choice-list");
   var exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
   var editorWrapper = document.getElementById("editor-wrapper");
@@ -23,13 +26,13 @@
 
     for (var i = 0, l = exampleChoices.length; i < l; i++) {
       var exampleChoice = exampleChoices[i];
-      var choiceButton = document.createElement('button');
-      var choiceButtonText = document.createElement('span');
+      var choiceButton = document.createElement("button");
+      var choiceButtonText = document.createElement("span");
 
       choiceButton.setAttribute("type", "button");
-      choiceButton.classList.add("example-choice-button")
+      choiceButton.classList.add("example-choice-button");
       choiceButtonText.classList.add("visually-hidden");
-      choiceButtonText.textContent = "Choose example " + ( i + 1);
+      choiceButtonText.textContent = "Choose example " + (i + 1);
 
       choiceButton.append(choiceButtonText);
       exampleChoice.append(choiceButton);
@@ -118,8 +121,7 @@
     enableLiveEditor();
     mceEvents.onChoose(exampleChoices[initialChoice]);
     clippy.toggleClippy(exampleChoices[initialChoice]);
-  }
-  else {
+  } else {
     warningNoSupport.classList.remove("hidden");
   }
 })();

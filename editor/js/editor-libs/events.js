@@ -1,12 +1,11 @@
-var clippy = require("./clippy");
-var cssEditorUtils = require("./css-editor-utils");
+import * as clippy from "./clippy.js";
+import * as cssEditorUtils from "./css-editor-utils.js";
 
 /**
  * Adds listeners for events from the CSS live examples
  * @param {Object} exampleChoiceList - The object to which events are added
  */
 function addCSSEditorEventListeners(exampleChoiceList) {
-  "use strict";
   exampleChoiceList.addEventListener("cut", copyTextOnly);
   exampleChoiceList.addEventListener("copy", copyTextOnly);
   exampleChoiceList.addEventListener("paste", handlePasteEvents);
@@ -31,8 +30,6 @@ function addCSSEditorEventListeners(exampleChoiceList) {
  * Currently only used by the CSS editor.
  */
 function addPostMessageListener() {
-  "use strict";
-
   window.addEventListener(
     "message",
     function (event) {
@@ -78,7 +75,6 @@ function sendOwnHeight() {
  * @param {Object} event - The copy event
  */
 function copyTextOnly(event) {
-  "use strict";
   var selection = window.getSelection();
   var range = selection.getRangeAt(0);
 
@@ -94,7 +90,6 @@ function copyTextOnly(event) {
  * @param {Object} event - The paste event object
  */
 function handlePasteEvents(event) {
-  "use strict";
   var codeElement = event.target;
   // It's likely that caret will be placed inside nested element that belongs to Prism
   // We require element that contains whole example: <code class="language-css"></code>
@@ -109,50 +104,48 @@ function handlePasteEvents(event) {
 }
 
 function handleChoiceEvent() {
-  module.exports.onChoose(this);
+  onChoose(this);
 }
 
-module.exports = {
-  /**
-   * Called when a new `example-choice` has been selected.
-   * @param {Object} choice - The selected `example-choice` element
-   */
-  onChoose: function (choice) {
-    var selected = document.querySelector(".selected");
+/**
+ * Called when a new `example-choice` has been selected.
+ * @param {Object} choice - The selected `example-choice` element
+ */
+export function onChoose(choice) {
+  var selected = document.querySelector(".selected");
 
-    // highlght the code we are leaving
-    if (selected && !choice.classList.contains("selected")) {
-      var highlighted = Prism.highlight(
-        selected.firstChild.textContent,
-        Prism.languages.css
-      );
-      selected.firstChild.innerHTML = highlighted;
+  // highlght the code we are leaving
+  if (selected && !choice.classList.contains("selected")) {
+    var highlighted = Prism.highlight(
+      selected.firstChild.textContent,
+      Prism.languages.css
+    );
+    selected.firstChild.innerHTML = highlighted;
 
-      cssEditorUtils.resetDefault();
-    }
+    cssEditorUtils.resetDefault();
+  }
 
-    cssEditorUtils.choose(choice);
-    clippy.toggleClippy(choice);
-  },
-  /**
-   * Called by the main JS file after all other initialization
-   * has been completed.
-   */
-  register: function () {
-    "use strict";
-    var exampleChoiceList = document.getElementById("example-choice-list");
+  cssEditorUtils.choose(choice);
+  clippy.toggleClippy(choice);
+}
 
-    addPostMessageListener();
+/**
+ * Called by the main JS file after all other initialization
+ * has been completed.
+ */
+export function register() {
+  var exampleChoiceList = document.getElementById("example-choice-list");
 
-    if (document.readyState != "loading") {
-      sendOwnHeight();
-    } else {
-      document.addEventListener("DOMContentLoaded", sendOwnHeight);
-    }
+  addPostMessageListener();
 
-    // only bind events if the `exampleChoiceList` container exist
-    if (exampleChoiceList) {
-      addCSSEditorEventListeners(exampleChoiceList);
-    }
-  },
-};
+  if (document.readyState != "loading") {
+    sendOwnHeight();
+  } else {
+    document.addEventListener("DOMContentLoaded", sendOwnHeight);
+  }
+
+  // only bind events if the `exampleChoiceList` container exist
+  if (exampleChoiceList) {
+    addCSSEditorEventListeners(exampleChoiceList);
+  }
+}

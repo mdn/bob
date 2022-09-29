@@ -1,11 +1,13 @@
+import * as featureDetector from "./editor-libs/feature-detector.js";
+import mceConsole from "./editor-libs/console.js";
+import * as mceEvents from "./editor-libs/events.js";
+import * as mceUtils from "./editor-libs/mce-utils.js";
+
+import "../css/editor-libs/ui-fonts.css";
+import "../css/editor-libs/common.css";
+import "../css/editable-js-and-wat.css";
+
 (function () {
-  "use strict";
-
-  var featureDetector = require("./editor-libs/feature-detector.js");
-  var mceConsole = require("./editor-libs/console");
-  var mceEvents = require("./editor-libs/events.js");
-  var mceUtils = require("./editor-libs/mce-utils");
-
   var codeBlock = document.getElementById("static-js");
   var exampleFeature = codeBlock.dataset["feature"];
   var execute = document.getElementById("execute");

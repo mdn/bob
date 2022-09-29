@@ -4,48 +4,74 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>%title%</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../../css/codemirror-5-50-2.css%cache-buster%" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="../../css/codemirror-5-50-2.css%cache-buster%"
+      rel="stylesheet"
+    />
     <link href="../../css/editor-wat.css%cache-buster%" rel="stylesheet" />
   </head>
   <body>
-    <section id="static">
-        %example-code%
-    </section>
+    <section id="static">%example-code%</section>
 
     <header class="output-header">
-        <h4 class="output-heading">%title%</h4>
+      <h4 class="output-heading">%title%</h4>
     </header>
 
     <section id="tab-container" class="tabs">
       <div class="tab-list" id="tablist" role="tablist">
-        <button role="tab" aria-selected="false" aria-controls="js-panel" id="js" tabindex="-1">
+        <button
+          role="tab"
+          aria-selected="false"
+          aria-controls="js-panel"
+          id="js"
+          tabindex="-1"
+        >
           JavaScript
         </button>
-        <button role="tab" aria-selected="true" aria-controls="wat-panel" id="wat" autofocus>
+        <button
+          role="tab"
+          aria-selected="true"
+          aria-controls="wat-panel"
+          id="wat"
+          autofocus
+        >
           WAT
         </button>
       </div>
 
       <section id="live" class="live hidden">
-
-        <section class="editor hidden" id="js-panel" tabindex="0" role="tabpanel" aria-labelledby="js" aria-hidden="true">
+        <section
+          class="editor hidden"
+          id="js-panel"
+          tabindex="0"
+          role="tabpanel"
+          aria-labelledby="js"
+          aria-hidden="true"
+        >
           <div id="js-editor"></div>
         </section>
-        <section class="editor" id="wat-panel" tabindex="0" role="tabpanel" aria-labelledby="wat">
+        <section
+          class="editor"
+          id="wat-panel"
+          tabindex="0"
+          role="tabpanel"
+          aria-labelledby="wat"
+        >
           <div id="wat-editor"></div>
         </section>
 
         <div class="output-container">
-            <div class="buttons-container">
-                <button id="execute" class="button run" type="button">Run &rsaquo;</button>
-                <button id="reset" type="button" class="button">Reset</button>
-            </div>
-            <div id="console" class="output"><code></code></div>
+          <div class="buttons-container">
+            <button id="execute" class="button run" type="button">
+              Run &rsaquo;
+            </button>
+            <button id="reset" type="button" class="button">Reset</button>
+          </div>
+          <div id="console" class="output"><code></code></div>
         </div>
       </section>
     </section>
-
 
     <script src="../../js/codemirror-5-50-2.js%cache-buster%"></script>
     <script src="../../js/editor-wat.js%cache-buster%"></script>
