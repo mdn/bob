@@ -5,30 +5,30 @@ describe("Tabbed Editor", () => {
     });
 
     it("loads the expected HTML into the output element", async () => {
-      const expectedOutput =
-        "<style>" +
-        ".output{background-color:#fff;color:#15141aff;" +
-        "font-size:0.9rem;line-height:1.5;overflow:scroll;" +
-        "padding:2rem 1rem 1rem;height:100%;}" +
-        "</style>" +
-        "<style>" +
-        "address { font-variant-caps: small-caps;}a { font-variant: normal;}" +
-        '</style><div class="output">' +
-        "<address> James Rockford<br> 2354 Pacific Coast Highway<br> " +
-        "California<br> USA<br> +311-555-2368<br> Email: " +
-        '<a href="mailto:j.rockford@example.com">j.rockford@example.com</a><br>' +
-        "</address></div>";
+      const expectedCSS = "address { font-variant-caps: small-caps;}a { font-variant: normal;}";
+      const expectedHTML = "<address> James Rockford<br> 2354 Pacific Coast Highway<br> " +
+          "California<br> USA<br> +311-555-2368<br> Email: " +
+          '<a href="mailto:j.rockford@example.com">j.rockford@example.com</a><br>' +
+          "</address>";
 
-      await page.waitForSelector("#output");
+      await page.waitForSelector("#output-iframe");
+      const outputIframe = await page.$('#output-iframe');
+      const iframeContent = await outputIframe.contentFrame();
 
-      let outputContent = await page.$eval("#output shadow-output", (elem) =>
-        /* trim new lines, then trim matches of two or more consecutive
+      await iframeContent.waitForSelector('#html-output');
+
+      const trimInnerHTML = (elem) =>
+          /* trim new lines, then trim matches of two or more consecutive
                    whitespace characters with a single whitespace character */
-        elem.shadowRoot.innerHTML
-          .replace(/\r?\n|\r/g, "")
-          .replace(/\s{2,}/g, " ")
-      );
-      await expect(outputContent).toBe(expectedOutput);
+          elem.innerHTML
+              .replace(/\r?\n|\r/g, "")
+              .replace(/\s{2,}/g, " ");
+
+      let htmlOutputContent = await iframeContent.$eval("#html-output", trimInnerHTML);
+      await expect(htmlOutputContent).toBe(expectedHTML);
+
+      let cssOutputContent = await iframeContent.$eval("#css-output", trimInnerHTML);
+      await expect(cssOutputContent).toBe(expectedCSS);
     });
 
     it("should switch to CSS editor on tab click", async () => {
