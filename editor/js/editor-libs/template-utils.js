@@ -4,7 +4,7 @@ module.exports = {
    * @returns base style rules for the output class
    */
   getOutputBaseStyle: function () {
-    return ".output{background-color:#fff;color:#15141aff;font-size:0.9rem;line-height:1.5;overflow:scroll;padding:1rem;height:100%;}.output-top-margin{margin-bottom:13px;}";
+    return ".output{background-color:#fff;color:#15141aff;font-size:0.9rem;line-height:1.5;overflow:scroll;padding:2rem 1rem 1rem;height:100%;}";
   },
   /**
    * Return the base script to inject into the shadowDOM
@@ -19,12 +19,6 @@ module.exports = {
    */
   getTemplateOutput: function () {
     return document.getElementById("code_tmpl").content;
-  },
-  /**
-   * @returns HTML element meant to be added as a first child of "output", to provide minimum margin on the top, pushing down rest of the content so it doesn't overlay with "output-label".
-   */
-  getOutputTopMarginElement: function () {
-    return '<div class="output-top-margin"></div>';
   },
   /**
    * Create a template element and populate it with the content of
@@ -46,7 +40,6 @@ module.exports = {
     var outputStyleElem = document.createElement("style");
     var styleElem = document.createElement("style");
     var tmpl = document.createElement("template");
-    var topMarginElement = this.getOutputTopMarginElement();
 
     /* First remove the existing template if it exists.
            This ensures that prepareTemplate will process
@@ -61,7 +54,7 @@ module.exports = {
     outputStyleElem.textContent = this.getOutputBaseStyle();
     styleElem.textContent = contents.cssContent;
     html.classList.add("output");
-    html.innerHTML = topMarginElement + contents.htmlContent;
+    html.innerHTML = contents.htmlContent;
 
     tmpl.content.appendChild(outputStyleElem);
     tmpl.content.appendChild(styleElem);
