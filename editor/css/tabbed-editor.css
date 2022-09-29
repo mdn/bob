@@ -161,7 +161,7 @@
   font-size: 0.9rem;
   overflow: auto;
   line-height: 1.5;
-  padding: 1rem;
+  padding: 2rem 1rem 1rem;
   height: min-content; /* This value ensures correct calculation of clientHeight in /pages/tabbed/img */
   width: fit-content; /* This value moves horizontal scroll bar to the bottom of iframe */
 }
