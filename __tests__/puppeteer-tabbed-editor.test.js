@@ -9,7 +9,7 @@ describe("Tabbed Editor", () => {
         "<style>" +
         ".output{background-color:#fff;color:#15141aff;" +
         "font-size:0.9rem;line-height:1.5;overflow:scroll;" +
-        "padding:1rem;height:100%;}" +
+        "padding:2rem 1rem 1rem;height:100%;}" +
         "</style>" +
         "<style>" +
         "address { font-variant-caps: small-caps;}a { font-variant: normal;}" +

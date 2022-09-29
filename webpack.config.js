@@ -66,10 +66,7 @@ export default {
     },
   },
   optimization: {
-    minimizer: [
-      `...`,
-      new CssMinimizerPlugin(),
-    ],
+    minimizer: [`...`, new CssMinimizerPlugin()],
     splitChunks: {
       chunks: "async",
     },
