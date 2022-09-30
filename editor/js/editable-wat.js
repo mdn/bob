@@ -8,6 +8,7 @@ import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
 import "../css/editable-js-and-wat.css";
 import "../css/editor-libs/tabby.css";
+import {getEditorContent, initCodeEditor, languageJavaScript, languages, languageWAST} from "./editor-libs/code-mirror-editor.js";
 
 (function () {
   var watCodeBlock = document.getElementById("static-wat");
@@ -61,11 +62,6 @@ import "../css/editor-libs/tabby.css";
         // now show the selected tabpanel
         selectedPanel.classList.remove("hidden");
         selectedPanel.setAttribute("aria-hidden", false);
-        // refresh the CodeMirror UI for this view
-        // editors[eventTarget.id].editor.refresh();
-
-        watCodeMirror.refresh();
-        jsCodeMirror.refresh();
       }
     });
 
@@ -152,8 +148,8 @@ import "../css/editor-libs/tabby.css";
    * output container
    */
   function applyCode() {
-    var wat = watCodeMirror.getDoc().getValue();
-    var js = jsCodeMirror.getDoc().getValue();
+    var wat = getEditorContent(watCodeMirror);
+    var js = getEditorContent(jsCodeMirror);
     updateOutput(wat, js);
   }
 
@@ -161,31 +157,11 @@ import "../css/editor-libs/tabby.css";
    * Initialize CodeMirror
    */
   function initCodeMirror() {
-    var editorContainer = document.getElementById("wat-editor");
-    // eslint-disable-next-line new-cap
-    watCodeMirror = CodeMirror(editorContainer, {
-      autofocus: true,
-      inputStyle: "contenteditable",
-      lineNumbers: true,
-      lineWrapping: true,
-      mode: "wast",
-      undoDepth: 5,
-      tabindex: 0,
-      value: watCodeBlock.textContent,
-    });
+    var watContainer = document.getElementById("wat-editor");
+    watCodeMirror = initCodeEditor(watContainer, watCodeBlock.textContent, languageWAST());
 
-    var editorContainer = document.getElementById("js-editor");
-    // eslint-disable-next-line new-cap
-    jsCodeMirror = CodeMirror(editorContainer, {
-      autofocus: true,
-      inputStyle: "contenteditable",
-      lineNumbers: true,
-      lineWrapping: true,
-      mode: "javascript",
-      undoDepth: 5,
-      tabindex: 0,
-      value: jsCodeBlock.textContent,
-    });
+    var jsContainer = document.getElementById("js-editor");
+    jsCodeMirror = initCodeEditor(jsContainer, jsCodeBlock.textContent, languageJavaScript());
   }
 
   /**

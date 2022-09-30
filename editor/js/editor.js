@@ -3,6 +3,7 @@ import mceConsole from "./editor-libs/console.js";
 import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
 import * as tabby from "./editor-libs/tabby.js";
+import {getEditorContent} from "./editor-libs/code-mirror-editor.js";
 
 import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
@@ -77,8 +78,7 @@ import "../css/tabbed-editor.css";
 
     function setContent(propertyName, editorName) {
       if (tabby.editors[editorName].editor) {
-        editorContents[propertyName] =
-          tabby.editors[editorName].editor.getValue();
+        editorContents[propertyName] = getEditorContent(tabby.editors[editorName].editor);
       } else {
         editorContents[propertyName] = "";
       }
