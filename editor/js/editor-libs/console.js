@@ -1,7 +1,10 @@
 import { writeOutput, formatOutput } from "./console-utils.js";
 
 // Thanks in part to https://stackoverflow.com/questions/11403107/capturing-javascript-console-log
-export default function () {
+export default function (targetWindow) {
+  /* Getting reference to console, either from current window or from the iframe window */
+  var console = targetWindow ? targetWindow.console : window.console;
+
   var originalConsoleLogger = console.log; // eslint-disable-line no-console
   var originalConsoleError = console.error;
 
