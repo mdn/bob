@@ -47,8 +47,8 @@ export function isPropertySupported(dataset) {
 
 /**
  * Interrupts the default click event on external links inside
- * the shadow dom and opens them in a new tab instead
- * @param {Array} externalLinks - all external links inside the shadow dom
+ * the iframe and opens them in a new tab instead
+ * @param {Array} externalLinks - all external links inside the iframe
  */
 export function openLinksInNewTab(externalLinks) {
   externalLinks.forEach(function (externalLink) {
@@ -61,15 +61,15 @@ export function openLinksInNewTab(externalLinks) {
 
 /**
  * Interrupts the default click event on relative links inside
- * the shadow dom and scrolls to the targeted anchor
- * @param {Object} shadow - the shadow dom root
- * @param {Array} relativeLinks - all relative links inside the shadow dom
+ * the iframe and scrolls to the targeted anchor
+ * @param {Object} rootElement - root or body element, that contains referenced links
+ * @param {Array} relativeLinks - all relative links inside the iframe
  */
-export function scrollToAnchors(shadow, relativeLinks) {
+export function scrollToAnchors(rootElement, relativeLinks) {
   relativeLinks.forEach(function (relativeLink) {
     relativeLink.addEventListener("click", function (event) {
       event.preventDefault();
-      shadow.querySelector(relativeLink.hash).scrollIntoView();
+      rootElement.querySelector(relativeLink.hash).scrollIntoView();
     });
   });
 }
