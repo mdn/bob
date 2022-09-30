@@ -35,7 +35,7 @@ export default {
       dependOn: "code-mirror",
     },
     "css-examples-libs": "./editor/js/css-examples-libs.js",
-    "code-mirror": './editor/js/editor-libs/code-mirror-editor.js'
+    "code-mirror": "./editor/js/editor-libs/code-mirror-editor.js",
   },
   output: {
     path: fileURLToPath(new URL("docs", import.meta.url)),
