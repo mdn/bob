@@ -20,22 +20,19 @@ export default {
   entry: {
     "editor-tabbed": {
       import: "./editor/js/editor.js",
-      dependOn: "code-mirror",
+      dependOn: "codemirror",
     },
-    "editor-css": {
-      import: "./editor/js/editable-css.js",
-      dependOn: "code-mirror",
-    },
+    "editor-css": "./editor/js/editable-css.js",
     "editor-js": {
       import: "./editor/js/editable-js.js",
-      dependOn: "code-mirror",
+      dependOn: "codemirror",
     },
     "editor-wat": {
       import: "./editor/js/editable-wat.js",
-      dependOn: "code-mirror",
+      dependOn: "codemirror",
     },
     "css-examples-libs": "./editor/js/css-examples-libs.js",
-    "code-mirror": "./editor/js/editor-libs/code-mirror-editor.js",
+    codemirror: "./editor/js/editor-libs/codemirror-editor.js",
   },
   output: {
     path: fileURLToPath(new URL("docs", import.meta.url)),

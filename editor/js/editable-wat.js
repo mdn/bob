@@ -8,7 +8,7 @@ import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
 import "../css/editable-js-and-wat.css";
 import "../css/editor-libs/tabby.css";
-import {getEditorContent, initCodeEditor, languageJavaScript, languages, languageWAST} from "./editor-libs/code-mirror-editor.js";
+import {getEditorContent, initCodeEditor, languageJavaScript, languages, languageWAST} from "./editor-libs/codemirror-editor.js";
 
 (function () {
   var watCodeBlock = document.getElementById("static-wat");

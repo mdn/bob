@@ -1,4 +1,4 @@
-import {languages, languageCSS, languageHTML, languageJavaScript, initCodeEditor} from "./code-mirror-editor.js";
+import {languages, languageCSS, languageHTML, languageJavaScript, initCodeEditor} from "./codemirror-editor.js";
 
 var cssEditor = document.getElementById("css-editor");
 var htmlEditor = document.getElementById("html-editor");
