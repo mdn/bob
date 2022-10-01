@@ -32,7 +32,7 @@ export function applyCode(code, choice, targetElement) {
  */
 export function choose(choice) {
   choice.classList.add("selected");
-  var codeBlock = choice.querySelector(".CodeMirror-code");
+  var codeBlock = choice.querySelector(".cm-content");
   applyCode(codeBlock.textContent, choice);
 }
 
@@ -69,18 +69,4 @@ export function resetUIState() {
   for (var i = 0, l = exampleChoices.length; i < l; i++) {
     exampleChoices[i].classList.remove("selected");
   }
-}
-
-export function applyCodeMirror(target, language, code) {
-  var codeMirror = CodeMirror(target, {
-    inputStyle: "contenteditable",
-    lineNumbers: false,
-    mode: language,
-    undoDepth: 5,
-    tabindex: 0,
-    viewportMargin: Infinity,
-    value: code,
-  });
-
-  codeMirror.setSize("100%", "auto");
 }

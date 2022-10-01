@@ -1,11 +1,13 @@
 import * as clippy from "./editor-libs/clippy.js";
 import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
-import { applyCodeMirror } from "./editor-libs/css-editor-utils.js";
+import {
+  initCodeEditor,
+  languageCSS,
+} from "./editor-libs/codemirror-editor.js";
 
 import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
-import "../css/editor-libs/codemirror-override.css";
 import "../css/editable-css.css";
 
 (function () {
@@ -16,6 +18,12 @@ import "../css/editable-css.css";
   var originalChoices = [];
   var output = document.getElementById("output");
   var warningNoSupport = document.getElementById("warning-no-support");
+
+  function applyCodeMirror(target, code) {
+    var codeMirror = initCodeEditor(target, code, languageCSS(), {
+      lineNumbers: false,
+    });
+  }
 
   /**
    * Enables and initializes the live code editor
@@ -35,7 +43,6 @@ import "../css/editable-css.css";
 
       applyCodeMirror(
         exampleChoice.querySelector("pre"),
-        "css",
         choiceCode.textContent
       );
 
@@ -76,7 +83,7 @@ import "../css/editable-css.css";
           e.remove();
         }
         e.classList.remove("invalid", "selected");
-        applyCodeMirror(preEl, "css", originalChoices[i]);
+        applyCodeMirror(preEl, originalChoices[i]);
       });
 
       // if there is an initial choice set, set it as selected
