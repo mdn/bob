@@ -140,7 +140,7 @@
 }
 
 @media screen and (min-width: 590px) {
-  .example-choice.selected:before {
+  .example-choice.selected:before, .example-choice.invalid:before {
     opacity: 1;
     right: -1rem;
   }

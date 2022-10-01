@@ -1,27 +1,130 @@
 export let editTimer = undefined;
 
-export function applyCode(code, choice, targetElement) {
+export function applyCode(code, choice, targetElement, immediateInvalidChange) {
   // http://regexr.com/3fvik
   var cssCommentsMatch = /(\/\*)[\s\S]+(\*\/)/g;
   var element = targetElement || document.getElementById("example-element");
 
   // strip out any CSS comments before applying the code
-  code.replace(cssCommentsMatch, "");
+  code = code.replace(cssCommentsMatch, "");
+  // Checking if every CSS declaration in passed code, is supported by the browser
+  let codeSupported = isCodeSupported(element, code);
 
   element.style.cssText = code;
 
   // clear any existing timer
   clearTimeout(editTimer);
-  /* Start a new timer. This will ensure that the state is
-        not marked as invalid, until the user has stopped typing
-        for 500ms */
-  editTimer = setTimeout(function () {
-    if (!element.style.cssText) {
-      choice.parentNode.classList.add("invalid");
+
+  /**
+   * Adding or removing class "invalid" from choice parent, which will typically be <div class="example-choice">
+   */
+  let setInvalidClass = function () {
+    if (codeSupported) {
+      choice.classList.remove("invalid");
     } else {
-      choice.parentNode.classList.remove("invalid");
+      choice.classList.add("invalid");
     }
-  }, 500);
+  };
+
+  if (immediateInvalidChange) {
+    // Setting class immediately
+    setInvalidClass();
+  } else {
+    /* Start a new timer. This will ensure that the state is
+    not marked as invalid, until the user has stopped typing
+    for 500ms */
+    editTimer = setTimeout(setInvalidClass, 500);
+  }
+}
+
+/**
+ * Checks if every passed declaration is supported by the browser.
+ * In case browser recognizes property with vendor prefix(like -webkit-), lacking support for unprefixed property is ignored.
+ * Properties with vendor prefix not recognized by the browser are always ignored.
+ * @param element - any element on which cssText can be tested
+ * @param declarations - list of css declarations with no curly brackets. They need to be separated by ";" and declaration key-value needs to be separated by ":". Function expects no comments.
+ * @returns {boolean} - true if every declaration is supported by the browser. Properties with vendor prefix are excluded.
+ */
+export function isCodeSupported(element, declarations) {
+  var vendorPrefixMatch = /^-(?:webkit|moz|ms|o)-/;
+  var style = element.style;
+  // Expecting declarations to be separated by ";"
+  // Declarations with just white space are ignored
+  var declarationsArray = declarations
+    .split(";")
+    .map((d) => d.trim())
+    .filter((d) => d.length > 0);
+
+  /**
+   * @returns {boolean} - true if declaration starts with -webkit-, -moz-, -ms- or -o-
+   */
+  function hasVendorPrefix(declaration) {
+    return vendorPrefixMatch.test(declaration);
+  }
+
+  /**
+   * Looks for property name by cutting off optional vendor prefix at the beginning
+   * and then cutting off rest of the declaration, starting from any whitespace or ":" in property name.
+   * @param declaration - single css declaration, with not white space at the beginning
+   * @returns {string} - property name without vendor prefix.
+   */
+  function getPropertyNameNoPrefix(declaration) {
+    var prefixMatch = vendorPrefixMatch.exec(declaration);
+    var prefix = prefixMatch === null ? "" : prefixMatch[0];
+    var declarationNoPrefix =
+      prefix === null ? declaration : declaration.slice(prefix.length);
+    // Expecting property name to be over, when any whitespace or ":" is found
+    var propertyNameSeparator = /[\s:]/;
+    return declarationNoPrefix.split(propertyNameSeparator)[0];
+  }
+  // Clearing previous state
+  style.cssText = "";
+
+  // List of found and applied properties with vendor prefix
+  let appliedPropertiesWithPrefix = new Set();
+  // List of not applied properties - because of lack of support for its name or value
+  let notAppliedProperties = new Set();
+
+  for (let declaration of declarationsArray) {
+    let previousCSSText = style.cssText;
+    // Declarations are added one by one, because browsers sometimes combine multiple declarations into one
+    // For example Chrome changes "column-count: auto;column-width: 8rem;" into "columns: 8rem auto;"
+    style.cssText += declaration + ";"; // ";" was previous removed while using split method
+    // In case property name or value is not supported, browsers skip single declaration, while leaving rest of them intact
+    let correctlyApplied = style.cssText !== previousCSSText;
+
+    let vendorPrefixFound = hasVendorPrefix(declaration);
+    let propertyName = getPropertyNameNoPrefix(declaration);
+
+    if (correctlyApplied && vendorPrefixFound) {
+      // We are saving applied properties with prefix, so equivalent property with no prefix doesn't need to be supported
+      appliedPropertiesWithPrefix.add(propertyName);
+    } else if (!correctlyApplied && !vendorPrefixFound) {
+      notAppliedProperties.add(propertyName);
+    }
+  }
+
+  if (notAppliedProperties.size !== 0) {
+    // If property with vendor prefix is supported, we can ignore the fact that browser doesn't support property with no prefix
+    for (let substitute of appliedPropertiesWithPrefix) {
+      notAppliedProperties.delete(substitute);
+    }
+    // If any other declaration is not supported, whole block should be marked as invalid
+    if (notAppliedProperties.size !== 0) return false;
+  }
+  return true;
+}
+
+/**
+ * Checking support for choices inner code and based on that information adding or removing class "invalid" from them.
+ * This function will change styles of 'example-element', so it is important to apply them again.
+ * @param choices - elements containing element code, containing css declarations to apply
+ */
+export function applyInitialSupportWarningState(choices) {
+  for (let choice of choices) {
+    let codeBlock = choice.querySelector(".cm-content");
+    applyCode(codeBlock.textContent, choice, undefined, true);
+  }
 }
 
 /**
@@ -60,7 +163,7 @@ export function resetDefault() {
 }
 
 /**
- * Resets the UI state by deselcting all example choice
+ * Resets the UI state by deselecting all example choice
  */
 export function resetUIState() {
   var exampleChoiceList = document.getElementById("example-choice-list");

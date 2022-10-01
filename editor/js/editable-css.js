@@ -1,6 +1,7 @@
 import * as clippy from "./editor-libs/clippy.js";
 import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
+import * as cssEditorUtils from "./editor-libs/css-editor-utils.js";
 import {
   initCodeEditor,
   languageCSS,
@@ -64,6 +65,8 @@ import "../css/editable-css.css";
     mceEvents.register();
     handleResetEvents();
     handleChoiceHover();
+    // Adding or removing class "invalid"
+    cssEditorUtils.applyInitialSupportWarningState(exampleChoices);
 
     clippy.addClippy();
   }
@@ -85,6 +88,9 @@ import "../css/editable-css.css";
         e.classList.remove("invalid", "selected");
         applyCodeMirror(preEl, originalChoices[i]);
       });
+
+      // Adding or removing class "invalid"
+      cssEditorUtils.applyInitialSupportWarningState(exampleChoices);
 
       // if there is an initial choice set, set it as selected
       if (initialChoice) {
