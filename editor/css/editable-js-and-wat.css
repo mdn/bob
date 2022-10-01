@@ -56,17 +56,17 @@
   min-height: 280px;
 }
 
-.CodeMirror {
+.cm-editor {
   height: 280px;
 }
 
 .js .editor.taller,
-.js .editor.taller .CodeMirror {
+.js .editor.taller .cm-editor {
   height: 490px;
 }
 
 .js .editor.shorter,
-.js .editor.shorter .CodeMirror {
+.js .editor.shorter .cm-editor {
   height: 200px;
   min-height: 200px;
 }
@@ -76,19 +76,19 @@
 }
 
 .wat .editor.taller,
-.wat .editor.taller .CodeMirror {
+.wat .editor.taller .cm-editor {
   height: 420px;
   min-height: 420px;
 }
 
 .wat .editor.standard,
-.wat .editor.standard .CodeMirror {
+.wat .editor.standard .cm-editor {
   height: 210px;
   min-height: 210px;
 }
 
 .wat .editor.shorter,
-.wat .editor.shorter .CodeMirror {
+.wat .editor.shorter .cm-editor {
   height: 140px;
   min-height: 140px;
 }

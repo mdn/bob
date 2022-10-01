@@ -473,22 +473,6 @@ body {
   background-color: var(--button-secondary-hover);
 }
 
-.CodeMirror {
-  border: 1px solid var(--border-primary);
-  height: 280px;
-  background: var(--background-primary);
-}
-
-.CodeMirror-gutters {
-  background: var(--background-secondary);
-  border-right: 1px solid var(--border-primary);
-}
-
-.CodeMirror-cursor {
-  border-left: 1px solid white;
-  border-right: 1px solid black;
-}
-
 .user-message {
   display: none;
   position: absolute;
