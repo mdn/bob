@@ -5,21 +5,21 @@
 }
 
 /* sizing utility classes */
-.tabbed-shorter .CodeMirror {
+.tabbed-shorter .cm-editor {
   height: 252px;
 }
 
-.tabbed-standard .CodeMirror {
+.tabbed-standard .cm-editor {
   height: 322px;
 }
 
-.tabbed-taller .CodeMirror {
+.tabbed-taller .cm-editor {
   height: 532px;
 }
 
-.tabbed-taller .CodeMirror,
-.tabbed-standard .CodeMirror,
-.tabbed-shorter .CodeMirror {
+.tabbed-taller .cm-editor,
+.tabbed-standard .cm-editor,
+.tabbed-shorter .cm-editor {
   border-right: 0 none;
   border-left: 0 none;
   border-bottom: 1px solid var(--border-primary);
@@ -138,9 +138,9 @@
     border-left: 1px solid var(--border-primary);
   }
 
-  .tabbed-taller .CodeMirror,
-  .tabbed-standard .CodeMirror,
-  .tabbed-shorter .CodeMirror {
+  .tabbed-taller .cm-editor,
+  .tabbed-standard .cm-editor,
+  .tabbed-shorter .cm-editor {
     border-bottom: 0 none;
   }
 }

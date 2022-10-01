@@ -1,40 +1,82 @@
-.CodeMirror-linenumber {
+/* Code Mirror editor rules */
+.cm-editor {
+  border: 1px solid var(--border-primary);
+}
+
+.cm-editor .cm-lineNumbers {
   color: var(--text-secondary);
 }
 
-.cm-s-default,
-.cm-s-default .cm-def,
-.cm-s-default .cm-operator,
-.cm-s-default .cm-variable {
+.cm-editor .cm-lineNumbers .cm-gutterElement {
+  padding: 0 3px 0 11px;
+  min-width: 30px;
+}
+
+.cm-editor .cm-gutters {
+  background: var(--background-secondary);
+  border-right: 1px solid var(--border-primary);
+}
+
+.cm-editor .cm-scroller {
+  line-height: inherit;
+}
+
+.cm-editor .cm-cursor {
+  border-color: var(--text-primary);
+}
+
+/* Language specific rules */
+.cm-operator,
+.cm-variable {
   color: var(--code-token-default);
 }
 
-.cm-s-default .cm-tag.cm-bracket {
+.cm-variable-2 {
+  color: #05a;
+}
+
+.cm-variable-3 {
+  color: #085;
+}
+
+.cm-bracket {
   color: var(--code-token-punctuation);
 }
-.cm-s-default .cm-comment {
+.cm-comment {
   color: var(--code-token-comment);
 }
 
-.cm-s-default .cm-keyword,
-.cm-s-default .cm-tag {
+.cm-keyword,
+.cm-tag {
   color: var(--code-token-tag);
 }
 
-.cm-s-default .cm-attribute {
+.cm-attribute {
   color: var(--code-token-attribute-name);
 }
 
-.cm-s-default .cm-string,
-.cm-s-default .cm-number,
-.cm-s-default .cm-atom {
+.cm-string,
+.cm-number,
+.cm-atom {
   color: var(--code-token-attribute-value);
 }
 
-.cm-s-default .cm-string-2 {
+.cm-string-2 {
   color: var(--code-token-selector);
 }
 
-.cm-s-default .cm-property {
+.cm-property {
   color: var(--code-token-attribute-name);
+}
+
+.cm-qualifier {
+  color: #555
+}
+
+.cm-builtin {
+  color: #30a;
+}
+
+.cm-meta {
+  color: #555;
 }

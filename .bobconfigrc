@@ -1,6 +1,5 @@
 {
     "baseDir": "./docs/",
-    "bundleConfig": "../bundles.json",
     "destCssDir": "./docs/css/",
     "destJsDir": "./docs/js/",
     "examplesFontsRoot": "./live-examples/fonts",

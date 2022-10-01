@@ -18,10 +18,23 @@ export default {
     }),
   ],
   entry: {
-    "editor-tabbed": "./editor/js/editor.js",
-    "editor-css": "./editor/js/editable-css.js",
-    "editor-js": "./editor/js/editable-js.js",
-    "editor-wat": "./editor/js/editable-wat.js",
+    "editor-tabbed": {
+      import: "./editor/js/editor.js",
+      dependOn: "codemirror",
+    },
+    "editor-css": {
+      import: "./editor/js/editable-css.js",
+      dependOn: "codemirror",
+    },
+    "editor-js": {
+      import: "./editor/js/editable-js.js",
+      dependOn: "codemirror",
+    },
+    "editor-wat": {
+      import: "./editor/js/editable-wat.js",
+      dependOn: "codemirror",
+    },
+    codemirror: "./editor/js/editor-libs/codemirror-editor.js",
   },
   output: {
     path: fileURLToPath(new URL("docs", import.meta.url)),

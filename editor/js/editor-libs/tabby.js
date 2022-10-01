@@ -1,3 +1,5 @@
+import {languages, languageCSS, languageHTML, languageJavaScript, initCodeEditor} from "./codemirror-editor.js";
+
 var cssEditor = document.getElementById("css-editor");
 var htmlEditor = document.getElementById("html-editor");
 var jsEditor = document.getElementById("js-editor");
@@ -95,33 +97,20 @@ export const editors = {
   html: {
     editor: undefined,
     code: htmlEditor,
-    config: {
-      lineNumbers: true,
-      lineWrapping: true,
-      mode: "htmlmixed",
-      value: staticHTMLCode.querySelector("code").textContent,
-      autoRefresh: true,
-    },
+    initialContent: staticHTMLCode.querySelector("code").textContent,
+    language: languageHTML()
   },
   css: {
     editor: undefined,
     code: cssEditor,
-    config: {
-      lineNumbers: true,
-      mode: "css",
-      value: staticCSSCode.querySelector("code").textContent,
-      autoRefresh: true,
-    },
+    initialContent: staticCSSCode.querySelector("code").textContent,
+    language: languageCSS()
   },
   js: {
     editor: undefined,
     code: jsEditor,
-    config: {
-      lineNumbers: true,
-      mode: "javascript",
-      value: staticJSCode.querySelector("code").textContent,
-      autoRefresh: true,
-    },
+    initialContent: staticJSCode.querySelector("code").textContent,
+    language: languageJavaScript()
   },
 };
 
@@ -134,14 +123,12 @@ export function initEditor(editorTypes, defaultTab) {
   if (defaultTab) {
     setDefaultTab(defaultTab);
   }
-  for (var editor of editorTypes) {
+  for (var editorName of editorTypes) {
     // enable relevant tabs
-    document.getElementById(editor).classList.remove("hidden");
-    // eslint-disable-next-line new-cap
-    editors[editor].editor = CodeMirror(
-      editors[editor].code,
-      editors[editor].config
-    );
+    const editorData = editors[editorName];
+    document.getElementById(editorName).classList.remove("hidden");
+
+    editorData.editor = initCodeEditor(editorData.code, editorData.initialContent, editorData.language);
   }
 }
 
@@ -165,8 +152,6 @@ export function registerEventListeners() {
       // now show the selected tabpanel
       selectedPanel.classList.remove("hidden");
       selectedPanel.setAttribute("aria-hidden", false);
-      // refresh the CodeMirror UI for this view
-      editors[eventTarget.id].editor.refresh();
     }
   });
 

@@ -6,6 +6,7 @@ import * as mceUtils from "./editor-libs/mce-utils.js";
 import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
 import "../css/editable-js-and-wat.css";
+import {initCodeEditor, getEditorContent, languageJavaScript} from "./editor-libs/codemirror-editor.js";
 
 (function () {
   var codeBlock = document.getElementById("static-js");
@@ -24,8 +25,8 @@ import "../css/editable-js-and-wat.css";
    * output container
    */
   function applyCode() {
-    var codeMirrorDoc = codeMirror.getDoc();
-    updateOutput(codeMirrorDoc.getValue());
+    var currentValue = getEditorContent(codeMirror);
+    updateOutput(currentValue);
   }
 
   /**
@@ -33,15 +34,8 @@ import "../css/editable-js-and-wat.css";
    */
   function initCodeMirror() {
     var editorContainer = document.getElementById("editor");
-    // eslint-disable-next-line new-cap
-    codeMirror = CodeMirror(editorContainer, {
-      inputStyle: "contenteditable",
-      lineNumbers: true,
-      mode: "javascript",
-      undoDepth: 5,
-      tabindex: 0,
-      value: codeBlock.textContent,
-    });
+
+    codeMirror = initCodeEditor(editorContainer, codeBlock.textContent, languageJavaScript());
   }
 
   /**
