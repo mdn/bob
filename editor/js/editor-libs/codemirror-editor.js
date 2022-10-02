@@ -29,13 +29,13 @@ const TAB_KEY_MAP = {key: "Tab", run: commands.insertTab, shift: commands.indent
  * Translates CSS tags from [highlight.js](https://github.com/lezer-parser/css/blob/main/src/highlight.js) to code mirror CSS classes.
  */
 const CSS_HIGHLIGHT_STYLE_SPECS = [
-    {tag: [tags.definitionKeyword], class: ""},// "import charset namespace keyframes"
-    {tag: [tags.controlKeyword], class: ""},// "media supports"
+    {tag: [tags.definitionKeyword], class: "cm-at-rule"},// "import charset namespace keyframes"
+    {tag: [tags.controlKeyword], class: "cm-at-rule"},// "media supports"
     {tag: [tags.namespace], class: "cm-tag"},// Identifier of @namespace
     {tag: [tags.tagName], class: "cm-tag"},// Tag Selector
-    {tag: [tags.className], class: "cm-qualifier"},// Class Selector
-    {tag: [tags.constant(tags.className)], class: "cm-variable-3"},// ":valid", "::cue"
-    {tag: [tags.labelName], class: "cm-builtin"},// Id Selector
+    {tag: [tags.className], class: "cm-class-selector"},// Class Selector
+    {tag: [tags.constant(tags.className)], class: "cm-pseudo-class"},// ":valid", "::cue"
+    {tag: [tags.labelName], class: "cm-string-2"},// Id Selector
     {tag: [tags.propertyName], class: "cm-property"},// property-name: value;
     {tag: [tags.attributeName], class: "cm-tag"},// name inside [name="value"]
     {tag: [tags.number], class: "cm-number"},// NumberLiteral
@@ -48,10 +48,10 @@ const CSS_HIGHLIGHT_STYLE_SPECS = [
     {tag: [tags.compareOperator], class: ""},// "~=", "^=", "|=", "$=", "*="
     {tag: [tags.logicOperator], class: "cm-keyword"},// ">",  "~", "+", "and", "or"
     {tag: [tags.arithmeticOperator], class: ""},// "+", "-"
-    {tag: [tags.modifier], class: "cm-keyword"},// !important
+    {tag: [tags.modifier], class: "cm-property"},// !important
     {tag: [tags.blockComment], class: "cm-comment"},// /* comment */
     {tag: [tags.string], class: "cm-string"},// "text"
-    {tag: [tags.derefOperator], class: "cm-builtin"},// "#" in ID Selector
+    {tag: [tags.derefOperator], class: "cm-string-2"},// "#" in ID Selector
     {tag: [tags.separator], class: ""},// ";" , ","
     {tag: [tags.paren], class: ""},// "(", ")"
     {tag: [tags.squareBracket], class: ""},// "[", "]"
@@ -93,7 +93,7 @@ const JS_HIGHLIGHT_STYLE_SPECS = [
     {tag: tags.angleBracket, class: "cm-bracket"},
     {tag: tags.unit, class: "cm-number"},
     {tag: tags.atom, class: "cm-keyword"},
-    {tag: tags.className, class: "cm-qualifier"},
+    {tag: tags.className, class: ""},
     {tag: tags.null, class: "cm-atom"},// "null"
     {tag: tags.variableName, class: ""},// variables, "undefined", "NaN", "Infinity"
     {tag: tags.modifier, class: "cm-property"},// "get", "set", "async", "static"
