@@ -32,11 +32,11 @@
 }
 
 .cm-variable-2 {
-  color: #05a;
+  color: var(--code-token-variable-2);
 }
 
-.cm-variable-3 {
-  color: #085;
+.cm-pseudo-class {
+  color: var(--code-token-pseudo-class);
 }
 
 .cm-bracket {
@@ -69,14 +69,14 @@
   color: var(--code-token-attribute-name);
 }
 
-.cm-qualifier {
-  color: #555
-}
-
-.cm-builtin {
-  color: #30a;
+.cm-class-selector {
+  color: var(--code-token-class-selector)
 }
 
 .cm-meta {
-  color: #555;
+  color: var(--code-token-meta);
+}
+
+.cm-at-rule {
+  color: var(--code-token-variable-2);
 }

@@ -22,7 +22,7 @@
   "main": "./lib/mdn-bob.js",
   "bundlesize": [
     {
-      "path": "./docs/css/codemirror-*.css",
+      "path": "./docs/css/codemirror.css",
       "maxSize": "3 kB"
     },
     {
@@ -38,7 +38,7 @@
       "maxSize": "33 kB"
     },
     {
-      "path": "./docs/js/codemirror-*.js",
+      "path": "./docs/js/codemirror.js",
       "maxSize": "75 kB"
     },
     {
