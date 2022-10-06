@@ -62,14 +62,19 @@ export function openLinksInNewTab(externalLinks) {
 /**
  * Interrupts the default click event on relative links inside
  * the iframe and scrolls to the targeted anchor
+ * @param {Object} contentWindow - window object, that contains rootElement & relativeLinks
  * @param {Object} rootElement - root or body element, that contains referenced links
  * @param {Array} relativeLinks - all relative links inside the iframe
  */
-export function scrollToAnchors(rootElement, relativeLinks) {
+export function scrollToAnchors(contentWindow, rootElement, relativeLinks) {
   relativeLinks.forEach(function (relativeLink) {
     relativeLink.addEventListener("click", function (event) {
       event.preventDefault();
-      rootElement.querySelector(relativeLink.hash).scrollIntoView();
+      let element = rootElement.querySelector(relativeLink.hash);
+      if(element) {
+        element.scrollIntoView();
+        contentWindow.location.hash = relativeLink.hash;
+      }
     });
   });
 }
