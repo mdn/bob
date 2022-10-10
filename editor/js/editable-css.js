@@ -12,16 +12,17 @@ import "../css/editor-libs/common.css";
 import "../css/editable-css.css";
 
 (function () {
-  var exampleChoiceList = document.getElementById("example-choice-list");
-  var exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
-  var editorWrapper = document.getElementById("editor-wrapper");
-  var initialChoice = 0;
-  var originalChoices = [];
-  var output = document.getElementById("output");
-  var warningNoSupport = document.getElementById("warning-no-support");
+  const exampleChoiceList = document.getElementById("example-choice-list");
+  const exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
+  const editorWrapper = document.getElementById("editor-wrapper");
+  const output = document.getElementById("output");
+  const warningNoSupport = document.getElementById("warning-no-support");
+
+  const originalChoices = [];
+  let initialChoice = 0;
 
   function applyCodeMirror(target, code) {
-    var codeMirror = initCodeEditor(target, code, languageCSS(), {
+    const codeMirror = initCodeEditor(target, code, languageCSS(), {
       lineNumbers: false,
     });
   }
@@ -34,11 +35,11 @@ import "../css/editable-css.css";
     exampleChoiceList.classList.add("live");
     output.classList.remove("hidden");
 
-    for (var i = 0, l = exampleChoices.length; i < l; i++) {
-      var exampleChoice = exampleChoices[i];
-      var choiceButton = document.createElement("button");
-      var choiceButtonText = document.createElement("span");
-      var choiceCode = exampleChoice.querySelector("code");
+    for (let i = 0, l = exampleChoices.length; i < l; i++) {
+      const exampleChoice = exampleChoices[i];
+      const choiceButton = document.createElement("button");
+      const choiceButtonText = document.createElement("span");
+      const choiceCode = exampleChoice.querySelector("code");
 
       originalChoices.push(choiceCode.textContent);
 
@@ -76,11 +77,11 @@ import "../css/editable-css.css";
    * reset all the CSS examples to their original state
    */
   function handleResetEvents() {
-    var resetButton = document.getElementById("reset");
+    const resetButton = document.getElementById("reset");
 
-    resetButton.addEventListener("click", function () {
-      exampleChoices.forEach(function (e, i) {
-        var preEl = e.querySelector("pre");
+    resetButton.addEventListener("click", () => {
+      exampleChoices.forEach((e, i) => {
+        const preEl = e.querySelector("pre");
         // Remove original codemirror
         for (const e of preEl.children) {
           e.remove();
@@ -104,7 +105,7 @@ import "../css/editable-css.css";
   }
 
   function indexOf(exampleChoices, choice) {
-    for (var i = 0, l = exampleChoices.length; i < l; i++) {
+    for (let i = 0, l = exampleChoices.length; i < l; i++) {
       if (exampleChoices[i] === choice) {
         return i;
       }
@@ -118,9 +119,9 @@ import "../css/editable-css.css";
    * and otherwise return to intial hidden state
    */
   function handleChoiceHover() {
-    for (var i = 0, l = exampleChoices.length; i < l; i++) {
-      var choice = exampleChoices[i];
-      var copyBtn = choice.querySelector(".copy");
+    for (let i = 0, l = exampleChoices.length; i < l; i++) {
+      const choice = exampleChoices[i];
+      const copyBtn = choice.querySelector(".copy");
       copyBtn.setAttribute("aria-label", "Copy to clipboard");
 
       choice.addEventListener("mouseover", () => {

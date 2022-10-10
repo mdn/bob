@@ -1,24 +1,24 @@
-import {languages, languageCSS, languageHTML, languageJavaScript, initCodeEditor} from "./codemirror-editor.js";
+import {languageCSS, languageHTML, languageJavaScript, initCodeEditor} from "./codemirror-editor.js";
 
-var cssEditor = document.getElementById("css-editor");
-var htmlEditor = document.getElementById("html-editor");
-var jsEditor = document.getElementById("js-editor");
-var staticHTMLCode = htmlEditor.querySelector("pre");
-var staticCSSCode = cssEditor.querySelector("pre");
-var staticJSCode = jsEditor.querySelector("pre");
-var tabContainer = document.getElementById("tab-container");
-var tabs = tabContainer.querySelectorAll('button[role="tab"]');
-var tabList = document.getElementById("tablist");
+const cssEditor = document.getElementById("css-editor");
+const htmlEditor = document.getElementById("html-editor");
+const jsEditor = document.getElementById("js-editor");
+const staticHTMLCode = htmlEditor.querySelector("pre");
+const staticCSSCode = cssEditor.querySelector("pre");
+const staticJSCode = jsEditor.querySelector("pre");
+const tabContainer = document.getElementById("tab-container");
+const tabs = tabContainer.querySelectorAll('button[role="tab"]');
+const tabList = document.getElementById("tablist");
 
 /**
  * Hides all tabpanels
  */
 function hideTabPanels() {
   // get all section with a role of tabpanel
-  var tabPanels = tabContainer.querySelectorAll('[role="tabpanel"]');
+  const tabPanels = tabContainer.querySelectorAll('[role="tabpanel"]');
 
   // hide all tabpanels
-  for (var panel of tabPanels) {
+  for (const panel of tabPanels) {
     panel.classList.add("hidden");
   }
 }
@@ -47,7 +47,7 @@ function setActiveTab(nextActiveTab, activeTab) {
  * @param {Object} tab - The tab to set as default
  */
 function setDefaultTab(tab) {
-  var panel = document.getElementById(tab.id + "-panel");
+  const panel = document.getElementById(tab.id + "-panel");
 
   tab.setAttribute("aria-selected", true);
   tab.removeAttribute("tabindex");
@@ -65,7 +65,7 @@ function setDefaultTab(tab) {
  * Must be either forward, or reverse.
  */
 function setNextActiveTab(direction) {
-  var activeTab = tabList.querySelector('button[aria-selected="true"]');
+  const activeTab = tabList.querySelector('button[aria-selected="true"]');
 
   // if the direction specified is not valid, simply return
   if (direction !== "forward" && direction !== "reverse") {
@@ -123,7 +123,7 @@ export function initEditor(editorTypes, defaultTab) {
   if (defaultTab) {
     setDefaultTab(defaultTab);
   }
-  for (var editorName of editorTypes) {
+  for (const editorName of editorTypes) {
     // enable relevant tabs
     const editorData = editors[editorName];
     document.getElementById(editorName).classList.remove("hidden");
@@ -136,13 +136,13 @@ export function initEditor(editorTypes, defaultTab) {
  * Registers the required click and keyboard event listeners
  */
 export function registerEventListeners() {
-  tabList.addEventListener("click", function (event) {
-    var eventTarget = event.target;
-    var role = eventTarget.getAttribute("role");
+  tabList.addEventListener("click", (event) => {
+    const eventTarget = event.target;
+    const role = eventTarget.getAttribute("role");
 
     if (role === "tab") {
-      var activeTab = tabList.querySelector('button[aria-selected="true"]');
-      var selectedPanel = document.getElementById(
+      const activeTab = tabList.querySelector('button[aria-selected="true"]');
+      const selectedPanel = document.getElementById(
         eventTarget.getAttribute("aria-controls")
       );
 
@@ -155,7 +155,7 @@ export function registerEventListeners() {
     }
   });
 
-  tabList.addEventListener("keyup", function (event) {
+  tabList.addEventListener("keyup", (event) => {
     event.stopPropagation();
     switch (event.key) {
       case "ArrowRight":

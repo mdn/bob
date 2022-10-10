@@ -9,15 +9,15 @@ import "../css/editable-js-and-wat.css";
 import {initCodeEditor, getEditorContent, languageJavaScript} from "./editor-libs/codemirror-editor.js";
 
 (function () {
-  var codeBlock = document.getElementById("static-js");
-  var exampleFeature = codeBlock.dataset["feature"];
-  var execute = document.getElementById("execute");
-  var liveContainer = "";
-  var output = document.querySelector("#console code");
-  var reset = document.getElementById("reset");
+  const codeBlock = document.getElementById("static-js");
+  const exampleFeature = codeBlock.dataset["feature"];
+  const execute = document.getElementById("execute");
+  const output = document.querySelector("#console code");
+  const reset = document.getElementById("reset");
 
-  var codeMirror;
-  var staticContainer;
+  let codeMirror;
+  let staticContainer;
+  let liveContainer = "";
 
   /**
    * Reads the textContent from the interactiveCodeBlock, sends the
@@ -25,7 +25,7 @@ import {initCodeEditor, getEditorContent, languageJavaScript} from "./editor-lib
    * output container
    */
   function applyCode() {
-    var currentValue = getEditorContent(codeMirror);
+    const currentValue = getEditorContent(codeMirror);
     updateOutput(currentValue);
   }
 
@@ -33,7 +33,7 @@ import {initCodeEditor, getEditorContent, languageJavaScript} from "./editor-lib
    * Initialize CodeMirror
    */
   function initCodeMirror() {
-    var editorContainer = document.getElementById("editor");
+    const editorContainer = document.getElementById("editor");
 
     codeMirror = initCodeEditor(editorContainer, codeBlock.textContent, languageJavaScript());
   }
@@ -45,7 +45,7 @@ import {initCodeEditor, getEditorContent, languageJavaScript} from "./editor-lib
     /* If the `data-height` attribute is defined on the `codeBlock`, set
            the value of this attribute as a class on the editor element. */
     if (codeBlock.dataset["height"]) {
-      var editor = document.getElementById("editor");
+      const editor = document.getElementById("editor");
       editor.classList.add(codeBlock.dataset["height"]);
     }
 
@@ -76,9 +76,7 @@ import {initCodeEditor, getEditorContent, languageJavaScript} from "./editor-lib
       output.textContent = "Error: " + event.message;
     }
 
-    output.addEventListener("animationend", function () {
-      output.classList.remove("fade-in");
-    });
+    output.addEventListener("animationend", () => output.classList.remove("fade-in"));
   }
 
   /* only execute JS in supported browsers. As `document.all`
@@ -89,13 +87,11 @@ import {initCodeEditor, getEditorContent, languageJavaScript} from "./editor-lib
 
     initInteractiveEditor();
 
-    execute.addEventListener("click", function () {
+    execute.addEventListener("click", () => {
       output.textContent = "";
       applyCode();
     });
 
-    reset.addEventListener("click", function () {
-      window.location.reload();
-    });
+    reset.addEventListener("click", () => window.location.reload());
   }
 })();

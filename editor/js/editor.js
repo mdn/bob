@@ -12,29 +12,30 @@ import "../css/editor-libs/tabby.css";
 import "../css/tabbed-editor.css";
 
 (function () {
-  var cssEditor = document.getElementById("css-editor");
-  var clearConsole = document.getElementById("clear");
-  var editorContainer = document.getElementById("editor-container");
-  var tabContainer = document.getElementById("tab-container");
-  var iframeContainer = document.getElementById("output");
-  var header = document.querySelector(".output-header");
-  var htmlEditor = document.getElementById("html-editor");
-  var jsEditor = document.getElementById("js-editor");
-  var staticCSSCode = cssEditor.querySelector("pre");
-  var staticHTMLCode = htmlEditor.querySelector("pre");
-  var staticJSCode = jsEditor.querySelector("pre");
-  var outputIFrame = document.getElementById("output-iframe");
-  var outputTemplate = getOutputTemplate();
-  var appliedHeightAdjustment = false;
-  var timer;
+  const cssEditor = document.getElementById("css-editor");
+  const clearConsole = document.getElementById("clear");
+  const editorContainer = document.getElementById("editor-container");
+  const tabContainer = document.getElementById("tab-container");
+  const iframeContainer = document.getElementById("output");
+  const header = document.querySelector(".output-header");
+  const htmlEditor = document.getElementById("html-editor");
+  const jsEditor = document.getElementById("js-editor");
+  const staticCSSCode = cssEditor.querySelector("pre");
+  const staticHTMLCode = htmlEditor.querySelector("pre");
+  const staticJSCode = jsEditor.querySelector("pre");
+  const outputIFrame = document.getElementById("output-iframe");
+  const outputTemplate = getOutputTemplate();
+
+  let appliedHeightAdjustment = false;
+  let timer;
 
   /**
    * @returns {string} - Interactive example output template, formed by joining together contents of #output-head and #output-body, found in live-tabbed-tmpl.html
    */
   function getOutputTemplate() {
     /* Document is split into two templates, just because <template> parser omits <html>, <head> and <body> tags.*/
-    var templateOutputHead = document.getElementById("output-head");
-    var templateOutputBody = document.getElementById("output-body");
+    const templateOutputHead = document.getElementById("output-head");
+    const templateOutputBody = document.getElementById("output-body");
 
     return `
 <!DOCTYPE html>
@@ -52,7 +53,7 @@ import "../css/tabbed-editor.css";
    * @returns {string} - raw html string
    */
   function applyEditorContentToTemplate(outputTemplate, outputData) {
-    var content = outputTemplate;
+    let content = outputTemplate;
     content = content.replace("%css-content%", outputData.cssContent);
     content = content.replace("%html-content%", outputData.htmlContent);
     content = content.replace("%js-content%", outputData.jsContent);
@@ -70,7 +71,7 @@ import "../css/tabbed-editor.css";
    * }
    */
   function getOutput() {
-    var editorContents = {};
+    const editorContents = {};
 
     setContent("htmlContent", "html");
     setContent("cssContent", "css");
@@ -90,8 +91,8 @@ import "../css/tabbed-editor.css";
    * Fetches HTML, CSS & JavaScript code from tabbed editor, applies them to output template and updates iframe with new content
    */
   function refreshOutput() {
-    var editorData = getOutput();
-    var content = applyEditorContentToTemplate(outputTemplate, editorData);
+    const editorData = getOutput();
+    const content = applyEditorContentToTemplate(outputTemplate, editorData);
 
     outputIFrame.srcdoc = content;
     /* Some time after this operation, browser will invoke load event*/
@@ -102,8 +103,8 @@ import "../css/tabbed-editor.css";
    * It prepares links, handles URL fragments, adjusts frame height, hooks console logs and then evaluates JS editor code
    */
   function onOutputLoaded() {
-    var contentWindow = outputIFrame.contentWindow;
-    var contentBody = contentWindow.document.body;
+    const contentWindow = outputIFrame.contentWindow;
+    const contentBody = contentWindow.document.body;
 
     mceUtils.openLinksInNewTab(contentBody.querySelectorAll('a[href^="http"]'));
     mceUtils.scrollToAnchors(contentBody, contentBody.querySelectorAll('a[href^="#"]'));
@@ -111,9 +112,7 @@ import "../css/tabbed-editor.css";
     adjustFrameHeight();
 
     /* Listeners are removed, every time content is refreshed */
-    contentWindow.addEventListener('resize', function () {
-      adjustFrameHeight();
-    });
+    contentWindow.addEventListener('resize', () => adjustFrameHeight());
     /* Hooking console logs */
     mceConsole(outputIFrame.contentWindow);
 
@@ -133,12 +132,12 @@ import "../css/tabbed-editor.css";
    * When viewport width changes and iframe gets relocated to near tab container, height value set here is removed
    */
   function adjustFrameHeight() {
-    var iframeBelowTabContainer = iframeContainer.offsetTop >= tabContainer.offsetTop + tabContainer.offsetHeight;
+    const iframeBelowTabContainer = iframeContainer.offsetTop >= tabContainer.offsetTop + tabContainer.offsetHeight;
     if(iframeBelowTabContainer) {
       /* When iframe is below tab container(which happens on small screens), we want it to take as low amount of space as possible */
-      let iframeContent = outputIFrame.contentWindow.document.getElementById("html-output");
-      let iframeContentHeight = iframeContent.clientHeight;
-      let iframeHeight = outputIFrame.clientHeight;
+      const iframeContent = outputIFrame.contentWindow.document.getElementById("html-output");
+      const iframeContentHeight = iframeContent.clientHeight;
+      const iframeHeight = outputIFrame.clientHeight;
 
       /* Setting height of iframe to be the same as height of its content */
       if (iframeContentHeight !== iframeHeight) {
@@ -164,35 +163,25 @@ import "../css/tabbed-editor.css";
     // clear the existing timer
     clearTimeout(timer);
 
-    timer = setTimeout(function () {
-      refreshOutput();
-    }, 500);
+    timer = setTimeout(() => refreshOutput(), 500);
   }
 
-  outputIFrame.addEventListener("load", function () {
-    onOutputLoaded();
-  });
+  outputIFrame.addEventListener("load", () => onOutputLoaded());
 
-  header.addEventListener("click", function (event) {
+  header.addEventListener("click", (event) => {
     if (event.target.classList.contains("reset")) {
       window.location.reload();
     }
   });
 
-  htmlEditor.addEventListener("keyup", function () {
-    autoUpdate();
-  });
+  htmlEditor.addEventListener("keyup", () => autoUpdate());
 
-  cssEditor.addEventListener("keyup", function () {
-    autoUpdate();
-  });
+  cssEditor.addEventListener("keyup", () => autoUpdate());
 
-  jsEditor.addEventListener("keyup", function () {
-    autoUpdate();
-  });
+  jsEditor.addEventListener("keyup", () => autoUpdate());
 
-  clearConsole.addEventListener("click", function () {
-    var webapiConsole = document.querySelector("#console code");
+  clearConsole.addEventListener("click", () => {
+    const webapiConsole = document.querySelector("#console code");
     webapiConsole.textContent = "";
   });
 
@@ -229,8 +218,8 @@ import "../css/tabbed-editor.css";
     }
   }
 
-  let tabs = getTabs(editorContainer);
-  let defaultTab = getDefaultTab(editorContainer, tabs);
+  const tabs = getTabs(editorContainer);
+  const defaultTab = getDefaultTab(editorContainer, tabs);
   tabby.initEditor(tabs, document.getElementById(defaultTab));
 
   mceConsole();
@@ -238,7 +227,5 @@ import "../css/tabbed-editor.css";
   tabby.registerEventListeners();
   mceEvents.register();
 
-  document.addEventListener("WebComponentsReady", function () {
-    refreshOutput();
-  });
+  document.addEventListener("WebComponentsReady", () => refreshOutput());
 })();
