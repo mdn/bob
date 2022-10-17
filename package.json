@@ -63,7 +63,7 @@
     }
   ],
   "scripts": {
-    "build": "node ./lib/mdn-bob.js && webpack",
+    "build": "node ./lib/mdn-bob.js",
     "start": "npm-run-all build start-server",
     "start-server": "http-server -p 4444 ./docs",
     "format": "prettier --ignore-unknown --check \"*\"",
