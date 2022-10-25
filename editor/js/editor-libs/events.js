@@ -14,8 +14,7 @@ function addCSSEditorEventListeners(exampleChoiceList) {
 
     cssEditorUtils.applyCode(
       exampleChoiceParent.textContent,
-      // keyup events fire on the .cm-scroller four levels down from the choice div
-      exampleChoiceParent.parentElement.parentElement.parentElement
+      exampleChoiceParent.closest(".cm-scroller")
     );
   });
 
