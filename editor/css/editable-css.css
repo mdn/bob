@@ -74,8 +74,22 @@
   background-color: var(--background-secondary);
 }
 
-.live .example-choice code {
-  padding: 10px 0;
+.live .example-choice pre {
+  width: 100%;
+}
+
+.live .example-choice pre .cm-editor {
+  width: 100%;
+  height: auto;
+  text-align: left;
+  padding: 4px 0;
+  padding-right: 1rem;
+  background: none;
+  border: none;
+}
+
+.live .example-choice .ͼ1.cm-editor.cm-focused {
+  outline: none;
 }
 
 .example-choice-list .example-choice:first-child {

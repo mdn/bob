@@ -2,10 +2,13 @@ import * as clippy from "./editor-libs/clippy.js";
 import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
 import * as cssEditorUtils from "./editor-libs/css-editor-utils.js";
+import {
+  initCodeEditor,
+  languageCSS,
+} from "./editor-libs/codemirror-editor.js";
 
 import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
-import "../css/editor-libs/prism-override.css";
 import "../css/editable-css.css";
 
 (function () {
@@ -16,6 +19,12 @@ import "../css/editable-css.css";
   var originalChoices = [];
   var output = document.getElementById("output");
   var warningNoSupport = document.getElementById("warning-no-support");
+
+  function applyCodeMirror(target, code) {
+    var codeMirror = initCodeEditor(target, code, languageCSS(), {
+      lineNumbers: false,
+    });
+  }
 
   /**
    * Enables and initializes the live code editor
@@ -29,6 +38,14 @@ import "../css/editable-css.css";
       var exampleChoice = exampleChoices[i];
       var choiceButton = document.createElement("button");
       var choiceButtonText = document.createElement("span");
+      var choiceCode = exampleChoice.querySelector("code");
+
+      originalChoices.push(choiceCode.textContent);
+
+      applyCodeMirror(
+        exampleChoice.querySelector("pre"),
+        choiceCode.textContent
+      );
 
       choiceButton.setAttribute("type", "button");
       choiceButton.classList.add("example-choice-button");
@@ -38,11 +55,11 @@ import "../css/editable-css.css";
       choiceButton.append(choiceButtonText);
       exampleChoice.append(choiceButton);
 
-      originalChoices.push(exampleChoice.querySelector("code").textContent);
-
       if (exampleChoice.getAttribute("initial-choice")) {
         initialChoice = indexOf(exampleChoices, exampleChoice);
       }
+
+      choiceCode.remove();
     }
 
     mceEvents.register();
@@ -62,16 +79,15 @@ import "../css/editable-css.css";
     var resetButton = document.getElementById("reset");
 
     resetButton.addEventListener("click", function () {
-      for (var i = 0, l = exampleChoices.length; i < l; i++) {
-        var highlighted = Prism.highlight(
-          originalChoices[i],
-          Prism.languages.css
-        );
-        // IE11 does not support multiple selectors in `remove`
-        exampleChoices[i].classList.remove("invalid");
-        exampleChoices[i].classList.remove("selected");
-        exampleChoices[i].querySelector("code").innerHTML = highlighted;
-      }
+      exampleChoices.forEach(function (e, i) {
+        var preEl = e.querySelector("pre");
+        // Remove original codemirror
+        for (const e of preEl.children) {
+          e.remove();
+        }
+        e.classList.remove("invalid", "selected");
+        applyCodeMirror(preEl, originalChoices[i]);
+      });
 
       // Adding or removing class "invalid"
       cssEditorUtils.applyInitialSupportWarningState(exampleChoices);
