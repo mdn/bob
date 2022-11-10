@@ -1,4 +1,9 @@
-import {languageCSS, languageHTML, languageJavaScript, initCodeEditor} from "./codemirror-editor.js";
+import {
+  languageCSS,
+  languageHTML,
+  languageJavaScript,
+  initCodeEditor,
+} from "./codemirror-editor.js";
 
 const cssEditor = document.getElementById("css-editor");
 const htmlEditor = document.getElementById("html-editor");
@@ -98,19 +103,19 @@ export const editors = {
     editor: undefined,
     code: htmlEditor,
     initialContent: staticHTMLCode.querySelector("code").textContent,
-    language: languageHTML()
+    language: languageHTML(),
   },
   css: {
     editor: undefined,
     code: cssEditor,
     initialContent: staticCSSCode.querySelector("code").textContent,
-    language: languageCSS()
+    language: languageCSS(),
   },
   js: {
     editor: undefined,
     code: jsEditor,
     initialContent: staticJSCode.querySelector("code").textContent,
-    language: languageJavaScript()
+    language: languageJavaScript(),
   },
 };
 
@@ -128,7 +133,11 @@ export function initEditor(editorTypes, defaultTab) {
     const editorData = editors[editorName];
     document.getElementById(editorName).classList.remove("hidden");
 
-    editorData.editor = initCodeEditor(editorData.code, editorData.initialContent, editorData.language);
+    editorData.editor = initCodeEditor(
+      editorData.code,
+      editorData.initialContent,
+      editorData.language
+    );
   }
 }
 

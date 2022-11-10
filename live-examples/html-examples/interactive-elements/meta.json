@@ -1,15 +1,15 @@
 {
   "pages": {
-	"dialog": {
-	  "exampleCode": "live-examples/html-examples/interactive-elements/dialog.html",
-	  "cssExampleSrc": "live-examples/html-examples/interactive-elements/css/dialog.css",
-	  "jsExampleSrc": "live-examples/html-examples/interactive-elements/js/dialog.js",
-	  "fileName": "dialog.html",
-	  "title": "HTML Demo: <dialog>",
-	  "type": "tabbed",
-	  "defaultTab": "html",
-	  "tabs": "html,css,js",
-	  "height": "tabbed-standard"
-	}
+    "dialog": {
+      "exampleCode": "live-examples/html-examples/interactive-elements/dialog.html",
+      "cssExampleSrc": "live-examples/html-examples/interactive-elements/css/dialog.css",
+      "jsExampleSrc": "live-examples/html-examples/interactive-elements/js/dialog.js",
+      "fileName": "dialog.html",
+      "title": "HTML Demo: <dialog>",
+      "type": "tabbed",
+      "defaultTab": "html",
+      "tabs": "html,css,js",
+      "height": "tabbed-standard"
+    }
   }
 }

@@ -22,7 +22,7 @@ import "../css/editable-css.css";
   let initialChoice = 0;
 
   function applyCodeMirror(target, code) {
-    const codeMirror = initCodeEditor(target, code, languageCSS(), {
+    return initCodeEditor(target, code, languageCSS(), {
       lineNumbers: false,
     });
   }
