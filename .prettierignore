@@ -3,4 +3,3 @@ build
 coverage
 docs
 node_modules
-editor/js/lib/webcomponents-bundle.js

@@ -1,4 +1,3 @@
-import wcb from "@webcomponents/webcomponentsjs";
 import mceConsole from "./editor-libs/console.js";
 import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
