@@ -6,7 +6,7 @@ describe("Tabbed Editor", () => {
 
     it("loads the expected HTML into the output element", async () => {
       const expectedCSS =
-        "address { font-variant-caps: small-caps;}a { font-variant: normal;}";
+        " address { font-variant-caps: small-caps;}a { font-variant: normal;} ";
       const expectedHTML =
         "<address> James Rockford<br> 2354 Pacific Coast Highway<br> " +
         "California<br> USA<br> +311-555-2368<br> Email: " +
