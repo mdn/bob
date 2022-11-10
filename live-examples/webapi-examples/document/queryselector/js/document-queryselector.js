@@ -1,8 +1,3 @@
-function getHeader() {
-  let documentRoot = getShadowRoot();
-  return documentRoot.querySelector("header");
-}
-
-let header = getHeader();
+let header = document.querySelector("header");
 console.log("header", header.textContent.trim());
 header.style.backgroundColor = "#b2ebf2";
