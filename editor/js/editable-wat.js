@@ -8,7 +8,12 @@ import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
 import "../css/editable-js-and-wat.css";
 import "../css/editor-libs/tabby.css";
-import {getEditorContent, initCodeEditor, languageJavaScript, languageWAST} from "./editor-libs/codemirror-editor.js";
+import {
+  getEditorContent,
+  initCodeEditor,
+  languageJavaScript,
+  languageWAST,
+} from "./editor-libs/codemirror-editor.js";
 
 (async function () {
   const watCodeBlock = document.getElementById("static-wat");
@@ -17,7 +22,7 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languageWAST} from
   const execute = document.getElementById("execute");
   const output = document.querySelector("#console code");
   const reset = document.getElementById("reset");
-  const wabtInitialized = wabtConstructor();
+  const wabt = await wabtConstructor();
 
   const tabContainer = document.getElementById("tab-container");
   const tabs = tabContainer.querySelectorAll("button[role='tab']");
@@ -27,7 +32,6 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languageWAST} from
   let jsCodeMirror;
   let liveContainer = "";
   let staticContainer;
-  let wabt = await wabtInitialized;
 
   /**
    * Hides all tabpanels
@@ -155,10 +159,18 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languageWAST} from
    */
   function initCodeMirror() {
     const watContainer = document.getElementById("wat-editor");
-    watCodeMirror = initCodeEditor(watContainer, watCodeBlock.textContent, languageWAST());
+    watCodeMirror = initCodeEditor(
+      watContainer,
+      watCodeBlock.textContent,
+      languageWAST()
+    );
 
     const jsContainer = document.getElementById("js-editor");
-    jsCodeMirror = initCodeEditor(jsContainer, jsCodeBlock.textContent, languageJavaScript());
+    jsCodeMirror = initCodeEditor(
+      jsContainer,
+      jsCodeBlock.textContent,
+      languageJavaScript()
+    );
   }
 
   /**
@@ -194,7 +206,6 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languageWAST} from
    * @returns {Blob} a blob with the newly created wasm module
    */
   async function compileWat(wat) {
-    await wabtInitialized;
     const encoder = new TextEncoder();
     const watBuffer = encoder.encode(wat);
     const module = wabt.parseWat("", watBuffer, {
@@ -236,7 +247,9 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languageWAST} from
       console.error(error);
     }
 
-    output.addEventListener("animationend", () => output.classList.remove("fade-in"));
+    output.addEventListener("animationend", () =>
+      output.classList.remove("fade-in")
+    );
   }
 
   /* only execute JS in supported browsers. As `document.all`
