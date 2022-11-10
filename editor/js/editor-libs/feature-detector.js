@@ -4,7 +4,7 @@
  * @returns The matched feature as an Object
  */
 function getFeatureObject(feature) {
-  var featureObj = undefined;
+  let featureObj = undefined;
 
   switch (feature) {
     case "array-entries":

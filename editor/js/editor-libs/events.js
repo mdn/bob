@@ -9,8 +9,8 @@ function addCSSEditorEventListeners(exampleChoiceList) {
   exampleChoiceList.addEventListener("cut", copyTextOnly);
   exampleChoiceList.addEventListener("copy", copyTextOnly);
 
-  exampleChoiceList.addEventListener("keyup", function (event) {
-    var exampleChoiceParent = event.target.parentElement;
+  exampleChoiceList.addEventListener("keyup", (event) => {
+    const exampleChoiceParent = event.target.parentElement;
 
     cssEditorUtils.applyCode(
       exampleChoiceParent.textContent,
@@ -18,7 +18,7 @@ function addCSSEditorEventListeners(exampleChoiceList) {
     );
   });
 
-  var exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
+  const exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
   Array.from(exampleChoices).forEach((choice) => {
     choice.addEventListener("click", handleChoiceEvent);
   });
@@ -31,12 +31,12 @@ function addCSSEditorEventListeners(exampleChoiceList) {
 function addPostMessageListener() {
   window.addEventListener(
     "message",
-    function (event) {
+    (event) => {
       // if a theme should be applied, remove all theme classes from the body,
       // then add the correct one. This is a little more verbose than it needs
       // to be to allow for future themes to be added without a change here.
       if (event.data.theme !== undefined) {
-        var body = document.querySelector("body");
+        const body = document.querySelector("body");
         for (let i = body.classList.length - 1; i >= 0; i--) {
           const className = body.classList[i];
           if (className.startsWith("theme-")) {
@@ -51,7 +51,7 @@ function addPostMessageListener() {
   );
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const theme = localStorage.getItem("theme");
   if (theme !== null) {
     document.querySelector("body").classList.add("theme-" + theme);
@@ -74,8 +74,8 @@ function sendOwnHeight() {
  * @param {Object} event - The copy event
  */
 function copyTextOnly(event) {
-  var selection = window.getSelection();
-  var range = selection.getRangeAt(0);
+  const selection = window.getSelection();
+  const range = selection.getRangeAt(0);
 
   event.preventDefault();
   event.stopPropagation();
@@ -93,7 +93,7 @@ function handleChoiceEvent() {
  * @param {Object} choice - The selected `example-choice` element
  */
 export function onChoose(choice) {
-  var selected = document.querySelector(".selected");
+  const selected = document.querySelector(".selected");
 
   // highlght the code we are leaving
   if (selected && !choice.classList.contains("selected")) {
@@ -109,11 +109,11 @@ export function onChoose(choice) {
  * has been completed.
  */
 export function register() {
-  var exampleChoiceList = document.getElementById("example-choice-list");
+  const exampleChoiceList = document.getElementById("example-choice-list");
 
   addPostMessageListener();
 
-  if (document.readyState != "loading") {
+  if (document.readyState !== "loading") {
     sendOwnHeight();
   } else {
     document.addEventListener("DOMContentLoaded", sendOwnHeight);

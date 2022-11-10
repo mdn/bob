@@ -10,7 +10,7 @@ describe("CSS Editor", () => {
     await page.waitForSelector("#example-choice-list");
     await page.click("#example-choice-list .example-choice:nth-child(2)");
 
-    let styleAttrVal = await page.$eval("#example-element", (elem) =>
+    const styleAttrVal = await page.$eval("#example-element", (elem) =>
       elem.getAttribute("style")
     );
     await expect(styleAttrVal).toBe(expectedStyleAttr);

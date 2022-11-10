@@ -24,10 +24,10 @@ describe("Tabbed Editor", () => {
               .replace(/\r?\n|\r/g, "")
               .replace(/\s{2,}/g, " ");
 
-      let htmlOutputContent = await iframeContent.$eval("#html-output", trimInnerHTML);
+      const htmlOutputContent = await iframeContent.$eval("#html-output", trimInnerHTML);
       await expect(htmlOutputContent).toBe(expectedHTML);
 
-      let cssOutputContent = await iframeContent.$eval("#css-output", trimInnerHTML);
+      const cssOutputContent = await iframeContent.$eval("#css-output", trimInnerHTML);
       await expect(cssOutputContent).toBe(expectedCSS);
     });
 
@@ -35,11 +35,11 @@ describe("Tabbed Editor", () => {
       await page.waitForSelector("#tablist");
       await page.click("#css");
 
-      let cssPanelClassAttr = await page.$eval("#css-panel", (elem) =>
+      const cssPanelClassAttr = await page.$eval("#css-panel", (elem) =>
         elem.getAttribute("class")
       );
 
-      let htmlPanelClassAttr = await page.$eval("#html-panel", (elem) =>
+      const htmlPanelClassAttr = await page.$eval("#html-panel", (elem) =>
         elem.getAttribute("class")
       );
 
@@ -54,11 +54,11 @@ describe("Tabbed Editor", () => {
       // then back to the HTML panel
       await page.click("#html");
 
-      let cssPanelClassAttr = await page.$eval("#css-panel", (elem) =>
+      const cssPanelClassAttr = await page.$eval("#css-panel", (elem) =>
         elem.getAttribute("class")
       );
 
-      let htmlPanelClassAttr = await page.$eval("#html-panel", (elem) =>
+      const htmlPanelClassAttr = await page.$eval("#html-panel", (elem) =>
         elem.getAttribute("class")
       );
 

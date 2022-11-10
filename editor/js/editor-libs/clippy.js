@@ -8,15 +8,15 @@ import Clipboard from "clipboard";
  * @param {Object} msgContainer - The feedback message container
  */
 function setClippyPosition(clippyEvent, msgContainer) {
-  var trigger = clippyEvent.trigger;
-  var triggerParent = trigger.offsetParent;
+  const trigger = clippyEvent.trigger;
+  const triggerParent = trigger.offsetParent;
   /* calculate the base top offset by combining the top
     offset of the button's parent element, and the height
     of the button */
-  var positionTopBasis = triggerParent.offsetTop + trigger.clientHeight;
+  const positionTopBasis = triggerParent.offsetTop + trigger.clientHeight;
   // Add 10px padding to the base to avoid overlapping the button
-  var positionTop = positionTopBasis + 10 + "px";
-  var positionLeft = trigger.offsetLeft + "px";
+  const positionTop = positionTopBasis + 10 + "px";
+  const positionLeft = trigger.offsetLeft + "px";
 
   msgContainer.style.top = positionTop;
   msgContainer.style.left = positionLeft;
@@ -26,31 +26,31 @@ function setClippyPosition(clippyEvent, msgContainer) {
  * Initialise clipboard.js, and setup success handler
  */
 export function addClippy() {
-  var clipboard = new Clipboard(".copy", {
+  const clipboard = new Clipboard(".copy", {
     target: function (clippyButton) {
-      var targetAttr = clippyButton.dataset.clipboardTarget;
+      const targetAttr = clippyButton.dataset.clipboardTarget;
       if (targetAttr) {
         // The attribute will override the automated target selection
         return document.querySelector(targetAttr);
       } else {
         // Get its parent until it finds an example choice
-        var choiceElem = mceUtils.findParentChoiceElem(clippyButton);
+        const choiceElem = mceUtils.findParentChoiceElem(clippyButton);
         // Use the first code element to prevent extra text
-        var firstCodeElem = choiceElem.getElementsByTagName("code")[0];
+        const firstCodeElem = choiceElem.getElementsByTagName("code")[0];
         return firstCodeElem;
       }
     },
   });
 
-  clipboard.on("success", function (event) {
-    var msgContainer = document.getElementById("user-message");
+  clipboard.on("success", (event) => {
+    const msgContainer = document.getElementById("user-message");
 
     msgContainer.classList.add("show");
     msgContainer.setAttribute("aria-hidden", false);
 
     setClippyPosition(event, msgContainer);
 
-    window.setTimeout(function () {
+    window.setTimeout(() => {
       msgContainer.classList.remove("show");
       msgContainer.setAttribute("aria-hidden", true);
     }, 1000);
@@ -65,10 +65,10 @@ export function addClippy() {
  * @param {Object} container - The container containing the button to show
  */
 export function toggleClippy(container) {
-  var activeClippy = container.querySelector(".copy");
-  var clippyButtons = document.querySelectorAll(".copy");
+  const activeClippy = container.querySelector(".copy");
+  const clippyButtons = document.querySelectorAll(".copy");
 
-  for (var i = 0, l = clippyButtons.length; i < l; i++) {
+  for (let i = 0, l = clippyButtons.length; i < l; i++) {
     clippyButtons[i].classList.add("hidden");
     clippyButtons[i].setAttribute("aria-hidden", true);
   }
