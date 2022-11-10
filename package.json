@@ -123,7 +123,7 @@
     "node-dir": "0.1.17",
     "uglify-es": "3.3.9",
     "wabt": "^1.0.29",
-    "webpack": "5.74.0"
+    "webpack": "5.75.0"
   },
   "resolutions": {
     "lodash": ">=4.17.5",
