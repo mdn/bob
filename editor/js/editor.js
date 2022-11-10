@@ -234,5 +234,5 @@ import "../css/tabbed-editor.css";
   tabby.registerEventListeners();
   mceEvents.register();
 
-  document.addEventListener("WebComponentsReady", () => refreshOutput());
+  refreshOutput();
 })();
