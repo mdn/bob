@@ -107,7 +107,7 @@ import "../css/tabbed-editor.css";
     const contentBody = contentWindow.document.body;
 
     mceUtils.openLinksInNewTab(contentBody.querySelectorAll('a[href^="http"]'));
-    mceUtils.scrollToAnchors(contentBody, contentBody.querySelectorAll('a[href^="#"]'));
+    mceUtils.scrollToAnchors(contentWindow, contentBody, contentBody.querySelectorAll('a[href^="#"]'));
 
     adjustFrameHeight();
 
