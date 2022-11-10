@@ -1,13 +1,5 @@
 {
   "extends": ["eslint:recommended", "plugin:import/errors", "prettier"],
-  "rules": {
-    "no-console": [
-      "error",
-      {
-        "allow": ["info", "error"]
-      }
-    ]
-  },
   "plugins": ["import"],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
