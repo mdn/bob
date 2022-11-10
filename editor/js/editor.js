@@ -109,6 +109,7 @@ import "../css/tabbed-editor.css";
 
     mceUtils.openLinksInNewTab(contentBody.querySelectorAll('a[href^="http"]'));
     mceUtils.scrollToAnchors(
+      contentWindow,
       contentBody,
       contentBody.querySelectorAll('a[href^="#"]')
     );
