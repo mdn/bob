@@ -2,13 +2,13 @@ export let editTimer = undefined;
 
 export function applyCode(code, choice, targetElement, immediateInvalidChange) {
   // http://regexr.com/3fvik
-  var cssCommentsMatch = /(\/\*)[\s\S]+(\*\/)/g;
-  var element = targetElement || document.getElementById("example-element");
+  const cssCommentsMatch = /(\/\*)[\s\S]+(\*\/)/g;
+  const element = targetElement || document.getElementById("example-element");
 
   // strip out any CSS comments before applying the code
   code = code.replace(cssCommentsMatch, "");
-    // Checking if every CSS declaration in passed code, is supported by the browser
-    let codeSupported = isCodeSupported(element, code);
+  // Checking if every CSS declaration in passed code, is supported by the browser
+  const codeSupported = isCodeSupported(element, code);
 
   element.style.cssText = code;
 
@@ -18,15 +18,15 @@ export function applyCode(code, choice, targetElement, immediateInvalidChange) {
   /**
    * Adding or removing class "invalid" from choice parent, which will typically be <div class="example-choice">
    */
-  let setInvalidClass = function() {
+  function setInvalidClass() {
     if (codeSupported) {
-      choice.parentNode.classList.remove('invalid');
+      choice.classList.remove("invalid");
     } else {
-      choice.parentNode.classList.add('invalid');
+      choice.classList.add("invalid");
     }
-  };
+  }
 
-  if(immediateInvalidChange) {
+  if (immediateInvalidChange) {
     // Setting class immediately
     setInvalidClass();
   } else {
@@ -46,72 +46,73 @@ export function applyCode(code, choice, targetElement, immediateInvalidChange) {
  * @returns {boolean} - true if every declaration is supported by the browser. Properties with vendor prefix are excluded.
  */
 export function isCodeSupported(element, declarations) {
-    var vendorPrefixMatch = /^-(?:webkit|moz|ms|o)-/;
-    var style = element.style;
-    // Expecting declarations to be separated by ";"
-    // Declarations with just white space are ignored
-    var declarationsArray = declarations.split(";")
-        .map(d => d.trim())
-        .filter(d => d.length > 0);
+  const vendorPrefixMatch = /^-(?:webkit|moz|ms|o)-/;
+  const style = element.style;
+  // Expecting declarations to be separated by ";"
+  // Declarations with just white space are ignored
+  const declarationsArray = declarations
+    .split(";")
+    .map((d) => d.trim())
+    .filter((d) => d.length > 0);
 
-    /**
-     * @returns {boolean} - true if declaration starts with -webkit-, -moz-, -ms- or -o-
-     */
-    function hasVendorPrefix(declaration) {
-        return vendorPrefixMatch.test(declaration);
+  /**
+   * @returns {boolean} - true if declaration starts with -webkit-, -moz-, -ms- or -o-
+   */
+  function hasVendorPrefix(declaration) {
+    return vendorPrefixMatch.test(declaration);
+  }
+
+  /**
+   * Looks for property name by cutting off optional vendor prefix at the beginning
+   * and then cutting off rest of the declaration, starting from any whitespace or ":" in property name.
+   * @param declaration - single css declaration, with not white space at the beginning
+   * @returns {string} - property name without vendor prefix.
+   */
+  function getPropertyNameNoPrefix(declaration) {
+    const prefixMatch = vendorPrefixMatch.exec(declaration);
+    const prefix = prefixMatch === null ? "" : prefixMatch[0];
+    const declarationNoPrefix =
+      prefix === null ? declaration : declaration.slice(prefix.length);
+    // Expecting property name to be over, when any whitespace or ":" is found
+    const propertyNameSeparator = /[\s:]/;
+    return declarationNoPrefix.split(propertyNameSeparator)[0];
+  }
+  // Clearing previous state
+  style.cssText = "";
+
+  // List of found and applied properties with vendor prefix
+  const appliedPropertiesWithPrefix = new Set();
+  // List of not applied properties - because of lack of support for its name or value
+  const notAppliedProperties = new Set();
+
+  for (let declaration of declarationsArray) {
+    const previousCSSText = style.cssText;
+    // Declarations are added one by one, because browsers sometimes combine multiple declarations into one
+    // For example Chrome changes "column-count: auto;column-width: 8rem;" into "columns: 8rem auto;"
+    style.cssText += declaration + ";"; // ";" was previous removed while using split method
+    // In case property name or value is not supported, browsers skip single declaration, while leaving rest of them intact
+    const correctlyApplied = style.cssText !== previousCSSText;
+
+    const vendorPrefixFound = hasVendorPrefix(declaration);
+    const propertyName = getPropertyNameNoPrefix(declaration);
+
+    if (correctlyApplied && vendorPrefixFound) {
+      // We are saving applied properties with prefix, so equivalent property with no prefix doesn't need to be supported
+      appliedPropertiesWithPrefix.add(propertyName);
+    } else if (!correctlyApplied && !vendorPrefixFound) {
+      notAppliedProperties.add(propertyName);
     }
+  }
 
-    /**
-     * Looks for property name by cutting off optional vendor prefix at the beginning
-     * and then cutting off rest of the declaration, starting from any whitespace or ":" in property name.
-     * @param declaration - single css declaration, with not white space at the beginning
-     * @returns {string} - property name without vendor prefix.
-     */
-    function getPropertyNameNoPrefix(declaration) {
-        var prefixMatch = vendorPrefixMatch.exec(declaration);
-        var prefix = prefixMatch === null ? "" : prefixMatch[0];
-        var declarationNoPrefix = prefix === null ? declaration : declaration.slice(prefix.length);
-        // Expecting property name to be over, when any whitespace or ":" is found
-        var propertyNameSeparator = /[\s:]/;
-        return declarationNoPrefix.split(propertyNameSeparator)[0];
+  if (notAppliedProperties.size !== 0) {
+    // If property with vendor prefix is supported, we can ignore the fact that browser doesn't support property with no prefix
+    for (const substitute of appliedPropertiesWithPrefix) {
+      notAppliedProperties.delete(substitute);
     }
-    // Clearing previous state
-    style.cssText = "";
-
-    // List of found and applied properties with vendor prefix
-    let appliedPropertiesWithPrefix = new Set();
-    // List of not applied properties - because of lack of support for its name or value
-    let notAppliedProperties = new Set();
-
-    for (let declaration of declarationsArray) {
-        let previousCSSText = style.cssText;
-        // Declarations are added one by one, because browsers sometimes combine multiple declarations into one
-        // For example Chrome changes "column-count: auto;column-width: 8rem;" into "columns: 8rem auto;"
-        style.cssText += declaration + ";"; // ";" was previous removed while using split method
-        // In case property name or value is not supported, browsers skip single declaration, while leaving rest of them intact
-        let correctlyApplied = style.cssText !== previousCSSText;
-
-        let vendorPrefixFound = hasVendorPrefix(declaration);
-        let propertyName = getPropertyNameNoPrefix(declaration);
-
-        if (correctlyApplied && vendorPrefixFound) {
-            // We are saving applied properties with prefix, so equivalent property with no prefix doesn't need to be supported
-            appliedPropertiesWithPrefix.add(propertyName);
-        } else if (!correctlyApplied && !vendorPrefixFound) {
-            notAppliedProperties.add(propertyName);
-        }
-    }
-
-    if (notAppliedProperties.size !== 0) {
-        // If property with vendor prefix is supported, we can ignore the fact that browser doesn't support property with no prefix
-        for (let substitute of appliedPropertiesWithPrefix) {
-            notAppliedProperties.delete(substitute);
-        }
-        // If any other declaration is not supported, whole block should be marked as invalid
-        if (notAppliedProperties.size !== 0)
-            return false;
-    }
-    return true;
+    // If any other declaration is not supported, whole block should be marked as invalid
+    if (notAppliedProperties.size !== 0) return false;
+  }
+  return true;
 }
 
 /**
@@ -120,10 +121,10 @@ export function isCodeSupported(element, declarations) {
  * @param choices - elements containing element code, containing css declarations to apply
  */
 export function applyInitialSupportWarningState(choices) {
-    for(let choice of choices) {
-        let codeBlock = choice.querySelector("code");
-        applyCode(codeBlock.textContent, codeBlock.parentNode, undefined, true);
-    }
+  for (const choice of choices) {
+    const codeBlock = choice.querySelector(".cm-content");
+    applyCode(codeBlock.textContent, choice, undefined, true);
+  }
 }
 
 /**
@@ -133,28 +134,23 @@ export function applyInitialSupportWarningState(choices) {
  * @param {Object} choice - The selected `example-choice` element
  */
 export function choose(choice) {
-  var codeBlock = choice.querySelector("code");
-
   choice.classList.add("selected");
-
-  codeBlock.setAttribute("contentEditable", true);
-  codeBlock.setAttribute("spellcheck", false);
-
-  applyCode(codeBlock.textContent, codeBlock.parentNode);
+  const codeBlock = choice.querySelector(".cm-content");
+  applyCode(codeBlock.textContent, choice);
 }
 
 /**
  * Resets the default example to visible but, only if it is currently hidden
  */
 export function resetDefault() {
-  var defaultExample = document.getElementById("default-example");
-  var output = document.getElementById("output");
+  const defaultExample = document.getElementById("default-example");
+  const output = document.getElementById("output");
 
   // only reset to default if the default example is hidden
   if (defaultExample.classList.contains("hidden")) {
-    var sections = output.querySelectorAll("section");
+    const sections = output.querySelectorAll("section");
     // loop over all sections and set to hidden
-    for (var i = 0, l = sections.length; i < l; i++) {
+    for (let i = 0, l = sections.length; i < l; i++) {
       sections[i].classList.add("hidden");
       sections[i].setAttribute("aria-hidden", true);
     }
@@ -170,10 +166,10 @@ export function resetDefault() {
  * Resets the UI state by deselecting all example choice
  */
 export function resetUIState() {
-  var exampleChoiceList = document.getElementById("example-choice-list");
-  var exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
+  const exampleChoiceList = document.getElementById("example-choice-list");
+  const exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
 
-  for (var i = 0, l = exampleChoices.length; i < l; i++) {
+  for (let i = 0, l = exampleChoices.length; i < l; i++) {
     exampleChoices[i].classList.remove("selected");
   }
 }

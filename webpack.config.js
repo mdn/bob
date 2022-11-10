@@ -22,7 +22,10 @@ export default {
       import: "./editor/js/editor.js",
       dependOn: "codemirror",
     },
-    "editor-css": "./editor/js/editable-css.js",
+    "editor-css": {
+      import: "./editor/js/editable-css.js",
+      dependOn: "codemirror",
+    },
     "editor-js": {
       import: "./editor/js/editable-js.js",
       dependOn: "codemirror",
@@ -31,7 +34,6 @@ export default {
       import: "./editor/js/editable-wat.js",
       dependOn: "codemirror",
     },
-    "css-examples-libs": "./editor/js/css-examples-libs.js",
     codemirror: "./editor/js/editor-libs/codemirror-editor.js",
   },
   output: {
@@ -40,11 +42,6 @@ export default {
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        loader: "babel-loader",
-        exclude: /node_modules/,
-      },
       {
         test: /\.css$/,
         use: [

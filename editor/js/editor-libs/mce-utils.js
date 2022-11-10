@@ -6,8 +6,8 @@
  * @return The parent `example-choice` element
  */
 export function findParentChoiceElem(element) {
-  var parent = element.parentElement;
-  var parentClassList = parent.classList;
+  let parent = element.parentElement;
+  let parentClassList = parent.classList;
   while (parent && !parentClassList.contains("example-choice")) {
     // get the next parent
     parent = parent.parentElement;
@@ -30,13 +30,13 @@ export function isPropertySupported(dataset) {
   }
 
   // `property` may be a space-separated list of properties.
-  var properties = dataset["property"].split(" ");
+  const properties = dataset["property"].split(" ");
   /* Iterate through properties: if any of them apply,
         the browser supports this example. */
-  var supported = false;
-  var tmpElem = document.createElement("div");
+  const tmpElem = document.createElement("div");
+  let supported = false;
 
-  for (var i = 0, l = properties.length; i < l; i++) {
+  for (let i = 0, l = properties.length; i < l; i++) {
     if (tmpElem.style[properties[i]] !== undefined) {
       supported = true;
     }
@@ -51,8 +51,8 @@ export function isPropertySupported(dataset) {
  * @param {Array} externalLinks - all external links inside the iframe
  */
 export function openLinksInNewTab(externalLinks) {
-  externalLinks.forEach(function (externalLink) {
-    externalLink.addEventListener("click", function (event) {
+  externalLinks.forEach((externalLink) => {
+    externalLink.addEventListener("click", (event) => {
       event.preventDefault();
       window.open(externalLink.href);
     });
@@ -67,8 +67,8 @@ export function openLinksInNewTab(externalLinks) {
  * @param {Array} relativeLinks - all relative links inside the iframe
  */
 export function scrollToAnchors(contentWindow, rootElement, relativeLinks) {
-  relativeLinks.forEach(function (relativeLink) {
-    relativeLink.addEventListener("click", function (event) {
+  relativeLinks.forEach((relativeLink) => {
+    relativeLink.addEventListener("click", (event) => {
       event.preventDefault();
       let element = rootElement.querySelector(relativeLink.hash);
       if(element) {
@@ -77,17 +77,4 @@ export function scrollToAnchors(contentWindow, rootElement, relativeLinks) {
       }
     });
   });
-}
-
-/**
- * Hides the default example and shows the custom block
- * @param {object} customBlock - The HTML section to show
- */
-export function showCustomExampleHTML(customBlock) {
-  var defaultExample = document.getElementById("default-example");
-  defaultExample.classList.add("hidden");
-  defaultExample.setAttribute("aria-hidden", true);
-
-  customBlock.classList.remove("hidden");
-  customBlock.setAttribute("aria-hidden", false);
 }

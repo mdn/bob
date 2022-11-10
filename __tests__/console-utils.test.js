@@ -2,54 +2,54 @@ import * as consoleUtils from "../editor/js/editor-libs/console-utils";
 
 describe("console utils", () => {
   describe("formatOutput", () => {
-    test("String", function () {
+    test("String", () => {
       expect(consoleUtils.formatOutput("lorem ipsum")).toBe('"lorem ipsum"');
     });
-    test("undefined", function () {
+    test("undefined", () => {
       expect(consoleUtils.formatOutput(undefined)).toBe("undefined");
     });
-    test("null", function () {
+    test("null", () => {
       expect(consoleUtils.formatOutput(null)).toBe("null");
     });
-    test("NaN", function () {
+    test("NaN", () => {
       expect(consoleUtils.formatOutput(NaN)).toBe("NaN");
     });
-    test("Boolean: true", function () {
+    test("Boolean: true", () => {
       expect(consoleUtils.formatOutput(true)).toBe("true");
     });
-    test("Boolean: false", function () {
+    test("Boolean: false", () => {
       expect(consoleUtils.formatOutput(false)).toBe("false");
     });
-    test("Positive integer", function () {
+    test("Positive integer", () => {
       expect(consoleUtils.formatOutput(42)).toBe("42");
     });
-    test("Positive floating point", function () {
+    test("Positive floating point", () => {
       expect(consoleUtils.formatOutput(4.2)).toBe("4.2");
     });
-    test("Negative integer", function () {
+    test("Negative integer", () => {
       expect(consoleUtils.formatOutput(-42)).toBe("-42");
     });
-    test("Negative floating point", function () {
+    test("Negative floating point", () => {
       expect(consoleUtils.formatOutput(-4.2)).toBe("-4.2");
     });
-    test("Infinity", function () {
+    test("Infinity", () => {
       expect(consoleUtils.formatOutput(Infinity)).toBe("Infinity");
     });
-    test("Negative Infinity", function () {
+    test("Negative Infinity", () => {
       expect(consoleUtils.formatOutput(-Infinity)).toBe("-Infinity");
     });
-    test("Positive zero", function () {
+    test("Positive zero", () => {
       expect(consoleUtils.formatOutput(0)).toBe("0");
     });
-    test("Negative zero", function () {
+    test("Negative zero", () => {
       expect(consoleUtils.formatOutput(-0)).toBe("-0");
     });
-    test("String object", function () {
+    test("String object", () => {
       expect(consoleUtils.formatOutput(new String("foo"))).toBe(
         'String { "foo" }'
       );
     });
-    test('Object.getPrototypeOf should return String { "" }', function () {
+    test('Object.getPrototypeOf should return String { "" }', () => {
       expect(consoleUtils.formatOutput(Object.getPrototypeOf("foo"))).toBe(
         'String { "" }'
       );
@@ -57,12 +57,12 @@ describe("console utils", () => {
   });
 
   describe("formatArray", () => {
-    test("Array formatting", function () {
+    test("Array formatting", () => {
       expect(consoleUtils.formatArray(new Array(1, 2, 3, 4))).toBe(
         "1, 2, 3, 4"
       );
     });
-    test("Mixed array", function () {
+    test("Mixed array", () => {
       expect(
         consoleUtils.formatArray(new Array(1, "a", { x: 2 }, null, undefined))
       ).toBe('1, "a", Object { x: 2 }, null, undefined');

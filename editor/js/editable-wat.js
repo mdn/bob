@@ -8,51 +8,52 @@ import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
 import "../css/editable-js-and-wat.css";
 import "../css/editor-libs/tabby.css";
-import {getEditorContent, initCodeEditor, languageJavaScript, languages, languageWAST} from "./editor-libs/codemirror-editor.js";
+import {
+  getEditorContent,
+  initCodeEditor,
+  languageJavaScript,
+  languageWAST,
+} from "./editor-libs/codemirror-editor.js";
 
-(function () {
-  var watCodeBlock = document.getElementById("static-wat");
-  var jsCodeBlock = document.getElementById("static-js");
-  var exampleFeature = watCodeBlock.dataset["feature"];
-  var execute = document.getElementById("execute");
-  var liveContainer = "";
-  var output = document.querySelector("#console code");
-  var reset = document.getElementById("reset");
-  var wabtInitialized = wabtConstructor();
+(async function () {
+  const watCodeBlock = document.getElementById("static-wat");
+  const jsCodeBlock = document.getElementById("static-js");
+  const exampleFeature = watCodeBlock.dataset["feature"];
+  const execute = document.getElementById("execute");
+  const output = document.querySelector("#console code");
+  const reset = document.getElementById("reset");
+  const wabt = await wabtConstructor();
 
-  var tabContainer = document.getElementById("tab-container");
-  var tabs = tabContainer.querySelectorAll("button[role='tab']");
-  var tabList = document.getElementById("tablist");
+  const tabContainer = document.getElementById("tab-container");
+  const tabs = tabContainer.querySelectorAll("button[role='tab']");
+  const tabList = document.getElementById("tablist");
 
-  var watCodeMirror;
-  var jsCodeMirror;
-  var staticContainer;
-  var wabt;
-  wabtInitialized.then((res) => {
-    wabt = res;
-  });
+  let watCodeMirror;
+  let jsCodeMirror;
+  let liveContainer = "";
+  let staticContainer;
 
   /**
    * Hides all tabpanels
    */
   function hideTabPanels() {
     // get all section with a role of tabpanel
-    var tabPanels = tabContainer.querySelectorAll("[role='tabpanel']");
+    const tabPanels = tabContainer.querySelectorAll("[role='tabpanel']");
 
     // hide all tabpanels
-    for (var panel of tabPanels) {
+    for (const panel of tabPanels) {
       panel.classList.add("hidden");
     }
   }
 
   function registerEventListeners() {
-    tabList.addEventListener("click", function (event) {
-      var eventTarget = event.target;
-      var role = eventTarget.getAttribute("role");
+    tabList.addEventListener("click", (event) => {
+      const eventTarget = event.target;
+      const role = eventTarget.getAttribute("role");
 
       if (role === "tab") {
-        var activeTab = tabList.querySelector("button[aria-selected='true']");
-        var selectedPanel = document.getElementById(
+        const activeTab = tabList.querySelector("button[aria-selected='true']");
+        const selectedPanel = document.getElementById(
           eventTarget.getAttribute("aria-controls")
         );
 
@@ -65,7 +66,7 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languages, languag
       }
     });
 
-    tabList.addEventListener("keyup", function (event) {
+    tabList.addEventListener("keyup", (event) => {
       event.stopPropagation();
       switch (event.key) {
         case "ArrowRight":
@@ -114,7 +115,7 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languages, languag
    * Must be either forward, or reverse.
    */
   function setNextActiveTab(direction) {
-    var activeTab = tabList.querySelector("button[aria-selected='true']");
+    const activeTab = tabList.querySelector("button[aria-selected='true']");
 
     // if the direction specified is not valid, simply return
     if (direction !== "forward" && direction !== "reverse") {
@@ -148,8 +149,8 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languages, languag
    * output container
    */
   function applyCode() {
-    var wat = getEditorContent(watCodeMirror);
-    var js = getEditorContent(jsCodeMirror);
+    const wat = getEditorContent(watCodeMirror);
+    const js = getEditorContent(jsCodeMirror);
     updateOutput(wat, js);
   }
 
@@ -157,11 +158,19 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languages, languag
    * Initialize CodeMirror
    */
   function initCodeMirror() {
-    var watContainer = document.getElementById("wat-editor");
-    watCodeMirror = initCodeEditor(watContainer, watCodeBlock.textContent, languageWAST());
+    const watContainer = document.getElementById("wat-editor");
+    watCodeMirror = initCodeEditor(
+      watContainer,
+      watCodeBlock.textContent,
+      languageWAST()
+    );
 
-    var jsContainer = document.getElementById("js-editor");
-    jsCodeMirror = initCodeEditor(jsContainer, jsCodeBlock.textContent, languageJavaScript());
+    const jsContainer = document.getElementById("js-editor");
+    jsCodeMirror = initCodeEditor(
+      jsContainer,
+      jsCodeBlock.textContent,
+      languageJavaScript()
+    );
   }
 
   /**
@@ -171,9 +180,9 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languages, languag
     /* If the `data-height` attribute is defined on the `codeBlock`, set
        the value of this attribute as a class on the editor element. */
     if (watCodeBlock.dataset["height"]) {
-      var watEditor = document.getElementById("wat-panel");
+      const watEditor = document.getElementById("wat-panel");
       watEditor.classList.add(watCodeBlock.dataset["height"]);
-      var jsEditor = document.getElementById("js-panel");
+      const jsEditor = document.getElementById("js-panel");
       jsEditor.classList.add(watCodeBlock.dataset["height"]);
     }
 
@@ -197,10 +206,9 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languages, languag
    * @returns {Blob} a blob with the newly created wasm module
    */
   async function compileWat(wat) {
-    await wabtInitialized;
-    var encoder = new TextEncoder();
-    let watBuffer = encoder.encode(wat);
-    let module = wabt.parseWat("", watBuffer, {
+    const encoder = new TextEncoder();
+    const watBuffer = encoder.encode(wat);
+    const module = wabt.parseWat("", watBuffer, {
       exceptions: true,
       reference_types: true,
     });
@@ -222,16 +230,16 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languages, languag
     output.classList.add("fade-in");
 
     try {
-      let watBlob = await compileWat(wat);
+      const watBlob = await compileWat(wat);
 
-      let watUrl = URL.createObjectURL(watBlob);
+      const watUrl = URL.createObjectURL(watBlob);
 
       const exampleCode = js.replaceAll("{%wasm-url%}", watUrl);
 
       // Create an new async function from the code, and immediately execute it.
       // using an async function since WebAssembly.instantiate is async and
       // we need to await in order to capture errors
-      let AsyncFunction = Object.getPrototypeOf(
+      const AsyncFunction = Object.getPrototypeOf(
         async function () {}
       ).constructor;
       await new AsyncFunction(exampleCode)();
@@ -239,9 +247,9 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languages, languag
       console.error(error);
     }
 
-    output.addEventListener("animationend", function () {
-      output.classList.remove("fade-in");
-    });
+    output.addEventListener("animationend", () =>
+      output.classList.remove("fade-in")
+    );
   }
 
   /* only execute JS in supported browsers. As `document.all`
@@ -252,13 +260,11 @@ import {getEditorContent, initCodeEditor, languageJavaScript, languages, languag
 
     initInteractiveEditor();
 
-    execute.addEventListener("click", function () {
+    execute.addEventListener("click", () => {
       output.textContent = "";
       applyCode();
     });
 
-    reset.addEventListener("click", function () {
-      window.location.reload();
-    });
+    reset.addEventListener("click", () => window.location.reload());
   }
 })();
