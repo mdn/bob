@@ -70,7 +70,7 @@
 }
 
 .cm-class-selector {
-  color: var(--code-token-class-selector)
+  color: var(--code-token-class-selector);
 }
 
 .cm-meta {

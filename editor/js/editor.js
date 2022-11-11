@@ -1,9 +1,8 @@
-import wcb from "@webcomponents/webcomponentsjs";
 import mceConsole from "./editor-libs/console.js";
 import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
 import * as tabby from "./editor-libs/tabby.js";
-import {getEditorContent} from "./editor-libs/codemirror-editor.js";
+import { getEditorContent } from "./editor-libs/codemirror-editor.js";
 
 import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
@@ -79,7 +78,9 @@ import "../css/tabbed-editor.css";
 
     function setContent(propertyName, editorName) {
       if (tabby.editors[editorName].editor) {
-        editorContents[propertyName] = getEditorContent(tabby.editors[editorName].editor);
+        editorContents[propertyName] = getEditorContent(
+          tabby.editors[editorName].editor
+        );
       } else {
         editorContents[propertyName] = "";
       }
@@ -107,12 +108,16 @@ import "../css/tabbed-editor.css";
     const contentBody = contentWindow.document.body;
 
     mceUtils.openLinksInNewTab(contentBody.querySelectorAll('a[href^="http"]'));
-    mceUtils.scrollToAnchors(contentWindow, contentBody, contentBody.querySelectorAll('a[href^="#"]'));
+    mceUtils.scrollToAnchors(
+      contentWindow,
+      contentBody,
+      contentBody.querySelectorAll('a[href^="#"]')
+    );
 
     adjustFrameHeight();
 
     /* Listeners are removed, every time content is refreshed */
-    contentWindow.addEventListener('resize', () => adjustFrameHeight());
+    contentWindow.addEventListener("resize", () => adjustFrameHeight());
     /* Hooking console logs */
     mceConsole(outputIFrame.contentWindow);
 
@@ -132,22 +137,25 @@ import "../css/tabbed-editor.css";
    * When viewport width changes and iframe gets relocated to near tab container, height value set here is removed
    */
   function adjustFrameHeight() {
-    const iframeBelowTabContainer = iframeContainer.offsetTop >= tabContainer.offsetTop + tabContainer.offsetHeight;
-    if(iframeBelowTabContainer) {
+    const iframeBelowTabContainer =
+      iframeContainer.offsetTop >=
+      tabContainer.offsetTop + tabContainer.offsetHeight;
+    if (iframeBelowTabContainer) {
       /* When iframe is below tab container(which happens on small screens), we want it to take as low amount of space as possible */
-      const iframeContent = outputIFrame.contentWindow.document.getElementById("html-output");
+      const iframeContent =
+        outputIFrame.contentWindow.document.getElementById("html-output");
       const iframeContentHeight = iframeContent.clientHeight;
       const iframeHeight = outputIFrame.clientHeight;
 
       /* Setting height of iframe to be the same as height of its content */
       if (iframeContentHeight !== iframeHeight) {
-        outputIFrame.style.height = iframeContentHeight + 'px';
+        outputIFrame.style.height = iframeContentHeight + "px";
         appliedHeightAdjustment = true;
       }
     } else {
       /* In case iframe was previously below tab container and its height was set to a fixed value,
       we need to clear that value, so iframe fills the whole container now */
-      if(appliedHeightAdjustment) {
+      if (appliedHeightAdjustment) {
         outputIFrame.style.height = "";
         appliedHeightAdjustment = false;
       }

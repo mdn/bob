@@ -71,7 +71,7 @@ export function scrollToAnchors(contentWindow, rootElement, relativeLinks) {
     relativeLink.addEventListener("click", (event) => {
       event.preventDefault();
       let element = rootElement.querySelector(relativeLink.hash);
-      if(element) {
+      if (element) {
         element.scrollIntoView();
         contentWindow.location.hash = relativeLink.hash;
       }

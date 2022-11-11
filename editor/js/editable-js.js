@@ -1,12 +1,15 @@
 import * as featureDetector from "./editor-libs/feature-detector.js";
 import mceConsole from "./editor-libs/console.js";
 import * as mceEvents from "./editor-libs/events.js";
-import * as mceUtils from "./editor-libs/mce-utils.js";
 
 import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
 import "../css/editable-js-and-wat.css";
-import {initCodeEditor, getEditorContent, languageJavaScript} from "./editor-libs/codemirror-editor.js";
+import {
+  initCodeEditor,
+  getEditorContent,
+  languageJavaScript,
+} from "./editor-libs/codemirror-editor.js";
 
 (function () {
   const codeBlock = document.getElementById("static-js");
@@ -35,7 +38,11 @@ import {initCodeEditor, getEditorContent, languageJavaScript} from "./editor-lib
   function initCodeMirror() {
     const editorContainer = document.getElementById("editor");
 
-    codeMirror = initCodeEditor(editorContainer, codeBlock.textContent, languageJavaScript());
+    codeMirror = initCodeEditor(
+      editorContainer,
+      codeBlock.textContent,
+      languageJavaScript()
+    );
   }
 
   /**
@@ -76,7 +83,9 @@ import {initCodeEditor, getEditorContent, languageJavaScript} from "./editor-lib
       output.textContent = "Error: " + event.message;
     }
 
-    output.addEventListener("animationend", () => output.classList.remove("fade-in"));
+    output.addEventListener("animationend", () =>
+      output.classList.remove("fade-in")
+    );
   }
 
   /* only execute JS in supported browsers. As `document.all`

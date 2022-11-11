@@ -77,7 +77,7 @@ export function formatObject(input) {
     let formattedChild = "";
     let start = true;
     for (const key in input) {
-      if (input.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(input, key)) {
         if (start) {
           start = false;
         } else {

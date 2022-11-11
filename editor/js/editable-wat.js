@@ -1,7 +1,6 @@
 import * as featureDetector from "./editor-libs/feature-detector.js";
 import mceConsole from "./editor-libs/console.js";
 import * as mceEvents from "./editor-libs/events.js";
-import * as mceUtils from "./editor-libs/mce-utils.js";
 import wabtConstructor from "wabt";
 
 import "../css/editor-libs/ui-fonts.css";
