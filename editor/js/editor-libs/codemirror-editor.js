@@ -39,51 +39,51 @@ const TAB_KEY_MAP = {
  * Translates CSS tags from [highlight.js](https://github.com/lezer-parser/css/blob/main/src/highlight.js) to code mirror CSS classes.
  */
 const CSS_HIGHLIGHT_STYLE_SPECS = [
-  { tag: [tags.definitionKeyword], class: "cm-at-rule" }, // "import charset namespace keyframes"
-  { tag: [tags.controlKeyword], class: "cm-at-rule" }, // "media supports"
-  { tag: [tags.namespace], class: "cm-tag" }, // Identifier of @namespace
-  { tag: [tags.tagName], class: "cm-tag" }, // Tag Selector
-  { tag: [tags.className], class: "cm-class-selector" }, // Class Selector
+  { tag: tags.definitionKeyword, class: "cm-at-rule" }, // "import charset namespace keyframes"
+  { tag: tags.controlKeyword, class: "cm-at-rule" }, // "media supports"
+  { tag: tags.namespace, class: "cm-tag" }, // Identifier of @namespace
+  { tag: tags.tagName, class: "cm-tag" }, // Tag Selector
+  { tag: tags.className, class: "cm-class-selector" }, // Class Selector
   { tag: [tags.constant(tags.className)], class: "cm-pseudo-class" }, // ":valid", "::cue"
-  { tag: [tags.labelName], class: "cm-string-2" }, // Id Selector
-  { tag: [tags.propertyName], class: "cm-property" }, // property-name: value;
-  { tag: [tags.attributeName], class: "cm-tag" }, // name inside [name="value"]
-  { tag: [tags.number], class: "cm-number" }, // NumberLiteral
-  { tag: [tags.operatorKeyword], class: "cm-keyword" }, // "not", "only"
-  { tag: [tags.atom], class: "cm-keyword" }, // "initial", "all", "blue"
-  { tag: [tags.variableName], class: "cm-variable-2" }, // --variable
-  { tag: [tags.unit], class: "cm-number" }, // "%", "px"
-  { tag: [tags.definitionOperator], class: "" }, // Selectors: "*",  "&"
-  { tag: [tags.keyword], class: "cm-keyword" }, // "all", "from", "to", "selector", "all", "@layer"
-  { tag: [tags.compareOperator], class: "" }, // "~=", "^=", "|=", "$=", "*="
-  { tag: [tags.logicOperator], class: "cm-keyword" }, // ">",  "~", "+", "and", "or"
-  { tag: [tags.arithmeticOperator], class: "" }, // "+", "-"
-  { tag: [tags.modifier], class: "cm-property" }, // !important
-  { tag: [tags.blockComment], class: "cm-comment" }, // /* comment */
-  { tag: [tags.string], class: "cm-string" }, // "text"
-  { tag: [tags.derefOperator], class: "cm-string-2" }, // "#" in ID Selector
-  { tag: [tags.separator], class: "" }, // ";" , ","
-  { tag: [tags.paren], class: "" }, // "(", ")"
-  { tag: [tags.squareBracket], class: "" }, // "[", "]"
-  { tag: [tags.brace], class: "" }, // "{", "}"
-  { tag: [tags.color], class: "cm-atom" }, // "#fff"
+  { tag: tags.labelName, class: "cm-string-2" }, // Id Selector
+  { tag: tags.propertyName, class: "cm-property" }, // property-name: value;
+  { tag: tags.attributeName, class: "cm-tag" }, // name inside [name="value"]
+  { tag: tags.number, class: "cm-number" }, // NumberLiteral
+  { tag: tags.operatorKeyword, class: "cm-keyword" }, // "not", "only"
+  { tag: tags.atom, class: "cm-keyword" }, // "initial", "all", "blue"
+  { tag: tags.variableName, class: "cm-variable-2" }, // --variable
+  { tag: tags.unit, class: "cm-number" }, // "%", "px"
+  { tag: tags.definitionOperator, class: "" }, // Selectors: "*",  "&"
+  { tag: tags.keyword, class: "cm-keyword" }, // "all", "from", "to", "selector", "all", "@layer"
+  { tag: tags.compareOperator, class: "" }, // "~=", "^=", "|=", "$=", "*="
+  { tag: tags.logicOperator, class: "cm-keyword" }, // ">",  "~", "+", "and", "or"
+  { tag: tags.arithmeticOperator, class: "" }, // "+", "-"
+  { tag: tags.modifier, class: "cm-property" }, // !important
+  { tag: tags.blockComment, class: "cm-comment" }, // /* comment */
+  { tag: tags.string, class: "cm-string" }, // "text"
+  { tag: tags.derefOperator, class: "cm-string-2" }, // "#" in ID Selector
+  { tag: tags.separator, class: "" }, // ";" , ","
+  { tag: tags.paren, class: "" }, // "(", ")"
+  { tag: tags.squareBracket, class: "" }, // "[", "]"
+  { tag: tags.brace, class: "" }, // "{", "}"
+  { tag: tags.color, class: "cm-atom" }, // "#fff"
 ];
 
 /**
  * Translates HTML tags from [highlight.js](https://github.com/lezer-parser/html/blob/main/src/highlight.js) to code mirror CSS classes.
  */
 const HTML_HIGHLIGHT_STYLE_SPECS = [
-  { tag: [tags.content], class: "" }, // Element Content
-  { tag: [tags.angleBracket], class: "cm-bracket" }, // "<", ">"
-  { tag: [tags.tagName], class: "cm-tag" }, // Tag Name
+  { tag: tags.content, class: "" }, // Element Content
+  { tag: tags.angleBracket, class: "cm-bracket" }, // "<", ">"
+  { tag: tags.tagName, class: "cm-tag" }, // Tag Name
   { tag: tags.invalid, class: "tag_invalid" },
-  { tag: [tags.attributeName], class: "cm-attribute" }, // Attribute Name
-  { tag: [tags.attributeValue], class: "cm-string" }, // Attribute Value
-  { tag: [tags.definitionOperator], class: "" }, // "="
-  { tag: [tags.character], class: "cm-atom" }, // "&lt;"
-  { tag: [tags.blockComment], class: "cm-comment" }, // <!-- comment -->
-  { tag: [tags.processingInstruction], class: "cm-meta" }, // <?php ?>
-  { tag: [tags.documentMeta], class: "cm-meta" }, // <!DOCTYPE html>
+  { tag: tags.attributeName, class: "cm-attribute" }, // Attribute Name
+  { tag: tags.attributeValue, class: "cm-string" }, // Attribute Value
+  { tag: tags.definitionOperator, class: "" }, // "="
+  { tag: tags.character, class: "cm-atom" }, // "&lt;"
+  { tag: tags.blockComment, class: "cm-comment" }, // <!-- comment -->
+  { tag: tags.processingInstruction, class: "cm-meta" }, // <?php ?>
+  { tag: tags.documentMeta, class: "cm-meta" }, // <!DOCTYPE html>
 ];
 
 /**
