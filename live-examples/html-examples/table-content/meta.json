@@ -1,13 +1,13 @@
 {
-    "pages": {
-        "dialog": {
-            "exampleCode": "live-examples/html-examples/table-content/caption.html",
-            "cssExampleSrc": "live-examples/html-examples/table-content/css/caption.css",
-            "cssHiddenSrc": "live-examples/fonts/molot.css",
-            "fileName": "caption.html",
-            "title": "HTML Demo: <caption>",
-            "type": "tabbed",
-            "height": "tabbed-taller"
-        }
+  "pages": {
+    "dialog": {
+      "exampleCode": "live-examples/html-examples/table-content/caption.html",
+      "cssExampleSrc": "live-examples/html-examples/table-content/css/caption.css",
+      "cssHiddenSrc": "live-examples/fonts/molot.css",
+      "fileName": "caption.html",
+      "title": "HTML Demo: <caption>",
+      "type": "tabbed",
+      "height": "tabbed-taller"
     }
+  }
 }
