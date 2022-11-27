@@ -457,17 +457,28 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  border-bottom: 1px solid var(--border-primary);
 }
 
-.output-header.no-border {
-  border-bottom: 0 none;
-}
-
-.output-header.full-border {
+.border-rounded-top {
   border: 1px solid var(--border-primary);
-  border-width: 1px 1px 0 1px;
   border-radius: var(--button-radius) var(--button-radius) 0 0;
+}
+
+.border-rounded-top-no-bottom {
+  border: solid var(--border-primary);
+  border-width: 1px 1px 0;
+  border-radius: var(--button-radius) var(--button-radius) 0 0;
+}
+
+.border-sides {
+  border: solid var(--border-primary);
+  border-width: 0 1px;
+}
+
+.border-rounded-bottom {
+  border: solid var(--border-primary);
+  border-width: 0 1px 1px;
+  border-radius: 0 0 var(--button-radius) var(--button-radius);
 }
 
 .output-heading {
