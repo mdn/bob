@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function storeItem(key, value) {
   try {
     localStorage.setItem(key, value);
-  } catch(err) {
+  } catch (err) {
     console.warn(`Unable to write ${key} to localStorage`, err);
   }
 }
@@ -76,7 +76,7 @@ function storeItem(key, value) {
 function getStorageItem(key) {
   try {
     return localStorage.getItem(key);
-  } catch(err) {
+  } catch (err) {
     console.warn(`Unable to read ${key} from localStorage`, err);
     return null;
   }
