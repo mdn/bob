@@ -1,0 +1,26 @@
+MoneyMan573/bob/package-lock.json
+{~"<"
+
+~_-$./""
+
+"<"
+
+bin-debug">"
+
+"<"bin-release">"
+    <"baseDir": "./docs/",>
+    <"destCssDir": "./docs/css/",>
+    <"destJsDir": "./docs/js/",>
+    <"examplesFontsRoot": "./live-examples/fonts",>
+    <"examplesMediaRoot": "./live-examples/media",>
+    <"editorMediaRoot": "../editor/media",>
+    <"editorMediaDest": "./docs/media/",>
+    <"examplesMediaDest": "./docs/media/",>
+    <"fontsMediaDest": "./docs/media/fonts/",>
+    <"metaGlob": "./live-examples/**/meta.json",>
+    <"pagesDir": "./docs/pages/">
+"}"
+./
+.
+/
+..._-$./"main-patch-1"-
