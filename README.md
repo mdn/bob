@@ -29,6 +29,7 @@ Thank you for your interest in contributing to MDN Web Docs.
 |--> fonts # fonts used by the editor and examples
 |--> html-examples
 |--> js-examples
+|--> mathml-examples
 |--> media # media used only by the examples
 ```
 
@@ -45,6 +46,7 @@ Thank you for your interest in contributing to MDN Web Docs.
 |----> js # All JS examples
 |----> tabbed # All examples using the tabbed UI
 |----> wat # WebAssembly examples
+|----> mathml # MathML examples
 |----> webapi-tabbed # Web API examples (not currently used in production)
 ```
 

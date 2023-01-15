@@ -30,3 +30,16 @@ export function isDefined(feature) {
 
   return getFeatureObject(feature) !== undefined;
 }
+
+export function isMathMLSupported() {
+  // Test of Modernizr (https://github.com/Modernizr/Modernizr/blob/master/feature-detects/mathml.js) based on work by Davide (@dpvc) and David (@davidcarlisle)
+  const div = document.createElement("div");
+  div.style.position = "absolute";
+  div.style.display = "inline-block";
+  div.innerHTML = "<math><mfrac><mi>xx</mi><mi>yy</mi></mfrac></math>";
+
+  const addedElement = document.body.appendChild(div);
+  const hasMathML = div.offsetHeight > div.offsetWidth;
+  document.body.removeChild(addedElement);
+  return hasMathML;
+}

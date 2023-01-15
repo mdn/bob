@@ -165,3 +165,11 @@
   height: min-content; /* This value ensures correct calculation of clientHeight in /pages/tabbed/img */
   width: fit-content; /* This value moves horizontal scroll bar to the bottom of iframe */
 }
+
+#html-output math {
+  font-size: 1.5rem;
+}
+
+#html-output.editor-mathml {
+  margin: auto;
+}

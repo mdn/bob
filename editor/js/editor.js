@@ -3,6 +3,7 @@ import * as mceEvents from "./editor-libs/events.js";
 import * as mceUtils from "./editor-libs/mce-utils.js";
 import * as tabby from "./editor-libs/tabby.js";
 import { getEditorContent } from "./editor-libs/codemirror-editor.js";
+import { isMathMLSupported } from "./editor-libs/feature-detector.js";
 
 import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
@@ -24,6 +25,7 @@ import "../css/tabbed-editor.css";
   const staticJSCode = jsEditor.querySelector("pre");
   const outputIFrame = document.getElementById("output-iframe");
   const outputTemplate = getOutputTemplate();
+  const editorType = editorContainer.dataset.editorType;
 
   let appliedHeightAdjustment = false;
   let timer;
@@ -172,6 +174,14 @@ import "../css/tabbed-editor.css";
     clearTimeout(timer);
 
     timer = setTimeout(() => refreshOutput(), 500);
+  }
+
+  if (editorType === "mathml" && !isMathMLSupported()) {
+    const notSupportedWarning = document.getElementById(
+      "warning-mathml-not-supported"
+    );
+    notSupportedWarning.classList.remove("hidden");
+    return;
   }
 
   outputIFrame.addEventListener("load", () => onOutputLoaded());
