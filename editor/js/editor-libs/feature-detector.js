@@ -32,14 +32,25 @@ export function isDefined(feature) {
 }
 
 export function isMathMLSupported() {
-  // Test of Modernizr (https://github.com/Modernizr/Modernizr/blob/master/feature-detects/mathml.js) based on work by Davide (@dpvc) and David (@davidcarlisle)
-  const div = document.createElement("div");
-  div.style.position = "absolute";
-  div.style.display = "inline-block";
-  div.innerHTML = "<math><mfrac><mi>xx</mi><mi>yy</mi></mfrac></math>";
+  // Test used by MathML polyfill in YARI (https://github.com/mdn/yari/blob/main/client/src/document/mathml-polyfill)
+  const offscreenContainer = document.createElement("div");
+  const mathMLNamespace = "http://www.w3.org/1998/Math/MathML";
+  const mathElement = document.createElementNS(mathMLNamespace, "math");
+  const mspaceElement = document.createElementNS(mathMLNamespace, "mspace");
+  mspaceElement.setAttribute("height", "23px");
+  mspaceElement.setAttribute("width", "77px");
+  mathElement.append(mspaceElement);
+  offscreenContainer.append(mathElement);
+  offscreenContainer.classList.add("offscreen");
 
-  const addedElement = document.body.appendChild(div);
-  const hasMathML = div.offsetHeight > div.offsetWidth;
-  document.body.removeChild(addedElement);
-  return hasMathML;
+  const mathMLTestElement = document.body.appendChild(offscreenContainer);
+  if (!mspaceElement) {
+    return false;
+  }
+  const box = mspaceElement.getBoundingClientRect();
+  document.body.removeChild(mathMLTestElement);
+  if (!box) {
+    return false;
+  }
+  return Math.abs(box.height - 23) <= 1 && Math.abs(box.width - 77) <= 1;
 }
