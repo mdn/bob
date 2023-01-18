@@ -10,5 +10,6 @@
     "fontsMediaDest": "./docs/media/fonts/",
     "metaGlob": "./live-examples/**/meta.json",
     "pagesDir": "./docs/pages/",
+    "editorHeights": "./editor-heights.json",
     "heightData": "./docs/height-data.json"
 }

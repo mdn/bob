@@ -1,0 +1,134 @@
+{
+  "editors": [
+    {
+      "name": "css",
+      "heights": [
+        {
+          "minFrameWidth": 0,
+          "height": 675
+        },
+        {
+          "minFrameWidth": 590,
+          "height": 375
+        }
+      ]
+    },
+    {
+      "name": "js-taller",
+      "heights": [
+        {
+          "minFrameWidth": 0,
+          "height": 723
+        },
+        {
+          "minFrameWidth": 590,
+          "height": 654
+        }
+      ]
+    },
+    {
+      "name": "js-standard",
+      "heights": [
+        {
+          "minFrameWidth": 0,
+          "height": 513
+        },
+        {
+          "minFrameWidth": 590,
+          "height": 444
+        }
+      ]
+    },
+    {
+      "name": "js-smaller",
+      "heights": [
+        {
+          "minFrameWidth": 0,
+          "height": 433
+        },
+        {
+          "minFrameWidth": 590,
+          "height": 364
+        }
+      ]
+    },
+    {
+      "name": "wat-taller",
+      "heights": [
+        {
+          "minFrameWidth": 0,
+          "height": 686
+        },
+        {
+          "minFrameWidth": 590,
+          "height": 617
+        }
+      ]
+    },
+    {
+      "name": "wat-standard",
+      "heights": [
+        {
+          "minFrameWidth": 0,
+          "height": 476
+        },
+        {
+          "minFrameWidth": 590,
+          "height": 407
+        }
+      ]
+    },
+    {
+      "name": "wat-smaller",
+      "heights": [
+        {
+          "minFrameWidth": 0,
+          "height": 406
+        },
+        {
+          "minFrameWidth": 590,
+          "height": 337
+        }
+      ]
+    },
+    {
+      "name": "tabbed-taller",
+      "heights": [
+        {
+          "minFrameWidth": 0,
+          "height": 774
+        },
+        {
+          "minFrameWidth": 590,
+          "height": 630
+        }
+      ]
+    },
+    {
+      "name": "tabbed-standard",
+      "heights": [
+        {
+          "minFrameWidth": 0,
+          "height": 549
+        },
+        {
+          "minFrameWidth": 590,
+          "height": 420
+        }
+      ]
+    },
+    {
+      "name": "tabbed-shorter",
+      "heights": [
+        {
+          "minFrameWidth": 0,
+          "height": 487
+        },
+        {
+          "minFrameWidth": 590,
+          "height": 350
+        }
+      ]
+    }
+  ]
+}
