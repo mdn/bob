@@ -1,0 +1,20 @@
+{
+  "pages": {
+    "math": {
+      "exampleCode": "./live-examples/mathml-examples/elements/math.html",
+      "fileName": "math.html",
+      "title": "MathML Demo: <math>",
+      "type": "mathml",
+      "height": "tabbed-taller",
+      "tabs": "html"
+    },
+    "mi": {
+      "exampleCode": "./live-examples/mathml-examples/elements/mi.html",
+      "fileName": "mi.html",
+      "title": "MathML Demo: <mi>",
+      "type": "mathml",
+      "height": "tabbed-standard",
+      "tabs": "html"
+    }
+  }
+}

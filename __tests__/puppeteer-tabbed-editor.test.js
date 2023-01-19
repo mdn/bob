@@ -8,10 +8,10 @@ describe("Tabbed Editor", () => {
       const expectedCSS =
         " address { font-variant-caps: small-caps;}a { font-variant: normal;} ";
       const expectedHTML =
-        "<address> James Rockford<br> 2354 Pacific Coast Highway<br> " +
+        " <address> James Rockford<br> 2354 Pacific Coast Highway<br> " +
         "California<br> USA<br> +311-555-2368<br> Email: " +
         '<a href="mailto:j.rockford@example.com">j.rockford@example.com</a><br>' +
-        "</address>";
+        "</address> ";
 
       await page.waitForSelector("#output-iframe");
       const outputIframe = await page.$("#output-iframe");
