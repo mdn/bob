@@ -118,7 +118,7 @@
     "@lezer/highlight": "^1.1.1",
     "@lezer/html": "^1.0.1",
     "@lezer/javascript": "^1.0.2",
-    "clean-css": "5.3.1",
+    "clean-css": "5.3.2",
     "codemirror": "^6.0.1",
     "cosmiconfig": "8.0.0",
     "fs-extra": "10.1.0",
