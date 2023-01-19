@@ -6,15 +6,15 @@
 
 /* sizing utility classes */
 .tabbed-shorter .cm-editor {
-  height: 252px;
+  height: 264px;
 }
 
 .tabbed-standard .cm-editor {
-  height: 322px;
+  height: 334px;
 }
 
 .tabbed-taller .cm-editor {
-  height: 532px;
+  height: 544px;
 }
 
 .tabbed-taller .cm-editor,
