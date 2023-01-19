@@ -44,7 +44,7 @@ function addPostMessageListener() {
           }
         }
         body.classList.add("theme-" + event.data.theme);
-        localStorage.setItem("theme", event.data.theme);
+        storeItem("theme", event.data.theme);
       }
     },
     false
@@ -52,11 +52,35 @@ function addPostMessageListener() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const theme = localStorage.getItem("theme");
+  const theme = getStorageItem("theme");
   if (theme !== null) {
     document.querySelector("body").classList.add("theme-" + theme);
   }
 });
+
+/**
+ * Adds key & value to {@link localStorage}, without throwing an exception when it is unavailable
+ */
+function storeItem(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (err) {
+    console.warn(`Unable to write ${key} to localStorage`, err);
+  }
+}
+
+/**
+ * @returns the value of a given key from {@link localStorage}, or null when the key wasn't found.
+ * It doesn't throw an exception when {@link localStorage} is unavailable
+ */
+function getStorageItem(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch (err) {
+    console.warn(`Unable to read ${key} from localStorage`, err);
+    return null;
+  }
+}
 
 function sendOwnHeight() {
   if (parent) {
