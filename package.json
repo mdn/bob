@@ -56,6 +56,7 @@
   ],
   "scripts": {
     "build": "node ./lib/mdn-bob.js",
+    "build:pages": "node ./lib/mdn-bob.js --skip-webpack",
     "start": "npm-run-all build start-server",
     "start-server": "http-server -p 4444 ./docs",
     "format": "prettier --ignore-unknown --check \"**/*\"",
