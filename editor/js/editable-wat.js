@@ -209,6 +209,12 @@ import {
     const watBuffer = encoder.encode(wat);
     const module = wabt.parseWat("", watBuffer, {
       exceptions: true,
+      mutable_globals: true,
+      sat_float_to_int: true,
+      sign_extension: true,
+      simd: true,
+      multi_value: true,
+      bulk_memory: true,
       reference_types: true,
     });
     module.resolveNames();
