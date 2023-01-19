@@ -22,7 +22,7 @@ button[role="tab"]:focus {
   color: var(--text-primary);
 }
 
-button[aria-selected="true"] {
+button[role="tab"][aria-selected="true"] {
   color: var(--accent-primary);
   border-bottom-color: var(--accent-primary);
   background-color: var(--background-tertiary);
