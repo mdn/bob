@@ -75,7 +75,6 @@
 
 .console-container {
   position: relative;
-  border-top: 1px solid var(--border-primary);
   padding-top: 0.5rem;
 }
 
