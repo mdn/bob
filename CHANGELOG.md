@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/mdn/bob/compare/v2.2.1...v3.0.0) (2023-02-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* change mdn-bob to @mdn/bob ([#1073](https://github.com/mdn/bob/issues/1073))
+
+### Code Refactoring
+
+* change mdn-bob to @mdn/bob ([#1073](https://github.com/mdn/bob/issues/1073)) ([67b4f33](https://github.com/mdn/bob/commit/67b4f330e7b7a1581df9608ce0ecdbde4830fdd4))
+
 ### [2.2.1](https://github.com/mdn/bob/compare/v2.2.0...v2.2.1) (2022-05-24)
 
 ### Bug Fixes
