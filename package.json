@@ -1,5 +1,5 @@
 {
-  "name": "mdn-bob",
+  "name": "@mdn/bob",
   "version": "2.2.1",
   "description": "Builder of Bits aka The MDN Web Docs interactive examples, example builder",
   "author": "Mozilla",
