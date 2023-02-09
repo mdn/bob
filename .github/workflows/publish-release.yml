@@ -10,6 +10,7 @@ jobs:
     uses: mdn/workflows/.github/workflows/publish-release.yml@main
     with:
       target-repo: "mdn/bob"
+      cache: "npm"
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
