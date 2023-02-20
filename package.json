@@ -100,7 +100,7 @@
     "path-browserify": "^1.0.1",
     "prettier": "^2.4.1",
     "prettier-eslint": "15.0.1",
-    "puppeteer": "19.6.3",
+    "puppeteer": "19.7.1",
     "style-loader": "^3.3.1",
     "webpack-cli": "^5.0.0"
   },
