@@ -98,7 +98,7 @@
     "path-browserify": "^1.0.1",
     "prettier": "^2.4.1",
     "prettier-eslint": "15.0.1",
-    "puppeteer": "19.7.1",
+    "puppeteer": "19.7.2",
     "style-loader": "^3.3.1",
     "webpack-cli": "^5.0.0"
   },
@@ -124,7 +124,7 @@
     "fs-extra": "11.1.0",
     "glob": "8.1.0",
     "mini-css-extract-plugin": "^2.6.1",
-    "uglify-es": "3.3.9",
+    "uglify-js": "^3.17.4",
     "wabt": "^1.0.29",
     "webpack": "5.75.0"
   },
