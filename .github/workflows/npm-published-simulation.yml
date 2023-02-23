@@ -1,0 +1,47 @@
+# Instead of waiting for BoB to be published to npmjs.com and be upgraded
+# inside mdn/interactive-examples by Dependabot, we do all those steps here
+# using `npm pack`.
+
+name: NPM Publish simulation
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/checkout@v3
+        with:
+          repository: mdn/interactive-examples
+          path: mdn/interactive-examples
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install all packages
+        run: npm ci
+
+      - name: Pack and install BoB
+        run: |-
+          echo mdn/interactive-examples/ >> .npmignore
+          npm pack
+          TARBALL=`ls mdn-bob-*.tgz`
+          echo $TARBALL
+          ls -lh $TARBALL
+          mv $TARBALL mdn/interactive-examples/
+          cd mdn/interactive-examples
+          npm ci
+          yarn install file:$TARBALL
+          npm i
+
+      - name: Build interactive-examples
+        working-directory: mdn/interactive-examples
+        run: npm run build
