@@ -39,7 +39,7 @@ jobs:
           mv $TARBALL mdn/interactive-examples/
           cd mdn/interactive-examples
           npm ci
-          yarn install file:$TARBALL
+          npm install file:$TARBALL
           npm i
 
       - name: Build interactive-examples
