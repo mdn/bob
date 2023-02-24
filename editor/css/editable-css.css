@@ -274,6 +274,7 @@
 
   .live .example-choice pre {
     flex-grow: 1;
+    margin: 0;
   }
 
   .output section {
