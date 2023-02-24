@@ -67,7 +67,8 @@
     "test": "npm run format && npm run lint && npm run jest",
     "jest": "JEST_PUPPETEER_CONFIG=jest-puppeteer.config.cjs NODE_OPTIONS=--experimental-vm-modules jest",
     "perf": "bundlesize",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "prepare": "husky install"
   },
   "jest": {
     "preset": "jest-puppeteer"
