@@ -69,4 +69,6 @@ jobs:
           test -e pages/css/color.html
           test -e pages/js/array-filter.html
           test -e pages/tabbed/details.html
+          test -e pages/wat/floor.html
+          test -e pages/webapi-tabbed/document-queryselector.html
           test -e pages/webapi-tabbed/document-queryselector.html
