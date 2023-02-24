@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.3](https://github.com/mdn/bob/compare/v3.0.2...v3.0.3) (2023-02-24)
+
+
+### Bug Fixes
+
+* **css-examples:** avoid unnecssary scrollbars ([#1125](https://github.com/mdn/bob/issues/1125)) ([9e67dd7](https://github.com/mdn/bob/commit/9e67dd75c0d634b9b4588ae2d4eda6a6bf0f9dfa))
+
 ## [3.0.2](https://github.com/mdn/bob/compare/v3.0.1...v3.0.2) (2023-02-24)
 
 
