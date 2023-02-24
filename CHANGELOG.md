@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.0.2](https://github.com/mdn/bob/compare/v3.0.1...v3.0.2) (2023-02-24)
+
+
+### Bug Fixes
+
+* Add `CHANGELOG.md` to `.prettierignore` ([#1121](https://github.com/mdn/bob/issues/1121)) ([36734e3](https://github.com/mdn/bob/commit/36734e35856f584aa3929655133bc9324503c7ac))
+* Add back `WAT` examples ([#1119](https://github.com/mdn/bob/issues/1119)) ([160abf8](https://github.com/mdn/bob/commit/160abf8ab66b3fe9c92ef0d1df09e2d2c3664ad6))
+* **build:** output in cwd, not import.meta.url ([#1122](https://github.com/mdn/bob/issues/1122)) ([1124abb](https://github.com/mdn/bob/commit/1124abb03651a7a83eedb65c17f247bef2ebd559))
+* Fix pre-commit hooks + run prettier ([#1120](https://github.com/mdn/bob/issues/1120)) ([b11f5bf](https://github.com/mdn/bob/commit/b11f5bf70c64b6efbccc6e2846c52f599065a428))
+
 ## [3.0.1](https://github.com/mdn/bob/compare/v3.0.0...v3.0.1) (2023-02-24)
 
 
