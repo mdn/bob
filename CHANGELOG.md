@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.0.1](https://github.com/mdn/bob/compare/v3.0.0...v3.0.1) (2023-02-24)
+
+
+### Bug Fixes
+
+* **deps:** Move build dependencies to non-dev dependencies ([#1107](https://github.com/mdn/bob/issues/1107)) ([0b03a8f](https://github.com/mdn/bob/commit/0b03a8fd5f4e9073c5bace25bbde8ad3ea2b75c3))
+* **deps:** Replace uglify-es with uglify-js ([#1114](https://github.com/mdn/bob/issues/1114)) ([647f098](https://github.com/mdn/bob/commit/647f098764cf4dfc15176ac35007f97aec489793))
+* Fix file references ([#1116](https://github.com/mdn/bob/issues/1116)) ([38bb023](https://github.com/mdn/bob/commit/38bb023903e047196f06f6e9062398cb66f5f2e5))
+* **jest:** specify host ([#1108](https://github.com/mdn/bob/issues/1108)) ([4660078](https://github.com/mdn/bob/commit/46600788468e90c7171611e29f9ba604da919dda))
+
 ## [3.0.0](https://github.com/mdn/bob/compare/v2.2.0...v3.0.0) (2023-02-09)
 
 ### ⚠ BREAKING CHANGES
