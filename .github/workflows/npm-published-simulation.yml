@@ -45,3 +45,30 @@ jobs:
       - name: Build interactive-examples
         working-directory: interactive-examples
         run: npm run build
+
+      - name: Verify build
+        working-directory: interactive-examples/docs
+        run: |
+          set -x
+          test -e css/codemirror.css
+          test -e css/editor-css.css
+          test -e css/editor-js.css
+          test -e css/editor-tabbed.css
+          test -e css/editor-wat.css
+          test -e js/codemirror.js
+          test -e js/editor-css.js
+          test -e js/editor-js.js
+          test -e js/editor-tabbed.js
+          test -e js/editor-wat.js
+          test -e media/dino.svg
+          test -e media/cc0-audio/t-rex-roar.mp3
+          test -e media/cc0-images/gecko-320-213.jpg
+          test -e media/cc0-videos/flower.webm
+          test -e media/examples/firefox-logo.svg
+          test -e media/fonts/Inter.var.woff2
+          test -e pages/css/color.html
+          test -e pages/js/array-filter.html
+          test -e pages/tabbed/details.html
+          test -e pages/wat/floor.html
+          test -e pages/webapi-tabbed/document-queryselector.html
+          test -e pages/webapi-tabbed/document-queryselector.html
