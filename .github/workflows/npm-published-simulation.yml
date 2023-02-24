@@ -1,0 +1,47 @@
+# Instead of waiting for BoB to be published to npmjs.com and be upgraded
+# inside mdn/interactive-examples by Dependabot, we do all those steps here
+# using `npm pack`.
+
+name: NPM Publish simulation
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup Node.js environment (interactive-examples)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Checkout mdn/interactive-examples
+        uses: actions/checkout@v3
+        with:
+          repository: mdn/interactive-examples
+          path: interactive-examples
+
+      - name: Install all packages (interactive-examples)
+        working-directory: interactive-examples
+        run: npm ci
+
+      - name: Checkout this repository
+        uses: actions/checkout@v3
+        with:
+          path: bob
+
+      - name: Install all packages (bob)
+        working-directory: bob
+        run: npm ci
+
+      - name: Install local BoB in interactive-examples
+        working-directory: interactive-examples
+        run: npx install-local ../bob
+
+      - name: Build interactive-examples
+        working-directory: interactive-examples
+        run: npm run build
