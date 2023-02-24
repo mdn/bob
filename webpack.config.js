@@ -19,25 +19,33 @@ export default {
   ],
   entry: {
     "editor-tabbed": {
-      import: "./editor/js/editor.js",
+      import: fileURLToPath(new URL("./editor/js/editor.js", import.meta.url)),
       dependOn: "codemirror",
     },
     "editor-css": {
-      import: "./editor/js/editable-css.js",
+      import: fileURLToPath(
+        new URL("./editor/js/editable-css.js", import.meta.url)
+      ),
       dependOn: "codemirror",
     },
     "editor-js": {
-      import: "./editor/js/editable-js.js",
+      import: fileURLToPath(
+        new URL("./editor/js/editable-js.js", import.meta.url)
+      ),
       dependOn: "codemirror",
     },
     "editor-wat": {
-      import: "./editor/js/editable-wat.js",
+      import: fileURLToPath(
+        new URL("./editor/js/editable-wat.js", import.meta.url)
+      ),
       dependOn: "codemirror",
     },
-    codemirror: "./editor/js/editor-libs/codemirror-editor.js",
+    codemirror: fileURLToPath(
+      new URL("./editor/js/editor-libs/codemirror-editor.js", import.meta.url)
+    ),
   },
   output: {
-    path: fileURLToPath(new URL("docs", import.meta.url)),
+    path: path.join(process.cwd(), "docs"),
     filename: "js/[name].js",
   },
   module: {

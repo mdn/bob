@@ -3,3 +3,5 @@ build
 coverage
 docs
 node_modules
+# This can be removed after https://github.com/googleapis/release-please/issues/1802 is fixed
+CHANGELOG.md
