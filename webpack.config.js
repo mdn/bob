@@ -45,7 +45,7 @@ export default {
     ),
   },
   output: {
-    path: fileURLToPath(new URL("docs", import.meta.url)),
+    path: path.join(process.cwd(), "docs"),
     filename: "js/[name].js",
   },
   module: {
