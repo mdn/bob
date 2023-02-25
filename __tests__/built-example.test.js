@@ -15,4 +15,26 @@ describe("example", () => {
       expect(content).toBe(expectedOutput);
     });
   });
+  describe("article", () => {
+    it("should have content of `cssHiddenSrc` path", () => {
+      const path = "pages/tabbed/article.html";
+      const content = fse.readFileSync(config.baseDir + path, "utf8");
+
+      const expectedOutput =
+        '@font-face{font-family:molot;src:url("/media/fonts/molot.woff2") format("woff2")}';
+
+      expect(content).toContain(expectedOutput);
+    });
+  });
+  describe("caption", () => {
+    it("should have content of both `cssHiddenSrc` paths", () => {
+      const path = "pages/tabbed/caption.html";
+      const content = fse.readFileSync(config.baseDir + path, "utf8");
+
+      const expectedOutput =
+        '@font-face{font-family:molot;src:url("/media/fonts/molot.woff2") format("woff2")}@font-face{font-family:rapscallion;src:url("/media/fonts/rapscall.woff2") format("woff2")}';
+
+      expect(content).toContain(expectedOutput);
+    });
+  });
 });
