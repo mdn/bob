@@ -2,8 +2,10 @@ import CleanCSS from "clean-css";
 import fse from "fs-extra";
 import uglify from "uglify-js";
 import getConfig from "./config.js";
+import path from "node:path";
 
 const config = getConfig();
+const basePath = path.resolve("");
 
 const MAX_LINE_COUNT_OF_SHORT_JS_EXAMPLES = 7;
 const MIN_LINE_COUNT_OF_TALL_JS_EXAMPLES = 14;
@@ -22,22 +24,34 @@ export function preprocessHTML(html) {
 
 /**
  * Minifies the CSS and writes the minified code back to disk
- * @param {String} source - The source filepat
  */
-function preprocessCSS(source) {
-  const minified = new CleanCSS().minify(
-    fse.readFileSync(source, "utf8")
-  ).styles;
-  fse.outputFileSync(config.baseDir + source, minified);
+function preprocessCSS(sourceFilePath) {
+  const source = fse.readFileSync(sourceFilePath, "utf8");
+  const minified = minifyCSS(source, sourceFilePath);
+  fse.outputFileSync(config.baseDir + sourceFilePath, minified);
+}
+
+export function minifyCSS(source, sourceFilePath) {
+  // We need to change the current working path, so @import will be relative to the sourceFilePath
+  // Version 5.3.2 of CleanCSS doesn't provide any config to set the base path
+  const sourceFileDirectory = path.dirname(sourceFilePath);
+  const absoluteSourcePath = path.resolve(sourceFileDirectory);
+  process.chdir(absoluteSourcePath);
+
+  const minified = new CleanCSS().minify(source);
+
+  // Changing back current working path
+  process.chdir(basePath);
+  return minified.styles;
 }
 
 /**
  * Uglifies the JS and writes the uglified code back to disk
- * @param {String} source - The source filepat
  */
-function preprocessJS(source) {
-  const minified = uglify.minify(fse.readFileSync(source, "utf8")).code;
-  fse.outputFileSync(config.baseDir + source, minified);
+function preprocessJS(sourceFilePath) {
+  const source = fse.readFileSync(sourceFilePath, "utf8");
+  const minified = uglify.minify(source).code;
+  fse.outputFileSync(config.baseDir + sourceFilePath, minified);
 }
 
 /**
