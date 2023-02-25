@@ -25,6 +25,15 @@
   border-color: var(--text-primary);
 }
 
+.cm-editor .cm-line::selection,
+.cm-editor .cm-line ::selection {
+  background-color: var(--selection-backgroud-color) !important;
+}
+.cm-editor .cm-selectionBackground,
+.cm-editor.cm-focused .cm-selectionBackground {
+  background-color: initial;
+}
+
 /* Language specific rules */
 .cm-operator,
 .cm-variable {
