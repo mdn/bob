@@ -58,13 +58,11 @@ describe("console utils", () => {
 
   describe("formatArray", () => {
     test("Array formatting", () => {
-      expect(consoleUtils.formatArray(new Array(1, 2, 3, 4))).toBe(
-        "1, 2, 3, 4"
-      );
+      expect(consoleUtils.formatArray([1, 2, 3, 4])).toBe("1, 2, 3, 4");
     });
     test("Mixed array", () => {
       expect(
-        consoleUtils.formatArray(new Array(1, "a", { x: 2 }, null, undefined))
+        consoleUtils.formatArray([1, "a", { x: 2 }, null, undefined])
       ).toBe('1, "a", Object { x: 2 }, null, undefined');
     });
   });
