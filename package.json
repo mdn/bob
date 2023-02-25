@@ -65,7 +65,7 @@
     "lint:fix": "eslint --ignore-path .prettierignore --fix .",
     "fix": "npm run format:fix && npm run lint:fix",
     "test": "npm run format && npm run lint && npm run jest",
-    "jest": "JEST_PUPPETEER_CONFIG=jest-puppeteer.config.cjs NODE_OPTIONS=--experimental-vm-modules jest",
+    "jest": "cross-env JEST_PUPPETEER_CONFIG=jest-puppeteer.config.cjs NODE_OPTIONS=--experimental-vm-modules jest",
     "perf": "bundlesize",
     "webpack": "webpack",
     "prepare": "husky install"
@@ -84,6 +84,7 @@
     "@babel/core": "^7.20.2",
     "@babel/eslint-parser": "^7.19.1",
     "bundlesize": "0.18.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
