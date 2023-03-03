@@ -51,7 +51,46 @@ function addPostMessageListener() {
   );
 }
 
+function postParentMessage(type, values) {
+  parent?.postMessage({ type, url: window.location.href, ...values }, "*");
+}
+
+const actionCounts = {};
+/**
+ * @param {string} key
+ * @param {boolean} once
+ */
+export function postActionMessage(key, once = false) {
+  actionCounts[key] = actionCounts[key] ?? 0;
+  let source = key;
+
+  if (once && actionCounts[key] > 0) {
+    return;
+  }
+
+  if (!once) {
+    source += ` -> ${actionCounts[key]}`;
+  }
+
+  postParentMessage("action", { source });
+
+  actionCounts[key]++;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  window.addEventListener("focus", () => postActionMessage("focus"));
+
+  window.addEventListener("copy", () => postActionMessage("copy"));
+  window.addEventListener("cut", () => postActionMessage("cut"));
+  window.addEventListener("paste", () => postActionMessage("paste"));
+
+  window.addEventListener("click", (event) => {
+    const id = event.target.id;
+    if (id) {
+      postActionMessage(`click@${id}`, id === "reset");
+    }
+  });
+
   const theme = getStorageItem("theme");
   if (theme !== null) {
     document.querySelector("body").classList.add("theme-" + theme);
@@ -83,12 +122,7 @@ function getStorageItem(key) {
 }
 
 function sendOwnHeight() {
-  if (parent) {
-    parent.postMessage(
-      { url: window.location.href, height: document.body.scrollHeight },
-      "*"
-    );
-  }
+  postParentMessage("height", { height: document.body.scrollHeight });
 }
 
 /**
