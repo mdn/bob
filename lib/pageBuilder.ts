@@ -4,8 +4,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import fse from "fs-extra";
-import glob from "glob";
 import getConfig from "./config.js";
+import { globSyncNoEscape } from "./utils.js";
 import * as pageBuilderUtils from "./pageBuilderUtils.js";
 import * as processor from "./processor.js";
 import * as tabbedPageBuilder from "./tabbedPageBuilder.js";
@@ -115,11 +115,11 @@ function getSelfVersion(length = 7) {
     path.join(root, "package.json"),
     // This is broad but let's make it depend on every .js file
     // in this file's folder
-    ...glob.sync(path.join(root, "lib", "**", "*.js")),
+    ...globSyncNoEscape(path.join(root, "lib", "**", "*.js")),
     // And every every other file too
-    ...glob.sync(path.join(root, "editor", "**", "*.js")),
-    ...glob.sync(path.join(root, "editor", "**", "*.css")),
-    ...glob.sync(path.join(root, "editor", "**", "*.html")),
+    ...globSyncNoEscape(path.join(root, "editor", "**", "*.js")),
+    ...globSyncNoEscape(path.join(root, "editor", "**", "*.css")),
+    ...globSyncNoEscape(path.join(root, "editor", "**", "*.html")),
   ];
   const hasher = crypto.createHash("sha256");
   filepaths
@@ -135,7 +135,7 @@ function getSelfVersion(length = 7) {
 export function buildPages() {
   const selfVersion = getSelfVersion();
   return new Promise((resolve, reject) => {
-    const metaJSONArray = glob.sync(config.metaGlob, {});
+    const metaJSONArray = globSyncNoEscape(config.metaGlob);
 
     for (const metaJson of metaJSONArray) {
       const file = fse.readJsonSync(metaJson);
