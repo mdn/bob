@@ -64,6 +64,7 @@ import "../css/editable-css.css";
     }
 
     mceEvents.register();
+    mceEvents.addCSSEditorEventListeners(exampleChoiceList);
     handleResetEvents();
     handleChoiceHover();
     // Adding or removing class "invalid"
