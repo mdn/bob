@@ -10,11 +10,11 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "alwaysStrict": true,
-    "exactOptionalPropertyTypes": true,
     "skipLibCheck": true,
     // Temporary options
     "noImplicitAny": false,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "exactOptionalPropertyTypes": false
   },
   "ts-node": {
     "esm": true,

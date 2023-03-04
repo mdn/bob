@@ -55,8 +55,9 @@
     }
   ],
   "scripts": {
-    "build": "node ./lib/mdn-bob.js",
-    "build:pages": "node ./lib/mdn-bob.js --skip-webpack",
+    "build": "ts-node ./lib/mdn-bob.ts",
+    "build:pages": "ts-node ./lib/mdn-bob.ts --skip-webpack",
+    "prepack": "tsc",
     "start": "npm-run-all build start-server",
     "start-server": "http-server -p 4444 ./docs",
     "format": "prettier --ignore-unknown --check \"**/*\"",
@@ -64,7 +65,7 @@
     "lint": "eslint --ignore-path .prettierignore .",
     "lint:fix": "eslint --ignore-path .prettierignore --fix .",
     "fix": "npm run format:fix && npm run lint:fix",
-    "test": "npm run format && npm run lint && npm run jest",
+    "test": "npm run prepack && npm run format && npm run lint && npm run jest",
     "jest": "JEST_PUPPETEER_CONFIG=jest-puppeteer.config.cjs NODE_OPTIONS=--experimental-vm-modules jest",
     "perf": "bundlesize",
     "webpack": "webpack",
