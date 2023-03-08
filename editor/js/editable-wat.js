@@ -245,7 +245,7 @@ import {
       // using an async function since WebAssembly.instantiate is async and
       // we need to await in order to capture errors
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      const AsyncFunction = (async function () {}).constructor;
+      const AsyncFunction = async function () {}.constructor;
       await new AsyncFunction(exampleCode)();
     } catch (error) {
       console.error(error);

@@ -18,6 +18,7 @@
   },
   "ts-node": {
     "esm": true,
-    "files": true
+    "files": true,
+    "swc": true
   }
 }
