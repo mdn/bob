@@ -4,10 +4,11 @@
     "browser": true,
     "node": true
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "import"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
