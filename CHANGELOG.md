@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/mdn/bob/compare/v3.0.3...v3.1.0) (2023-03-09)
+
+
+### Features
+
+* migrate to TypeScript ([#1134](https://github.com/mdn/bob/issues/1134)) ([9e7b619](https://github.com/mdn/bob/commit/9e7b619534077c2c8ac290ad30d88c439ac32ef1))
+
 ## [3.0.3](https://github.com/mdn/bob/compare/v3.0.2...v3.0.3) (2023-02-24)
 
 
