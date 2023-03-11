@@ -8,3 +8,6 @@ CHANGELOG.md
 # TSC output:
 webpack.config.js
 lib/*.js
+# TODO temporary list of .js files from editor/js that are compiled from typescript
+# TODO after all .js files are migrated, rule "editor/js/*.js" should be added instead
+editor/js/editor-libs/clippy.js
