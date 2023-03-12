@@ -55,7 +55,7 @@ function addJS(currentPage, tmpl) {
  * @returns the processed template string
  */
 function addHiddenCSS(currentPage, tmpl) {
-  function getHiddenCSS(path) {
+  function getHiddenCSS(path: string) {
     const content = fse.readFileSync(path, "utf8");
     return minifyCSS(content, path);
   }
