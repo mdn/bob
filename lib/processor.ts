@@ -25,13 +25,13 @@ export function preprocessHTML(html) {
 /**
  * Minifies the CSS and writes the minified code back to disk
  */
-function preprocessCSS(sourceFilePath) {
+function preprocessCSS(sourceFilePath: string) {
   const source = fse.readFileSync(sourceFilePath, "utf8");
   const minified = minifyCSS(source, sourceFilePath);
   fse.outputFileSync(config.baseDir + sourceFilePath, minified);
 }
 
-export function minifyCSS(source, sourceFilePath) {
+export function minifyCSS(source: string, sourceFilePath: string) {
   // We need to change the current working path, so @import will be relative to the sourceFilePath
   // Version 5.3.2 of CleanCSS doesn't provide any config to set the base path
   const sourceFileDirectory = path.dirname(sourceFilePath);
@@ -48,7 +48,7 @@ export function minifyCSS(source, sourceFilePath) {
 /**
  * Uglifies the JS and writes the uglified code back to disk
  */
-function preprocessJS(sourceFilePath) {
+function preprocessJS(sourceFilePath: string) {
   const source = fse.readFileSync(sourceFilePath, "utf8");
   const minified = uglify.minify(source).code;
   fse.outputFileSync(config.baseDir + sourceFilePath, minified);
