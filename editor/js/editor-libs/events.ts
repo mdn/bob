@@ -5,12 +5,13 @@ import * as cssEditorUtils from "./css-editor-utils.js";
  * Adds listeners for events from the CSS live examples
  * @param {Object} exampleChoiceList - The object to which events are added
  */
-function addCSSEditorEventListeners(exampleChoiceList) {
+function addCSSEditorEventListeners(exampleChoiceList: HTMLElement) {
   exampleChoiceList.addEventListener("cut", copyTextOnly);
   exampleChoiceList.addEventListener("copy", copyTextOnly);
 
   exampleChoiceList.addEventListener("keyup", (event) => {
-    const exampleChoiceParent = event.target.parentElement;
+    const target = event.target as typeof exampleChoiceList;
+    const exampleChoiceParent = target.parentElement;
 
     cssEditorUtils.applyCode(
       exampleChoiceParent.textContent,
@@ -20,7 +21,9 @@ function addCSSEditorEventListeners(exampleChoiceList) {
 
   const exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
   Array.from(exampleChoices).forEach((choice) => {
-    choice.addEventListener("click", handleChoiceEvent);
+    choice.addEventListener("click", (e) =>
+      onChoose(e.currentTarget as HTMLElement)
+    );
   });
 }
 
@@ -106,10 +109,6 @@ function copyTextOnly(event) {
 
   event.clipboardData.setData("text/plain", range.toString());
   event.clipboardData.setData("text/html", range.toString());
-}
-
-function handleChoiceEvent() {
-  onChoose(this);
 }
 
 /**

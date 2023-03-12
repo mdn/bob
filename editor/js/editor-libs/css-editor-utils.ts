@@ -1,6 +1,11 @@
 export let editTimer = undefined;
 
-export function applyCode(code, choice, targetElement, immediateInvalidChange) {
+export function applyCode(
+  code,
+  choice,
+  targetElement?,
+  immediateInvalidChange?
+) {
   // http://regexr.com/3fvik
   const cssCommentsMatch = /(\/\*)[\s\S]+(\*\/)/g;
   const element = targetElement || document.getElementById("example-element");
@@ -85,7 +90,7 @@ export function isCodeSupported(element, declarations) {
   // List of not applied properties - because of lack of support for its name or value
   const notAppliedProperties = new Set();
 
-  for (let declaration of declarationsArray) {
+  for (const declaration of declarationsArray) {
     const previousCSSText = style.cssText;
     // Declarations are added one by one, because browsers sometimes combine multiple declarations into one
     // For example Chrome changes "column-count: auto;column-width: 8rem;" into "columns: 8rem auto;"
@@ -152,11 +157,11 @@ export function resetDefault() {
     // loop over all sections and set to hidden
     for (let i = 0, l = sections.length; i < l; i++) {
       sections[i].classList.add("hidden");
-      sections[i].setAttribute("aria-hidden", true);
+      sections[i].setAttribute("aria-hidden", "true");
     }
     // show the default example
     defaultExample.classList.remove("hidden");
-    defaultExample.setAttribute("aria-hidden", false);
+    defaultExample.setAttribute("aria-hidden", "false");
   }
 
   resetUIState();

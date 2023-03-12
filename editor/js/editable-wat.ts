@@ -24,12 +24,13 @@ import {
   const wabt = await wabtConstructor();
 
   const tabContainer = document.getElementById("tab-container");
-  const tabs = tabContainer.querySelectorAll("button[role='tab']");
+  const tabs =
+    tabContainer.querySelectorAll<HTMLButtonElement>("button[role='tab']");
   const tabList = document.getElementById("tablist");
 
   let watCodeMirror;
   let jsCodeMirror;
-  let liveContainer = "";
+  let liveContainer;
   let staticContainer;
 
   /**
@@ -47,7 +48,7 @@ import {
 
   function registerEventListeners() {
     tabList.addEventListener("click", (event) => {
-      const eventTarget = event.target;
+      const eventTarget = event.target as typeof tabList;
       const role = eventTarget.getAttribute("role");
 
       if (role === "tab") {
@@ -61,7 +62,7 @@ import {
 
         // now show the selected tabpanel
         selectedPanel.classList.remove("hidden");
-        selectedPanel.setAttribute("aria-hidden", false);
+        selectedPanel.setAttribute("aria-hidden", "false");
       }
     });
 
@@ -94,7 +95,7 @@ import {
    * @param {Object} nextActiveTab - The tab to activate
    * @param {Object} [activeTab] - The current active tab
    */
-  function setActiveTab(nextActiveTab, activeTab) {
+  function setActiveTab(nextActiveTab, activeTab?) {
     if (activeTab) {
       // set the currentSelectedTab to false
       activeTab.setAttribute("aria-selected", false);
@@ -122,7 +123,7 @@ import {
     }
 
     if (direction === "forward") {
-      if (activeTab.nextElementSibling) {
+      if (activeTab.nextElementSibling instanceof HTMLElement) {
         setActiveTab(activeTab.nextElementSibling, activeTab);
         activeTab.nextElementSibling.click();
       } else {
@@ -131,7 +132,7 @@ import {
         tabs[0].click();
       }
     } else if (direction === "reverse") {
-      if (activeTab.previousElementSibling) {
+      if (activeTab.previousElementSibling instanceof HTMLElement) {
         setActiveTab(activeTab.previousElementSibling, activeTab);
         activeTab.previousElementSibling.click();
       } else {
@@ -244,8 +245,10 @@ import {
       // Create an new async function from the code, and immediately execute it.
       // using an async function since WebAssembly.instantiate is async and
       // we need to await in order to capture errors
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      const AsyncFunction = async function () {}.constructor;
+      const AsyncFunction = Object.getPrototypeOf(
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        async function () {}
+      ).constructor;
       await new AsyncFunction(exampleCode)();
     } catch (error) {
       console.error(error);

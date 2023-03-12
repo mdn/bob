@@ -23,7 +23,9 @@ import "../css/tabbed-editor.css";
   const staticCSSCode = cssEditor.querySelector("pre");
   const staticHTMLCode = htmlEditor.querySelector("pre");
   const staticJSCode = jsEditor.querySelector("pre");
-  const outputIFrame = document.getElementById("output-iframe");
+  const outputIFrame = document.getElementById(
+    "output-iframe"
+  ) as HTMLIFrameElement;
   const outputTemplate = getOutputTemplate();
   const editorType = editorContainer.dataset.editorType;
 
@@ -131,7 +133,8 @@ import "../css/tabbed-editor.css";
    * This process is purposefully delayed, so console logs hooks are attached first
    */
   function executeJSEditorCode() {
-    outputIFrame.contentWindow.executeExample();
+    type JSEditorWindow = Window & { executeExample: () => void };
+    (outputIFrame.contentWindow as JSEditorWindow).executeExample();
   }
 
   /**
@@ -187,7 +190,8 @@ import "../css/tabbed-editor.css";
   outputIFrame.addEventListener("load", () => onOutputLoaded());
 
   header.addEventListener("click", (event) => {
-    if (event.target.classList.contains("reset")) {
+    const target = event.target as typeof header;
+    if (target.classList.contains("reset")) {
       window.location.reload();
     }
   });

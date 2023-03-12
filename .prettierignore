@@ -8,3 +8,4 @@ CHANGELOG.md
 # TSC output:
 webpack.config.js
 lib/*.js
+editor/js/**/*.js

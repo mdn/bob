@@ -28,7 +28,7 @@ function setClippyPosition(clippyEvent, msgContainer) {
 export function addClippy() {
   const clipboard = new Clipboard(".copy", {
     target: function (clippyButton) {
-      const targetAttr = clippyButton.dataset.clipboardTarget;
+      const targetAttr = (clippyButton as HTMLElement).dataset.clipboardTarget;
       if (targetAttr) {
         // The attribute will override the automated target selection
         return document.querySelector(targetAttr);
@@ -46,13 +46,13 @@ export function addClippy() {
     const msgContainer = document.getElementById("user-message");
 
     msgContainer.classList.add("show");
-    msgContainer.setAttribute("aria-hidden", false);
+    msgContainer.setAttribute("aria-hidden", "false");
 
     setClippyPosition(event, msgContainer);
 
     window.setTimeout(() => {
       msgContainer.classList.remove("show");
-      msgContainer.setAttribute("aria-hidden", true);
+      msgContainer.setAttribute("aria-hidden", "true");
     }, 1000);
 
     event.clearSelection();
@@ -70,9 +70,9 @@ export function toggleClippy(container) {
 
   for (let i = 0, l = clippyButtons.length; i < l; i++) {
     clippyButtons[i].classList.add("hidden");
-    clippyButtons[i].setAttribute("aria-hidden", true);
+    clippyButtons[i].setAttribute("aria-hidden", "true");
   }
 
   activeClippy.classList.remove("hidden");
-  activeClippy.setAttribute("aria-hidden", false);
+  activeClippy.setAttribute("aria-hidden", "false");
 }

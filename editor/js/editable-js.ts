@@ -20,7 +20,7 @@ import {
 
   let codeMirror;
   let staticContainer;
-  let liveContainer = "";
+  let liveContainer;
 
   /**
    * Reads the textContent from the interactiveCodeBlock, sends the
@@ -79,8 +79,8 @@ import {
     try {
       // Create a new Function from the code, and immediately execute it.
       new Function(exampleCode)();
-    } catch (event) {
-      output.textContent = "Error: " + event.message;
+    } catch (event: unknown) {
+      output.textContent = "Error: " + (event as Error)?.message;
     }
 
     output.addEventListener("animationend", () =>

@@ -12,7 +12,8 @@ const staticHTMLCode = htmlEditor.querySelector("pre");
 const staticCSSCode = cssEditor.querySelector("pre");
 const staticJSCode = jsEditor.querySelector("pre");
 const tabContainer = document.getElementById("tab-container");
-const tabs = tabContainer.querySelectorAll('button[role="tab"]');
+const tabs =
+  tabContainer.querySelectorAll<HTMLButtonElement>('button[role="tab"]');
 const tabList = document.getElementById("tablist");
 
 /**
@@ -34,7 +35,7 @@ function hideTabPanels() {
  * @param {Object} nextActiveTab - The tab to activate
  * @param {Object} [activeTab] - The current active tab
  */
-function setActiveTab(nextActiveTab, activeTab) {
+function setActiveTab(nextActiveTab, activeTab?) {
   if (activeTab) {
     // set the currentSelectedTab to false
     activeTab.setAttribute("aria-selected", false);
@@ -54,11 +55,11 @@ function setActiveTab(nextActiveTab, activeTab) {
 function setDefaultTab(tab) {
   const panel = document.getElementById(tab.id + "-panel");
 
-  tab.setAttribute("aria-selected", true);
+  tab.setAttribute("aria-selected", "true");
   tab.removeAttribute("tabindex");
 
   panel.classList.remove("hidden");
-  panel.setAttribute("aria-hidden", false);
+  panel.setAttribute("aria-hidden", "false");
 
   tab.focus();
 }
@@ -78,7 +79,7 @@ function setNextActiveTab(direction) {
   }
 
   if (direction === "forward") {
-    if (activeTab.nextElementSibling) {
+    if (activeTab.nextElementSibling instanceof HTMLElement) {
       setActiveTab(activeTab.nextElementSibling, activeTab);
       activeTab.nextElementSibling.click();
     } else {
@@ -87,7 +88,7 @@ function setNextActiveTab(direction) {
       tabs[0].click();
     }
   } else if (direction === "reverse") {
-    if (activeTab.previousElementSibling) {
+    if (activeTab.previousElementSibling instanceof HTMLElement) {
       setActiveTab(activeTab.previousElementSibling, activeTab);
       activeTab.previousElementSibling.click();
     } else {
@@ -146,7 +147,7 @@ export function initEditor(editorTypes, defaultTab) {
  */
 export function registerEventListeners() {
   tabList.addEventListener("click", (event) => {
-    const eventTarget = event.target;
+    const eventTarget = event.target as HTMLElement;
     const role = eventTarget.getAttribute("role");
 
     if (role === "tab") {
@@ -160,7 +161,7 @@ export function registerEventListeners() {
 
       // now show the selected tabpanel
       selectedPanel.classList.remove("hidden");
-      selectedPanel.setAttribute("aria-hidden", false);
+      selectedPanel.setAttribute("aria-hidden", "false");
     }
   });
 

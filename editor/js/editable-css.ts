@@ -125,10 +125,10 @@ import "../css/editable-css.css";
       copyBtn.setAttribute("aria-label", "Copy to clipboard");
 
       choice.addEventListener("mouseover", () => {
-        copyBtn.setAttribute("aria-hidden", false);
+        copyBtn.setAttribute("aria-hidden", "false");
       });
       choice.addEventListener("mouseout", () => {
-        copyBtn.setAttribute("aria-hidden", true);
+        copyBtn.setAttribute("aria-hidden", "true");
       });
     }
   }

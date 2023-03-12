@@ -17,7 +17,7 @@ import { javascript, javascriptLanguage } from "@codemirror/lang-javascript";
 import { wast } from "@codemirror/lang-wast";
 import { css, cssLanguage } from "@codemirror/lang-css";
 
-import { parseMixed } from "@lezer/common";
+import { NodeType, parseMixed } from "@lezer/common";
 import { tags } from "@lezer/highlight";
 import { parser as jsParser } from "@lezer/javascript";
 import { parser as htmlParser } from "@lezer/html";
@@ -143,7 +143,9 @@ function highlighting(specs) {
 function scopedHighlighting(specs, scope, nodeName = undefined) {
   const style = HighlightStyle.define(specs, { scope: scope });
   if (nodeName) {
-    style.scope = (node) => node.name === nodeName; // This line overrides internal scope check, because alternative parsers don't attach chosen language to props
+    type Writeable<T> = { -readonly [P in keyof T]: T[P] };
+    (style as Writeable<typeof style>).scope = (node: NodeType) =>
+      node.name === nodeName; // This line overrides internal scope check, because alternative parsers don't attach chosen language to props
   }
   return syntaxHighlighting(style, { fallback: false });
 }
@@ -266,7 +268,7 @@ export function initCodeEditor(
   const extensions = [...BASE_EXTENSIONS, ...language.extensions];
 
   if (options.lineNumbers) {
-    extensions.push(view.lineNumbers(), view.gutter());
+    extensions.push(view.lineNumbers(), view.gutter({}));
   }
 
   return new EditorView({
