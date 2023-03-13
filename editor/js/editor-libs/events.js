@@ -60,7 +60,6 @@ const ACTION_COUNTS_KEY = "action-counts";
 function readActionsCounts() {
   try {
     const value = JSON.parse(localStorage.getItem(ACTION_COUNTS_KEY));
-    window.console.log("readActionsCount", value);
     if (value && value.href === window.location.href && value.counts) {
       return value.counts;
     }
