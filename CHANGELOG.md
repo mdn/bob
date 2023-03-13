@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/mdn/bob/compare/v3.1.0...v3.2.0) (2023-03-13)
+
+
+### Features
+
+* **telemetry:** record interactions + post to parent ([#1145](https://github.com/mdn/bob/issues/1145)) ([a56cf8e](https://github.com/mdn/bob/commit/a56cf8e7dd6c410eda7339189f20c7428ec33175))
+
 ## [3.1.0](https://github.com/mdn/bob/compare/v3.0.3...v3.1.0) (2023-03-09)
 
 
