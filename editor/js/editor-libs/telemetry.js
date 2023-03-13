@@ -58,18 +58,16 @@ let lastAction = null;
  * @param {boolean} deduplicate - Should multiple actions of the same type be ignored until another action occurred?
  */
 export function recordAction(key, deduplicate = false) {
-  actionCounts[key] = actionCounts[key] ?? 0;
-
   if (deduplicate && key === lastAction) {
     return;
   } else {
     lastAction = key;
   }
 
-  const source = `${key} -> ${actionCounts[key]}`;
-  actionCounts[key]++;
+  actionCounts[key] = (actionCounts[key] ?? 0) + 1;
   storeActionCounts(actionCounts);
 
+  const source = `${key} -> ${actionCounts[key]}`;
   postParentMessage("action", { source });
 }
 
