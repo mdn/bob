@@ -9,7 +9,7 @@ const ACTION_COUNTS_KEY = "action-counts";
  *
  * @returns The action counts from the previous session, if available.
  */
-function readActionsCounts() {
+function getActionsCounts() {
   const json = getStorageItem(ACTION_COUNTS_KEY);
 
   if (!json) {
@@ -29,7 +29,7 @@ function readActionsCounts() {
  *
  * @param {object} counts - The current action counts.
  */
-function persistActionCounts(counts) {
+function storeActionCounts(counts) {
   storeItem(
     ACTION_COUNTS_KEY,
     JSON.stringify({
@@ -43,7 +43,7 @@ function persistActionCounts(counts) {
  * Action counts by key.
  * Used to distinguish 1st/2nd/etc occurrences of the same event.
  */
-const actionCounts = readActionsCounts();
+const actionCounts = getActionsCounts();
 
 /**
  * Last observed action.
@@ -68,7 +68,7 @@ export function recordAction(key, deduplicate = false) {
 
   let source = `${key} -> ${actionCounts[key]}`;
   actionCounts[key]++;
-  persistActionCounts(actionCounts);
+  storeActionCounts(actionCounts);
 
   postParentMessage("action", { source });
 }
