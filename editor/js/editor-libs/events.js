@@ -1,5 +1,6 @@
 import * as clippy from "./clippy.js";
 import * as cssEditorUtils from "./css-editor-utils.js";
+import { initTelemetry } from "./telemetry.js";
 import { getStorageItem, storeItem } from "./utils.js";
 
 /**
@@ -123,4 +124,6 @@ export function register() {
   if (exampleChoiceList) {
     addCSSEditorEventListeners(exampleChoiceList);
   }
+
+  initTelemetry();
 }

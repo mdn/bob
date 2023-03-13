@@ -43,7 +43,7 @@ function storeActionCounts(counts) {
  * Action counts by key.
  * Used to distinguish 1st/2nd/etc occurrences of the same event.
  */
-const actionCounts = getActionsCounts();
+let actionCounts = {};
 
 /**
  * Last observed action.
@@ -71,20 +71,25 @@ export function recordAction(key, deduplicate = false) {
   postParentMessage("action", { source });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  // User focuses the iframe.
-  window.addEventListener("focus", () => recordAction("focus"));
+export function initTelemetry() {
+  actionCounts = getActionsCounts();
+  lastAction = null;
 
-  // User copies / cuts / paste text in the iframe.
-  window.addEventListener("copy", () => recordAction("copy"));
-  window.addEventListener("cut", () => recordAction("cut"));
-  window.addEventListener("paste", () => recordAction("paste"));
+  document.addEventListener("DOMContentLoaded", () => {
+    // User focuses the iframe.
+    window.addEventListener("focus", () => recordAction("focus"));
 
-  // User clicks on any element with an id.
-  window.addEventListener("click", (event) => {
-    const id = event.target.id;
-    if (id) {
-      recordAction(`click@${id}`);
-    }
+    // User copies / cuts / paste text in the iframe.
+    window.addEventListener("copy", () => recordAction("copy"));
+    window.addEventListener("cut", () => recordAction("cut"));
+    window.addEventListener("paste", () => recordAction("paste"));
+
+    // User clicks on any element with an id.
+    window.addEventListener("click", (event) => {
+      const id = event.target.id;
+      if (id) {
+        recordAction(`click@${id}`);
+      }
+    });
   });
-});
+}
