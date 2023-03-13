@@ -36,7 +36,7 @@ let lastAction = null;
  * @param {string} key
  * @param {boolean} once
  */
-export function postActionMessage(key, deduplicate = false) {
+export function recordAction(key, deduplicate = false) {
   actionCounts[key] = actionCounts[key] ?? 0;
 
   if (deduplicate && key === lastAction) {
@@ -53,16 +53,16 @@ export function postActionMessage(key, deduplicate = false) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  window.addEventListener("focus", () => postActionMessage("focus"));
+  window.addEventListener("focus", () => recordAction("focus"));
 
-  window.addEventListener("copy", () => postActionMessage("copy"));
-  window.addEventListener("cut", () => postActionMessage("cut"));
-  window.addEventListener("paste", () => postActionMessage("paste"));
+  window.addEventListener("copy", () => recordAction("copy"));
+  window.addEventListener("cut", () => recordAction("cut"));
+  window.addEventListener("paste", () => recordAction("paste"));
 
   window.addEventListener("click", (event) => {
     const id = event.target.id;
     if (id) {
-      postActionMessage(`click@${id}`);
+      recordAction(`click@${id}`);
     }
   });
 });

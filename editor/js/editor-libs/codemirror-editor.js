@@ -23,7 +23,7 @@ import { parser as jsParser } from "@lezer/javascript";
 import { parser as htmlParser } from "@lezer/html";
 import { parser as cssParser } from "@lezer/css";
 
-import { postActionMessage } from "./telemetry.js";
+import { recordAction } from "./telemetry.js";
 
 import "../../css/editor-libs/codemirror-override.css";
 
@@ -180,7 +180,7 @@ function mixedHTML() {
 
 function eventHandlers() {
   return EditorView.domEventHandlers({
-    input: () => postActionMessage("input", true),
+    input: () => recordAction("input", true),
   });
 }
 
