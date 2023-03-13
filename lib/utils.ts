@@ -2,6 +2,7 @@ import fse from "fs-extra";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import getConfig from "./config.js";
+import { globSync } from "glob";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
@@ -50,4 +51,13 @@ export function isSamePath(p1, p2) {
   const normalize = (path) => removeEndSlash(path.trim());
 
   return normalize(p1) == normalize(p2);
+}
+
+/**
+ * Performs synchronous glob search for the specified pattern and returns an array of absolute paths that were found
+ */
+export function globSyncNoEscape(shellPath: string) {
+  return globSync(shellPath, {
+    windowsPathsNoEscape: true,
+  });
 }
