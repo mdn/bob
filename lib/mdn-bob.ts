@@ -54,7 +54,7 @@ function doWebpack() {
         }
       }
 
-      resolve();
+      resolve(undefined);
     });
   });
 }

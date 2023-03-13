@@ -23,6 +23,8 @@ import { parser as jsParser } from "@lezer/javascript";
 import { parser as htmlParser } from "@lezer/html";
 import { parser as cssParser } from "@lezer/css";
 
+import { recordAction } from "./telemetry.js";
+
 import "../../css/editor-libs/codemirror-override.css";
 
 /**
@@ -176,6 +178,12 @@ function mixedHTML() {
   return LRLanguage.define({ parser: mixedHTMLParser });
 }
 
+function eventHandlers() {
+  return EditorView.domEventHandlers({
+    input: () => recordAction("input", true),
+  });
+}
+
 /**
  * Set of basic extensions, that every editor should have.
  * This list is mostly based on [basic setup](https://github.com/codemirror/basic-setup)
@@ -201,6 +209,7 @@ const BASE_EXTENSIONS = [
     ...lintKeymap,
     TAB_KEY_MAP,
   ]),
+  eventHandlers(),
 ];
 
 /**

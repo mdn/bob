@@ -1,8 +1,8 @@
 import fse from "fs-extra";
-import glob from "glob";
 
 import getConfig from "./config.js";
 import { getJSPageHeight, getWatPageHeight } from "./processor.js";
+import { globSyncNoEscape } from "./utils.js";
 
 const config = getConfig();
 
@@ -101,7 +101,7 @@ function getEditorName(page) {
  * together with content of editor-heights which contains name and the height of every editor type
  */
 export default function buildHeightData() {
-  const metaJSONArray = glob.sync(config.metaGlob, {});
+  const metaJSONArray = globSyncNoEscape(config.metaGlob);
   const heightData = {
     ...getEditorHeights(),
   };

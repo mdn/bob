@@ -1,5 +1,7 @@
 import * as clippy from "./clippy.js";
 import * as cssEditorUtils from "./css-editor-utils.js";
+import { initTelemetry } from "./telemetry.js";
+import { getStorageItem, storeItem } from "./utils.js";
 
 /**
  * Adds listeners for events from the CSS live examples
@@ -55,37 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-/**
- * Adds key & value to {@link localStorage}, without throwing an exception when it is unavailable
- */
-function storeItem(key, value) {
-  try {
-    localStorage.setItem(key, value);
-  } catch (err) {
-    console.warn(`Unable to write ${key} to localStorage`, err);
-  }
-}
-
-/**
- * @returns the value of a given key from {@link localStorage}, or null when the key wasn't found.
- * It doesn't throw an exception when {@link localStorage} is unavailable
- */
-function getStorageItem(key) {
-  try {
-    return localStorage.getItem(key);
-  } catch (err) {
-    console.warn(`Unable to read ${key} from localStorage`, err);
-    return null;
-  }
-}
-
 function sendOwnHeight() {
-  if (parent) {
-    parent.postMessage(
-      { url: window.location.href, height: document.body.scrollHeight },
-      "*"
-    );
-  }
+  postParentMessage("height", { height: document.body.scrollHeight });
+}
+
+export function postParentMessage(type, values) {
+  parent?.postMessage({ type, url: window.location.href, ...values }, "*");
 }
 
 function handleChoiceEvent() {
@@ -120,4 +97,6 @@ export function register() {
   } else {
     document.addEventListener("DOMContentLoaded", sendOwnHeight);
   }
+
+  initTelemetry();
 }

@@ -8,8 +8,6 @@ function getConfig() {
   const configFile = path.join(__dirname, "../.bobconfigrc");
   const cosmiConfig = cosmiconfigSync("bobconfig", {
     cache: false,
-    format: "json",
-    sync: true,
   });
 
   const config = cosmiConfig.load(configFile).config;
