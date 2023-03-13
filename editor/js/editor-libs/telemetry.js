@@ -66,7 +66,7 @@ export function recordAction(key, deduplicate = false) {
     lastAction = key;
   }
 
-  let source = `${key} -> ${actionCounts[key]}`;
+  const source = `${key} -> ${actionCounts[key]}`;
   actionCounts[key]++;
   storeActionCounts(actionCounts);
 
