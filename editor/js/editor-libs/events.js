@@ -86,26 +86,24 @@ function persistActionCounts(counts) {
 }
 
 const actionCounts = readActionsCounts();
+let lastAction = null;
 
 /**
  * @param {string} key
  * @param {boolean} once
  */
-export function postActionMessage(key, once = false) {
+export function postActionMessage(key, deduplicate = false) {
   actionCounts[key] = actionCounts[key] ?? 0;
 
-  let source = key;
-
-  if (!once) {
-    source += ` -> ${actionCounts[key]}`;
+  if (deduplicate && key === lastAction) {
+    return;
+  } else {
+    lastAction = key;
   }
 
+  let source = `${key} -> ${actionCounts[key]}`;
   actionCounts[key]++;
   persistActionCounts(actionCounts);
-
-  if (once && actionCounts[key] > 1) {
-    return;
-  }
 
   postParentMessage("action", { source });
 }
