@@ -91,12 +91,22 @@ const actionCounts = readActionsCounts();
  * @param {string} key
  * @param {boolean} once
  */
-export function postActionMessage(key) {
+export function postActionMessage(key, once = false) {
   actionCounts[key] = actionCounts[key] ?? 0;
-  let source = `${key} -> ${actionCounts[key]}`;
-  actionCounts[key]++;
 
+  let source = key;
+
+  if (!once) {
+    source += ` -> ${actionCounts[key]}`;
+  }
+
+  actionCounts[key]++;
   persistActionCounts(actionCounts);
+
+  if (once && actionCounts[key] > 1) {
+    return;
+  }
+
   postParentMessage("action", { source });
 }
 
