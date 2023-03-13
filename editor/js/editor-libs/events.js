@@ -1,5 +1,6 @@
 import * as clippy from "./clippy.js";
 import * as cssEditorUtils from "./css-editor-utils.js";
+import { getStorageItem, storeItem } from "./utils.js";
 
 /**
  * Adds listeners for events from the CSS live examples
@@ -57,30 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("body").classList.add("theme-" + theme);
   }
 });
-
-/**
- * Adds key & value to {@link localStorage}, without throwing an exception when it is unavailable
- */
-function storeItem(key, value) {
-  try {
-    localStorage.setItem(key, value);
-  } catch (err) {
-    console.warn(`Unable to write ${key} to localStorage`, err);
-  }
-}
-
-/**
- * @returns the value of a given key from {@link localStorage}, or null when the key wasn't found.
- * It doesn't throw an exception when {@link localStorage} is unavailable
- */
-function getStorageItem(key) {
-  try {
-    return localStorage.getItem(key);
-  } catch (err) {
-    console.warn(`Unable to read ${key} from localStorage`, err);
-    return null;
-  }
-}
 
 function sendOwnHeight() {
   postParentMessage("height", { height: document.body.scrollHeight });

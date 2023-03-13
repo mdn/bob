@@ -1,4 +1,5 @@
 import { postParentMessage } from "./events.js";
+import { getStorageItem, storeItem } from "./utils.js";
 
 const ACTION_COUNTS_KEY = "action-counts";
 
@@ -9,13 +10,15 @@ const ACTION_COUNTS_KEY = "action-counts";
  * @returns The action counts from the previous session, if available.
  */
 function readActionsCounts() {
-  try {
-    const value = JSON.parse(localStorage.getItem(ACTION_COUNTS_KEY));
-    if (value && value.href === window.location.href && value.counts) {
-      return value.counts;
-    }
-  } catch (e) {
-    window.console.warn("Unable to read action counts from localStorage", e);
+  const json = getStorageItem(ACTION_COUNTS_KEY);
+
+  if (!json) {
+    return {};
+  }
+
+  const value = JSON.parse(json);
+  if (value && value.href === window.location.href && value.counts) {
+    return value.counts;
   }
 
   return {};
@@ -27,17 +30,13 @@ function readActionsCounts() {
  * @param {object} counts - The current action counts.
  */
 function persistActionCounts(counts) {
-  try {
-    localStorage.setItem(
-      ACTION_COUNTS_KEY,
-      JSON.stringify({
-        href: window.location.href,
-        counts,
-      })
-    );
-  } catch (e) {
-    window.console.warn("Unable to write action counts to localStorage", e);
-  }
+  storeItem(
+    ACTION_COUNTS_KEY,
+    JSON.stringify({
+      href: window.location.href,
+      counts,
+    })
+  );
 }
 
 /**
