@@ -51,10 +51,6 @@ function addPostMessageListener() {
   );
 }
 
-export function postParentMessage(type, values) {
-  parent?.postMessage({ type, url: window.location.href, ...values }, "*");
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const theme = getStorageItem("theme");
   if (theme !== null) {
@@ -88,6 +84,10 @@ function getStorageItem(key) {
 
 function sendOwnHeight() {
   postParentMessage("height", { height: document.body.scrollHeight });
+}
+
+export function postParentMessage(type, values) {
+  parent?.postMessage({ type, url: window.location.href, ...values }, "*");
 }
 
 /**
