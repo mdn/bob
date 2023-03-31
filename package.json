@@ -133,7 +133,7 @@
     "path-browserify": "^1.0.1",
     "uglify-js": "^3.17.4",
     "wabt": "^1.0.29",
-    "webpack": "5.76.3"
+    "webpack": "5.77.0"
   },
   "resolutions": {
     "lodash": ">=4.17.5",
