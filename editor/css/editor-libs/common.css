@@ -108,7 +108,7 @@
   --http-accent-background-color: #009a4630;
   --apis-accent-background-color: #9b65ff30;
   --learn-accent-background-color: #ff1f7230;
-  --selection-backgroud-color: #d3e7ff;
+  --selection-background-color: #d3e7ff;
   --plus-accent-engage: rgba(255, 42, 81, 0.7);
   --html-accent-engage: rgba(255, 42, 81, 0.7);
   --css-accent-engage: rgba(0, 133, 242, 0.7);
@@ -218,7 +218,7 @@
   --apis-accent-engage: rgba(174, 138, 255, 0.7);
   --learn-accent-engage: rgba(255, 109, 145, 0.7);
   --modal-backdrop-color: rgba(27, 27, 27, 0.7);
-  --selection-backgroud-color: #233244;
+  --selection-background-color: #233244;
   --blend-color: #00080;
   --text-primary-red: #ff97a0;
   --text-primary-green: #00d061;
@@ -319,7 +319,7 @@
     --http-accent-background-color: #009a4630;
     --apis-accent-background-color: #9b65ff30;
     --learn-accent-background-color: #ff1f7230;
-    --selection-backgroud-color: #d3e7ff;
+    --selection-background-color: #d3e7ff;
     --plus-accent-engage: rgba(255, 42, 81, 0.7);
     --html-accent-engage: rgba(255, 42, 81, 0.7);
     --css-accent-engage: rgba(0, 133, 242, 0.7);
@@ -437,7 +437,7 @@
     --text-primary-green: #00d061;
     --text-primary-blue: #8cb4ff;
     --text-primary-yellow: #c7b700;
-    --selection-backgroud-color: #233244;
+    --selection-background-color: #233244;
   }
 }
 

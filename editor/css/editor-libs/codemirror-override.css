@@ -27,7 +27,7 @@
 
 .cm-editor .cm-line::selection,
 .cm-editor .cm-line ::selection {
-  background-color: var(--selection-backgroud-color) !important;
+  background-color: var(--selection-background-color) !important;
 }
 .cm-editor .cm-selectionBackground,
 .cm-editor.cm-focused .cm-selectionBackground {
