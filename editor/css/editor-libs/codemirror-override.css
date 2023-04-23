@@ -19,6 +19,7 @@
 
 .cm-editor .cm-scroller {
   line-height: inherit;
+  padding-block: 1em;
 }
 
 .cm-editor .cm-cursor {
