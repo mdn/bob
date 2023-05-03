@@ -1,5 +1,3 @@
-import { isCodeSupported } from "./css-editor-utils.js";
-
 /**
  * Find and return the `example-choice` parent of the provided element
  * @param {Object} element - The child element for which to find the
@@ -18,27 +16,6 @@ export function findParentChoiceElem(element) {
   }
   return parent;
 }
-
-/**
- * Creates a temporary element and tests whether the passed
- * property exists on the `style` property of the element.
- * @param {Object} dataset - The dataset from which to get the property
- * @param {Array} declarations - The declarations containing the property
- */
-export function isPropertySupported(dataset, declarations) {
-  /* If there are no 'property' attributes,
-           there is nothing to test, so return true. */
-  if (dataset["property"] === undefined) {
-    return true;
-  }
-
-  /* Iterate through declarations: if any of them is valid,
-        the browser supports this example. */
-  const tmpElem = document.createElement("div");
-
-  return declarations.some(isCodeSupported.bind(null, tmpElem));
-}
-
 /**
  * Interrupts the default click event on external links inside
  * the iframe and opens them in a new tab instead

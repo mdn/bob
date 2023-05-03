@@ -10,12 +10,15 @@ import {
 import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
 import "../css/editable-css.css";
+import { isAnyDeclarationSetSupported } from "./editor-libs/css-editor-utils.js";
 
 (function () {
   const exampleChoiceList = document.getElementById("example-choice-list");
   const exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
   const exampleDeclarations = Array.from(
-    exampleChoices, (choice) => choice.querySelector("code").textContent);
+    exampleChoices,
+    (choice) => choice.querySelector("code").textContent
+  );
   const editorWrapper = document.getElementById("editor-wrapper");
   const output = document.getElementById("output");
   const warningNoSupport = document.getElementById("warning-no-support");
@@ -140,7 +143,7 @@ import "../css/editable-css.css";
     is a non standard object available only in IE10 and older,
     this will stop JS from executing in those versions. */
   if (
-    mceUtils.isPropertySupported(exampleChoiceList.dataset, exampleDeclarations) &&
+    cssEditorUtils.isAnyDeclarationSetSupported(exampleDeclarations) &&
     !document.all
   ) {
     enableLiveEditor();
