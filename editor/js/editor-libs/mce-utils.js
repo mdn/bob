@@ -31,18 +31,18 @@ export function isPropertySupported(dataset) {
 
   // `property` may be a space-separated list of properties.
   const properties = dataset["property"].split(" ");
-  /* Iterate through properties: if any of them apply,
+  /* Iterate through properties:
+        if any of them applies and has a valid value,
         the browser supports this example. */
   const tmpElem = document.createElement("div");
-  let supported = false;
 
-  for (let i = 0, l = properties.length; i < l; i++) {
-    if (tmpElem.style[properties[i]] !== undefined) {
-      supported = true;
+  for (const property of properties) {
+    if (tmpElem.style[property]) {
+      return true;
     }
   }
 
-  return supported;
+  return false;
 }
 
 /**
