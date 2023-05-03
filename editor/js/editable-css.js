@@ -1,6 +1,5 @@
 import * as clippy from "./editor-libs/clippy.js";
 import * as mceEvents from "./editor-libs/events.js";
-import * as mceUtils from "./editor-libs/mce-utils.js";
 import * as cssEditorUtils from "./editor-libs/css-editor-utils.js";
 import {
   initCodeEditor,
