@@ -37,7 +37,7 @@ export function isPropertySupported(dataset, texts) {
         the browser supports this example. */
   const tmpElem = document.createElement("div");
 
-  for(const text in texts) {
+  for (const text in texts) {
     tmpElem.style = text;
     if (properties.some((property) => tmpElem.style[property])) {
       return true;
