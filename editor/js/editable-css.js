@@ -10,7 +10,6 @@ import {
 import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
 import "../css/editable-css.css";
-import { isAnyDeclarationSetSupported } from "./editor-libs/css-editor-utils.js";
 
 (function () {
   const exampleChoiceList = document.getElementById("example-choice-list");
