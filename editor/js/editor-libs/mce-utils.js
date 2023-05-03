@@ -20,9 +20,10 @@ export function findParentChoiceElem(element) {
 /**
  * Creates a temporary element and tests whether the passed
  * property exists on the `style` property of the element.
- * @param {Object} dataset = The dataset from which to get the property
+ * @param {Object} dataset - The dataset from which to get the property
+ * @param {Array} texts - The choice texts containing the property
  */
-export function isPropertySupported(dataset) {
+export function isPropertySupported(dataset, texts) {
   /* If there are no 'property' attributes,
            there is nothing to test, so return true. */
   if (dataset["property"] === undefined) {
@@ -36,8 +37,9 @@ export function isPropertySupported(dataset) {
         the browser supports this example. */
   const tmpElem = document.createElement("div");
 
-  for (const property of properties) {
-    if (tmpElem.style[property]) {
+  for(const text in texts) {
+    tmpElem.style = text;
+    if (properties.some((property) => tmpElem.style[property])) {
       return true;
     }
   }
