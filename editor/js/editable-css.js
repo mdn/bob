@@ -14,6 +14,8 @@ import "../css/editable-css.css";
 (function () {
   const exampleChoiceList = document.getElementById("example-choice-list");
   const exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
+  const exampleChoiceTexts = Array.from(
+    exampleChoices, (choice) => choice.querySelector("code").textContent);
   const editorWrapper = document.getElementById("editor-wrapper");
   const output = document.getElementById("output");
   const warningNoSupport = document.getElementById("warning-no-support");
@@ -138,7 +140,7 @@ import "../css/editable-css.css";
     is a non standard object available only in IE10 and older,
     this will stop JS from executing in those versions. */
   if (
-    mceUtils.isPropertySupported(exampleChoiceList.dataset) &&
+    mceUtils.isPropertySupported(exampleChoiceList.dataset, exampleChoiceTexts) &&
     !document.all
   ) {
     enableLiveEditor();
