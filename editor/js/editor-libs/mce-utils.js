@@ -1,3 +1,5 @@
+import { isCodeSupported } from "./css-editor-utils.js";
+
 /**
  * Find and return the `example-choice` parent of the provided element
  * @param {Object} element - The child element for which to find the
@@ -21,30 +23,20 @@ export function findParentChoiceElem(element) {
  * Creates a temporary element and tests whether the passed
  * property exists on the `style` property of the element.
  * @param {Object} dataset - The dataset from which to get the property
- * @param {Array} texts - The choice texts containing the property
+ * @param {Array} declarations - The declarations containing the property
  */
-export function isPropertySupported(dataset, texts) {
+export function isPropertySupported(dataset, declarations) {
   /* If there are no 'property' attributes,
            there is nothing to test, so return true. */
   if (dataset["property"] === undefined) {
     return true;
   }
 
-  // `property` may be a space-separated list of properties.
-  const properties = dataset["property"].split(" ");
-  /* Iterate through properties:
-        if any of them applies and has a valid value,
+  /* Iterate through declarations: if any of them is valid,
         the browser supports this example. */
   const tmpElem = document.createElement("div");
 
-  for (const text in texts) {
-    tmpElem.style = text;
-    if (properties.some((property) => tmpElem.style[property])) {
-      return true;
-    }
-  }
-
-  return false;
+  return declarations.some(isCodeSupported.bind(null, tmpElem));
 }
 
 /**
