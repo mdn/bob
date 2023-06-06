@@ -11,7 +11,6 @@ import {
   LRLanguage,
 } from "@codemirror/language";
 import { closeBrackets, closeBracketsKeymap } from "@codemirror/autocomplete";
-import { highlightSelectionMatches, searchKeymap } from "@codemirror/search";
 import { lintKeymap } from "@codemirror/lint";
 import { javascript, javascriptLanguage } from "@codemirror/lang-javascript";
 import { wast } from "@codemirror/lang-wast";
@@ -199,11 +198,9 @@ const BASE_EXTENSIONS = [
   closeBrackets(),
   view.rectangularSelection(),
   view.crosshairCursor(),
-  highlightSelectionMatches(),
   view.keymap.of([
     ...closeBracketsKeymap,
     ...commands.defaultKeymap,
-    ...searchKeymap,
     ...commands.historyKeymap,
     ...foldKeymap,
     ...lintKeymap,
