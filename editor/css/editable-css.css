@@ -61,7 +61,7 @@
   position: relative;
   z-index: 1;
   display: block;
-  padding: 0 1rem;
+  padding: 0 12px;
   margin: 0.2em 0;
   width: 100%;
   border: 1px solid var(--border-primary);
@@ -83,7 +83,6 @@
   height: auto;
   text-align: left;
   padding: 4px 0;
-  padding-right: 1rem;
   background: none;
   border: none;
   font-size: 0.875rem;
@@ -91,6 +90,10 @@
 
 .live .example-choice .ͼ1.cm-editor.cm-focused {
   outline: none;
+}
+
+.cm-editor .cm-line {
+  padding: 0;
 }
 
 .example-choice-list .example-choice:first-child {
