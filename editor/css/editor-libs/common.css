@@ -134,6 +134,7 @@
   --text-primary-green: #007936;
   --text-primary-blue: #0069c2;
   --text-primary-yellow: #746a00;
+  color-scheme: light;
 }
 
 .theme-dark {
@@ -225,6 +226,7 @@
   --text-primary-green: #00d061;
   --text-primary-blue: #8cb4ff;
   --text-primary-yellow: #c7b700;
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: light) {
@@ -345,6 +347,7 @@
     --text-primary-green: #007936;
     --text-primary-blue: #0069c2;
     --text-primary-yellow: #746a00;
+    color-scheme: light;
   }
 }
 
@@ -439,6 +442,7 @@
     --text-primary-blue: #8cb4ff;
     --text-primary-yellow: #c7b700;
     --selection-background-color: #233244;
+    color-scheme: dark;
   }
 }
 
