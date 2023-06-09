@@ -7,10 +7,7 @@ import { getStorageItem, storeItem } from "./utils.js";
  * Adds listeners for events from the CSS live examples
  * @param {Object} exampleChoiceList - The object to which events are added
  */
-function addCSSEditorEventListeners(exampleChoiceList) {
-  exampleChoiceList.addEventListener("cut", copyTextOnly);
-  exampleChoiceList.addEventListener("copy", copyTextOnly);
-
+export function addCSSEditorEventListeners(exampleChoiceList) {
   exampleChoiceList.addEventListener("keyup", (event) => {
     const exampleChoiceParent = event.target.parentElement;
 
@@ -68,23 +65,6 @@ export function postParentMessage(type, values) {
   parent?.postMessage({ type, url: window.location.href, ...values }, "*");
 }
 
-/**
- * Ensure that only the text portion of a copy event is stored in the
- * clipboard, by setting both 'text/plain', and 'text/html' to the same
- * plain text value.
- * @param {Object} event - The copy event
- */
-function copyTextOnly(event) {
-  const selection = window.getSelection();
-  const range = selection.getRangeAt(0);
-
-  event.preventDefault();
-  event.stopPropagation();
-
-  event.clipboardData.setData("text/plain", range.toString());
-  event.clipboardData.setData("text/html", range.toString());
-}
-
 function handleChoiceEvent() {
   onChoose(this);
 }
@@ -110,19 +90,12 @@ export function onChoose(choice) {
  * has been completed.
  */
 export function register() {
-  const exampleChoiceList = document.getElementById("example-choice-list");
-
   addPostMessageListener();
 
   if (document.readyState !== "loading") {
     sendOwnHeight();
   } else {
     document.addEventListener("DOMContentLoaded", sendOwnHeight);
-  }
-
-  // only bind events if the `exampleChoiceList` container exist
-  if (exampleChoiceList) {
-    addCSSEditorEventListeners(exampleChoiceList);
   }
 
   initTelemetry();
