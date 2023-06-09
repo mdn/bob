@@ -19,10 +19,20 @@
 
 .cm-editor .cm-scroller {
   line-height: inherit;
+  font-family: var(--font-code);
 }
 
 .cm-editor .cm-cursor {
   border-color: var(--text-primary);
+}
+
+.cm-editor .cm-line::selection,
+.cm-editor .cm-line ::selection {
+  background-color: var(--selection-background-color) !important;
+}
+.cm-editor .cm-selectionBackground,
+.cm-editor.cm-focused .cm-selectionBackground {
+  background-color: initial;
 }
 
 /* Language specific rules */

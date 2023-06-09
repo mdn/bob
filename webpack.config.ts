@@ -1,13 +1,13 @@
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
 import path from "node:path";
-import webpack from "webpack";
+import webpack, { Configuration } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
 const require = createRequire(import.meta.url);
 
-export default {
+const config: Configuration = {
   mode: "production",
   plugins: [
     new webpack.BannerPlugin(
@@ -51,6 +51,11 @@ export default {
   module: {
     rules: [
       {
+        test: /\.ts$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+      {
         test: /\.css$/,
         use: [
           {
@@ -75,6 +80,7 @@ export default {
     ],
   },
   resolve: {
+    extensions: [".ts", ".js"],
     fallback: {
       fs: false,
       path: require.resolve("path-browserify"),
@@ -87,3 +93,5 @@ export default {
     },
   },
 };
+
+export default config;

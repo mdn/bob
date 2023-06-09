@@ -1,5 +1,26 @@
 # Changelog
 
+## [3.3.0](https://github.com/mdn/bob/compare/v3.2.0...v3.3.0) (2023-05-04)
+
+
+### Features
+
+* **editor-libs:** extend the feature detection for CSS functions ([#1270](https://github.com/mdn/bob/issues/1270)) ([5de231c](https://github.com/mdn/bob/commit/5de231cf1dca5b1687e9bb4c704519f5c92b638a))
+
+## [3.2.0](https://github.com/mdn/bob/compare/v3.1.0...v3.2.0) (2023-03-13)
+
+
+### Features
+
+* **telemetry:** record interactions + post to parent ([#1145](https://github.com/mdn/bob/issues/1145)) ([a56cf8e](https://github.com/mdn/bob/commit/a56cf8e7dd6c410eda7339189f20c7428ec33175))
+
+## [3.1.0](https://github.com/mdn/bob/compare/v3.0.3...v3.1.0) (2023-03-09)
+
+
+### Features
+
+* migrate to TypeScript ([#1134](https://github.com/mdn/bob/issues/1134)) ([9e7b619](https://github.com/mdn/bob/commit/9e7b619534077c2c8ac290ad30d88c439ac32ef1))
+
 ## [3.0.3](https://github.com/mdn/bob/compare/v3.0.2...v3.0.3) (2023-02-24)
 
 

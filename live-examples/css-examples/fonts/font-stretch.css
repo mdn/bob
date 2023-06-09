@@ -1,0 +1,6 @@
+@import "../../fonts/molot.css";
+
+#output section {
+  font-size: 1.2em;
+  font-family: molot, sans-serif;
+}

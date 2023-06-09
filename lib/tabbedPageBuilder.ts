@@ -1,7 +1,7 @@
 import fse from "fs-extra";
 import * as pageBuilderUtils from "./pageBuilderUtils.js";
 import * as processor from "./processor.js";
-import CleanCSS from "clean-css";
+import { minifyCSS } from "./processor.js";
 
 /**
  * Replace the template tag with the CSS source, or an empty string
@@ -57,7 +57,7 @@ function addJS(currentPage, tmpl) {
 function addHiddenCSS(currentPage, tmpl) {
   if (currentPage.cssHiddenSrc) {
     const content = fse.readFileSync(currentPage.cssHiddenSrc, "utf8");
-    const minified = new CleanCSS().minify(content).styles;
+    const minified = minifyCSS(content, currentPage.cssHiddenSrc);
 
     return tmpl.replace("%example-hidden-css-src%", minified);
   } else {

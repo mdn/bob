@@ -17,13 +17,17 @@
         <button id="reset" class="reset" type="button">Reset</button>
       </header>
       <noscript>
-        <div id="warning-no-script" class="warning">
-          Interactive examples cannot be shown because JavaScript is disabled.
+        <div id="warning-no-script" class="warning-container">
+          <div class="warning">
+            Interactive examples cannot be shown because JavaScript is disabled.
+          </div>
         </div>
       </noscript>
-      <div id="warning-no-support" class="warning hidden">
-        This feature is not supported by your current browser. Check Browser
-        compatibility for more details.
+      <div id="warning-no-support" class="warning-container hidden">
+        <div class="warning">
+          This feature is not supported by your current browser. Check Browser
+          compatibility for more details.
+        </div>
       </div>
       <div
         id="editor-wrapper"

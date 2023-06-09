@@ -1,6 +1,5 @@
 import * as clippy from "./editor-libs/clippy.js";
 import * as mceEvents from "./editor-libs/events.js";
-import * as mceUtils from "./editor-libs/mce-utils.js";
 import * as cssEditorUtils from "./editor-libs/css-editor-utils.js";
 import {
   initCodeEditor,
@@ -14,6 +13,10 @@ import "../css/editable-css.css";
 (function () {
   const exampleChoiceList = document.getElementById("example-choice-list");
   const exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
+  const exampleDeclarations = Array.from(
+    exampleChoices,
+    (choice) => choice.querySelector("code").textContent
+  );
   const editorWrapper = document.getElementById("editor-wrapper");
   const output = document.getElementById("output");
   const warningNoSupport = document.getElementById("warning-no-support");
@@ -64,6 +67,7 @@ import "../css/editable-css.css";
     }
 
     mceEvents.register();
+    mceEvents.addCSSEditorEventListeners(exampleChoiceList);
     handleResetEvents();
     handleChoiceHover();
     // Adding or removing class "invalid"
@@ -138,7 +142,7 @@ import "../css/editable-css.css";
     is a non standard object available only in IE10 and older,
     this will stop JS from executing in those versions. */
   if (
-    mceUtils.isPropertySupported(exampleChoiceList.dataset) &&
+    cssEditorUtils.isAnyDeclarationSetSupported(exampleDeclarations) &&
     !document.all
   ) {
     enableLiveEditor();
