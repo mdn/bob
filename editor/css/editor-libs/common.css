@@ -520,10 +520,16 @@ body {
   z-index: 4;
 }
 
+.warning-container {
+  border: 1px solid var(--border-primary);
+  border-top: 0;
+  border-radius: 0 0 var(--button-radius) var(--button-radius);
+  padding: 16px;
+}
+
 .warning {
   position: relative;
   padding: 1rem 1rem 1rem 3rem;
-  margin: 1rem;
   background-color: var(--background-warning);
   border-radius: var(--elem-radius);
   border: 1px solid var(--border-secondary);
