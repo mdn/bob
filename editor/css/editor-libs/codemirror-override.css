@@ -19,6 +19,7 @@
 
 .cm-editor .cm-scroller {
   line-height: inherit;
+  font-family: var(--font-code);
 }
 
 .cm-editor .cm-cursor {
