@@ -1,0 +1,11 @@
+{
+  "pages": {
+    "fontStretch": {
+      "cssExampleSrc": "./live-examples/css-examples/fonts/font-stretch.css",
+      "exampleCode": "./live-examples/css-examples/fonts/font-stretch.html",
+      "fileName": "font-stretch.html",
+      "title": "CSS Demo: font-stretch",
+      "type": "css"
+    }
+  }
+}
