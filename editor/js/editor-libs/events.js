@@ -13,7 +13,7 @@ export function addCSSEditorEventListeners(exampleChoiceList) {
 
     cssEditorUtils.applyCode(
       exampleChoiceParent.textContent,
-      exampleChoiceParent.closest(".cm-scroller")
+      exampleChoiceParent.closest(".example-choice")
     );
   });
 
