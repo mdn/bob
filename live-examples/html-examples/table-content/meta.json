@@ -3,7 +3,10 @@
     "dialog": {
       "exampleCode": "live-examples/html-examples/table-content/caption.html",
       "cssExampleSrc": "live-examples/html-examples/table-content/css/caption.css",
-      "cssHiddenSrc": "live-examples/fonts/molot.css",
+      "cssHiddenSrc": [
+        "live-examples/fonts/molot.css",
+        "live-examples/fonts/rapscallion.css"
+      ],
       "fileName": "caption.html",
       "title": "HTML Demo: <caption>",
       "type": "tabbed",

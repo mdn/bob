@@ -55,11 +55,17 @@ function addJS(currentPage, tmpl) {
  * @returns the processed template string
  */
 function addHiddenCSS(currentPage, tmpl) {
+  function getHiddenCSS(path: string) {
+    const content = fse.readFileSync(path, "utf8");
+    return minifyCSS(content, path);
+  }
   if (currentPage.cssHiddenSrc) {
-    const content = fse.readFileSync(currentPage.cssHiddenSrc, "utf8");
-    const minified = minifyCSS(content, currentPage.cssHiddenSrc);
+    const paths = Array.isArray(currentPage.cssHiddenSrc)
+      ? currentPage.cssHiddenSrc
+      : [currentPage.cssHiddenSrc];
+    const hiddenCSS = paths.map(getHiddenCSS).join("");
 
-    return tmpl.replace("%example-hidden-css-src%", minified);
+    return tmpl.replace("%example-hidden-css-src%", hiddenCSS);
   } else {
     return tmpl.replace("%example-hidden-css-src%", "");
   }
