@@ -13,7 +13,7 @@ export function addCSSEditorEventListeners(exampleChoiceList) {
 
     cssEditorUtils.applyCode(
       exampleChoiceParent.textContent,
-      exampleChoiceParent.closest(".example-choice")
+      exampleChoiceParent.closest(".example-choice"),
     );
   });
 
@@ -46,7 +46,7 @@ function addPostMessageListener() {
         storeItem("theme", event.data.theme);
       }
     },
-    false
+    false,
   );
 }
 

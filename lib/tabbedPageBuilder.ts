@@ -14,7 +14,7 @@ function addCSS(currentPage, tmpl) {
     "%example-css-src%",
     currentPage.cssExampleSrc
       ? fse.readFileSync(currentPage.cssExampleSrc, "utf8")
-      : ""
+      : "",
   );
 }
 
@@ -41,7 +41,7 @@ function addJS(currentPage, tmpl) {
     "%example-js-src%",
     currentPage.jsExampleSrc
       ? fse.readFileSync(currentPage.jsExampleSrc, "utf8")
-      : ""
+      : "",
   );
 
   return tmpl;

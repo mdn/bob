@@ -26,13 +26,13 @@ describe("Tabbed Editor", () => {
 
       const htmlOutputContent = await iframeContent.$eval(
         "#html-output",
-        trimInnerHTML
+        trimInnerHTML,
       );
       await expect(htmlOutputContent).toBe(expectedHTML);
 
       const cssOutputContent = await iframeContent.$eval(
         "#css-output",
-        trimInnerHTML
+        trimInnerHTML,
       );
       await expect(cssOutputContent).toBe(expectedCSS);
     });
@@ -42,11 +42,11 @@ describe("Tabbed Editor", () => {
       await page.click("#css");
 
       const cssPanelClassAttr = await page.$eval("#css-panel", (elem) =>
-        elem.getAttribute("class")
+        elem.getAttribute("class"),
       );
 
       const htmlPanelClassAttr = await page.$eval("#html-panel", (elem) =>
-        elem.getAttribute("class")
+        elem.getAttribute("class"),
       );
 
       await expect(cssPanelClassAttr).toBe("");
@@ -61,11 +61,11 @@ describe("Tabbed Editor", () => {
       await page.click("#html");
 
       const cssPanelClassAttr = await page.$eval("#css-panel", (elem) =>
-        elem.getAttribute("class")
+        elem.getAttribute("class"),
       );
 
       const htmlPanelClassAttr = await page.$eval("#html-panel", (elem) =>
-        elem.getAttribute("class")
+        elem.getAttribute("class"),
       );
 
       await expect(cssPanelClassAttr).toBe("hidden");

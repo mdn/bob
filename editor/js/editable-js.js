@@ -41,7 +41,7 @@ import {
     codeMirror = initCodeEditor(
       editorContainer,
       codeBlock.textContent,
-      languageJavaScript()
+      languageJavaScript(),
     );
   }
 
@@ -84,7 +84,7 @@ import {
     }
 
     output.addEventListener("animationend", () =>
-      output.classList.remove("fade-in")
+      output.classList.remove("fade-in"),
     );
   }
 

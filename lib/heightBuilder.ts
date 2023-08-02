@@ -56,7 +56,7 @@ function getEditorName(page) {
           return page.height;
         default:
           throw new Error(
-            `MDN-BOB: (heightBuilder.js) Invalid height property for ${page.fileName}`
+            `MDN-BOB: (heightBuilder.js) Invalid height property for ${page.fileName}`,
           );
       }
     case "js": {
@@ -70,7 +70,7 @@ function getEditorName(page) {
           return "js-smaller";
         default:
           throw new Error(
-            `MDN-BOB: (heightBuilder.js) Height '${height}' calculated for JS example '${page.fileName}' is invalid`
+            `MDN-BOB: (heightBuilder.js) Height '${height}' calculated for JS example '${page.fileName}' is invalid`,
           );
       }
     }
@@ -85,13 +85,13 @@ function getEditorName(page) {
           return "wat-smaller";
         default:
           throw new Error(
-            `MDN-BOB: (heightBuilder.js) Height '${height}' calculated for WAT example '${page.fileName}' is invalid`
+            `MDN-BOB: (heightBuilder.js) Height '${height}' calculated for WAT example '${page.fileName}' is invalid`,
           );
       }
     }
     default:
       throw new Error(
-        `MDN-BOB: (heightBuilder.js) Unsupported page type ${page.type}`
+        `MDN-BOB: (heightBuilder.js) Unsupported page type ${page.type}`,
       );
   }
 }

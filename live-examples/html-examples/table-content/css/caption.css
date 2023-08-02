@@ -35,11 +35,15 @@ tr:nth-child(odd) td {
 
 .heman {
   font: 1.4rem molot;
-  text-shadow: 1px 1px 1px #fff, 2px 2px 1px #000;
+  text-shadow:
+    1px 1px 1px #fff,
+    2px 2px 1px #000;
 }
 
 .skeletor {
   font: 1.7rem rapscallion;
   letter-spacing: 3px;
-  text-shadow: 1px 1px 0 #fff, 0 0 9px #000;
+  text-shadow:
+    1px 1px 0 #fff,
+    0 0 9px #000;
 }

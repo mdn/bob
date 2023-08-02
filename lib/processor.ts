@@ -66,7 +66,7 @@ function processCSSInclude(tmpl, source) {
   // inject the link tag into the source
   return tmpl.replace(
     "%example-css-src%",
-    `<link rel="stylesheet" href="../../${source}" />`
+    `<link rel="stylesheet" href="../../${source}" />`,
   );
 }
 
@@ -82,7 +82,7 @@ function processJSInclude(tmpl, source) {
   // inject the script tag into the source
   return tmpl.replace(
     "%example-js-src%",
-    `<script src="../../${source}"></script>`
+    `<script src="../../${source}"></script>`,
   );
 }
 
@@ -123,7 +123,7 @@ function getJSExampleHeightByLineCount(lineCount) {
 function preprocessJSExample(exampleCode) {
   const height = getHeightByLineCount(
     exampleCode,
-    getJSExampleHeightByLineCount
+    getJSExampleHeightByLineCount,
   );
   return `<pre><code id="static-js" data-height="${height}">${exampleCode}</code></pre>`;
 }
@@ -201,7 +201,7 @@ function getHeightByLineCount(sourceCode, linesToHeightFunc) {
  */
 function handleDeprecatedJSExampleFormat(exampleCode, path) {
   console.warn(
-    `MDN-BOB: (processor.js/processExampleCode) HTML source files are deprecated for JS examples. (${path})`
+    `MDN-BOB: (processor.js/processExampleCode) HTML source files are deprecated for JS examples. (${path})`,
   );
   return exampleCode;
 }

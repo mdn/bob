@@ -67,7 +67,9 @@
   border: 1px solid var(--border-primary);
   border-radius: var(--elem-radius);
   cursor: pointer;
-  transition: background-color 0.2s ease-out, border 0.2s ease-out;
+  transition:
+    background-color 0.2s ease-out,
+    border 0.2s ease-out;
 }
 
 .live .example-choice {

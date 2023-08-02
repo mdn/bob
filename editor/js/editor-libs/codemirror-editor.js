@@ -248,7 +248,7 @@ export const languageHTML = memo(() => {
       scopedHighlighting(
         JS_HIGHLIGHT_STYLE_SPECS,
         javascriptLanguage,
-        "Script"
+        "Script",
       ),
       scopedHighlighting(HTML_HIGHLIGHT_STYLE_SPECS, language),
     ],
@@ -267,7 +267,7 @@ export function initCodeEditor(
   editorContainer,
   initialContent,
   language,
-  options = { lineNumbers: true }
+  options = { lineNumbers: true },
 ) {
   const extensions = [...BASE_EXTENSIONS, ...language.extensions];
 

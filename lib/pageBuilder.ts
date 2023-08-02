@@ -52,7 +52,7 @@ function build(pages, selfVersion = "") {
       case "mathml":
         fse.outputFileSync(
           outputPath,
-          tabbedPageBuilder.buildTabbedExample(tmpl, currentPage)
+          tabbedPageBuilder.buildTabbedExample(tmpl, currentPage),
         );
         break;
       case "wat":
@@ -61,7 +61,7 @@ function build(pages, selfVersion = "") {
 
         exampleCode = processor.processWat(
           currentPage.watExampleCode,
-          currentPage.jsExampleCode
+          currentPage.jsExampleCode,
         );
 
         outputHTML = tmpl.replace("%example-code%", () => exampleCode);
@@ -93,7 +93,7 @@ function build(pages, selfVersion = "") {
 
         exampleCode = processor.processExampleCode(
           currentPage.type,
-          currentPage.exampleCode
+          currentPage.exampleCode,
         );
 
         outputHTML = tmpl.replace("%example-code%", () => exampleCode);
@@ -143,12 +143,12 @@ export function buildPages() {
         build(file.pages, selfVersion);
       } catch (error) {
         console.error(
-          `MDN-BOB: (pageBuilder.js/@buildPages) Error while building pages ${metaJson}: ${error}`
+          `MDN-BOB: (pageBuilder.js/@buildPages) Error while building pages ${metaJson}: ${error}`,
         );
         reject(
           Error(
-            `MDN-BOB: (pageBuilder.js/@buildPages) Error while building pages: ${metaJson}: ${error}`
-          )
+            `MDN-BOB: (pageBuilder.js/@buildPages) Error while building pages: ${metaJson}: ${error}`,
+          ),
         );
       }
     }

@@ -35,7 +35,7 @@ function storeActionCounts(counts) {
     JSON.stringify({
       href: window.location.href,
       counts,
-    })
+    }),
   );
 }
 
