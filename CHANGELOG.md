@@ -1,5 +1,28 @@
 # Changelog
 
+## [3.4.0](https://github.com/mdn/bob/compare/v3.3.0...v3.4.0) (2023-08-02)
+
+
+### Features
+
+* Add border around the warning box ([#1173](https://github.com/mdn/bob/issues/1173)) ([9d818f0](https://github.com/mdn/bob/commit/9d818f0fdc2ff3e80acff480675752a40234e2bb))
+* **css:** Allow `[@import](https://github.com/import)` in css examples ([#1129](https://github.com/mdn/bob/issues/1129)) ([4949ded](https://github.com/mdn/bob/commit/4949dedbbef8805cde287d87a9740cf0dbd99980))
+* **meta:** Allow `cssHiddenSrc` to be an array ([#1130](https://github.com/mdn/bob/issues/1130)) ([07e90b3](https://github.com/mdn/bob/commit/07e90b31c2ba464867fe008ac0f7f8b91d97bfb5))
+
+
+### Bug Fixes
+
+* Fix CTRL+X in CSS editor ([#1147](https://github.com/mdn/bob/issues/1147)) ([7b7ad44](https://github.com/mdn/bob/commit/7b7ad44a044e6ef2d5585344abb5768f77b9dae4))
+* **jest:** Fix `jest` script on windows ([#1128](https://github.com/mdn/bob/issues/1128)) ([ceb3658](https://github.com/mdn/bob/commit/ceb36581086a58a8a4f9b1b2c7f0bd1f16601ae7))
+* Refresh `invalid css` icon immediately after edit ([#1148](https://github.com/mdn/bob/issues/1148)) ([38d20ae](https://github.com/mdn/bob/commit/38d20ae8dd319622d1d637b1b9483c469cc19642))
+* remove search functionality from code editor ([#1334](https://github.com/mdn/bob/issues/1334)) ([9645008](https://github.com/mdn/bob/commit/96450082ff964674ddd485ed773d39fa45a85f43))
+* **style:** Fix horizontal scrollbar of js editor ([#1137](https://github.com/mdn/bob/issues/1137)) ([229487a](https://github.com/mdn/bob/commit/229487a88127e6aac6a383043ce6579058ae6e4f))
+* **style:** Make font-family of code match ordinary MDN examples ([742a5b5](https://github.com/mdn/bob/commit/742a5b599912062f28dbc3d919a264d2bab05c17))
+* **style:** Make font-family of code, match ordinary MDN examples ([#1133](https://github.com/mdn/bob/issues/1133)) ([742a5b5](https://github.com/mdn/bob/commit/742a5b599912062f28dbc3d919a264d2bab05c17))
+* **style:** Make scrollbar colors match MDN ([#1132](https://github.com/mdn/bob/issues/1132)) ([29b044d](https://github.com/mdn/bob/commit/29b044db9db451b8b8d6fe45727a1a4ac6a857d8))
+* **style:** Use better text selection color ([#1131](https://github.com/mdn/bob/issues/1131)) ([f92927f](https://github.com/mdn/bob/commit/f92927f3323698040926e2cf69777cd96379d5cd))
+* Widen CSS example text area ([#1149](https://github.com/mdn/bob/issues/1149)) ([bba4a3a](https://github.com/mdn/bob/commit/bba4a3a6e4e845e2b40ba54ef61ad3be82500eb4))
+
 ## [3.3.0](https://github.com/mdn/bob/compare/v3.2.0...v3.3.0) (2023-05-04)
 
 
