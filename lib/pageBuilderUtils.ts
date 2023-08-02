@@ -17,7 +17,7 @@ export function getPageTmpl(tmplType) {
       try {
         return fse.readFileSync(
           path.join(__dirname, "../editor/tmpl/live-css-tmpl.html"),
-          "utf8"
+          "utf8",
         );
       } catch (error) {
         console.error("Error loading file", error);
@@ -27,7 +27,7 @@ export function getPageTmpl(tmplType) {
       try {
         return fse.readFileSync(
           path.join(__dirname, "../editor/tmpl/live-js-tmpl.html"),
-          "utf8"
+          "utf8",
         );
       } catch (error) {
         console.error("Error loading file", error);
@@ -37,7 +37,7 @@ export function getPageTmpl(tmplType) {
       try {
         return fse.readFileSync(
           path.join(__dirname, "../editor/tmpl/live-wat-tmpl.html"),
-          "utf8"
+          "utf8",
         );
       } catch (error) {
         console.error("Error loading file", error);
@@ -49,7 +49,7 @@ export function getPageTmpl(tmplType) {
       try {
         return fse.readFileSync(
           path.join(__dirname, "../editor/tmpl/live-tabbed-tmpl.html"),
-          "utf8"
+          "utf8",
         );
       } catch (error) {
         console.error("Error loading file", error);
@@ -132,7 +132,7 @@ export function setEditorHeight(currentPage, tmpl) {
 
   if (currentPage.height === undefined) {
     console.error(
-      `[BoB] Required height property of ${currentPage.title} is not defined`
+      `[BoB] Required height property of ${currentPage.title} is not defined`,
     );
     process.exit(1);
   }
@@ -155,7 +155,7 @@ export function setMainTitle(currentPage, tmpl) {
   while ((resultsArray = regex.exec(tmpl)) !== null) {
     tmpl = tmpl.replace(
       resultsArray[0].trim(),
-      processor.preprocessHTML(currentPage.title)
+      processor.preprocessHTML(currentPage.title),
     );
   }
   return tmpl;

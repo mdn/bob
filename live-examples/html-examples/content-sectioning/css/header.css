@@ -9,11 +9,15 @@ header.page-header {
 }
 
 header.page-header > h1 {
-  font: bold calc(1em + 2 * (100vw - 120px) / 100) "Dancing Script", cursive,
+  font:
+    bold calc(1em + 2 * (100vw - 120px) / 100) "Dancing Script",
+    cursive,
     fantasy;
   margin: 2%;
 }
 
 main {
-  font: 1rem "Fira Sans", sans-serif;
+  font:
+    1rem "Fira Sans",
+    sans-serif;
 }
