@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 import fse from "fs-extra";
-import webpack from "webpack";
+import webpack, { Stats } from "webpack";
 
 import webpackConfig from "../webpack.config.js";
-import getConfig from "./config.js";
+import getConfig, { Config } from "./config.js";
 import * as pageBuilder from "./pageBuilder.js";
 import buildHeightData from "./heightBuilder.js";
 import * as utils from "./utils.js";
@@ -14,7 +14,7 @@ import * as utils from "./utils.js";
  *
  * In case Web Pack process is skipped, its output files are not deleted
  */
-function cleanBaseDir(config) {
+function cleanBaseDir(config: Config) {
   if (config.doWebPack) {
     fse.emptyDirSync(config.baseDir);
   } else {
@@ -29,7 +29,7 @@ function cleanBaseDir(config) {
   }
 }
 
-function pathCreatedByWebPack(config, path) {
+function pathCreatedByWebPack(config: Config, path: string) {
   return (
     utils.isSamePath(config.destCssDir, path) ||
     utils.isSamePath(config.destJsDir, path)
@@ -38,24 +38,31 @@ function pathCreatedByWebPack(config, path) {
 
 function doWebpack() {
   return new Promise((resolve, reject) => {
-    webpack(webpackConfig, (err, stats) => {
-      const statsJson = stats.toJson();
-
-      if (err || stats.hasErrors()) {
-        if (err) {
-          throw err;
+    webpack(
+      webpackConfig,
+      (err: Error | undefined, stats: Stats | undefined) => {
+        if (!stats) {
+          throw new Error("MDN-BOB: Stats were not delivered by webpack");
         }
-        reject(statsJson.errors);
-      }
 
-      if (stats.hasWarnings()) {
-        for (const warn of statsJson.warnings) {
-          console.warn("Webpack Warning: " + warn.message);
+        const statsJson = stats.toJson();
+
+        if (err || stats.hasErrors()) {
+          if (err) {
+            throw err;
+          }
+          reject(statsJson.errors);
         }
-      }
 
-      resolve(undefined);
-    });
+        if (statsJson.warnings) {
+          for (const warn of statsJson.warnings) {
+            console.warn("Webpack Warning: " + warn.message);
+          }
+        }
+
+        resolve(undefined);
+      },
+    );
   });
 }
 

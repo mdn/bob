@@ -9,6 +9,8 @@ import { globSyncNoEscape } from "./utils.js";
 import * as pageBuilderUtils from "./pageBuilderUtils.js";
 import * as processor from "./processor.js";
 import * as tabbedPageBuilder from "./tabbedPageBuilder.js";
+import { MetaFile, MetaPage, MetaPages } from "../types/types";
+import { getExampleCode } from "./processor.js";
 
 const config = getConfig();
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -16,7 +18,8 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 /**
  * Traverse the list of pages, and uses the meta data to generate the final
  * HTML source documents to `/docs/pages/[css|js]`
- * @param {object} pages - An object containing directives for building the pages
+ * @param pages - An object containing directives for building the pages
+ * @param selfVersion - Editor version, used for cache busting
  *
  * Example object:
  *
@@ -29,83 +32,84 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
  * }
  *
  */
-function build(pages, selfVersion = "") {
+function build(pages: MetaPages, selfVersion = "") {
   for (const page in pages) {
     const currentPage = pages[page];
-    const cssSource = currentPage.cssExampleSrc;
-    const jsSource = currentPage.jsExampleSrc;
-    const type = currentPage.type;
-    let tmpl = pageBuilderUtils.getPageTmpl(type);
-    let outputHTML = "";
-    let exampleCode;
+    const tmpl = pageBuilderUtils.getPageTmpl(currentPage.type);
 
     const outputPath =
       config.pagesDir + currentPage.type + "/" + currentPage.fileName;
 
-    // Inject the cache buster
-    tmpl = pageBuilderUtils.setCacheBuster(`?v=${selfVersion}`, tmpl);
+    const filledTmpl = fillPageTemplate(tmpl, currentPage, selfVersion);
 
-    // handle both standard and webapi tabbed examples
-    switch (type) {
-      case "tabbed":
-      case "webapi-tabbed":
-      case "mathml":
-        fse.outputFileSync(
-          outputPath,
-          tabbedPageBuilder.buildTabbedExample(tmpl, currentPage),
-        );
-        break;
-      case "wat":
-        // set main title
-        tmpl = pageBuilderUtils.setMainTitle(currentPage, tmpl);
+    fse.outputFileSync(outputPath, filledTmpl);
+  }
+}
 
-        exampleCode = processor.processWat(
-          currentPage.watExampleCode,
-          currentPage.jsExampleCode,
-        );
+function fillPageTemplate(
+  tmpl: string,
+  currentPage: MetaPage,
+  selfVersion: string,
+) {
+  const type = currentPage.type;
 
-        outputHTML = tmpl.replace("%example-code%", () => exampleCode);
+  // Inject the cache buster
+  tmpl = pageBuilderUtils.setCacheBuster(`?v=${selfVersion}`, tmpl);
 
-        fse.outputFileSync(outputPath, outputHTML);
-        break;
-      case "css":
-      case "js":
-        // is there a linked CSS file
-        if (cssSource) {
-          // inject the link tag into the source
-          tmpl = processor.processInclude("css", tmpl, cssSource);
-        } else {
-          // clear out the template string
-          tmpl = tmpl.replace("%example-css-src%", "");
-        }
+  let exampleCode: string;
 
-        // is there a linked JS file
-        if (jsSource) {
-          // inject the script tag into the source
-          tmpl = processor.processInclude("js", tmpl, jsSource);
-        } else {
-          // clear out the template string
-          tmpl = tmpl.replace("%example-js-src%", "");
-        }
+  switch (type) {
+    case "tabbed":
+    case "webapi-tabbed":
+    case "mathml":
+      return tabbedPageBuilder.buildTabbedExample(currentPage, tmpl);
+    case "wat":
+      // set main title
+      tmpl = pageBuilderUtils.setMainTitle(currentPage, tmpl);
 
-        // set main title
-        tmpl = pageBuilderUtils.setMainTitle(currentPage, tmpl);
+      exampleCode = processor.processWat(
+        currentPage.watExampleCode,
+        currentPage.jsExampleCode,
+      );
 
-        exampleCode = processor.processExampleCode(
-          currentPage.type,
-          currentPage.exampleCode,
-        );
+      return tmpl.replace("%example-code%", () => exampleCode);
+    case "css":
+      // set main title
+      tmpl = pageBuilderUtils.setMainTitle(currentPage, tmpl);
 
-        outputHTML = tmpl.replace("%example-code%", () => exampleCode);
+      // is there a linked CSS file
+      if (currentPage.cssExampleSrc) {
+        // inject the link tag into the source
+        tmpl = processor.processInclude("css", tmpl, currentPage.cssExampleSrc);
+      } else {
+        // clear out the template string
+        tmpl = tmpl.replace("%example-css-src%", "");
+      }
 
-        fse.outputFileSync(outputPath, outputHTML);
-        break;
-    }
+      // is there a linked JS file
+      if (currentPage.jsExampleSrc) {
+        // inject the script tag into the source
+        tmpl = processor.processInclude("js", tmpl, currentPage.jsExampleSrc);
+      } else {
+        // clear out the template string
+        tmpl = tmpl.replace("%example-js-src%", "");
+      }
+
+      exampleCode = getExampleCode(currentPage.exampleCode);
+
+      return tmpl.replace("%example-code%", () => exampleCode);
+    case "js":
+      // set main title
+      tmpl = pageBuilderUtils.setMainTitle(currentPage, tmpl);
+
+      exampleCode = processor.processJsExample(currentPage.exampleCode);
+
+      return tmpl.replace("%example-code%", () => exampleCode);
   }
 }
 
 /**
- * Return a (short) string that indicates what verion of this tool we're
+ * Return a (short) string that indicates what version of this tool we're
  * running. Because the `package.json` doesn't necessarily change between
  * versions we need to gather both from that and from the relevant .js files.
  */
@@ -138,7 +142,7 @@ export function buildPages() {
     const metaJSONArray = globSyncNoEscape(config.metaGlob);
 
     for (const metaJson of metaJSONArray) {
-      const file = fse.readJsonSync(metaJson);
+      const file = fse.readJsonSync(metaJson) as MetaFile;
       try {
         build(file.pages, selfVersion);
       } catch (error) {

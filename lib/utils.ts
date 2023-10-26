@@ -8,10 +8,10 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 /**
  * Copies all assets recursively in `sourceDir` to the directory specified as `destDir`
- * @param {string} sourceDir - The root relative path to the directory containing assets
- * @param {string} destDir - The root relative path to the directory to copy the assets to
+ * @param sourceDir - The root relative path to the directory containing assets
+ * @param destDir - The root relative path to the directory to copy the assets to
  */
-export function copyDirectory(sourceDir, destDir) {
+export function copyDirectory(sourceDir: string, destDir: string) {
   fse.copySync(sourceDir, destDir, {
     filter: (src) => {
       return ![".DS_Store"].includes(path.basename(src));
@@ -40,15 +40,15 @@ export function copyStaticAssets() {
 /**
  * Compares both arguments after trimming and removing end slash
  */
-export function isSamePath(p1, p2) {
-  const removeEndSlash = (path) => {
+export function isSamePath(p1: string, p2: string) {
+  const removeEndSlash = (path: string) => {
     if (path.endsWith("/")) {
       return path.substring(0, path.length - 1);
     }
     return path;
   };
 
-  const normalize = (path) => removeEndSlash(path.trim());
+  const normalize = (path: string) => removeEndSlash(path.trim());
 
   return normalize(p1) == normalize(p2);
 }
