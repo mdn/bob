@@ -11,7 +11,6 @@ import {
   LRLanguage,
 } from "@codemirror/language";
 import { closeBrackets, closeBracketsKeymap } from "@codemirror/autocomplete";
-import { highlightSelectionMatches, searchKeymap } from "@codemirror/search";
 import { lintKeymap } from "@codemirror/lint";
 import { javascript, javascriptLanguage } from "@codemirror/lang-javascript";
 import { wast } from "@codemirror/lang-wast";
@@ -22,6 +21,8 @@ import { tags } from "@lezer/highlight";
 import { parser as jsParser } from "@lezer/javascript";
 import { parser as htmlParser } from "@lezer/html";
 import { parser as cssParser } from "@lezer/css";
+
+import { recordAction } from "./telemetry.js";
 
 import "../../css/editor-libs/codemirror-override.css";
 
@@ -176,6 +177,12 @@ function mixedHTML() {
   return LRLanguage.define({ parser: mixedHTMLParser });
 }
 
+function eventHandlers() {
+  return EditorView.domEventHandlers({
+    input: () => recordAction("input", true),
+  });
+}
+
 /**
  * Set of basic extensions, that every editor should have.
  * This list is mostly based on [basic setup](https://github.com/codemirror/basic-setup)
@@ -191,16 +198,15 @@ const BASE_EXTENSIONS = [
   closeBrackets(),
   view.rectangularSelection(),
   view.crosshairCursor(),
-  highlightSelectionMatches(),
   view.keymap.of([
     ...closeBracketsKeymap,
     ...commands.defaultKeymap,
-    ...searchKeymap,
     ...commands.historyKeymap,
     ...foldKeymap,
     ...lintKeymap,
     TAB_KEY_MAP,
   ]),
+  eventHandlers(),
 ];
 
 /**
@@ -242,7 +248,7 @@ export const languageHTML = memo(() => {
       scopedHighlighting(
         JS_HIGHLIGHT_STYLE_SPECS,
         javascriptLanguage,
-        "Script"
+        "Script",
       ),
       scopedHighlighting(HTML_HIGHLIGHT_STYLE_SPECS, language),
     ],
@@ -261,7 +267,7 @@ export function initCodeEditor(
   editorContainer,
   initialContent,
   language,
-  options = { lineNumbers: true }
+  options = { lineNumbers: true },
 ) {
   const extensions = [...BASE_EXTENSIONS, ...language.extensions];
 

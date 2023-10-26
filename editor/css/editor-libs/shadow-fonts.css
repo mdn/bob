@@ -3,7 +3,8 @@
    http://robdodson.me/at-font-face-doesnt-work-in-shadow-dom/ */
 @font-face {
   font-family: "Fira Sans";
-  src: local("FiraSans-Regular"),
+  src:
+    local("FiraSans-Regular"),
     url("/media/fonts/FiraSans-Regular.woff2") format("woff2");
 }
 

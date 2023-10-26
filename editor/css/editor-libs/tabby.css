@@ -13,7 +13,9 @@ button[role="tab"] {
   border-top: 3px solid transparent;
   font: var(--type-emphasis-m);
   cursor: pointer;
-  transition: color 0.2s, background-color 0.2s;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
 }
 
 button[role="tab"]:hover,

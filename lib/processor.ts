@@ -2,9 +2,11 @@ import CleanCSS from "clean-css";
 import fse from "fs-extra";
 import uglify from "uglify-js";
 import getConfig from "./config.js";
+import path from "node:path";
 import { JSPageHeight, WATPageHeight } from "../types/types";
 
 const config = getConfig();
+const basePath = path.resolve("");
 
 const MAX_LINE_COUNT_OF_SHORT_JS_EXAMPLES = 7;
 const MIN_LINE_COUNT_OF_TALL_JS_EXAMPLES = 14;
@@ -23,22 +25,34 @@ export function preprocessHTML(html: string) {
 
 /**
  * Minifies the CSS and writes the minified code back to disk
- * @param source - The source filepath
  */
-function preprocessCSS(source: string) {
-  const minified = new CleanCSS().minify(
-    fse.readFileSync(source, "utf8")
-  ).styles;
-  fse.outputFileSync(config.baseDir + source, minified);
+function preprocessCSS(sourceFilePath: string) {
+  const source = fse.readFileSync(sourceFilePath, "utf8");
+  const minified = minifyCSS(source, sourceFilePath);
+  fse.outputFileSync(config.baseDir + sourceFilePath, minified);
+}
+
+export function minifyCSS(source: string, sourceFilePath: string) {
+  // We need to change the current working path, so @import will be relative to the sourceFilePath
+  // Version 5.3.2 of CleanCSS doesn't provide any config to set the base path
+  const sourceFileDirectory = path.dirname(sourceFilePath);
+  const absoluteSourcePath = path.resolve(sourceFileDirectory);
+  process.chdir(absoluteSourcePath);
+
+  const minified = new CleanCSS().minify(source);
+
+  // Changing back current working path
+  process.chdir(basePath);
+  return minified.styles;
 }
 
 /**
  * Uglifies the JS and writes the uglified code back to disk
- * @param source - The source filepath
  */
-function preprocessJS(source: string) {
-  const minified = uglify.minify(fse.readFileSync(source, "utf8")).code;
-  fse.outputFileSync(config.baseDir + source, minified);
+function preprocessJS(sourceFilePath: string) {
+  const source = fse.readFileSync(sourceFilePath, "utf8");
+  const minified = uglify.minify(source).code;
+  fse.outputFileSync(config.baseDir + sourceFilePath, minified);
 }
 
 /**
@@ -53,7 +67,7 @@ function processCSSInclude(tmpl: string, source: string) {
   // inject the link tag into the source
   return tmpl.replace(
     "%example-css-src%",
-    `<link rel="stylesheet" href="../../${source}" />`
+    `<link rel="stylesheet" href="../../${source}" />`,
   );
 }
 
@@ -69,7 +83,7 @@ function processJSInclude(tmpl: string, source: string) {
   // inject the script tag into the source
   return tmpl.replace(
     "%example-js-src%",
-    `<script src="../../${source}"></script>`
+    `<script src="../../${source}"></script>`,
   );
 }
 
@@ -83,7 +97,7 @@ function processJSInclude(tmpl: string, source: string) {
 export function processInclude(
   type: "js" | "css",
   tmpl: string,
-  source: string
+  source: string,
 ) {
   return type === "css"
     ? processCSSInclude(tmpl, source)
@@ -114,7 +128,7 @@ function getJSExampleHeightByLineCount(lineCount: number): JSPageHeight {
 function preprocessJSExample(exampleCode: string) {
   const height = getHeightByLineCount(
     exampleCode,
-    getJSExampleHeightByLineCount
+    getJSExampleHeightByLineCount,
   );
   return `<pre><code id="static-js" data-height="${height}">${exampleCode}</code></pre>`;
 }
@@ -178,7 +192,7 @@ export function getWatPageHeight(watSrc: string) {
  */
 function getHeightByLineCount<T extends string>(
   sourceCode: string,
-  linesToHeightFunc: (lineCount: number) => T
+  linesToHeightFunc: (lineCount: number) => T,
 ): T {
   const lineCount = (sourceCode.match(/\n/g) || []).length + 1;
   return linesToHeightFunc(lineCount);
@@ -195,7 +209,7 @@ function getHeightByLineCount<T extends string>(
  */
 function handleDeprecatedJSExampleFormat(exampleCode: string, path: string) {
   console.warn(
-    `MDN-BOB: (processor.js/processExampleCode) HTML source files are deprecated for JS examples. (${path})`
+    `MDN-BOB: (processor.js/processExampleCode) HTML source files are deprecated for JS examples. (${path})`,
   );
   return exampleCode;
 }

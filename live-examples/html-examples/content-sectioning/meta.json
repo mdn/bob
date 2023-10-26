@@ -11,6 +11,7 @@
     "article": {
       "exampleCode": "live-examples/html-examples/content-sectioning/article.html",
       "cssExampleSrc": "live-examples/html-examples/content-sectioning/css/article.css",
+      "cssHiddenSrc": "live-examples/fonts/molot.css",
       "fileName": "article.html",
       "title": "HTML Demo: <article>",
       "type": "tabbed",
