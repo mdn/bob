@@ -1,15 +1,31 @@
 import fse from "fs-extra";
-import glob from "glob";
 
 import getConfig from "./config.js";
 import { getJSPageHeight, getWatPageHeight } from "./processor.js";
+import {
+  HeightData,
+  HeightDataEditor,
+  HeightDataExamples,
+  MetaFile,
+  MetaPage,
+} from "../types/types";
+import { globSyncNoEscape } from "./utils.js";
 
 const config = getConfig();
 
 const rootDir = new URL("..", import.meta.url);
 
+/**
+ * Content of editor-heights.json in the current projects root
+ */
+interface EditorHeights {
+  editors: HeightDataEditor[];
+}
+
 function getEditorHeights() {
-  return fse.readJsonSync(new URL(config.editorHeights, rootDir));
+  return fse.readJsonSync(
+    new URL(config.editorHeights, rootDir)
+  ) as EditorHeights;
 }
 
 /**
@@ -18,9 +34,9 @@ function getEditorHeights() {
  * In case meta.json is missing required height property or it has unsupported value, exception is thrown
  * @param metaContent - Content of meta.json as an JS object
  */
-function getPagesEditorNames(metaContent) {
+function getPagesEditorNames(metaContent: MetaFile) {
   const pages = Object.values(metaContent.pages);
-  const editorNames = {};
+  const editorNames: HeightDataExamples = {};
 
   for (const page of pages) {
     const height = getEditorName(page);
@@ -32,7 +48,7 @@ function getPagesEditorNames(metaContent) {
   return editorNames;
 }
 
-function getPagePath(page) {
+function getPagePath(page: MetaPage) {
   return `pages/${page.type}/${page.fileName}`;
 }
 
@@ -40,9 +56,9 @@ function getPagePath(page) {
  * Returns editor name for a given page, based on its height
  * Every editor name must have a record in editor-heights.json
  * @param page - Object describing single interactive example
- * @return {String} - editor name
+ * @return editor name
  */
-function getEditorName(page) {
+function getEditorName(page: MetaPage) {
   switch (page.type) {
     case "css":
       return "css";
@@ -91,7 +107,7 @@ function getEditorName(page) {
     }
     default:
       throw new Error(
-        `MDN-BOB: (heightBuilder.js) Unsupported page type ${page.type}`
+        `MDN-BOB: (heightBuilder.js) Unsupported page type ${page}`
       );
   }
 }
@@ -101,14 +117,14 @@ function getEditorName(page) {
  * together with content of editor-heights which contains name and the height of every editor type
  */
 export default function buildHeightData() {
-  const metaJSONArray = glob.sync(config.metaGlob, {});
-  const heightData = {
+  const metaJSONArray = globSyncNoEscape(config.metaGlob);
+  const heightData: HeightData = {
     ...getEditorHeights(),
+    examples: {},
   };
-  heightData.examples = {};
 
   for (const metaJson of metaJSONArray) {
-    const file = fse.readJsonSync(metaJson);
+    const file = fse.readJsonSync(metaJson) as MetaFile;
 
     const names = getPagesEditorNames(file);
     Object.assign(heightData.examples, names);

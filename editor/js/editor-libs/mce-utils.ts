@@ -16,35 +16,6 @@ export function findParentChoiceElem(element) {
   }
   return parent;
 }
-
-/**
- * Creates a temporary element and tests whether the passed
- * property exists on the `style` property of the element.
- * @param {Object} dataset = The dataset from which to get the property
- */
-export function isPropertySupported(dataset) {
-  /* If there are no 'property' attributes,
-           there is nothing to test, so return true. */
-  if (dataset["property"] === undefined) {
-    return true;
-  }
-
-  // `property` may be a space-separated list of properties.
-  const properties = dataset["property"].split(" ");
-  /* Iterate through properties: if any of them apply,
-        the browser supports this example. */
-  const tmpElem = document.createElement("div");
-  let supported = false;
-
-  for (let i = 0, l = properties.length; i < l; i++) {
-    if (tmpElem.style[properties[i]] !== undefined) {
-      supported = true;
-    }
-  }
-
-  return supported;
-}
-
 /**
  * Interrupts the default click event on external links inside
  * the iframe and opens them in a new tab instead

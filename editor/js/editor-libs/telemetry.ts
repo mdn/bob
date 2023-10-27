@@ -1,0 +1,97 @@
+import { postParentMessage } from "./events.js";
+import { getStorageItem, storeItem } from "./utils";
+
+const ACTION_COUNTS_KEY = "action-counts";
+
+type ActionCounts = Record<string, number>;
+
+/**
+ * Reads action counts from local storage.
+ * Ignores action counts that belong to another example.
+ *
+ * @returns The action counts from the previous session, if available.
+ */
+function getActionsCounts() {
+  const json = getStorageItem(ACTION_COUNTS_KEY);
+
+  if (!json) {
+    return {};
+  }
+
+  const value = JSON.parse(json);
+  if (value && value.href === window.location.href && value.counts) {
+    return value.counts;
+  }
+
+  return {};
+}
+
+/**
+ * Writes action counts to local storage, to persist them between reloads.
+ *
+ * @param {object} counts - The current action counts.
+ */
+function storeActionCounts(counts: ActionCounts) {
+  storeItem(
+    ACTION_COUNTS_KEY,
+    JSON.stringify({
+      href: window.location.href,
+      counts,
+    })
+  );
+}
+
+/**
+ * Action counts by key.
+ * Used to distinguish 1st/2nd/etc occurrences of the same event.
+ */
+let actionCounts: ActionCounts = {};
+
+/**
+ * Last observed action.
+ * Used to ignore multiple input actions until another action happened.
+ */
+let lastAction: string | null = null;
+
+/**
+ * Records an action, by counting it and forwarding it to the window parent.
+ *
+ * @param {string} key - Distinct name of the type of action.
+ * @param {boolean} deduplicate - Should multiple actions of the same type be ignored until another action occurred?
+ */
+export function recordAction(key: string, deduplicate = false) {
+  if (deduplicate && key === lastAction) {
+    return;
+  } else {
+    lastAction = key;
+  }
+
+  actionCounts[key] = (actionCounts[key] ?? 0) + 1;
+  storeActionCounts(actionCounts);
+
+  const source = `${key} -> ${actionCounts[key]}`;
+  postParentMessage("action", { source });
+}
+
+export function initTelemetry() {
+  actionCounts = getActionsCounts();
+  lastAction = null;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // User focuses the iframe.
+    window.addEventListener("focus", () => recordAction("focus"));
+
+    // User copies / cuts / paste text in the iframe.
+    window.addEventListener("copy", () => recordAction("copy"));
+    window.addEventListener("cut", () => recordAction("cut"));
+    window.addEventListener("paste", () => recordAction("paste"));
+
+    // User clicks on any element with an id.
+    window.addEventListener("click", (event) => {
+      const id = (event.target as HTMLElement | null)?.id;
+      if (id) {
+        recordAction(`click@${id}`);
+      }
+    });
+  });
+}

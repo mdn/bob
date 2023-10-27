@@ -119,9 +119,15 @@
     flex-direction: row;
   }
 
+  .output {
+    width: calc(
+      100% - 108px
+    ); /* 108px is 100px of a .button width + 8px of a .buttons-container padding-right */
+  }
+
   .buttons-container {
     flex-direction: column;
     width: auto;
-    padding-right: 0.5rem;
+    padding-right: 8px;
   }
 }

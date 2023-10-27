@@ -1,22 +1,23 @@
 import * as clippy from "./clippy.js";
 import * as cssEditorUtils from "./css-editor-utils.js";
+import { initTelemetry } from "./telemetry";
+import { getStorageItem, storeItem } from "./utils";
 
 /**
  * Adds listeners for events from the CSS live examples
- * @param {Object} exampleChoiceList - The object to which events are added
+ * @param exampleChoiceList - The object to which events are added
  */
-function addCSSEditorEventListeners(exampleChoiceList: HTMLElement) {
-  exampleChoiceList.addEventListener("cut", copyTextOnly);
-  exampleChoiceList.addEventListener("copy", copyTextOnly);
-
+export function addCSSEditorEventListeners(exampleChoiceList: HTMLElement) {
   exampleChoiceList.addEventListener("keyup", (event) => {
     const target = event.target as typeof exampleChoiceList;
     const exampleChoiceParent = target.parentElement;
 
-    cssEditorUtils.applyCode(
-      exampleChoiceParent.textContent,
-      exampleChoiceParent.closest(".cm-scroller")
-    );
+    if (exampleChoiceParent) {
+      cssEditorUtils.applyCode(
+        exampleChoiceParent.textContent,
+        exampleChoiceParent.closest(".example-choice")
+      );
+    }
   });
 
   const exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
@@ -40,6 +41,9 @@ function addPostMessageListener() {
       // to be to allow for future themes to be added without a change here.
       if (event.data.theme !== undefined) {
         const body = document.querySelector("body");
+        if (!body) {
+          return;
+        }
         for (let i = body.classList.length - 1; i >= 0; i--) {
           const className = body.classList[i];
           if (className.startsWith("theme-")) {
@@ -57,65 +61,29 @@ function addPostMessageListener() {
 document.addEventListener("DOMContentLoaded", () => {
   const theme = getStorageItem("theme");
   if (theme !== null) {
-    document.querySelector("body").classList.add("theme-" + theme);
+    const body = document.querySelector("body");
+    if (body) {
+      body.classList.add("theme-" + theme);
+    }
   }
 });
 
-/**
- * Adds key & value to {@link localStorage}, without throwing an exception when it is unavailable
- */
-function storeItem(key, value) {
-  try {
-    localStorage.setItem(key, value);
-  } catch (err) {
-    console.warn(`Unable to write ${key} to localStorage`, err);
-  }
-}
-
-/**
- * @returns the value of a given key from {@link localStorage}, or null when the key wasn't found.
- * It doesn't throw an exception when {@link localStorage} is unavailable
- */
-function getStorageItem(key) {
-  try {
-    return localStorage.getItem(key);
-  } catch (err) {
-    console.warn(`Unable to read ${key} from localStorage`, err);
-    return null;
-  }
-}
-
 function sendOwnHeight() {
-  if (parent) {
-    parent.postMessage(
-      { url: window.location.href, height: document.body.scrollHeight },
-      "*"
-    );
-  }
+  postParentMessage("height", { height: document.body.scrollHeight });
 }
 
-/**
- * Ensure that only the text portion of a copy event is stored in the
- * clipboard, by setting both 'text/plain', and 'text/html' to the same
- * plain text value.
- * @param {Object} event - The copy event
- */
-function copyTextOnly(event) {
-  const selection = window.getSelection();
-  const range = selection.getRangeAt(0);
-
-  event.preventDefault();
-  event.stopPropagation();
-
-  event.clipboardData.setData("text/plain", range.toString());
-  event.clipboardData.setData("text/html", range.toString());
+export function postParentMessage(
+  type: string,
+  values: Record<string, string | number>
+) {
+  parent?.postMessage({ type, url: window.location.href, ...values }, "*");
 }
 
 /**
  * Called when a new `example-choice` has been selected.
- * @param {Object} choice - The selected `example-choice` element
+ * @param choice - The selected `example-choice` element
  */
-export function onChoose(choice) {
+export function onChoose(choice: HTMLElement) {
   const selected = document.querySelector(".selected");
 
   // highlght the code we are leaving
@@ -132,8 +100,6 @@ export function onChoose(choice) {
  * has been completed.
  */
 export function register() {
-  const exampleChoiceList = document.getElementById("example-choice-list");
-
   addPostMessageListener();
 
   if (document.readyState !== "loading") {
@@ -142,8 +108,5 @@ export function register() {
     document.addEventListener("DOMContentLoaded", sendOwnHeight);
   }
 
-  // only bind events if the `exampleChoiceList` container exist
-  if (exampleChoiceList) {
-    addCSSEditorEventListeners(exampleChoiceList);
-  }
+  initTelemetry();
 }
