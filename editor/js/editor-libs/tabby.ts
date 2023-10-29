@@ -137,7 +137,7 @@ export function initEditor(editorTypes, defaultTab) {
     editorData.editor = initCodeEditor(
       editorData.code,
       editorData.initialContent,
-      editorData.language
+      editorData.language,
     );
   }
 }
@@ -153,7 +153,7 @@ export function registerEventListeners() {
     if (role === "tab") {
       const activeTab = tabList.querySelector('button[aria-selected="true"]');
       const selectedPanel = document.getElementById(
-        eventTarget.getAttribute("aria-controls")
+        eventTarget.getAttribute("aria-controls"),
       );
 
       hideTabPanels();

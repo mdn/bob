@@ -22,7 +22,7 @@ import { parser as jsParser } from "@lezer/javascript";
 import { parser as htmlParser } from "@lezer/html";
 import { parser as cssParser } from "@lezer/css";
 
-import { recordAction } from "./telemetry";
+import { recordAction } from "./telemetry.js";
 
 import "../../css/editor-libs/codemirror-override.css";
 
@@ -250,7 +250,7 @@ export const languageHTML = memo(() => {
       scopedHighlighting(
         JS_HIGHLIGHT_STYLE_SPECS,
         javascriptLanguage,
-        "Script"
+        "Script",
       ),
       scopedHighlighting(HTML_HIGHLIGHT_STYLE_SPECS, language),
     ],
@@ -269,7 +269,7 @@ export function initCodeEditor(
   editorContainer,
   initialContent,
   language,
-  options = { lineNumbers: true }
+  options = { lineNumbers: true },
 ) {
   const extensions = [...BASE_EXTENSIONS, ...language.extensions];
 

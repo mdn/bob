@@ -1,5 +1,5 @@
 import { postParentMessage } from "./events.js";
-import { getStorageItem, storeItem } from "./utils";
+import { getStorageItem, storeItem } from "./utils.js";
 
 const ACTION_COUNTS_KEY = "action-counts";
 
@@ -37,7 +37,7 @@ function storeActionCounts(counts: ActionCounts) {
     JSON.stringify({
       href: window.location.href,
       counts,
-    })
+    }),
   );
 }
 

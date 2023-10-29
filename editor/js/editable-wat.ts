@@ -54,7 +54,7 @@ import {
       if (role === "tab") {
         const activeTab = tabList.querySelector("button[aria-selected='true']");
         const selectedPanel = document.getElementById(
-          eventTarget.getAttribute("aria-controls")
+          eventTarget.getAttribute("aria-controls"),
         );
 
         hideTabPanels();
@@ -162,14 +162,14 @@ import {
     watCodeMirror = initCodeEditor(
       watContainer,
       watCodeBlock.textContent,
-      languageWAST()
+      languageWAST(),
     );
 
     const jsContainer = document.getElementById("js-editor");
     jsCodeMirror = initCodeEditor(
       jsContainer,
       jsCodeBlock.textContent,
-      languageJavaScript()
+      languageJavaScript(),
     );
   }
 
@@ -247,7 +247,7 @@ import {
       // we need to await in order to capture errors
       const AsyncFunction = Object.getPrototypeOf(
         // eslint-disable-next-line @typescript-eslint/no-empty-function
-        async function () {}
+        async function () {},
       ).constructor;
       await new AsyncFunction(exampleCode)();
     } catch (error) {
@@ -255,7 +255,7 @@ import {
     }
 
     output.addEventListener("animationend", () =>
-      output.classList.remove("fade-in")
+      output.classList.remove("fade-in"),
     );
   }
 

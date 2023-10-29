@@ -13,7 +13,7 @@ describe("JS Editor", () => {
     await page.click("#execute");
 
     const outputContent = await page.$eval(".output code", (elem) =>
-      elem.innerText.trim()
+      elem.innerText.trim(),
     );
     await expect(outputContent).toBe(expectedOutput);
   });

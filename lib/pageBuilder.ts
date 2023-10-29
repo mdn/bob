@@ -49,7 +49,7 @@ function build(pages: MetaPages, selfVersion = "") {
 function fillPageTemplate(
   tmpl: string,
   currentPage: MetaPage,
-  selfVersion: string
+  selfVersion: string,
 ) {
   const type = currentPage.type;
 
@@ -69,7 +69,7 @@ function fillPageTemplate(
 
       exampleCode = processor.processWat(
         currentPage.watExampleCode,
-        currentPage.jsExampleCode
+        currentPage.jsExampleCode,
       );
 
       return tmpl.replace("%example-code%", () => exampleCode);
@@ -147,12 +147,12 @@ export function buildPages() {
         build(file.pages, selfVersion);
       } catch (error) {
         console.error(
-          `MDN-BOB: (pageBuilder.js/@buildPages) Error while building pages ${metaJson}: ${error}`
+          `MDN-BOB: (pageBuilder.js/@buildPages) Error while building pages ${metaJson}: ${error}`,
         );
         reject(
           Error(
-            `MDN-BOB: (pageBuilder.js/@buildPages) Error while building pages: ${metaJson}: ${error}`
-          )
+            `MDN-BOB: (pageBuilder.js/@buildPages) Error while building pages: ${metaJson}: ${error}`,
+          ),
         );
       }
     }

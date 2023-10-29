@@ -17,24 +17,24 @@ export function getPageTmpl(tmplType: PageType) {
     case "css":
       return fse.readFileSync(
         path.join(__dirname, "../editor/tmpl/live-css-tmpl.html"),
-        "utf8"
+        "utf8",
       );
     case "js":
       return fse.readFileSync(
         path.join(__dirname, "../editor/tmpl/live-js-tmpl.html"),
-        "utf8"
+        "utf8",
       );
     case "wat":
       return fse.readFileSync(
         path.join(__dirname, "../editor/tmpl/live-wat-tmpl.html"),
-        "utf8"
+        "utf8",
       );
     case "tabbed":
     case "webapi-tabbed":
     case "mathml":
       return fse.readFileSync(
         path.join(__dirname, "../editor/tmpl/live-tabbed-tmpl.html"),
-        "utf8"
+        "utf8",
       );
     default:
       console.error(`MDN-BOB: No template found for template type ${tmplType}`);
@@ -113,7 +113,7 @@ export function setEditorHeight(currentPage: TabbedPage, tmpl: string) {
 
   if (currentPage.height === undefined) {
     console.error(
-      `[BoB] Required height property of ${currentPage.title} is not defined`
+      `[BoB] Required height property of ${currentPage.title} is not defined`,
     );
     process.exit(1);
   }
@@ -136,7 +136,7 @@ export function setMainTitle(currentPage: MetaPage, tmpl: string) {
   while ((resultsArray = regex.exec(tmpl)) !== null) {
     tmpl = tmpl.replace(
       resultsArray[0].trim(),
-      processor.preprocessHTML(currentPage.title)
+      processor.preprocessHTML(currentPage.title),
     );
   }
   return tmpl;

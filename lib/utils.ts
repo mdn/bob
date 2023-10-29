@@ -27,7 +27,7 @@ export function copyStaticAssets() {
   // copy editor static assets
   copyDirectory(
     path.join(__dirname, config.editorMediaRoot),
-    config.editorMediaDest
+    config.editorMediaDest,
   );
 
   // copy examples static assets

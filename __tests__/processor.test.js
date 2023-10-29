@@ -27,7 +27,7 @@ describe("processor", () => {
       /* calling `processInclude` with css as the first argument will cause
                `processCSSInclude` to be called internally */
       expect(processor.processInclude("css", tmplSource, sourcePath)).toBe(
-        expectedOutput
+        expectedOutput,
       );
     });
   });
@@ -47,7 +47,7 @@ describe("processor", () => {
       /* calling `processInclude` with js as the first argument will cause
                `processJSInclude` to be called internally */
       expect(processor.processInclude("js", tmplSource, sourcePath)).toBe(
-        expectedOutput
+        expectedOutput,
       );
     });
   });

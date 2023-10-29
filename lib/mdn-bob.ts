@@ -23,7 +23,7 @@ function cleanBaseDir(config: Config) {
     const baseFileNames = fse.readdirSync(config.baseDir);
     const baseFilePaths = baseFileNames.map((n) => config.baseDir + n);
     const notWebPackPaths = baseFilePaths.filter(
-      (p) => !pathCreatedByWebPack(config, p)
+      (p) => !pathCreatedByWebPack(config, p),
     );
     notWebPackPaths.forEach((filePath) => fse.removeSync(filePath));
   }
@@ -61,7 +61,7 @@ function doWebpack() {
         }
 
         resolve(undefined);
-      }
+      },
     );
   });
 }
@@ -84,7 +84,7 @@ async function init() {
       await doWebpack();
     } else {
       console.warn(
-        "MDN-BOB: Skipped compilation of base JS & CSS shared by all examples"
+        "MDN-BOB: Skipped compilation of base JS & CSS shared by all examples",
       );
     }
 

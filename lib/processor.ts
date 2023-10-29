@@ -67,7 +67,7 @@ function processCSSInclude(tmpl: string, source: string) {
   // inject the link tag into the source
   return tmpl.replace(
     "%example-css-src%",
-    `<link rel="stylesheet" href="../../${source}" />`
+    `<link rel="stylesheet" href="../../${source}" />`,
   );
 }
 
@@ -83,7 +83,7 @@ function processJSInclude(tmpl: string, source: string) {
   // inject the script tag into the source
   return tmpl.replace(
     "%example-js-src%",
-    `<script src="../../${source}"></script>`
+    `<script src="../../${source}"></script>`,
   );
 }
 
@@ -97,7 +97,7 @@ function processJSInclude(tmpl: string, source: string) {
 export function processInclude(
   type: "js" | "css",
   tmpl: string,
-  source: string
+  source: string,
 ) {
   return type === "css"
     ? processCSSInclude(tmpl, source)
@@ -128,7 +128,7 @@ function getJSExampleHeightByLineCount(lineCount: number): JSPageHeight {
 function preprocessJSExample(exampleCode: string) {
   const height = getHeightByLineCount(
     exampleCode,
-    getJSExampleHeightByLineCount
+    getJSExampleHeightByLineCount,
   );
   return `<pre><code id="static-js" data-height="${height}">${exampleCode}</code></pre>`;
 }
@@ -192,7 +192,7 @@ export function getWatPageHeight(watSrc: string) {
  */
 function getHeightByLineCount<T extends string>(
   sourceCode: string,
-  linesToHeightFunc: (lineCount: number) => T
+  linesToHeightFunc: (lineCount: number) => T,
 ): T {
   const lineCount = (sourceCode.match(/\n/g) || []).length + 1;
   return linesToHeightFunc(lineCount);
@@ -209,7 +209,7 @@ function getHeightByLineCount<T extends string>(
  */
 function handleDeprecatedJSExampleFormat(exampleCode: string, path: string) {
   console.warn(
-    `MDN-BOB: (processor.js/processExampleCode) HTML source files are deprecated for JS examples. (${path})`
+    `MDN-BOB: (processor.js/processExampleCode) HTML source files are deprecated for JS examples. (${path})`,
   );
   return exampleCode;
 }

@@ -15,7 +15,7 @@ import "../css/editable-css.css";
   const exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
   const exampleDeclarations = Array.from(
     exampleChoices,
-    (choice) => choice.querySelector("code").textContent
+    (choice) => choice.querySelector("code").textContent,
   );
   const editorWrapper = document.getElementById("editor-wrapper");
   const output = document.getElementById("output");
@@ -48,7 +48,7 @@ import "../css/editable-css.css";
 
       applyCodeMirror(
         exampleChoice.querySelector("pre"),
-        choiceCode.textContent
+        choiceCode.textContent,
       );
 
       choiceButton.setAttribute("type", "button");

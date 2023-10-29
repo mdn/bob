@@ -1,7 +1,7 @@
 import * as clippy from "./clippy.js";
 import * as cssEditorUtils from "./css-editor-utils.js";
-import { initTelemetry } from "./telemetry";
-import { getStorageItem, storeItem } from "./utils";
+import { initTelemetry } from "./telemetry.js";
+import { getStorageItem, storeItem } from "./utils.js";
 
 /**
  * Adds listeners for events from the CSS live examples
@@ -15,7 +15,7 @@ export function addCSSEditorEventListeners(exampleChoiceList: HTMLElement) {
     if (exampleChoiceParent) {
       cssEditorUtils.applyCode(
         exampleChoiceParent.textContent,
-        exampleChoiceParent.closest(".example-choice")
+        exampleChoiceParent.closest(".example-choice"),
       );
     }
   });
@@ -23,7 +23,7 @@ export function addCSSEditorEventListeners(exampleChoiceList: HTMLElement) {
   const exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
   Array.from(exampleChoices).forEach((choice) => {
     choice.addEventListener("click", (e) =>
-      onChoose(e.currentTarget as HTMLElement)
+      onChoose(e.currentTarget as HTMLElement),
     );
   });
 }
@@ -54,7 +54,7 @@ function addPostMessageListener() {
         storeItem("theme", event.data.theme);
       }
     },
-    false
+    false,
   );
 }
 
@@ -74,7 +74,7 @@ function sendOwnHeight() {
 
 export function postParentMessage(
   type: string,
-  values: Record<string, string | number>
+  values: Record<string, string | number>,
 ) {
   parent?.postMessage({ type, url: window.location.href, ...values }, "*");
 }
