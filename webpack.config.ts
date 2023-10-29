@@ -19,29 +19,29 @@ const config: Configuration = {
   ],
   entry: {
     "editor-tabbed": {
-      import: fileURLToPath(new URL("./editor/js/editor.js", import.meta.url)),
+      import: fileURLToPath(new URL("./editor/js/editor.ts", import.meta.url)),
       dependOn: "codemirror",
     },
     "editor-css": {
       import: fileURLToPath(
-        new URL("./editor/js/editable-css.js", import.meta.url),
+        new URL("./editor/js/editable-css.ts", import.meta.url),
       ),
       dependOn: "codemirror",
     },
     "editor-js": {
       import: fileURLToPath(
-        new URL("./editor/js/editable-js.js", import.meta.url),
+        new URL("./editor/js/editable-js.ts", import.meta.url),
       ),
       dependOn: "codemirror",
     },
     "editor-wat": {
       import: fileURLToPath(
-        new URL("./editor/js/editable-wat.js", import.meta.url),
+        new URL("./editor/js/editable-wat.ts", import.meta.url),
       ),
       dependOn: "codemirror",
     },
     codemirror: fileURLToPath(
-      new URL("./editor/js/editor-libs/codemirror-editor.js", import.meta.url),
+      new URL("./editor/js/editor-libs/codemirror-editor.ts", import.meta.url),
     ),
   },
   output: {
