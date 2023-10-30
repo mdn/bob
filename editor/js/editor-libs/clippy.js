@@ -9,10 +9,7 @@ import { getEditorContent } from "./codemirror-editor.js";
  * @param {HTMLButtonElement} copyButton - Button which can trigger copy action
  * @param {HTMLElement} toastElement - The feedback message container
  */
-function setToastPosition(
-  copyButton,
-  toastElement
-) {
+function setToastPosition(copyButton, toastElement) {
   /** @var {HTMLElement} */
   const copyBtnParent = copyButton.offsetParent;
   /* calculate the base top offset by combining the top
@@ -29,13 +26,10 @@ function setToastPosition(
 
 /**
  * Makes copyButton copy the textual content of the codeMirrorEditor upon click and show a toast with the text "Copied!"
- * @param {HTMLButtonElement} copyButton 
- * @param {EditorView} codeMirrorEditor 
+ * @param {HTMLButtonElement} copyButton
+ * @param {EditorView} codeMirrorEditor
  */
-export function addClippy(
-  copyButton,
-  codeMirrorEditor
-) {
+export function addClippy(copyButton, codeMirrorEditor) {
   copyButton.addEventListener("click", () => {
     const currentText = getEditorContent(codeMirrorEditor);
     copyText(currentText);
@@ -45,8 +39,8 @@ export function addClippy(
 }
 
 /**
- * 
- * @param {string} text 
+ *
+ * @param {string} text
  */
 function copyText(text) {
   if (navigator.clipboard)
