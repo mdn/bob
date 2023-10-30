@@ -1,6 +1,3 @@
-// TODO This is a temporary ts-ignore, used until converting codemirror-editor to ts
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { getEditorContent } from "./codemirror-editor.js";
 
 /**
