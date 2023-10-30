@@ -59,14 +59,17 @@ function showToastCopied(copyButton) {
   /** @var {HTMLElement} */
   const toastElement = document.getElementById("user-message");
 
-  toastElement.classList.add("show");
-  toastElement.setAttribute("aria-hidden", "false");
+  const toggleToast = (show) => {
+    toastElement.classList.toggle("show", show);
+    toastElement.setAttribute("aria-hidden", JSON.stringify(!show));
+  };
+
+  toggleToast(true);
 
   setToastPosition(copyButton, toastElement);
 
   window.setTimeout(() => {
-    toastElement.classList.remove("show");
-    toastElement.setAttribute("aria-hidden", "true");
+    toggleToast(false);
   }, 1000);
 }
 
