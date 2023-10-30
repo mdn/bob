@@ -80,11 +80,9 @@ export function toggleClippy(container) {
   const activeClippy = container.querySelector(".copy");
   const clippyButtons = document.querySelectorAll(".copy");
 
-  for (let i = 0, l = clippyButtons.length; i < l; i++) {
-    clippyButtons[i].classList.add("hidden");
-    clippyButtons[i].setAttribute("aria-hidden", "true");
+  for (const clippyButton of clippyButtons) {
+    const hide = clippyButton !== activeClippy;
+    clippyButton.classList.toggle("hidden", hide);
+    clippyButton.setAttribute("aria-hidden", JSON.stringify(hide));
   }
-
-  activeClippy.classList.remove("hidden");
-  activeClippy.setAttribute("aria-hidden", "false");
 }
