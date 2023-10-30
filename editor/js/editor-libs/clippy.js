@@ -2,19 +2,19 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { getEditorContent } from "./codemirror-editor.js";
-import { EditorView } from "codemirror";
 
 /**
  * Positions the copy to clipboard success message based on the
  * position of the button that triggered the copy event.
- * @param copyButton - Button which can trigger copy action
- * @param toastElement - The feedback message container
+ * @param {HTMLButtonElement} copyButton - Button which can trigger copy action
+ * @param {HTMLElement} toastElement - The feedback message container
  */
 function setToastPosition(
-  copyButton: HTMLButtonElement,
-  toastElement: HTMLElement
+  copyButton,
+  toastElement
 ) {
-  const copyBtnParent = copyButton.offsetParent as HTMLElement;
+  /** @var {HTMLElement} */
+  const copyBtnParent = copyButton.offsetParent;
   /* calculate the base top offset by combining the top
     offset of the button's parent element, and the height
     of the button */
@@ -29,10 +29,12 @@ function setToastPosition(
 
 /**
  * Makes copyButton copy the textual content of the codeMirrorEditor upon click and show a toast with the text "Copied!"
+ * @param {HTMLButtonElement} copyButton 
+ * @param {EditorView} codeMirrorEditor 
  */
 export function addClippy(
-  copyButton: HTMLButtonElement,
-  codeMirrorEditor: EditorView
+  copyButton,
+  codeMirrorEditor
 ) {
   copyButton.addEventListener("click", () => {
     const currentText = getEditorContent(codeMirrorEditor);
@@ -42,7 +44,11 @@ export function addClippy(
   });
 }
 
-function copyText(text: string) {
+/**
+ * 
+ * @param {string} text 
+ */
+function copyText(text) {
   if (navigator.clipboard)
     // Available only in HTTPs & localhost
     navigator.clipboard.writeText(text);
@@ -50,10 +56,11 @@ function copyText(text: string) {
 
 /**
  * Displays and adjusts position of the "Copied!" toast
- * @param copyButton - Button which can trigger copy action
+ * @param {HTMLButtonElement} copyButton - Button which can trigger copy action
  */
-function showToastCopied(copyButton: HTMLButtonElement) {
-  const toastElement = document.getElementById("user-message") as HTMLElement;
+function showToastCopied(copyButton) {
+  /** @var {HTMLElement} */
+  const toastElement = document.getElementById("user-message");
 
   toastElement.classList.add("show");
   toastElement.setAttribute("aria-hidden", "false");
@@ -69,10 +76,11 @@ function showToastCopied(copyButton: HTMLButtonElement) {
 /**
  * Hides all instances of the clippy button, then shows
  * the button in the container element passed in
- * @param {Object} container - The container containing the button to show
+ * @param {HTMLElement} container - The container containing the button to show
  */
-export function toggleClippy(container: HTMLElement) {
-  const activeClippy = container.querySelector(".copy") as HTMLElement;
+export function toggleClippy(container) {
+  /** @var {HTMLElement} */
+  const activeClippy = container.querySelector(".copy");
   const clippyButtons = document.querySelectorAll(".copy");
 
   for (let i = 0, l = clippyButtons.length; i < l; i++) {
