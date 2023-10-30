@@ -43,9 +43,12 @@ export function addClippy(copyButton, codeMirrorEditor) {
  * @param {string} text
  */
 function copyText(text) {
-  if (navigator.clipboard)
+  try {
     // Available only in HTTPs & localhost
     navigator.clipboard.writeText(text);
+  } catch (err) {
+    console.warn(`Unable to write text to clipboard`, err);
+  }
 }
 
 /**
