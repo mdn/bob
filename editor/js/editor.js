@@ -81,7 +81,7 @@ import "../css/tabbed-editor.css";
     function setContent(propertyName, editorName) {
       if (tabby.editors[editorName].editor) {
         editorContents[propertyName] = getEditorContent(
-          tabby.editors[editorName].editor
+          tabby.editors[editorName].editor,
         );
       } else {
         editorContents[propertyName] = "";
@@ -113,7 +113,7 @@ import "../css/tabbed-editor.css";
     mceUtils.scrollToAnchors(
       contentWindow,
       contentBody,
-      contentBody.querySelectorAll('a[href^="#"]')
+      contentBody.querySelectorAll('a[href^="#"]'),
     );
 
     adjustFrameHeight();
@@ -178,7 +178,7 @@ import "../css/tabbed-editor.css";
 
   if (editorType === "mathml" && !isMathMLSupported()) {
     const notSupportedWarning = document.getElementById(
-      "warning-mathml-not-supported"
+      "warning-mathml-not-supported",
     );
     notSupportedWarning.classList.remove("hidden");
     return;

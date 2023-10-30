@@ -11,10 +11,7 @@
     "strict": true,
     "alwaysStrict": true,
     "skipLibCheck": true,
-    // Temporary options
-    "noImplicitAny": false,
-    "strictNullChecks": false,
-    "exactOptionalPropertyTypes": false
+    "exactOptionalPropertyTypes": true
   },
   "ts-node": {
     "esm": true,

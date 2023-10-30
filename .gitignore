@@ -57,3 +57,7 @@ typings/
 
 # project specific
 /docs/
+
+# Built TypeScript files
+lib/*.js
+webpack.config.js

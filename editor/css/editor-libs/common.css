@@ -2,7 +2,8 @@
   --font-fallback: BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-sans;
   --font-body: Inter, var(--font-fallback);
-  --font-code: Consolas, "Courier New", monospace;
+  --font-code: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
   --type-body-l: 400 1rem/1.1876 var(--font-body); /* 16px/19px */
   --type-emphasis-m: 600 0.8125rem/1.23 var(--font-body); /* 13px/16px */
   --font-heading: var(--font-body);
@@ -108,6 +109,7 @@
   --http-accent-background-color: #009a4630;
   --apis-accent-background-color: #9b65ff30;
   --learn-accent-background-color: #ff1f7230;
+  --selection-background-color: #d3e7ff;
   --plus-accent-engage: rgba(255, 42, 81, 0.7);
   --html-accent-engage: rgba(255, 42, 81, 0.7);
   --css-accent-engage: rgba(0, 133, 242, 0.7);
@@ -132,6 +134,7 @@
   --text-primary-green: #007936;
   --text-primary-blue: #0069c2;
   --text-primary-yellow: #746a00;
+  color-scheme: light;
 }
 
 .theme-dark {
@@ -170,7 +173,7 @@
   --field-focus-border: #fff;
   --code-token-tag: #c1cff1;
   --code-token-punctuation: #9e9e9e;
-  --code-token-attribute-name: #ff97a0;
+  --code-token-attribute-name: #ffbb88;
   --code-token-attribute-value: #00d061;
   --code-token-comment: #9e9e9e;
   --code-token-default: #fff;
@@ -217,11 +220,13 @@
   --apis-accent-engage: rgba(174, 138, 255, 0.7);
   --learn-accent-engage: rgba(255, 109, 145, 0.7);
   --modal-backdrop-color: rgba(27, 27, 27, 0.7);
+  --selection-background-color: #233244;
   --blend-color: #00080;
   --text-primary-red: #ff97a0;
   --text-primary-green: #00d061;
   --text-primary-blue: #8cb4ff;
   --text-primary-yellow: #c7b700;
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: light) {
@@ -317,6 +322,7 @@
     --http-accent-background-color: #009a4630;
     --apis-accent-background-color: #9b65ff30;
     --learn-accent-background-color: #ff1f7230;
+    --selection-background-color: #d3e7ff;
     --plus-accent-engage: rgba(255, 42, 81, 0.7);
     --html-accent-engage: rgba(255, 42, 81, 0.7);
     --css-accent-engage: rgba(0, 133, 242, 0.7);
@@ -341,6 +347,7 @@
     --text-primary-green: #007936;
     --text-primary-blue: #0069c2;
     --text-primary-yellow: #746a00;
+    color-scheme: light;
   }
 }
 
@@ -382,7 +389,7 @@
     --field-focus-border: #fff;
     --code-token-tag: #c1cff1;
     --code-token-punctuation: #9e9e9e;
-    --code-token-attribute-name: #ff97a0;
+    --code-token-attribute-name: #ffbb88;
     --code-token-attribute-value: #00d061;
     --code-token-comment: #9e9e9e;
     --code-token-default: #fff;
@@ -434,6 +441,8 @@
     --text-primary-green: #00d061;
     --text-primary-blue: #8cb4ff;
     --text-primary-yellow: #c7b700;
+    --selection-background-color: #233244;
+    color-scheme: dark;
   }
 }
 
@@ -520,10 +529,16 @@ body {
   z-index: 4;
 }
 
+.warning-container {
+  border: 1px solid var(--border-primary);
+  border-top: 0;
+  border-radius: 0 0 var(--button-radius) var(--button-radius);
+  padding: 16px;
+}
+
 .warning {
   position: relative;
   padding: 1rem 1rem 1rem 3rem;
-  margin: 1rem;
   background-color: var(--background-warning);
   border-radius: var(--elem-radius);
   border: 1px solid var(--border-secondary);

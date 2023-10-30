@@ -11,7 +11,7 @@ const config: Configuration = {
   mode: "production",
   plugins: [
     new webpack.BannerPlugin(
-      "mdn-bob (Builder of Bits) - © Mozilla Corporation, MIT license"
+      "mdn-bob (Builder of Bits) - © Mozilla Corporation, MIT license",
     ),
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
@@ -24,24 +24,24 @@ const config: Configuration = {
     },
     "editor-css": {
       import: fileURLToPath(
-        new URL("./editor/js/editable-css.js", import.meta.url)
+        new URL("./editor/js/editable-css.js", import.meta.url),
       ),
       dependOn: "codemirror",
     },
     "editor-js": {
       import: fileURLToPath(
-        new URL("./editor/js/editable-js.js", import.meta.url)
+        new URL("./editor/js/editable-js.js", import.meta.url),
       ),
       dependOn: "codemirror",
     },
     "editor-wat": {
       import: fileURLToPath(
-        new URL("./editor/js/editable-wat.js", import.meta.url)
+        new URL("./editor/js/editable-wat.js", import.meta.url),
       ),
       dependOn: "codemirror",
     },
     codemirror: fileURLToPath(
-      new URL("./editor/js/editor-libs/codemirror-editor.js", import.meta.url)
+      new URL("./editor/js/editor-libs/codemirror-editor.js", import.meta.url),
     ),
   },
   output: {
@@ -61,11 +61,16 @@ const config: Configuration = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: (resourcePath, context) => {
+              publicPath: (
+                resourcePath: string,
+                rootContext: string,
+              ): string => {
                 // publicPath is the relative path of the resource to the context
                 // e.g. for ./css/admin/main.css the publicPath will be ../../
                 // while for ./css/main.css the publicPath will be ../
-                return path.relative(path.dirname(resourcePath), context) + "/";
+                return (
+                  path.relative(path.dirname(resourcePath), rootContext) + "/"
+                );
               },
             },
           },

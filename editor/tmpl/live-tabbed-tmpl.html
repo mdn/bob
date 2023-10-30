@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -15,13 +15,18 @@
       <button id="reset" class="reset" type="button">Reset</button>
     </header>
     <noscript>
-      <div id="warning-no-script" class="warning">
-        The interactive example cannot be shown because JavaScript is disabled.
+      <div id="warning-no-script" class="warning-container">
+        <div class="warning">
+          The interactive example cannot be shown because JavaScript is
+          disabled.
+        </div>
       </div>
     </noscript>
-    <div id="warning-mathml-not-supported" class="warning hidden">
-      The interactive example cannot be shown because MathML is not supported by
-      your browser.
+    <div id="warning-mathml-not-supported" class="warning-container hidden">
+      <div class="warning">
+        The interactive example cannot be shown because MathML is not supported
+        by your browser.
+      </div>
     </div>
     <div
       id="editor-container"

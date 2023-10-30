@@ -38,6 +38,15 @@ export function applyCode(code, choice, targetElement, immediateInvalidChange) {
 }
 
 /**
+ * Creates a temporary element and tests whether any of the provided CSS sets of declarations are fully supported by the user's browser
+ * @param {Array} declarationSets - Array in which every element is one or multiple declarations separated by semicolons
+ */
+export function isAnyDeclarationSetSupported(declarationSets) {
+  const tmpElem = document.createElement("div");
+  return declarationSets.some(isCodeSupported.bind(null, tmpElem));
+}
+
+/**
  * Checks if every passed declaration is supported by the browser.
  * In case browser recognizes property with vendor prefix(like -webkit-), lacking support for unprefixed property is ignored.
  * Properties with vendor prefix not recognized by the browser are always ignored.

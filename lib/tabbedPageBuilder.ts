@@ -1,30 +1,31 @@
 import fse from "fs-extra";
 import * as pageBuilderUtils from "./pageBuilderUtils.js";
 import * as processor from "./processor.js";
-import CleanCSS from "clean-css";
+import { minifyCSS } from "./processor.js";
+import { TabbedPage } from "../types/types";
 
 /**
  * Replace the template tag with the CSS source, or an empty string
- * @param {Object} currentPage - The current page as an Object
- * @param {String} tmpl - The template as a string
+ * @param currentPage - The current page as an Object
+ * @param tmpl - The template as a string
  * @returns the processed template string
  */
-function addCSS(currentPage, tmpl) {
+function addCSS(currentPage: TabbedPage, tmpl: string) {
   return tmpl.replace(
     "%example-css-src%",
     currentPage.cssExampleSrc
       ? fse.readFileSync(currentPage.cssExampleSrc, "utf8")
-      : ""
+      : "",
   );
 }
 
 /**
  * Replace the template tag with the preprocessed HTML source
- * @param {Object} currentPage - The current page as an Object
- * @param {String} tmpl - The template as a string
+ * @param currentPage - The current page as an Object
+ * @param tmpl - The template as a string
  * @returns the processed template string
  */
-function addHTML(currentPage, tmpl) {
+function addHTML(currentPage: TabbedPage, tmpl: string) {
   const exampleCode = fse.readFileSync(currentPage.exampleCode, "utf8");
   const processedHTML = processor.preprocessHTML(exampleCode);
   return tmpl.replace("%example-code%", () => processedHTML);
@@ -32,16 +33,16 @@ function addHTML(currentPage, tmpl) {
 
 /**
  * Replace the template tag with the JavaScript source, or an empty string
- * @param {Object} currentPage - The current page as an Object
- * @param {String} tmpl - The template as a string
+ * @param currentPage - The current page as an Object
+ * @param tmpl - The template as a string
  * @returns the processed template string
  */
-function addJS(currentPage, tmpl) {
+function addJS(currentPage: TabbedPage, tmpl: string) {
   tmpl = tmpl.replace(
     "%example-js-src%",
     currentPage.jsExampleSrc
       ? fse.readFileSync(currentPage.jsExampleSrc, "utf8")
-      : ""
+      : "",
   );
 
   return tmpl;
@@ -50,16 +51,22 @@ function addJS(currentPage, tmpl) {
 /**
  * Adds optional hidden CSS to tabbed example.
  * Its primary use case is adding new font to the example, without displaying @font-face to the user
- * @param {Object} currentPage - The current page as an Object
- * @param {String} tmpl - The template as a string
+ * @param currentPage - The current page as an Object
+ * @param tmpl - The template as a string
  * @returns the processed template string
  */
-function addHiddenCSS(currentPage, tmpl) {
+function addHiddenCSS(currentPage: TabbedPage, tmpl: string) {
+  function getHiddenCSS(path: string) {
+    const content = fse.readFileSync(path, "utf8");
+    return minifyCSS(content, path);
+  }
   if (currentPage.cssHiddenSrc) {
-    const content = fse.readFileSync(currentPage.cssHiddenSrc, "utf8");
-    const minified = new CleanCSS().minify(content).styles;
+    const paths = Array.isArray(currentPage.cssHiddenSrc)
+      ? currentPage.cssHiddenSrc
+      : [currentPage.cssHiddenSrc];
+    const hiddenCSS = paths.map(getHiddenCSS).join("");
 
-    return tmpl.replace("%example-hidden-css-src%", minified);
+    return tmpl.replace("%example-hidden-css-src%", hiddenCSS);
   } else {
     return tmpl.replace("%example-hidden-css-src%", "");
   }
@@ -67,11 +74,11 @@ function addHiddenCSS(currentPage, tmpl) {
 
 /**
  * Builds and returns the HTML source for a tabbed example
- * @param {String} tmpl - The template as a string
- * @param {Object} currentPage - The currentPage meta data as an Object
- * @returns {String} The HTML for a tabbed example
+ * @param tmpl - The template as a string
+ * @param currentPage - The currentPage meta data as an Object
+ * @returns The HTML for a tabbed example
  */
-export function buildTabbedExample(tmpl, currentPage) {
+export function buildTabbedExample(currentPage: TabbedPage, tmpl: string) {
   tmpl = pageBuilderUtils.setMainTitle(currentPage, tmpl);
   tmpl = pageBuilderUtils.setEditorHeight(currentPage, tmpl);
   tmpl = pageBuilderUtils.setActiveTabs(currentPage, tmpl);
