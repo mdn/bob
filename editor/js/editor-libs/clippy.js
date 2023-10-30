@@ -1,78 +1,88 @@
-import * as mceUtils from "./mce-utils.js";
-import Clipboard from "clipboard";
+import { getEditorContent } from "./codemirror-editor.js";
 
 /**
  * Positions the copy to clipboard success message based on the
  * position of the button that triggered the copy event.
- * @param {Object} clippyEvent - The clipboardjs event object
- * @param {Object} msgContainer - The feedback message container
+ * @param {HTMLButtonElement} copyButton - Button which can trigger copy action
+ * @param {HTMLElement} toastElement - The feedback message container
  */
-function setClippyPosition(clippyEvent, msgContainer) {
-  const trigger = clippyEvent.trigger;
-  const triggerParent = trigger.offsetParent;
+function setToastPosition(copyButton, toastElement) {
+  /** @var {HTMLElement} */
+  const copyBtnParent = copyButton.offsetParent;
   /* calculate the base top offset by combining the top
     offset of the button's parent element, and the height
     of the button */
-  const positionTopBasis = triggerParent.offsetTop + trigger.clientHeight;
+  const positionTopBasis = copyBtnParent.offsetTop + copyButton.clientHeight;
   // Add 10px padding to the base to avoid overlapping the button
   const positionTop = positionTopBasis + 10 + "px";
-  const positionLeft = trigger.offsetLeft + "px";
+  const positionLeft = copyButton.offsetLeft + "px";
 
-  msgContainer.style.top = positionTop;
-  msgContainer.style.left = positionLeft;
+  toastElement.style.top = positionTop;
+  toastElement.style.left = positionLeft;
 }
 
 /**
- * Initialise clipboard.js, and setup success handler
+ * Makes copyButton copy the textual content of the codeMirrorEditor upon click and show a toast with the text "Copied!"
+ * @param {HTMLButtonElement} copyButton
+ * @param {EditorView} codeMirrorEditor
  */
-export function addClippy() {
-  const clipboard = new Clipboard(".copy", {
-    target: function (clippyButton) {
-      const targetAttr = clippyButton.dataset.clipboardTarget;
-      if (targetAttr) {
-        // The attribute will override the automated target selection
-        return document.querySelector(targetAttr);
-      } else {
-        // Get its parent until it finds an example choice
-        const choiceElem = mceUtils.findParentChoiceElem(clippyButton);
-        // Use the first code element to prevent extra text
-        const firstCodeElem = choiceElem.getElementsByTagName("code")[0];
-        return firstCodeElem;
-      }
-    },
+export function addClippy(copyButton, codeMirrorEditor) {
+  copyButton.addEventListener("click", () => {
+    const currentText = getEditorContent(codeMirrorEditor);
+    copyText(currentText);
+
+    showToastCopied(copyButton);
   });
+}
 
-  clipboard.on("success", (event) => {
-    const msgContainer = document.getElementById("user-message");
+/**
+ *
+ * @param {string} text
+ */
+function copyText(text) {
+  try {
+    // Available only in HTTPs & localhost
+    navigator.clipboard.writeText(text);
+  } catch (err) {
+    console.warn(`Unable to write text to clipboard`, err);
+  }
+}
 
-    msgContainer.classList.add("show");
-    msgContainer.setAttribute("aria-hidden", false);
+/**
+ * Displays and adjusts position of the "Copied!" toast
+ * @param {HTMLButtonElement} copyButton - Button which can trigger copy action
+ */
+function showToastCopied(copyButton) {
+  /** @var {HTMLElement} */
+  const toastElement = document.getElementById("user-message");
 
-    setClippyPosition(event, msgContainer);
+  const toggleToast = (show) => {
+    toastElement.classList.toggle("show", show);
+    toastElement.setAttribute("aria-hidden", JSON.stringify(!show));
+  };
 
-    window.setTimeout(() => {
-      msgContainer.classList.remove("show");
-      msgContainer.setAttribute("aria-hidden", true);
-    }, 1000);
+  toggleToast(true);
 
-    event.clearSelection();
-  });
+  setToastPosition(copyButton, toastElement);
+
+  window.setTimeout(() => {
+    toggleToast(false);
+  }, 1000);
 }
 
 /**
  * Hides all instances of the clippy button, then shows
  * the button in the container element passed in
- * @param {Object} container - The container containing the button to show
+ * @param {HTMLElement} container - The container containing the button to show
  */
 export function toggleClippy(container) {
+  /** @var {HTMLElement} */
   const activeClippy = container.querySelector(".copy");
   const clippyButtons = document.querySelectorAll(".copy");
 
-  for (let i = 0, l = clippyButtons.length; i < l; i++) {
-    clippyButtons[i].classList.add("hidden");
-    clippyButtons[i].setAttribute("aria-hidden", true);
+  for (const clippyButton of clippyButtons) {
+    const hide = clippyButton !== activeClippy;
+    clippyButton.classList.toggle("hidden", hide);
+    clippyButton.setAttribute("aria-hidden", JSON.stringify(hide));
   }
-
-  activeClippy.classList.remove("hidden");
-  activeClippy.setAttribute("aria-hidden", false);
 }
