@@ -51,8 +51,8 @@ const config: Configuration = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        use: "ts-loader",
+        test: /\.([cm]?ts|tsx)$/,
+        use: "swc-loader",
         exclude: /node_modules/,
       },
       {
@@ -86,6 +86,11 @@ const config: Configuration = {
   },
   resolve: {
     extensions: [".ts", ".js"],
+    extensionAlias: {
+      ".js": [".js", ".ts"],
+      ".cjs": [".cjs", ".cts"],
+      ".mjs": [".mjs", ".mts"],
+    },
     fallback: {
       fs: false,
       path: require.resolve("path-browserify"),
