@@ -43,10 +43,11 @@ import "../css/editable-css.css";
       const choiceButton = document.createElement("button");
       const choiceButtonText = document.createElement("span");
       const choiceCode = exampleChoice.querySelector("code");
+      const copyButton = exampleChoice.getElementsByClassName("copy")[0];
 
       originalChoices.push(choiceCode.textContent);
 
-      applyCodeMirror(
+      const codeMirrorEditor = applyCodeMirror(
         exampleChoice.querySelector("pre"),
         choiceCode.textContent,
       );
@@ -64,6 +65,8 @@ import "../css/editable-css.css";
       }
 
       choiceCode.remove();
+
+      clippy.addClippy(copyButton, codeMirrorEditor);
     }
 
     mceEvents.register();
@@ -72,8 +75,6 @@ import "../css/editable-css.css";
     handleChoiceHover();
     // Adding or removing class "invalid"
     cssEditorUtils.applyInitialSupportWarningState(exampleChoices);
-
-    clippy.addClippy();
   }
 
   /**

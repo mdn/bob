@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.5.0](https://github.com/mdn/bob/compare/v3.4.0...v3.5.0) (2023-10-30)
+
+
+### Features
+
+* **github:** add CODEOWNERS ([#1558](https://github.com/mdn/bob/issues/1558)) ([37f01a4](https://github.com/mdn/bob/commit/37f01a469d77d79b9730f4f7bf4b37b3672c5313))
+
+
+### Bug Fixes
+
+* **clippy:** reimplement copy logic for CSS editor ([#1170](https://github.com/mdn/bob/issues/1170)) ([e7c90d6](https://github.com/mdn/bob/commit/e7c90d621de5e188ff548c11c018243533666121))
+* **js:** remove unused placeholders ([#1559](https://github.com/mdn/bob/issues/1559)) ([10b6532](https://github.com/mdn/bob/commit/10b6532093aaf16292fce1cf4b4e661c25209f2b))
+
 ## [3.4.0](https://github.com/mdn/bob/compare/v3.3.0...v3.4.0) (2023-08-02)
 
 
