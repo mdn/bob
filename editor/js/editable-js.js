@@ -88,10 +88,7 @@ import {
     );
   }
 
-  /* only execute JS in supported browsers. As `document.all`
-    is a non standard object available only in IE10 and older,
-    this will stop JS from executing in those versions. */
-  if (!document.all && featureDetector.isDefined(exampleFeature)) {
+  if (featureDetector.isDefined(exampleFeature)) {
     document.documentElement.classList.add("js");
 
     initInteractiveEditor();
