@@ -1,3 +1,4 @@
+import type { EditorView } from "codemirror";
 import * as featureDetector from "./editor-libs/feature-detector.js";
 import mceConsole from "./editor-libs/console.js";
 import * as mceEvents from "./editor-libs/events.js";
@@ -12,13 +13,14 @@ import {
 } from "./editor-libs/codemirror-editor.js";
 
 (function () {
-  const codeBlock = document.getElementById("static-js");
-  const exampleFeature = codeBlock.dataset["feature"];
-  const execute = document.getElementById("execute");
-  const output = document.querySelector("#console code");
-  const reset = document.getElementById("reset");
+  const codeBlock = document.getElementById("static-js") as HTMLElement;
 
-  let codeMirror;
+  const exampleFeature = codeBlock.dataset["feature"] || "";
+  const execute = document.getElementById("execute") as HTMLElement;
+  const output = document.querySelector("#console code") as HTMLElement;
+  const reset = document.getElementById("reset") as HTMLElement;
+
+  let codeMirror: EditorView | null;
   let staticContainer;
   let liveContainer;
 
@@ -28,7 +30,11 @@ import {
    * output container
    */
   function applyCode() {
-    const currentValue = getEditorContent(codeMirror);
+    if (!codeMirror) {
+      initCodeMirror();
+      // "as EditorView" on next line needed to trick TypeScript
+    }
+    const currentValue = getEditorContent(codeMirror as EditorView);
     updateOutput(currentValue);
   }
 
@@ -36,11 +42,11 @@ import {
    * Initialize CodeMirror
    */
   function initCodeMirror() {
-    const editorContainer = document.getElementById("editor");
+    const editorContainer = document.getElementById("editor") as HTMLElement;
 
     codeMirror = initCodeEditor(
       editorContainer,
-      codeBlock.textContent,
+      codeBlock.textContent || "",
       languageJavaScript(),
     );
   }
@@ -51,15 +57,15 @@ import {
   function initInteractiveEditor() {
     /* If the `data-height` attribute is defined on the `codeBlock`, set
            the value of this attribute as a class on the editor element. */
-    if (codeBlock.dataset["height"]) {
-      const editor = document.getElementById("editor");
+    if (codeBlock?.dataset["height"]) {
+      const editor = document.getElementById("editor") as HTMLElement;
       editor.classList.add(codeBlock.dataset["height"]);
     }
 
-    staticContainer = document.getElementById("static");
+    staticContainer = document.getElementById("static") as HTMLElement;
     staticContainer.classList.add("hidden");
 
-    liveContainer = document.getElementById("live");
+    liveContainer = document.getElementById("live") as HTMLElement;
     liveContainer.classList.remove("hidden");
 
     mceConsole();
@@ -73,7 +79,7 @@ import {
    * to the output container.
    * @param {String} exampleCode - The code to execute
    */
-  function updateOutput(exampleCode) {
+  function updateOutput(exampleCode: string) {
     output.classList.add("fade-in");
 
     try {
@@ -88,10 +94,7 @@ import {
     );
   }
 
-  /* only execute JS in supported browsers. As `document.all`
-    is a non standard object available only in IE10 and older,
-    this will stop JS from executing in those versions. */
-  if (!document.all && featureDetector.isDefined(exampleFeature)) {
+  if (featureDetector.isDefined(exampleFeature)) {
     document.documentElement.classList.add("js");
 
     initInteractiveEditor();

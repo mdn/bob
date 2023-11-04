@@ -1,7 +1,7 @@
 /**
  * Adds key & value to {@link localStorage}, without throwing an exception when it is unavailable
  */
-export function storeItem(key, value) {
+export function storeItem(key: string, value: any) {
   try {
     localStorage.setItem(key, value);
   } catch (err) {
@@ -13,7 +13,7 @@ export function storeItem(key, value) {
  * @returns the value of a given key from {@link localStorage}, or null when the key wasn't found.
  * It doesn't throw an exception when {@link localStorage} is unavailable
  */
-export function getStorageItem(key) {
+export function getStorageItem(key: string) {
   try {
     return localStorage.getItem(key);
   } catch (err) {

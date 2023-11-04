@@ -10,6 +10,7 @@ import {
   HighlightStyle,
   LRLanguage,
 } from "@codemirror/language";
+import type { TagStyle, Language } from "@codemirror/language";
 import { closeBrackets, closeBracketsKeymap } from "@codemirror/autocomplete";
 import { lintKeymap } from "@codemirror/lint";
 import { javascript, javascriptLanguage } from "@codemirror/lang-javascript";
@@ -130,8 +131,11 @@ const WAST_HIGHLIGHT_STYLE_SPECS = [
  * @param specs - an array that associates the given styles to the given tags
  * @return {Extension} - Code Mirror extension attaching class names to a given tags
  */
-function highlighting(specs) {
-  return syntaxHighlighting(HighlightStyle.define(specs), { fallback: false });
+function highlighting(specs: TagStyle[]) {
+  const style = HighlightStyle.define(specs);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore -- Due to a typedef bug, we have no choice but to ignore errors
+  return syntaxHighlighting(style, { fallback: false });
 }
 
 /**
@@ -141,13 +145,19 @@ function highlighting(specs) {
  * @param nodeName - optional name of Syntax Nodes for which extension will be active
  * @return {Extension} - Code Mirror extension attaching class names to a given tags, but only to a given language or node tree
  */
-function scopedHighlighting(specs, scope, nodeName = undefined) {
+function scopedHighlighting(
+  specs: TagStyle[],
+  scope: Language | NodeType,
+  nodeName?: string,
+) {
   const style = HighlightStyle.define(specs, { scope: scope });
   if (nodeName) {
     type Writeable<T> = { -readonly [P in keyof T]: T[P] };
     (style as Writeable<typeof style>).scope = (node: NodeType) =>
       node.name === nodeName; // This line overrides internal scope check, because alternative parsers don't attach chosen language to props
   }
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore -- Due to a typedef bug, we have no choice but to ignore errors
   return syntaxHighlighting(style, { fallback: false });
 }
 
@@ -155,8 +165,8 @@ function scopedHighlighting(specs, scope, nodeName = undefined) {
  * @param callback {function(): *} returning a value to memoize
  * @return {*} - first result of provided function
  */
-function memo(callback) {
-  let value;
+function memo(callback: () => any) {
+  let value: any;
   return () => (value === undefined ? ((value = callback()), value) : value);
 }
 
@@ -266,9 +276,9 @@ export const languageHTML = memo(() => {
  * @return {EditorView} - Code editor which should be saved, so it's content can be fetched by {getEditorContent}
  */
 export function initCodeEditor(
-  editorContainer,
-  initialContent,
-  language,
+  editorContainer: HTMLElement,
+  initialContent: string,
+  language: { extensions: any },
   options = { lineNumbers: true },
 ) {
   const extensions = [...BASE_EXTENSIONS, ...language.extensions];
@@ -289,6 +299,6 @@ export function initCodeEditor(
  * @param editorView - code editor returned by {initCodeEditor}
  * @return {string} - current textual content of provided editor
  */
-export function getEditorContent(editorView) {
+export function getEditorContent(editorView: EditorView) {
   return editorView.state.doc.toString();
 }

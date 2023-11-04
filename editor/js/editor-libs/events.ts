@@ -14,8 +14,8 @@ export function addCSSEditorEventListeners(exampleChoiceList: HTMLElement) {
 
     if (exampleChoiceParent) {
       cssEditorUtils.applyCode(
-        exampleChoiceParent.textContent,
-        exampleChoiceParent.closest(".example-choice"),
+        exampleChoiceParent.textContent || "",
+        exampleChoiceParent.closest(".example-choice") as HTMLElement,
       );
     }
   });

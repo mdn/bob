@@ -1,14 +1,16 @@
-export let editTimer = undefined;
+export let editTimer: NodeJS.Timeout | undefined;
 
 export function applyCode(
-  code,
-  choice,
-  targetElement?,
-  immediateInvalidChange?
+  code: string,
+  choice: HTMLElement,
+  targetElement?: HTMLElement,
+  immediateInvalidChange: boolean = false,
 ) {
   // http://regexr.com/3fvik
   const cssCommentsMatch = /(\/\*)[\s\S]+(\*\/)/g;
-  const element = targetElement || document.getElementById("example-element");
+  const element =
+    targetElement ||
+    (document.getElementById("example-element") as HTMLElement);
 
   // strip out any CSS comments before applying the code
   code = code.replace(cssCommentsMatch, "");
@@ -46,7 +48,7 @@ export function applyCode(
  * Creates a temporary element and tests whether any of the provided CSS sets of declarations are fully supported by the user's browser
  * @param {Array} declarationSets - Array in which every element is one or multiple declarations separated by semicolons
  */
-export function isAnyDeclarationSetSupported(declarationSets) {
+export function isAnyDeclarationSetSupported(declarationSets: any[]) {
   const tmpElem = document.createElement("div");
   return declarationSets.some(isCodeSupported.bind(null, tmpElem));
 }
@@ -59,7 +61,7 @@ export function isAnyDeclarationSetSupported(declarationSets) {
  * @param declarations - list of css declarations with no curly brackets. They need to be separated by ";" and declaration key-value needs to be separated by ":". Function expects no comments.
  * @returns {boolean} - true if every declaration is supported by the browser. Properties with vendor prefix are excluded.
  */
-export function isCodeSupported(element, declarations) {
+export function isCodeSupported(element: HTMLElement, declarations: string) {
   const vendorPrefixMatch = /^-(?:webkit|moz|ms|o)-/;
   const style = element.style;
   // Expecting declarations to be separated by ";"
@@ -72,7 +74,7 @@ export function isCodeSupported(element, declarations) {
   /**
    * @returns {boolean} - true if declaration starts with -webkit-, -moz-, -ms- or -o-
    */
-  function hasVendorPrefix(declaration) {
+  function hasVendorPrefix(declaration: string) {
     return vendorPrefixMatch.test(declaration);
   }
 
@@ -82,7 +84,7 @@ export function isCodeSupported(element, declarations) {
    * @param declaration - single css declaration, with not white space at the beginning
    * @returns {string} - property name without vendor prefix.
    */
-  function getPropertyNameNoPrefix(declaration) {
+  function getPropertyNameNoPrefix(declaration: string) {
     const prefixMatch = vendorPrefixMatch.exec(declaration);
     const prefix = prefixMatch === null ? "" : prefixMatch[0];
     const declarationNoPrefix =
@@ -134,10 +136,12 @@ export function isCodeSupported(element, declarations) {
  * This function will change styles of 'example-element', so it is important to apply them again.
  * @param choices - elements containing element code, containing css declarations to apply
  */
-export function applyInitialSupportWarningState(choices) {
+export function applyInitialSupportWarningState(
+  choices: NodeListOf<HTMLElement>,
+) {
   for (const choice of choices) {
-    const codeBlock = choice.querySelector(".cm-content");
-    applyCode(codeBlock.textContent, choice, undefined, true);
+    const codeBlock = choice.querySelector(".cm-content") as HTMLElement;
+    applyCode(codeBlock.textContent || "", choice, undefined, true);
   }
 }
 
@@ -145,20 +149,22 @@ export function applyInitialSupportWarningState(choices) {
  * Sets the choice to selected, changes the nested code element to be editable,
  * turns of spellchecking. Lastly, it applies the code to the example element
  * by calling applyCode.
- * @param {Object} choice - The selected `example-choice` element
+ * @param {HTMLElement} choice - The selected `example-choice` element
  */
-export function choose(choice) {
+export function choose(choice: HTMLElement) {
   choice.classList.add("selected");
-  const codeBlock = choice.querySelector(".cm-content");
-  applyCode(codeBlock.textContent, choice);
+  const codeBlock = choice.querySelector(".cm-content") as HTMLElement;
+  applyCode(codeBlock.textContent || "", choice);
 }
 
 /**
  * Resets the default example to visible but, only if it is currently hidden
  */
 export function resetDefault() {
-  const defaultExample = document.getElementById("default-example");
-  const output = document.getElementById("output");
+  const defaultExample = document.getElementById(
+    "default-example",
+  ) as HTMLElement;
+  const output = document.getElementById("output") as HTMLElement;
 
   // only reset to default if the default example is hidden
   if (defaultExample.classList.contains("hidden")) {
@@ -180,7 +186,9 @@ export function resetDefault() {
  * Resets the UI state by deselecting all example choice
  */
 export function resetUIState() {
-  const exampleChoiceList = document.getElementById("example-choice-list");
+  const exampleChoiceList = document.getElementById(
+    "example-choice-list",
+  ) as HTMLElement;
   const exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
 
   for (let i = 0, l = exampleChoices.length; i < l; i++) {

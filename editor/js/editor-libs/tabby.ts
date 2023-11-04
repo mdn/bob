@@ -1,3 +1,5 @@
+import type { EditorView } from "codemirror";
+
 import {
   languageCSS,
   languageHTML,
@@ -5,16 +7,16 @@ import {
   initCodeEditor,
 } from "./codemirror-editor.js";
 
-const cssEditor = document.getElementById("css-editor");
-const htmlEditor = document.getElementById("html-editor");
-const jsEditor = document.getElementById("js-editor");
-const staticHTMLCode = htmlEditor.querySelector("pre");
-const staticCSSCode = cssEditor.querySelector("pre");
-const staticJSCode = jsEditor.querySelector("pre");
-const tabContainer = document.getElementById("tab-container");
+const cssEditor = document.getElementById("css-editor") as HTMLElement;
+const htmlEditor = document.getElementById("html-editor") as HTMLElement;
+const jsEditor = document.getElementById("js-editor") as HTMLElement;
+const staticHTMLCode = htmlEditor.querySelector("pre") as HTMLElement;
+const staticCSSCode = cssEditor.querySelector("pre") as HTMLElement;
+const staticJSCode = jsEditor.querySelector("pre") as HTMLElement;
+const tabContainer = document.getElementById("tab-container") as HTMLElement;
 const tabs =
   tabContainer.querySelectorAll<HTMLButtonElement>('button[role="tab"]');
-const tabList = document.getElementById("tablist");
+const tabList = document.getElementById("tablist") as HTMLElement;
 
 /**
  * Hides all tabpanels
@@ -35,15 +37,15 @@ function hideTabPanels() {
  * @param {Object} nextActiveTab - The tab to activate
  * @param {Object} [activeTab] - The current active tab
  */
-function setActiveTab(nextActiveTab, activeTab?) {
+function setActiveTab(nextActiveTab: HTMLElement, activeTab?: HTMLElement) {
   if (activeTab) {
     // set the currentSelectedTab to false
-    activeTab.setAttribute("aria-selected", false);
-    activeTab.setAttribute("tabindex", -1);
+    activeTab.setAttribute("aria-selected", "false");
+    activeTab.setAttribute("tabindex", "-1");
   }
 
   // set the activated tab to selected
-  nextActiveTab.setAttribute("aria-selected", true);
+  nextActiveTab.setAttribute("aria-selected", "true");
   nextActiveTab.removeAttribute("tabindex");
   nextActiveTab.focus();
 }
@@ -52,8 +54,8 @@ function setActiveTab(nextActiveTab, activeTab?) {
  * Set the default tab, and shows the relevant panel
  * @param {Object} tab - The tab to set as default
  */
-function setDefaultTab(tab) {
-  const panel = document.getElementById(tab.id + "-panel");
+function setDefaultTab(tab: HTMLElement) {
+  const panel = document.getElementById(tab.id + "-panel") as HTMLElement;
 
   tab.setAttribute("aria-selected", "true");
   tab.removeAttribute("tabindex");
@@ -70,8 +72,10 @@ function setDefaultTab(tab) {
  * @param {String} direction - The direction in which to move tab focus
  * Must be either forward, or reverse.
  */
-function setNextActiveTab(direction) {
-  const activeTab = tabList.querySelector('button[aria-selected="true"]');
+function setNextActiveTab(direction: string) {
+  const activeTab = tabList.querySelector(
+    'button[aria-selected="true"]',
+  ) as HTMLElement;
 
   // if the direction specified is not valid, simply return
   if (direction !== "forward" && direction !== "reverse") {
@@ -99,23 +103,30 @@ function setNextActiveTab(direction) {
   }
 }
 
-export const editors = {
+export const editors: {
+  [type: string]: {
+    editor: EditorView | undefined;
+    code: HTMLElement;
+    initialContent: string;
+    language: any;
+  };
+} = {
   html: {
     editor: undefined,
     code: htmlEditor,
-    initialContent: staticHTMLCode.querySelector("code").textContent,
+    initialContent: staticHTMLCode.querySelector("code")?.textContent || "",
     language: languageHTML(),
   },
   css: {
     editor: undefined,
     code: cssEditor,
-    initialContent: staticCSSCode.querySelector("code").textContent,
+    initialContent: staticCSSCode.querySelector("code")?.textContent || "",
     language: languageCSS(),
   },
   js: {
     editor: undefined,
     code: jsEditor,
-    initialContent: staticJSCode.querySelector("code").textContent,
+    initialContent: staticJSCode.querySelector("code")?.textContent || "",
     language: languageJavaScript(),
   },
 };
@@ -125,14 +136,17 @@ export const editors = {
  * @param {Array} editorTypes - The editors to initialise
  * @param {Object} defaultTab - The deafult active tab
  */
-export function initEditor(editorTypes, defaultTab) {
+export function initEditor(editorTypes: string[], defaultTab: HTMLElement) {
   if (defaultTab) {
     setDefaultTab(defaultTab);
   }
   for (const editorName of editorTypes) {
+    if (!(editorName in editors)) {
+      continue;
+    }
     // enable relevant tabs
-    const editorData = editors[editorName];
-    document.getElementById(editorName).classList.remove("hidden");
+    const editorData = editors[editorName as keyof typeof editors];
+    document.getElementById(editorName)?.classList.remove("hidden");
 
     editorData.editor = initCodeEditor(
       editorData.code,
@@ -151,10 +165,11 @@ export function registerEventListeners() {
     const role = eventTarget.getAttribute("role");
 
     if (role === "tab") {
-      const activeTab = tabList.querySelector('button[aria-selected="true"]');
-      const selectedPanel = document.getElementById(
-        eventTarget.getAttribute("aria-controls"),
-      );
+      const activeTab = tabList.querySelector(
+        'button[aria-selected="true"]',
+      ) as HTMLElement;
+      const controls = eventTarget.getAttribute("aria-controls") || "";
+      const selectedPanel = document.getElementById(controls) as HTMLElement;
 
       hideTabPanels();
       setActiveTab(eventTarget, activeTab);
