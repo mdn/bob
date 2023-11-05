@@ -1,13 +1,13 @@
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
 import path from "node:path";
-import webpack, { Configuration } from "webpack";
+import webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
 const require = createRequire(import.meta.url);
 
-const config: Configuration = {
+const config = {
   mode: "production",
   plugins: [
     new webpack.BannerPlugin(
@@ -61,10 +61,7 @@ const config: Configuration = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: (
-                resourcePath: string,
-                rootContext: string,
-              ): string => {
+              publicPath: (resourcePath, rootContext) => {
                 // publicPath is the relative path of the resource to the context
                 // e.g. for ./css/admin/main.css the publicPath will be ../../
                 // while for ./css/main.css the publicPath will be ../

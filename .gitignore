@@ -63,5 +63,3 @@ lib/*.js
 lib/*.js.map
 editor/**/*.js
 editor/**/*.js.map
-webpack.config.js
-webpack.config.js.map

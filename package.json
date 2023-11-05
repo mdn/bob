@@ -71,7 +71,7 @@
     "perf": "bundlesize",
     "webpack": "webpack",
     "prepare": "husky install",
-    "clean": "rm lib/**/*.js lib/**/*.js.map editor/**/*.js editor/**/*.js.map webpack.config.js webpack.config.js.map"
+    "clean": "rm lib/*.js lib/*.js.map editor/**/*.js editor/**/*.js.map"
   },
   "jest": {
     "preset": "jest-puppeteer"
