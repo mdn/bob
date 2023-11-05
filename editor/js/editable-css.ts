@@ -151,14 +151,8 @@ import "../css/editable-css.css";
     }
   }
 
-  /* only show the live code view if JS is enabled and the property is supported.
-    Also, only execute JS in our supported browsers. As `document.all`
-    is a non standard object available only in IE10 and older,
-    this will stop JS from executing in those versions. */
-  if (
-    cssEditorUtils.isAnyDeclarationSetSupported(exampleDeclarations) &&
-    !document.all
-  ) {
+  /* only show the live code view if JS is enabled and the property is supported. */
+  if (cssEditorUtils.isAnyDeclarationSetSupported(exampleDeclarations)) {
     enableLiveEditor();
     mceEvents.onChoose(exampleChoices[initialChoice] as HTMLElement);
     clippy.toggleClippy(exampleChoices[initialChoice] as HTMLElement);
