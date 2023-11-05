@@ -14,6 +14,7 @@
     "exactOptionalPropertyTypes": true,
     "sourceMap": true
   },
+  "include": ["editor", "lib", "types"],
   "ts-node": {
     "esm": true,
     "files": true,
