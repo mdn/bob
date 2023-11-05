@@ -52,7 +52,7 @@ const config = {
     rules: [
       {
         test: /\.([cm]?ts|tsx)$/,
-        use: "swc-loader",
+        use: "ts-loader",
         exclude: /node_modules/,
       },
       {
