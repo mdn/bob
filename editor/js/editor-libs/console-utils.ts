@@ -7,7 +7,7 @@
  * @param {any} input - The output to log.
  * @returns Formatted output as a string.
  */
-export function formatArray(input) {
+export function formatArray(input: any) {
   let output = "";
   for (let i = 0, l = input.length; i < l; i++) {
     if (typeof input[i] === "string") {
@@ -37,7 +37,7 @@ export function formatArray(input) {
  * @param {any} input - The output to log.
  * @returns Formatted output as a string.
  */
-export function formatObject(input) {
+export function formatObject(input: any) {
   "use strict";
   const bufferDataViewRegExp = /^(ArrayBuffer|SharedArrayBuffer|DataView)$/;
   const complexArrayRegExp =
@@ -119,7 +119,7 @@ export function formatObject(input) {
  * @param {any} input - The output to log.
  * @returns Formatted output as a string.
  */
-export function formatOutput(input) {
+export function formatOutput(input: any) {
   if (input === undefined || input === null || typeof input === "boolean") {
     return String(input);
   } else if (typeof input === "number") {
@@ -149,8 +149,8 @@ export function formatOutput(input) {
  * Writes the provided content to the editor’s output area
  * @param {String} content - The content to write to output
  */
-export function writeOutput(content) {
-  const output = document.querySelector("#console code");
+export function writeOutput(content: string) {
+  const output = document.querySelector("#console code") as HTMLElement;
   const outputContent = output.textContent;
   const newLogItem = "> " + content + "\n";
   output.textContent = outputContent + newLogItem;

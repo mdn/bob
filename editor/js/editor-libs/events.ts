@@ -5,21 +5,26 @@ import { getStorageItem, storeItem } from "./utils.js";
 
 /**
  * Adds listeners for events from the CSS live examples
- * @param {Object} exampleChoiceList - The object to which events are added
+ * @param exampleChoiceList - The object to which events are added
  */
-export function addCSSEditorEventListeners(exampleChoiceList) {
+export function addCSSEditorEventListeners(exampleChoiceList: HTMLElement) {
   exampleChoiceList.addEventListener("keyup", (event) => {
-    const exampleChoiceParent = event.target.parentElement;
+    const target = event.target as typeof exampleChoiceList;
+    const exampleChoiceParent = target.parentElement;
 
-    cssEditorUtils.applyCode(
-      exampleChoiceParent.textContent,
-      exampleChoiceParent.closest(".example-choice"),
-    );
+    if (exampleChoiceParent) {
+      cssEditorUtils.applyCode(
+        exampleChoiceParent.textContent || "",
+        exampleChoiceParent.closest(".example-choice") as HTMLElement,
+      );
+    }
   });
 
   const exampleChoices = exampleChoiceList.querySelectorAll(".example-choice");
   Array.from(exampleChoices).forEach((choice) => {
-    choice.addEventListener("click", handleChoiceEvent);
+    choice.addEventListener("click", (e) =>
+      onChoose(e.currentTarget as HTMLElement),
+    );
   });
 }
 
@@ -36,6 +41,9 @@ function addPostMessageListener() {
       // to be to allow for future themes to be added without a change here.
       if (event.data.theme !== undefined) {
         const body = document.querySelector("body");
+        if (!body) {
+          return;
+        }
         for (let i = body.classList.length - 1; i >= 0; i--) {
           const className = body.classList[i];
           if (className.startsWith("theme-")) {
@@ -53,7 +61,10 @@ function addPostMessageListener() {
 document.addEventListener("DOMContentLoaded", () => {
   const theme = getStorageItem("theme");
   if (theme !== null) {
-    document.querySelector("body").classList.add("theme-" + theme);
+    const body = document.querySelector("body");
+    if (body) {
+      body.classList.add("theme-" + theme);
+    }
   }
 });
 
@@ -61,19 +72,18 @@ function sendOwnHeight() {
   postParentMessage("height", { height: document.body.scrollHeight });
 }
 
-export function postParentMessage(type, values) {
+export function postParentMessage(
+  type: string,
+  values: Record<string, string | number>,
+) {
   parent?.postMessage({ type, url: window.location.href, ...values }, "*");
-}
-
-function handleChoiceEvent() {
-  onChoose(this);
 }
 
 /**
  * Called when a new `example-choice` has been selected.
- * @param {Object} choice - The selected `example-choice` element
+ * @param choice - The selected `example-choice` element
  */
-export function onChoose(choice) {
+export function onChoose(choice: HTMLElement) {
   const selected = document.querySelector(".selected");
 
   // highlght the code we are leaving

@@ -3,6 +3,8 @@ import { getStorageItem, storeItem } from "./utils.js";
 
 const ACTION_COUNTS_KEY = "action-counts";
 
+type ActionCounts = Record<string, number>;
+
 /**
  * Reads action counts from local storage.
  * Ignores action counts that belong to another example.
@@ -29,7 +31,7 @@ function getActionsCounts() {
  *
  * @param {object} counts - The current action counts.
  */
-function storeActionCounts(counts) {
+function storeActionCounts(counts: ActionCounts) {
   storeItem(
     ACTION_COUNTS_KEY,
     JSON.stringify({
@@ -43,13 +45,13 @@ function storeActionCounts(counts) {
  * Action counts by key.
  * Used to distinguish 1st/2nd/etc occurrences of the same event.
  */
-let actionCounts = {};
+let actionCounts: ActionCounts = {};
 
 /**
  * Last observed action.
  * Used to ignore multiple input actions until another action happened.
  */
-let lastAction = null;
+let lastAction: string | null = null;
 
 /**
  * Records an action, by counting it and forwarding it to the window parent.
@@ -57,7 +59,7 @@ let lastAction = null;
  * @param {string} key - Distinct name of the type of action.
  * @param {boolean} deduplicate - Should multiple actions of the same type be ignored until another action occurred?
  */
-export function recordAction(key, deduplicate = false) {
+export function recordAction(key: string, deduplicate = false) {
   if (deduplicate && key === lastAction) {
     return;
   } else {
@@ -86,7 +88,7 @@ export function initTelemetry() {
 
     // User clicks on any element with an id.
     window.addEventListener("click", (event) => {
-      const id = event.target.id;
+      const id = (event.target as HTMLElement | null)?.id;
       if (id) {
         recordAction(`click@${id}`);
       }

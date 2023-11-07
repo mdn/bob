@@ -11,8 +11,10 @@
     "strict": true,
     "alwaysStrict": true,
     "skipLibCheck": true,
-    "exactOptionalPropertyTypes": true
+    "exactOptionalPropertyTypes": true,
+    "sourceMap": true
   },
+  "include": ["editor", "lib", "types"],
   "ts-node": {
     "esm": true,
     "files": true,

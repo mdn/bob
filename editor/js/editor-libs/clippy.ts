@@ -1,3 +1,4 @@
+import type { EditorView } from "codemirror";
 import { getEditorContent } from "./codemirror-editor.js";
 
 /**
@@ -6,9 +7,12 @@ import { getEditorContent } from "./codemirror-editor.js";
  * @param {HTMLButtonElement} copyButton - Button which can trigger copy action
  * @param {HTMLElement} toastElement - The feedback message container
  */
-function setToastPosition(copyButton, toastElement) {
+function setToastPosition(
+  copyButton: HTMLButtonElement,
+  toastElement: HTMLElement,
+) {
   /** @var {HTMLElement} */
-  const copyBtnParent = copyButton.offsetParent;
+  const copyBtnParent = copyButton.offsetParent as HTMLElement;
   /* calculate the base top offset by combining the top
     offset of the button's parent element, and the height
     of the button */
@@ -26,7 +30,10 @@ function setToastPosition(copyButton, toastElement) {
  * @param {HTMLButtonElement} copyButton
  * @param {EditorView} codeMirrorEditor
  */
-export function addClippy(copyButton, codeMirrorEditor) {
+export function addClippy(
+  copyButton: HTMLButtonElement,
+  codeMirrorEditor: EditorView,
+) {
   copyButton.addEventListener("click", () => {
     const currentText = getEditorContent(codeMirrorEditor);
     copyText(currentText);
@@ -39,7 +46,7 @@ export function addClippy(copyButton, codeMirrorEditor) {
  *
  * @param {string} text
  */
-function copyText(text) {
+function copyText(text: string) {
   try {
     // Available only in HTTPs & localhost
     navigator.clipboard.writeText(text);
@@ -52,11 +59,10 @@ function copyText(text) {
  * Displays and adjusts position of the "Copied!" toast
  * @param {HTMLButtonElement} copyButton - Button which can trigger copy action
  */
-function showToastCopied(copyButton) {
-  /** @var {HTMLElement} */
-  const toastElement = document.getElementById("user-message");
+function showToastCopied(copyButton: HTMLButtonElement) {
+  const toastElement = document.getElementById("user-message") as HTMLElement;
 
-  const toggleToast = (show) => {
+  const toggleToast = (show: boolean) => {
     toastElement.classList.toggle("show", show);
     toastElement.setAttribute("aria-hidden", JSON.stringify(!show));
   };
@@ -75,7 +81,7 @@ function showToastCopied(copyButton) {
  * the button in the container element passed in
  * @param {HTMLElement} container - The container containing the button to show
  */
-export function toggleClippy(container) {
+export function toggleClippy(container: HTMLElement) {
   /** @var {HTMLElement} */
   const activeClippy = container.querySelector(".copy");
   const clippyButtons = document.querySelectorAll(".copy");

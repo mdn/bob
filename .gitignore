@@ -60,4 +60,6 @@ typings/
 
 # Built TypeScript files
 lib/*.js
-webpack.config.js
+lib/*.js.map
+editor/**/*.js
+editor/**/*.js.map

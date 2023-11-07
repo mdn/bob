@@ -12,31 +12,39 @@ import "../css/editor-libs/tabby.css";
 import "../css/tabbed-editor.css";
 
 (function () {
-  const cssEditor = document.getElementById("css-editor");
-  const clearConsole = document.getElementById("clear");
-  const editorContainer = document.getElementById("editor-container");
-  const tabContainer = document.getElementById("tab-container");
-  const iframeContainer = document.getElementById("output");
-  const header = document.querySelector(".output-header");
-  const htmlEditor = document.getElementById("html-editor");
-  const jsEditor = document.getElementById("js-editor");
-  const staticCSSCode = cssEditor.querySelector("pre");
-  const staticHTMLCode = htmlEditor.querySelector("pre");
-  const staticJSCode = jsEditor.querySelector("pre");
-  const outputIFrame = document.getElementById("output-iframe");
+  const clearConsole = document.getElementById("clear") as HTMLElement;
+  const editorContainer = document.getElementById(
+    "editor-container",
+  ) as HTMLElement;
+  const tabContainer = document.getElementById("tab-container") as HTMLElement;
+  const iframeContainer = document.getElementById("output") as HTMLElement;
+  const header = document.querySelector(".output-header") as HTMLElement;
+  const cssEditor = document.getElementById("css-editor") as HTMLElement;
+  const htmlEditor = document.getElementById("html-editor") as HTMLElement;
+  const jsEditor = document.getElementById("js-editor") as HTMLElement;
+  const staticCSSCode = cssEditor.querySelector("pre") as HTMLPreElement;
+  const staticHTMLCode = htmlEditor.querySelector("pre") as HTMLPreElement;
+  const staticJSCode = jsEditor.querySelector("pre") as HTMLPreElement;
+  const outputIFrame = document.getElementById(
+    "output-iframe",
+  ) as HTMLIFrameElement;
   const outputTemplate = getOutputTemplate();
   const editorType = editorContainer.dataset.editorType;
 
   let appliedHeightAdjustment = false;
-  let timer;
+  let timer: NodeJS.Timeout | undefined;
 
   /**
    * @returns {string} - Interactive example output template, formed by joining together contents of #output-head and #output-body, found in live-tabbed-tmpl.html
    */
   function getOutputTemplate() {
     /* Document is split into two templates, just because <template> parser omits <html>, <head> and <body> tags.*/
-    const templateOutputHead = document.getElementById("output-head");
-    const templateOutputBody = document.getElementById("output-body");
+    const templateOutputHead = document.getElementById(
+      "output-head",
+    ) as HTMLElement;
+    const templateOutputBody = document.getElementById(
+      "output-body",
+    ) as HTMLElement;
 
     return `
 <!DOCTYPE html>
@@ -53,7 +61,10 @@ import "../css/tabbed-editor.css";
    * @param outputData - Object holding CSS, HTML & JavaScript code, that is supposed to be applied on the template
    * @returns {string} - raw html string
    */
-  function applyEditorContentToTemplate(outputTemplate, outputData) {
+  function applyEditorContentToTemplate(
+    outputTemplate: string,
+    outputData: { [editor: string]: string },
+  ) {
     let content = outputTemplate;
     content = content.replace("%css-content%", outputData.cssContent);
     content = content.replace("%html-content%", outputData.htmlContent);
@@ -72,20 +83,15 @@ import "../css/tabbed-editor.css";
    * }
    */
   function getOutput() {
-    const editorContents = {};
+    const editorContents: { [editor: string]: string } = {};
 
     setContent("htmlContent", "html");
     setContent("cssContent", "css");
     setContent("jsContent", "js");
 
-    function setContent(propertyName, editorName) {
-      if (tabby.editors[editorName].editor) {
-        editorContents[propertyName] = getEditorContent(
-          tabby.editors[editorName].editor,
-        );
-      } else {
-        editorContents[propertyName] = "";
-      }
+    function setContent(propertyName: string, editorName: string) {
+      const editor = tabby.editors[editorName].editor;
+      editorContents[propertyName] = editor ? getEditorContent(editor) : "";
     }
     return editorContents;
   }
@@ -106,8 +112,9 @@ import "../css/tabbed-editor.css";
    * It prepares links, handles URL fragments, adjusts frame height, hooks console logs and then evaluates JS editor code
    */
   function onOutputLoaded() {
-    const contentWindow = outputIFrame.contentWindow;
-    const contentBody = contentWindow.document.body;
+    const contentWindow = outputIFrame.contentWindow as Window &
+      typeof globalThis;
+    const contentBody = contentWindow.document.body as HTMLBodyElement;
 
     mceUtils.openLinksInNewTab(contentBody.querySelectorAll('a[href^="http"]'));
     mceUtils.scrollToAnchors(
@@ -121,7 +128,7 @@ import "../css/tabbed-editor.css";
     /* Listeners are removed, every time content is refreshed */
     contentWindow.addEventListener("resize", () => adjustFrameHeight());
     /* Hooking console logs */
-    mceConsole(outputIFrame.contentWindow);
+    mceConsole(contentWindow);
 
     executeJSEditorCode();
   }
@@ -131,7 +138,8 @@ import "../css/tabbed-editor.css";
    * This process is purposefully delayed, so console logs hooks are attached first
    */
   function executeJSEditorCode() {
-    outputIFrame.contentWindow.executeExample();
+    type JSEditorWindow = Window & { executeExample: () => void };
+    (outputIFrame.contentWindow as JSEditorWindow).executeExample();
   }
 
   /**
@@ -144,8 +152,9 @@ import "../css/tabbed-editor.css";
       tabContainer.offsetTop + tabContainer.offsetHeight;
     if (iframeBelowTabContainer) {
       /* When iframe is below tab container(which happens on small screens), we want it to take as low amount of space as possible */
-      const iframeContent =
-        outputIFrame.contentWindow.document.getElementById("html-output");
+      const iframeContent = outputIFrame.contentWindow?.document.getElementById(
+        "html-output",
+      ) as HTMLElement;
       const iframeContentHeight = iframeContent.clientHeight;
       const iframeHeight = outputIFrame.clientHeight;
 
@@ -179,7 +188,7 @@ import "../css/tabbed-editor.css";
   if (editorType === "mathml" && !isMathMLSupported()) {
     const notSupportedWarning = document.getElementById(
       "warning-mathml-not-supported",
-    );
+    ) as HTMLElement;
     notSupportedWarning.classList.remove("hidden");
     return;
   }
@@ -187,7 +196,8 @@ import "../css/tabbed-editor.css";
   outputIFrame.addEventListener("load", () => onOutputLoaded());
 
   header.addEventListener("click", (event) => {
-    if (event.target.classList.contains("reset")) {
+    const target = event.target as typeof header;
+    if (target.classList.contains("reset")) {
       window.location.reload();
     }
   });
@@ -199,7 +209,9 @@ import "../css/tabbed-editor.css";
   jsEditor.addEventListener("keyup", () => autoUpdate());
 
   clearConsole.addEventListener("click", () => {
-    const webapiConsole = document.querySelector("#console code");
+    const webapiConsole = document.querySelector(
+      "#console code",
+    ) as HTMLElement;
     webapiConsole.textContent = "";
   });
 
@@ -215,7 +227,7 @@ import "../css/tabbed-editor.css";
   /**
    * @returns {string[]} - IDs of editors that should be visible in the example.
    */
-  function getTabs(editorContainer) {
+  function getTabs(editorContainer: HTMLElement) {
     if (editorContainer.dataset && editorContainer.dataset.tabs) {
       return editorContainer.dataset.tabs.split(",");
     } else {
@@ -226,7 +238,7 @@ import "../css/tabbed-editor.css";
   /**
    * @returns {string} - ID of editor that should be active be default.
    */
-  function getDefaultTab(editorContainer, tabs) {
+  function getDefaultTab(editorContainer: HTMLElement, tabs: string[]) {
     if (editorContainer.dataset && editorContainer.dataset.defaultTab) {
       return editorContainer.dataset.defaultTab;
     } else if (tabs.includes("js")) {
@@ -238,7 +250,7 @@ import "../css/tabbed-editor.css";
 
   const tabs = getTabs(editorContainer);
   const defaultTab = getDefaultTab(editorContainer, tabs);
-  tabby.initEditor(tabs, document.getElementById(defaultTab));
+  tabby.initEditor(tabs, document.getElementById(defaultTab) as HTMLElement);
 
   mceConsole();
 

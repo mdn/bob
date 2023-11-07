@@ -6,5 +6,5 @@ node_modules
 # This can be removed after https://github.com/googleapis/release-please/issues/1802 is fixed
 CHANGELOG.md
 # TSC output:
-webpack.config.js
 lib/*.js
+editor/js/**/*.js
