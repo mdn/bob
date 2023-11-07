@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.0.0](https://github.com/mdn/bob/compare/v3.5.0...v4.0.0) (2023-11-07)
+
+
+### Features
+
+* **editor/js:** convert to TypeScript ([#1171](https://github.com/mdn/bob/issues/1171)) ([e182364](https://github.com/mdn/bob/commit/e18236486fe04af223165163ff29a6a71f445ccc))
+
+
+### Miscellaneous Chores
+
+* release 4.0.0 ([8cf87e5](https://github.com/mdn/bob/commit/8cf87e541cccaf8c5ec388514244a3bd6fef889a))
+
 ## [3.5.0](https://github.com/mdn/bob/compare/v3.4.0...v3.5.0) (2023-10-30)
 
 
