@@ -20,9 +20,9 @@ function getFeatureObject(feature: string) {
 /**
  * Tests whether the provided feature is supported. It
  * does this by checking the `typeof` the feature.
- * @param {String} feature - The feature to test ex. 'array-entries'
+ * @param {String?} feature - The feature to test ex. 'array-entries'
  */
-export function isDefined(feature: string) {
+export function isDefined(feature?: string | undefined) {
   // if the feature parameter is undefined, return true
   if (feature === undefined) {
     return true;

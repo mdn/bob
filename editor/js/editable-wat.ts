@@ -18,7 +18,7 @@ import {
 (async function () {
   const watCodeBlock = document.getElementById("static-wat") as HTMLElement;
   const jsCodeBlock = document.getElementById("static-js") as HTMLElement;
-  const exampleFeature = watCodeBlock.dataset["feature"] || "";
+  const exampleFeature = watCodeBlock.dataset["feature"];
   const execute = document.getElementById("execute") as HTMLElement;
   const output = document.querySelector("#console code") as HTMLElement;
   const reset = document.getElementById("reset") as HTMLElement;
@@ -279,5 +279,11 @@ import {
     });
 
     reset.addEventListener("click", () => window.location.reload());
+  } else {
+    console.warn(
+      `Feature ${
+        "WebAssembly" in window ? exampleFeature : "WebAssembly"
+      } is not supported; code editor disabled.`,
+    );
   }
 })();

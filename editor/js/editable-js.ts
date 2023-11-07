@@ -15,7 +15,7 @@ import {
 (function () {
   const codeBlock = document.getElementById("static-js") as HTMLElement;
 
-  const exampleFeature = codeBlock.dataset["feature"] || "";
+  const exampleFeature = codeBlock.dataset["feature"];
   const execute = document.getElementById("execute") as HTMLElement;
   const output = document.querySelector("#console code") as HTMLElement;
   const reset = document.getElementById("reset") as HTMLElement;
@@ -94,6 +94,7 @@ import {
     );
   }
 
+  /* only execute code in supported browsers */
   if (featureDetector.isDefined(exampleFeature)) {
     document.documentElement.classList.add("js");
 
@@ -105,5 +106,9 @@ import {
     });
 
     reset.addEventListener("click", () => window.location.reload());
+  } else {
+    console.warn(
+      `Feature ${exampleFeature} is not supported; code editor disabled.`,
+    );
   }
 })();
