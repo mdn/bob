@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/mdn/bob/compare/v4.0.0...v4.0.1) (2023-12-21)
+
+
+### Bug Fixes
+
+* **deps:** pin Node.js to v18.17 + use .nvmrc from interactive-examples ([#1625](https://github.com/mdn/bob/issues/1625)) ([968ae6f](https://github.com/mdn/bob/commit/968ae6fb6ea3006476d0444d918d78dcc67beefa))
+
 ## [4.0.0](https://github.com/mdn/bob/compare/v3.5.0...v4.0.0) (2023-11-07)
 
 
