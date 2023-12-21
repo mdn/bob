@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js environment (interactive-examples)
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version-file: ".nvmrc"
 
       - name: Checkout mdn/interactive-examples
         uses: actions/checkout@v4
