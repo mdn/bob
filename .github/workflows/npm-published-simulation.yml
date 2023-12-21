@@ -14,25 +14,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup Node.js environment (interactive-examples)
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-
       - name: Checkout mdn/interactive-examples
         uses: actions/checkout@v4
         with:
           repository: mdn/interactive-examples
           path: interactive-examples
 
-      - name: Install all packages (interactive-examples)
-        working-directory: interactive-examples
-        run: npm ci
-
       - name: Checkout this repository
         uses: actions/checkout@v4
         with:
           path: bob
+
+      - name: Setup Node.js environment (interactive-examples)
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: "interactive-examples/.nvmrc"
+
+      - name: Install all packages (interactive-examples)
+        working-directory: interactive-examples
+        run: npm ci
 
       - name: Install all packages (bob)
         working-directory: bob
