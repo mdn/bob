@@ -12,12 +12,12 @@
     "alwaysStrict": true,
     "skipLibCheck": true,
     "exactOptionalPropertyTypes": true,
-    "sourceMap": true
+    "sourceMap": true,
   },
   "include": ["editor", "lib", "types"],
   "ts-node": {
     "esm": true,
     "files": true,
-    "swc": true
-  }
+    "swc": true,
+  },
 }
