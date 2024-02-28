@@ -40,7 +40,7 @@ function doWebpack() {
   return new Promise((resolve, reject) => {
     webpack(
       webpackConfig,
-      (err: Error | undefined, stats: Stats | undefined) => {
+      (err: Error | null | undefined, stats: Stats | undefined) => {
         if (!stats) {
           throw new Error("MDN-BOB: Stats were not delivered by webpack");
         }
