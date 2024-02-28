@@ -70,7 +70,7 @@
     "jest": "cross-env JEST_PUPPETEER_CONFIG=jest-puppeteer.config.cjs NODE_OPTIONS=--experimental-vm-modules jest",
     "perf": "bundlesize",
     "webpack": "webpack",
-    "prepare": "husky install",
+    "prepare": "husky",
     "clean": "rm lib/*.js lib/*.js.map editor/**/*.js editor/**/*.js.map"
   },
   "jest": {
