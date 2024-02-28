@@ -70,7 +70,7 @@
     "jest": "cross-env JEST_PUPPETEER_CONFIG=jest-puppeteer.config.cjs NODE_OPTIONS=--experimental-vm-modules jest",
     "perf": "bundlesize",
     "webpack": "webpack",
-    "prepare": "husky install",
+    "prepare": "husky",
     "clean": "rm lib/*.js lib/*.js.map editor/**/*.js editor/**/*.js.map"
   },
   "jest": {
@@ -100,7 +100,7 @@
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jest": "^27.1.5",
     "http-server": "14.1.1",
-    "husky": "^8.0.1",
+    "husky": "^9.0.11",
     "jest": "29.7.0",
     "jest-puppeteer": "10.0.1",
     "lint-staged": "^15.0.2",
