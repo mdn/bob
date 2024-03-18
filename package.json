@@ -92,7 +92,7 @@
     "@types/glob": "^8.1.0",
     "@types/uglify-js": "^3.17.3",
     "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "bundlesize": "0.18.1",
+    "bundlesize": "0.18.2",
     "cross-env": "^7.0.3",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^9.0.0",
