@@ -10,24 +10,26 @@ jobs:
     if: github.repository == 'mdn/bob'
     runs-on: ubuntu-latest
     steps:
-      - uses: GoogleCloudPlatform/release-please-action@v4
+      - name: Release
+        uses: GoogleCloudPlatform/release-please-action@v4
         id: release
-        with:
-          token: "${{ secrets.GITHUB_TOKEN }}"
-          release-type: "node"
 
-      - uses: actions/checkout@v4
+      - name: Setup
         if: steps.release.outputs.release_created
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        if: steps.release.outputs.release_created
+        uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
-        if: steps.release.outputs.release_created
 
-      - run: npm ci
+      - name: Install
         if: steps.release.outputs.release_created
+        run: npm ci
 
-      - run: npm publish
+      - name: Publish
+        if: steps.release.outputs.release_created
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: "${{secrets.NPM_AUTH_TOKEN}}"
-        if: steps.release.outputs.release_created
