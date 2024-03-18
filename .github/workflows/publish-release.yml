@@ -7,9 +7,27 @@ on:
 
 jobs:
   publish-release:
-    uses: mdn/workflows/.github/workflows/publish-release.yml@main
-    with:
-      target-repo: "mdn/bob"
-    secrets:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+    if: github.repository == 'mdn/bob'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: GoogleCloudPlatform/release-please-action@v4
+        id: release
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          release-type: "node"
+
+      - uses: actions/checkout@v4
+        if: steps.release.outputs.release_created
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+        if: steps.release.outputs.release_created
+
+      - run: npm ci
+        if: steps.release.outputs.release_created
+
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: "${{secrets.NPM_AUTH_TOKEN}}"
+        if: steps.release.outputs.release_created
