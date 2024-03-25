@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.3](https://github.com/mdn/bob/compare/v4.0.2...v4.0.3) (2024-03-25)
+
+
+### Bug Fixes
+
+* **publish-release:** add --access + unquote token ([#1753](https://github.com/mdn/bob/issues/1753)) ([b7769fe](https://github.com/mdn/bob/commit/b7769fe893f5490ce8aa157de959aea761354506))
+
 ## [4.0.2](https://github.com/mdn/bob/compare/v4.0.1...v4.0.2) (2024-03-25)
 
 
