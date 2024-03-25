@@ -1,5 +1,24 @@
 # Changelog
 
+## [4.0.2](https://github.com/mdn/bob/compare/v4.0.1...v4.0.2) (2024-03-25)
+
+
+### Bug Fixes
+
+* **gitignore:** ignore VSCode folder ([#1752](https://github.com/mdn/bob/issues/1752)) ([05e21e4](https://github.com/mdn/bob/commit/05e21e477f5f94f547e33f0036e74e32c4e64fdf))
+* **publish-release:** add permissions ([#1750](https://github.com/mdn/bob/issues/1750)) ([7d48552](https://github.com/mdn/bob/commit/7d485525f05c0b49918eae866a144b26df0e76d0))
+
+
+### Miscellaneous
+
+* **deps-dev:** bump @babel/core from 7.24.0 to 7.24.1 ([#1744](https://github.com/mdn/bob/issues/1744)) ([d7e3c08](https://github.com/mdn/bob/commit/d7e3c080689bb17da2ffbf6ffbe89e933d2634f1))
+* **deps-dev:** bump @babel/core from 7.24.1 to 7.24.3 ([#1747](https://github.com/mdn/bob/issues/1747)) ([0a9f597](https://github.com/mdn/bob/commit/0a9f597b2b39b1a11cd1c1b6da9ed5344908c143))
+* **deps-dev:** bump @babel/eslint-parser from 7.23.10 to 7.24.1 ([#1743](https://github.com/mdn/bob/issues/1743)) ([26e464c](https://github.com/mdn/bob/commit/26e464cd845e9a1c856e156f1cd57bfe4a15fec7))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin from 7.2.0 to 7.3.1 ([#1742](https://github.com/mdn/bob/issues/1742)) ([b4d46c8](https://github.com/mdn/bob/commit/b4d46c88c8564f5e689d5fbb1397aded2ab94e90))
+* **deps-dev:** bump puppeteer from 22.5.0 to 22.6.0 ([#1746](https://github.com/mdn/bob/issues/1746)) ([22908cf](https://github.com/mdn/bob/commit/22908cfd60df080fe85cbb95f27861305d282161))
+* **deps-dev:** bump typescript from 5.4.2 to 5.4.3 ([#1749](https://github.com/mdn/bob/issues/1749)) ([48ed83c](https://github.com/mdn/bob/commit/48ed83cbe7a5ececb0b36db0fd9d545e2c349f7f))
+* **deps:** bump webpack from 5.90.3 to 5.91.0 ([#1748](https://github.com/mdn/bob/issues/1748)) ([e8cf372](https://github.com/mdn/bob/commit/e8cf372c7915d28a7567a35e26143902e863ddd5))
+
 ## [4.0.1](https://github.com/mdn/bob/compare/v4.0.0...v4.0.1) (2024-03-18)
 
 
