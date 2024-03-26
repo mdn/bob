@@ -1,5 +1,15 @@
 # Changelog
 
+## [4.0.4](https://github.com/mdn/bob/compare/v4.0.3...v4.0.4) (2024-03-26)
+
+
+### Miscellaneous
+
+* **deps-dev:** bump @swc/core from 1.4.8 to 1.4.11 ([#1757](https://github.com/mdn/bob/issues/1757)) ([7b23db6](https://github.com/mdn/bob/commit/7b23db6c2ea87696c5cc47e0586d44489075cd1d))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin from 7.3.1 to 7.4.0 ([#1759](https://github.com/mdn/bob/issues/1759)) ([2b4dd64](https://github.com/mdn/bob/commit/2b4dd6490782679904e55ee5ba419051125bd1b2))
+* **deps-dev:** bump puppeteer from 22.6.0 to 22.6.1 ([#1758](https://github.com/mdn/bob/issues/1758)) ([efb497b](https://github.com/mdn/bob/commit/efb497b3cb20fbc99bb2861c93d07b3c30aeea23))
+* **deps:** bump node from 18.17 to 18.18 ([#1755](https://github.com/mdn/bob/issues/1755)) ([3c9b6b2](https://github.com/mdn/bob/commit/3c9b6b27c128a997fcf08c1280bf9474221fd5bb))
+
 ## [4.0.3](https://github.com/mdn/bob/compare/v4.0.2...v4.0.3) (2024-03-25)
 
 
