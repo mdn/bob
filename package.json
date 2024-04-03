@@ -138,7 +138,7 @@
     "mini-css-extract-plugin": "^2.6.1",
     "path-browserify": "^1.0.1",
     "uglify-js": "^3.17.4",
-    "wabt": "^1.0.29",
+    "watify": "file:./watify/pkg",
     "webpack": "5.91.0"
   },
   "resolutions": {
