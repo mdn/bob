@@ -56,8 +56,8 @@
     }
   ],
   "scripts": {
-    "build": "ts-node ./lib/mdn-bob.ts",
-    "build:pages": "ts-node ./lib/mdn-bob.ts --skip-webpack",
+    "build": "cross-env NODE_OPTIONS='--no-warnings=ExperimentalWarning --loader ts-node/esm' node ./lib/mdn-bob.ts",
+    "build:pages": "cross-env NODE_OPTIONS='--no-warnings=ExperimentalWarning --loader ts-node/esm' node ./lib/mdn-bob.ts --skip-webpack",
     "prepack": "tsc",
     "start": "npm-run-all build start-server",
     "start-server": "http-server -p 4444 ./docs",
