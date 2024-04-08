@@ -32,6 +32,7 @@ jobs:
         if: ${{ github.event.inputs.force-npm-publish || steps.release.outputs.release_created }}
         uses: actions/setup-node@v4
         with:
+          registry-url: "https://registry.npmjs.org/"
           node-version-file: ".nvmrc"
 
       - name: Install
