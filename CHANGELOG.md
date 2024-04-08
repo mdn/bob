@@ -1,5 +1,38 @@
 # Changelog
 
+## [4.0.4](https://github.com/mdn/bob/compare/v4.0.3...v4.0.4) (2024-04-08)
+
+
+### Bug Fixes
+
+* **publish-release:** specify registry-url on setup-node action ([#1771](https://github.com/mdn/bob/issues/1771)) ([7bc8820](https://github.com/mdn/bob/commit/7bc8820465190dce3f9b0907f7fcfa0b3577e6dd))
+* **scripts:** specify ts-node via NODE_OPTIONS ([#1774](https://github.com/mdn/bob/issues/1774)) ([ac37725](https://github.com/mdn/bob/commit/ac37725e3211ee700f5e27ce2525876302cc6f44))
+
+
+### Enhancements
+
+* **publish-release:** allow manual run + force npm publish ([#1770](https://github.com/mdn/bob/issues/1770)) ([8ef440c](https://github.com/mdn/bob/commit/8ef440c67f30bc686ad6992bc8e18c93aa728889))
+
+
+### Miscellaneous
+
+* **deps-dev:** bump @babel/core from 7.24.3 to 7.24.4 ([#1765](https://github.com/mdn/bob/issues/1765)) ([bc18357](https://github.com/mdn/bob/commit/bc1835787d6194edb6f4d8310264fe237d5147b0))
+* **deps-dev:** bump @swc/core from 1.4.11 to 1.4.12 ([#1767](https://github.com/mdn/bob/issues/1767)) ([addbf79](https://github.com/mdn/bob/commit/addbf7960f82218b8c7cb2d395c1ed67decabd6c))
+* **deps-dev:** bump @swc/core from 1.4.8 to 1.4.11 ([#1757](https://github.com/mdn/bob/issues/1757)) ([7b23db6](https://github.com/mdn/bob/commit/7b23db6c2ea87696c5cc47e0586d44489075cd1d))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin from 7.3.1 to 7.4.0 ([#1759](https://github.com/mdn/bob/issues/1759)) ([2b4dd64](https://github.com/mdn/bob/commit/2b4dd6490782679904e55ee5ba419051125bd1b2))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin from 7.4.0 to 7.5.0 ([#1763](https://github.com/mdn/bob/issues/1763)) ([820f569](https://github.com/mdn/bob/commit/820f5690671046d841766293c7afa59fa146ca34))
+* **deps-dev:** bump eslint-plugin-jest from 27.9.0 to 28.2.0 ([#1772](https://github.com/mdn/bob/issues/1772)) ([d52096f](https://github.com/mdn/bob/commit/d52096f0a98ac5c7d74f24cbceb61f0fab99b8f4))
+* **deps-dev:** bump puppeteer from 22.6.0 to 22.6.1 ([#1758](https://github.com/mdn/bob/issues/1758)) ([efb497b](https://github.com/mdn/bob/commit/efb497b3cb20fbc99bb2861c93d07b3c30aeea23))
+* **deps-dev:** bump puppeteer from 22.6.1 to 22.6.2 ([#1764](https://github.com/mdn/bob/issues/1764)) ([beec9d6](https://github.com/mdn/bob/commit/beec9d6dc845a621033a9ab0df180779dbbee801))
+* **deps-dev:** bump puppeteer from 22.6.2 to 22.6.3 ([#1773](https://github.com/mdn/bob/issues/1773)) ([bf57d1f](https://github.com/mdn/bob/commit/bf57d1ff06047071afb2604f1969066c63bda2a5))
+* **deps-dev:** bump typescript from 5.4.3 to 5.4.4 ([#1768](https://github.com/mdn/bob/issues/1768)) ([403a553](https://github.com/mdn/bob/commit/403a55396b6eb0b1f166609fe6b20268c1dc4eb3))
+* **deps:** bump @codemirror/view from 6.26.0 to 6.26.1 ([#1760](https://github.com/mdn/bob/issues/1760)) ([8997f2b](https://github.com/mdn/bob/commit/8997f2bd6cf2542ff02aeaba408ad65009b1d807))
+* **deps:** bump @lezer/javascript from 1.4.13 to 1.4.14 ([#1762](https://github.com/mdn/bob/issues/1762)) ([12f348e](https://github.com/mdn/bob/commit/12f348e3b25239f787f4a2e56a1aba7c14303d02))
+* **deps:** bump css-loader from 6.10.0 to 6.11.0 ([#1766](https://github.com/mdn/bob/issues/1766)) ([60dca2b](https://github.com/mdn/bob/commit/60dca2b891b5133a84fdb82bcb1476479de47f04))
+* **deps:** bump glob from 10.3.10 to 10.3.12 ([#1761](https://github.com/mdn/bob/issues/1761)) ([16ede31](https://github.com/mdn/bob/commit/16ede31479c0f5d07f0bbbc915c0954a6ddaf2c9))
+* **deps:** bump node from 18.17 to 18.18 ([#1755](https://github.com/mdn/bob/issues/1755)) ([3c9b6b2](https://github.com/mdn/bob/commit/3c9b6b27c128a997fcf08c1280bf9474221fd5bb))
+* **deps:** bump node from 18.18 to latest 18 ([#1775](https://github.com/mdn/bob/issues/1775)) ([d5a5808](https://github.com/mdn/bob/commit/d5a5808a6091de955947484aacb68810f4bd6703))
+
 ## [4.0.3](https://github.com/mdn/bob/compare/v4.0.2...v4.0.3) (2024-03-25)
 
 
