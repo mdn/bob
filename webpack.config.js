@@ -99,6 +99,10 @@ const config = {
       chunks: "async",
     },
   },
+  experiments: {
+    syncWebAssembly: true,
+    asyncWebAssembly: true,
+  },
 };
 
 export default config;

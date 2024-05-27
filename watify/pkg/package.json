@@ -1,0 +1,17 @@
+{
+  "name": "watify",
+  "version": "0.0.1",
+  "license": "MIT",
+  "files": [
+    "watify_bg.wasm",
+    "watify.js",
+    "watify_bg.js",
+    "watify.d.ts"
+  ],
+  "module": "watify.js",
+  "types": "watify.d.ts",
+  "sideEffects": [
+    "./watify.js",
+    "./snippets/*"
+  ]
+}

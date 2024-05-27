@@ -2,7 +2,7 @@ import type { EditorView } from "codemirror";
 import * as featureDetector from "./editor-libs/feature-detector.js";
 import mceConsole from "./editor-libs/console.js";
 import * as mceEvents from "./editor-libs/events.js";
-import wabtConstructor from "wabt";
+import { watify } from "watify";
 
 import "../css/editor-libs/ui-fonts.css";
 import "../css/editor-libs/common.css";
@@ -22,7 +22,6 @@ import {
   const execute = document.getElementById("execute") as HTMLElement;
   const output = document.querySelector("#console code") as HTMLElement;
   const reset = document.getElementById("reset") as HTMLElement;
-  const wabt = await wabtConstructor();
 
   const tabContainer = document.getElementById("tab-container") as HTMLElement;
   const tabs =
@@ -214,23 +213,9 @@ import {
    * @returns {Blob} a blob with the newly created wasm module
    */
   async function compileWat(wat: string): Promise<Blob> {
-    const encoder = new TextEncoder();
-    const watBuffer = encoder.encode(wat);
-    const module = wabt.parseWat("", watBuffer, {
-      exceptions: true,
-      mutable_globals: true,
-      sat_float_to_int: true,
-      sign_extension: true,
-      simd: true,
-      multi_value: true,
-      bulk_memory: true,
-      reference_types: true,
-    });
-    module.resolveNames();
-    module.validate();
-    const binary = module.toBinary({ log: true, write_debug_names: true });
+    const binary = await watify(wat);
 
-    const blob = new Blob([binary.buffer.buffer], { type: "application/wasm" });
+    const blob = new Blob([binary], { type: "application/wasm" });
     return blob;
   }
 

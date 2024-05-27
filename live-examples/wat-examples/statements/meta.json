@@ -6,6 +6,13 @@
       "fileName": "loop.html",
       "title": "Wat Demo: loop",
       "type": "wat"
+    },
+    "return_func": {
+      "watExampleCode": "live-examples/wat-examples/statements/return_func.wat",
+      "jsExampleCode": "live-examples/wat-examples/statements/return_func.js",
+      "fileName": "return_func.html",
+      "title": "Wat Demo: Return func",
+      "type": "wat"
     }
   }
 }
