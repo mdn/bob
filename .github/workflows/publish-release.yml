@@ -5,6 +5,12 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+    inputs:
+      force-npm-publish:
+        description: "Force npm publish"
+        type: boolean
+
 permissions:
   contents: write
   pull-requests: write
@@ -19,21 +25,22 @@ jobs:
         id: release
 
       - name: Setup
-        if: steps.release.outputs.release_created
+        if: ${{ github.event.inputs.force-npm-publish || steps.release.outputs.release_created }}
         uses: actions/checkout@v4
 
       - name: Checkout
-        if: steps.release.outputs.release_created
+        if: ${{ github.event.inputs.force-npm-publish || steps.release.outputs.release_created }}
         uses: actions/setup-node@v4
         with:
+          registry-url: "https://registry.npmjs.org/"
           node-version-file: ".nvmrc"
 
       - name: Install
-        if: steps.release.outputs.release_created
+        if: ${{ github.event.inputs.force-npm-publish || steps.release.outputs.release_created }}
         run: npm ci
 
       - name: Publish
-        if: steps.release.outputs.release_created
+        if: ${{ github.event.inputs.force-npm-publish || steps.release.outputs.release_created }}
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
