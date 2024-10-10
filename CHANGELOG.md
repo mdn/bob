@@ -1,5 +1,22 @@
 # Changelog
 
+## [5.0.1](https://github.com/mdn/bob/compare/v5.0.0...v5.0.1) (2024-10-10)
+
+
+### Miscellaneous
+
+* **deps-dev:** bump @babel/core from 7.25.2 to 7.25.7 ([#1996](https://github.com/mdn/bob/issues/1996)) ([1146648](https://github.com/mdn/bob/commit/1146648c9468cc0089673264208b0feed6574df3))
+* **deps-dev:** bump @babel/eslint-parser from 7.25.1 to 7.25.7 ([#1999](https://github.com/mdn/bob/issues/1999)) ([645ffc8](https://github.com/mdn/bob/commit/645ffc885a8cc81998dc537dd7e8f289bed632d9))
+* **deps-dev:** bump @swc/core from 1.7.28 to 1.7.35 ([#2008](https://github.com/mdn/bob/issues/2008)) ([20450ae](https://github.com/mdn/bob/commit/20450aed0a64b8c54812fe9a6c8dc68f0e61260a))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin from 8.8.0 to 8.8.1 ([#2003](https://github.com/mdn/bob/issues/2003)) ([62d11a8](https://github.com/mdn/bob/commit/62d11a8d326895dba9355941c27de13bdabadd28))
+* **deps-dev:** bump eslint-plugin-import from 2.30.0 to 2.31.0 ([#1998](https://github.com/mdn/bob/issues/1998)) ([05a8287](https://github.com/mdn/bob/commit/05a8287ddb188f1faa6cfc8d99662bf368881818))
+* **deps-dev:** bump puppeteer from 23.5.0 to 23.5.1 ([#2004](https://github.com/mdn/bob/issues/2004)) ([c08bf29](https://github.com/mdn/bob/commit/c08bf29d142580cc96898ecfb0a51e0185c84e25))
+* **deps-dev:** bump puppeteer from 23.5.1 to 23.5.2 ([#2007](https://github.com/mdn/bob/issues/2007)) ([7559966](https://github.com/mdn/bob/commit/7559966339eadf67a204d254b75d47acd761521d))
+* **deps-dev:** bump typescript from 5.6.2 to 5.6.3 ([#2006](https://github.com/mdn/bob/issues/2006)) ([be3dc58](https://github.com/mdn/bob/commit/be3dc5845ee84490451591df98690b9282280ec5))
+* **deps:** bump @codemirror/commands from 6.6.2 to 6.7.0 ([#2002](https://github.com/mdn/bob/issues/2002)) ([5627c08](https://github.com/mdn/bob/commit/5627c0856ede695298ed2330c80dd51d2f133938))
+* **deps:** bump @lezer/common from 1.2.1 to 1.2.2 ([#1997](https://github.com/mdn/bob/issues/1997)) ([06185ee](https://github.com/mdn/bob/commit/06185ee21e0ebbeae056567b3b648822b3ab115d))
+* **deps:** bump @lezer/javascript from 1.4.18 to 1.4.19 ([#2005](https://github.com/mdn/bob/issues/2005)) ([ef6cea0](https://github.com/mdn/bob/commit/ef6cea0b11e10a8ceb8fe6a5b3b5d4a8357f32f3))
+
 ## [5.0.0](https://github.com/mdn/bob/compare/v4.0.4...v5.0.0) (2024-10-02)
 
 
