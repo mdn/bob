@@ -1,5 +1,31 @@
 # Changelog
 
+## [5.0.1](https://github.com/mdn/bob/compare/v5.0.0...v5.0.1) (2024-10-18)
+
+
+### Miscellaneous
+
+* **deps-dev:** bump @babel/core from 7.25.2 to 7.25.7 ([#1996](https://github.com/mdn/bob/issues/1996)) ([1146648](https://github.com/mdn/bob/commit/1146648c9468cc0089673264208b0feed6574df3))
+* **deps-dev:** bump @babel/core from 7.25.7 to 7.25.8 ([#2009](https://github.com/mdn/bob/issues/2009)) ([31d1652](https://github.com/mdn/bob/commit/31d1652d6854fc34c792bde64e9f6a0a44bf5d99))
+* **deps-dev:** bump @babel/eslint-parser from 7.25.1 to 7.25.7 ([#1999](https://github.com/mdn/bob/issues/1999)) ([645ffc8](https://github.com/mdn/bob/commit/645ffc885a8cc81998dc537dd7e8f289bed632d9))
+* **deps-dev:** bump @babel/eslint-parser from 7.25.7 to 7.25.8 ([#2010](https://github.com/mdn/bob/issues/2010)) ([2c002d9](https://github.com/mdn/bob/commit/2c002d9a5f02792b3f3a1a4db07df14bd055fe2e))
+* **deps-dev:** bump @swc/core from 1.7.28 to 1.7.35 ([#2008](https://github.com/mdn/bob/issues/2008)) ([20450ae](https://github.com/mdn/bob/commit/20450aed0a64b8c54812fe9a6c8dc68f0e61260a))
+* **deps-dev:** bump @swc/core from 1.7.35 to 1.7.36 ([#2014](https://github.com/mdn/bob/issues/2014)) ([7c164d0](https://github.com/mdn/bob/commit/7c164d05432bf2d4beec327de191ab7dd54579e7))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin from 8.8.0 to 8.8.1 ([#2003](https://github.com/mdn/bob/issues/2003)) ([62d11a8](https://github.com/mdn/bob/commit/62d11a8d326895dba9355941c27de13bdabadd28))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin from 8.8.1 to 8.9.0 ([#2013](https://github.com/mdn/bob/issues/2013)) ([dfd1d53](https://github.com/mdn/bob/commit/dfd1d53acc858961b03d1957028d6b1f2a5041ae))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin from 8.9.0 to 8.10.0 ([#2017](https://github.com/mdn/bob/issues/2017)) ([0d0acb6](https://github.com/mdn/bob/commit/0d0acb60fe12bfd5914f4f18de8dce9e253c47f6))
+* **deps-dev:** bump eslint-plugin-import from 2.30.0 to 2.31.0 ([#1998](https://github.com/mdn/bob/issues/1998)) ([05a8287](https://github.com/mdn/bob/commit/05a8287ddb188f1faa6cfc8d99662bf368881818))
+* **deps-dev:** bump jest-puppeteer from 10.1.1 to 10.1.2 ([#2012](https://github.com/mdn/bob/issues/2012)) ([6d4b506](https://github.com/mdn/bob/commit/6d4b5065dbd2f2ad5608b66225613645f8de01b9))
+* **deps-dev:** bump puppeteer from 23.5.0 to 23.5.1 ([#2004](https://github.com/mdn/bob/issues/2004)) ([c08bf29](https://github.com/mdn/bob/commit/c08bf29d142580cc96898ecfb0a51e0185c84e25))
+* **deps-dev:** bump puppeteer from 23.5.1 to 23.5.2 ([#2007](https://github.com/mdn/bob/issues/2007)) ([7559966](https://github.com/mdn/bob/commit/7559966339eadf67a204d254b75d47acd761521d))
+* **deps-dev:** bump puppeteer from 23.5.2 to 23.5.3 ([#2011](https://github.com/mdn/bob/issues/2011)) ([ca7dc44](https://github.com/mdn/bob/commit/ca7dc44ab09c3dedbbd93093160fb465b636d9dc))
+* **deps-dev:** bump puppeteer from 23.5.3 to 23.6.0 ([#2016](https://github.com/mdn/bob/issues/2016)) ([eaa41b1](https://github.com/mdn/bob/commit/eaa41b116d2b9a8099fb6843ccee2ea66785caa7))
+* **deps-dev:** bump typescript from 5.6.2 to 5.6.3 ([#2006](https://github.com/mdn/bob/issues/2006)) ([be3dc58](https://github.com/mdn/bob/commit/be3dc5845ee84490451591df98690b9282280ec5))
+* **deps:** bump @codemirror/commands from 6.6.2 to 6.7.0 ([#2002](https://github.com/mdn/bob/issues/2002)) ([5627c08](https://github.com/mdn/bob/commit/5627c0856ede695298ed2330c80dd51d2f133938))
+* **deps:** bump @lezer/common from 1.2.1 to 1.2.2 ([#1997](https://github.com/mdn/bob/issues/1997)) ([06185ee](https://github.com/mdn/bob/commit/06185ee21e0ebbeae056567b3b648822b3ab115d))
+* **deps:** bump @lezer/common from 1.2.2 to 1.2.3 ([#2015](https://github.com/mdn/bob/issues/2015)) ([cdccf98](https://github.com/mdn/bob/commit/cdccf989325abfe6b1f7d745dbe5cb98d52e31c3))
+* **deps:** bump @lezer/javascript from 1.4.18 to 1.4.19 ([#2005](https://github.com/mdn/bob/issues/2005)) ([ef6cea0](https://github.com/mdn/bob/commit/ef6cea0b11e10a8ceb8fe6a5b3b5d4a8357f32f3))
+
 ## [5.0.0](https://github.com/mdn/bob/compare/v4.0.4...v5.0.0) (2024-10-02)
 
 
