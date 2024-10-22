@@ -5,7 +5,7 @@ export default function (targetWindow?: Window & typeof globalThis) {
   /* Getting reference to console, either from current window or from the iframe window */
   const console = targetWindow ? targetWindow.console : window.console;
 
-  const originalConsoleLogger = console.log; // eslint-disable-line no-console
+  const originalConsoleLogger = console.log;
   const originalConsoleError = console.error;
 
   console.error = function (loggedItem: any, ...otherArgs: any[]) {
@@ -14,7 +14,6 @@ export default function (targetWindow?: Window & typeof globalThis) {
     originalConsoleError.apply(console, [loggedItem, ...otherArgs]);
   };
 
-  // eslint-disable-next-line no-console
   console.log = function (...args) {
     const formattedList = [];
     for (let i = 0, l = args.length; i < l; i++) {
