@@ -21,40 +21,6 @@
   "type": "module",
   "main": "./lib/mdn-bob.js",
   "types": "./types/types.d.ts",
-  "bundlesize": [
-    {
-      "path": "./docs/css/codemirror.css",
-      "maxSize": "3 kB"
-    },
-    {
-      "path": "./docs/css/editor-css.css",
-      "maxSize": "4 kB"
-    },
-    {
-      "path": "./docs/css/editor-js.css",
-      "maxSize": "1 kB"
-    },
-    {
-      "path": "./docs/css/editor-tabbed.css",
-      "maxSize": "33 kB"
-    },
-    {
-      "path": "./docs/js/codemirror.js",
-      "maxSize": "75 kB"
-    },
-    {
-      "path": "./docs/js/editor-css.js",
-      "maxSize": "4 kB"
-    },
-    {
-      "path": "./docs/js/editor-js.js",
-      "maxSize": "4 kB"
-    },
-    {
-      "path": "./docs/js/editor-tabbed.js",
-      "maxSize": "33 kB"
-    }
-  ],
   "scripts": {
     "build": "cross-env NODE_OPTIONS='--no-warnings=ExperimentalWarning --loader ts-node/esm' node ./lib/mdn-bob.ts",
     "build:pages": "cross-env NODE_OPTIONS='--no-warnings=ExperimentalWarning --loader ts-node/esm' node ./lib/mdn-bob.ts --skip-webpack",
@@ -68,7 +34,6 @@
     "fix": "npm run format:fix && npm run lint:fix",
     "test": "npm run prepack && npm run format && npm run lint && npm run jest",
     "jest": "cross-env JEST_PUPPETEER_CONFIG=jest-puppeteer.config.cjs NODE_OPTIONS=--experimental-vm-modules jest",
-    "perf": "bundlesize",
     "webpack": "webpack",
     "prepare": "husky",
     "clean": "rm lib/*.js lib/*.js.map editor/**/*.js editor/**/*.js.map"
@@ -93,7 +58,6 @@
     "@types/glob": "^8.1.0",
     "@types/uglify-js": "^3.17.3",
     "@typescript-eslint/eslint-plugin": "^8.7.0",
-    "bundlesize": "0.18.2",
     "cross-env": "^7.0.3",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.0.0",
