@@ -201,7 +201,11 @@ import "../css/tabbed-editor.css";
       return;
     }
 
-    if (!window.confirm("Do you really want to reset everything?")) {
+    if (
+      !window.confirm(
+        "Are you sure you want to reset the editor?\nAny changes you have made will be lost.",
+      )
+    ) {
       event.preventDefault();
       return;
     }
