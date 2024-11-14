@@ -197,9 +197,16 @@ import "../css/tabbed-editor.css";
 
   header.addEventListener("click", (event) => {
     const target = event.target as typeof header;
-    if (target.classList.contains("reset")) {
-      window.location.reload();
+    if (!target.classList.contains("reset")) {
+      return;
     }
+
+    if (!window.confirm("Do you really want to reset everything?")) {
+      event.preventDefault();
+      return;
+    }
+
+    window.location.reload();
   });
 
   htmlEditor.addEventListener("keyup", () => autoUpdate());

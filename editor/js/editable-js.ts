@@ -105,7 +105,14 @@ import {
       applyCode();
     });
 
-    reset.addEventListener("click", () => window.location.reload());
+    reset.addEventListener("click", (event) => {
+      if (!window.confirm("Do you really want to reset everything?")) {
+        event.preventDefault();
+        return;
+      }
+
+      window.location.reload();
+    });
   } else {
     console.warn(
       `Feature ${exampleFeature} is not supported; code editor disabled.`,

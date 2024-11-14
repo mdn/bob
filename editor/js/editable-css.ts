@@ -95,7 +95,12 @@ import "../css/editable-css.css";
   function handleResetEvents() {
     const resetButton = document.getElementById("reset") as HTMLElement;
 
-    resetButton.addEventListener("click", () => {
+    resetButton.addEventListener("click", (event) => {
+      if (!window.confirm("Do you really want to reset everything?")) {
+        event.preventDefault();
+        return;
+      }
+
       exampleChoices.forEach((e, i) => {
         const preEl = e.querySelector("pre") as HTMLElement;
 
