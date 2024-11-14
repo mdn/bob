@@ -1,5 +1,18 @@
 # Changelog
 
+## [6.0.0](https://github.com/mdn/bob/compare/v5.0.1...v6.0.0) (2024-11-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** bump node from v18 to v20 ([#2042](https://github.com/mdn/bob/issues/2042))
+
+### Miscellaneous
+
+* **deps-dev:** remove bundlesize ([b8f9a45](https://github.com/mdn/bob/commit/b8f9a450344f12dff7072c184105a1e93aae1d9d))
+* **deps-dev:** remove bundlesize ([#2043](https://github.com/mdn/bob/issues/2043)) ([b8f9a45](https://github.com/mdn/bob/commit/b8f9a450344f12dff7072c184105a1e93aae1d9d))
+* **deps:** bump node from v18 to v20 ([#2042](https://github.com/mdn/bob/issues/2042)) ([2e8b545](https://github.com/mdn/bob/commit/2e8b545f85599fa6fea951f2e0e0134b13c6bee5))
+
 ## [5.0.1](https://github.com/mdn/bob/compare/v5.0.0...v5.0.1) (2024-11-14)
 
 
