@@ -1,5 +1,44 @@
 # Changelog
 
+## [6.0.1](https://github.com/mdn/bob/compare/v6.0.0...v6.0.1) (2024-12-09)
+
+
+### Miscellaneous
+
+* **deps-dev:** bump @eslint/compat from 1.2.2 to 1.2.3 ([#2053](https://github.com/mdn/bob/issues/2053)) ([d14a499](https://github.com/mdn/bob/commit/d14a499ac79486c949594e4633d316f862380166))
+* **deps-dev:** bump @eslint/compat from 1.2.3 to 1.2.4 ([#2084](https://github.com/mdn/bob/issues/2084)) ([65696a6](https://github.com/mdn/bob/commit/65696a6a1585de2640b337be1b630fd223c3f9e5))
+* **deps-dev:** bump @swc/core from 1.10.0 to 1.10.1 ([#2087](https://github.com/mdn/bob/issues/2087)) ([2c71ce0](https://github.com/mdn/bob/commit/2c71ce0629f459da6fd2edd60b72d5758052e0cb))
+* **deps-dev:** bump @swc/core from 1.9.2 to 1.9.3 ([#2063](https://github.com/mdn/bob/issues/2063)) ([0ffb417](https://github.com/mdn/bob/commit/0ffb4177714871e9b0adeececa6a6c72f9152726))
+* **deps-dev:** bump @swc/core from 1.9.3 to 1.10.0 ([#2081](https://github.com/mdn/bob/issues/2081)) ([e5e62e3](https://github.com/mdn/bob/commit/e5e62e3272192a80b2103e5d59d51813cc38c010))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin from 8.14.0 to 8.15.0 ([#2057](https://github.com/mdn/bob/issues/2057)) ([b9e61a6](https://github.com/mdn/bob/commit/b9e61a6ffb8d410d16774f75b27482f311aaa026))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin from 8.15.0 to 8.16.0 ([#2066](https://github.com/mdn/bob/issues/2066)) ([13f2006](https://github.com/mdn/bob/commit/13f2006f1cd6a12896bae9034a40b61c95a5fd03))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin from 8.16.0 to 8.17.0 ([#2076](https://github.com/mdn/bob/issues/2076)) ([6938334](https://github.com/mdn/bob/commit/69383340edbd4601974640c0c658786c228608dd))
+* **deps-dev:** bump eslint from 9.14.0 to 9.15.0 ([#2055](https://github.com/mdn/bob/issues/2055)) ([f7e8f49](https://github.com/mdn/bob/commit/f7e8f49922e7413e415595e634207b39a9b921ea))
+* **deps-dev:** bump eslint from 9.15.0 to 9.16.0 ([#2073](https://github.com/mdn/bob/issues/2073)) ([5585d8c](https://github.com/mdn/bob/commit/5585d8c1b8bf1c9c8bf0ada0b4283abbc44ef2da))
+* **deps-dev:** bump eslint-import-resolver-typescript from 3.6.3 to 3.7.0 ([#2082](https://github.com/mdn/bob/issues/2082)) ([95025cc](https://github.com/mdn/bob/commit/95025cc4a4b62fa505b9a78559999b4e7afe5c3f))
+* **deps-dev:** bump globals from 15.12.0 to 15.13.0 ([#2074](https://github.com/mdn/bob/issues/2074)) ([84b26f5](https://github.com/mdn/bob/commit/84b26f55a6bc8c378b0de7a1512349e64ec1a46e))
+* **deps-dev:** bump husky from 9.1.6 to 9.1.7 ([#2058](https://github.com/mdn/bob/issues/2058)) ([1f20a6c](https://github.com/mdn/bob/commit/1f20a6c8f009e09eec8bcd0fb4f84b17bf773474))
+* **deps-dev:** bump prettier from 3.3.3 to 3.4.0 ([#2067](https://github.com/mdn/bob/issues/2067)) ([e75cd4a](https://github.com/mdn/bob/commit/e75cd4a15890c7c620e1a00ae786d29e1118722c))
+* **deps-dev:** bump prettier from 3.4.0 to 3.4.1 ([#2069](https://github.com/mdn/bob/issues/2069)) ([8a31df8](https://github.com/mdn/bob/commit/8a31df8f6f497766e60fe4d08769839ea2e3a076))
+* **deps-dev:** bump prettier from 3.4.1 to 3.4.2 ([#2079](https://github.com/mdn/bob/issues/2079)) ([6ab9fcf](https://github.com/mdn/bob/commit/6ab9fcfb8ebc6cd5e5ba47fae4f95c88a12b6303))
+* **deps-dev:** bump puppeteer from 23.10.0 to 23.10.1 ([#2083](https://github.com/mdn/bob/issues/2083)) ([b852db4](https://github.com/mdn/bob/commit/b852db4a76a5fd412c7411203bae096667d3f950))
+* **deps-dev:** bump puppeteer from 23.8.0 to 23.9.0 ([#2062](https://github.com/mdn/bob/issues/2062)) ([2531d0a](https://github.com/mdn/bob/commit/2531d0ad59f8851076c5296251f19dda7b7e9da7))
+* **deps-dev:** bump puppeteer from 23.9.0 to 23.10.0 ([#2080](https://github.com/mdn/bob/issues/2080)) ([b0c5c39](https://github.com/mdn/bob/commit/b0c5c39677ad36023fa7265c1102839e5c71e981))
+* **deps-dev:** bump typescript from 5.6.3 to 5.7.2 ([#2065](https://github.com/mdn/bob/issues/2065)) ([3170ff2](https://github.com/mdn/bob/commit/3170ff29a10641a75cf90e0a07a06699fbea47e1))
+* **deps:** bump @codemirror/lang-css from 6.3.0 to 6.3.1 ([#2068](https://github.com/mdn/bob/issues/2068)) ([1a3d298](https://github.com/mdn/bob/commit/1a3d298ee19abfb93ac3b10cb91d209b3db314b0))
+* **deps:** bump @codemirror/language from 6.10.3 to 6.10.4 ([#2064](https://github.com/mdn/bob/issues/2064)) ([7051a7f](https://github.com/mdn/bob/commit/7051a7f03bec42f0ee3def68d1df439487d369f3))
+* **deps:** bump @codemirror/language from 6.10.4 to 6.10.5 ([#2070](https://github.com/mdn/bob/issues/2070)) ([5cd2bed](https://github.com/mdn/bob/commit/5cd2bedc25f2c2a60ed31cacf88051be9e507b4a))
+* **deps:** bump @codemirror/language from 6.10.5 to 6.10.6 ([#2072](https://github.com/mdn/bob/issues/2072)) ([df200c6](https://github.com/mdn/bob/commit/df200c62cc64c42c1b5befead1a9c9c3b6dcdae0))
+* **deps:** bump @codemirror/lint from 6.8.2 to 6.8.3 ([#2061](https://github.com/mdn/bob/issues/2061)) ([e17ec07](https://github.com/mdn/bob/commit/e17ec07bc83cb7a64eb618315951ae44282a3a79))
+* **deps:** bump @codemirror/lint from 6.8.3 to 6.8.4 ([#2071](https://github.com/mdn/bob/issues/2071)) ([5b9cc6f](https://github.com/mdn/bob/commit/5b9cc6f2528ab5fecc7dd21a5806999d4d473c76))
+* **deps:** bump @codemirror/view from 6.34.2 to 6.34.3 ([#2056](https://github.com/mdn/bob/issues/2056)) ([68b4601](https://github.com/mdn/bob/commit/68b4601c7bf8ddd48e7d61e1bb2090aa59bbf86a))
+* **deps:** bump @codemirror/view from 6.34.3 to 6.35.0 ([#2060](https://github.com/mdn/bob/issues/2060)) ([65a66f6](https://github.com/mdn/bob/commit/65a66f65391d8ed60b8048562efd0eb42d93938e))
+* **deps:** bump @codemirror/view from 6.35.0 to 6.35.2 ([#2086](https://github.com/mdn/bob/issues/2086)) ([a117a1d](https://github.com/mdn/bob/commit/a117a1dd8fd715cfab2d662911d37ad934f56642))
+* **deps:** bump @lezer/javascript from 1.4.19 to 1.4.20 ([#2075](https://github.com/mdn/bob/issues/2075)) ([663bdc7](https://github.com/mdn/bob/commit/663bdc7a4162c90a01b23cf752cd5e5c8a85621b))
+* **deps:** bump @lezer/javascript from 1.4.20 to 1.4.21 ([#2078](https://github.com/mdn/bob/issues/2078)) ([b6cd51e](https://github.com/mdn/bob/commit/b6cd51e9d6fa152838289225e1bdc20972ebbf7a))
+* **deps:** bump webpack from 5.96.1 to 5.97.0 ([#2077](https://github.com/mdn/bob/issues/2077)) ([0f426ac](https://github.com/mdn/bob/commit/0f426ac79ab3c27b2969ba49f5b0e3723f30d852))
+* **deps:** bump webpack from 5.97.0 to 5.97.1 ([#2085](https://github.com/mdn/bob/issues/2085)) ([49db258](https://github.com/mdn/bob/commit/49db258b11dd46c7f469629efbc1df5ffdfd44bf))
+
 ## [6.0.0](https://github.com/mdn/bob/compare/v5.0.1...v6.0.0) (2024-11-14)
 
 
