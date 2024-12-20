@@ -105,7 +105,18 @@ import {
       applyCode();
     });
 
-    reset.addEventListener("click", () => window.location.reload());
+    reset.addEventListener("click", (event) => {
+      if (
+        !window.confirm(
+          "Are you sure you want to reset the editor?\nAny changes you have made will be lost.",
+        )
+      ) {
+        event.preventDefault();
+        return;
+      }
+
+      window.location.reload();
+    });
   } else {
     console.warn(
       `Feature ${exampleFeature} is not supported; code editor disabled.`,
