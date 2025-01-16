@@ -99,7 +99,7 @@
     "cosmiconfig": "9.0.0",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
-    "fs-extra": "11.2.0",
+    "fs-extra": "11.3.0",
     "glob": "10.4.5",
     "mini-css-extract-plugin": "^2.6.1",
     "path-browserify": "^1.0.1",
