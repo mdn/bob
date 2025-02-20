@@ -1,5 +1,11 @@
 # BoB
 
+> [!WARNING]
+> This repository is in the process of being **archived**!
+>
+> New pull requests will be closed, so do not work on issues or tasks relating to this repository to avoid lost time and work.
+> For more information, see <https://github.com/orgs/mdn/discussions/782>.
+
 Builder of Bits aka The [MDN Web Docs interactive examples](https://github.com/mdn/interactive-examples) example builder.
 
 ## Contributing
