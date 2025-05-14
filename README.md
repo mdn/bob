@@ -1,9 +1,10 @@
-# BoB
+# BoB (deprecated)
 
-> [!WARNING]
-> This repository is in the process of being **archived**!
+> [!IMPORTANT]
+> As of March 2025, BoB is no longer used on MDN.
 >
-> New pull requests will be closed, so do not work on issues or tasks relating to this repository to avoid lost time and work.
+> As of May 2025, BoB is no longer maintained, and **deprecated**.
+>
 > For more information, see <https://github.com/orgs/mdn/discussions/782>.
 
 Builder of Bits aka The [MDN Web Docs interactive examples](https://github.com/mdn/interactive-examples) example builder.
